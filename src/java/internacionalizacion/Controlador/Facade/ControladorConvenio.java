@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package oficina.Modelo.DAO;
+package internacionalizacion.Controlador.Facade;
 
 /**
  *
  * @author JAVIER
  */
-public class DAOConvenio {
+public class ControladorConvenio {
     
 }

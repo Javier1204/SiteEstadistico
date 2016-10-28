@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Ingenieria de sistemas</title>
 
-        <a href="oficina.Vista/img/favicon.ico"></a>
+        <a href="Vista/img/favicon.ico"></a>
         <!--Metaetiqueta para el uso del conjunto de caracteres adecuado-->
         <meta charset="utf-8">
         <!--Metaetiqueta para corregir compatibilidad con navegador Microsft-->
@@ -19,23 +19,23 @@
         <!--Metaetiqueta para la correcta visualizaciÃ³n en dispositivos moviles-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--AÃ±ada primero el estilo de la libreria (ufps.css o ufps.min.css) y luego sus estilos propios-->
-        <link href="oficina.Vista/css/ufps.css" rel="stylesheet" type="text/css"/>        
-        <link href="oficina.Vista/css/styles.css" rel="stylesheet" type="text/css"/>
-        <link href="oficina.Vista/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="Vista/css/ufps.css" rel="stylesheet" type="text/css"/>        
+        <link href="Vista/css/styles.css" rel="stylesheet" type="text/css"/>
+        <link href="Vista/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <!--Librerías para compatibilidad con versiones antiguas de Internet Explorer-->
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <!--Algunos componentes requieren el uso de la librerÃ­a en javascript-->
-        <script src="oficina.Vista/js/jquery.min.js" type="text/javascript"></script>
+        <script src="Vista/js/jquery.min.js" type="text/javascript"></script>
         
 
         <script src="../../public/js/ufps.js" type="text/javascript"></script>
         <script src="../../public/js/ufps.min.js" type="text/javascript"></script>
         <script src="../../public/js/ufps.min.js" type="text/javascript"></script>
-        <script src="oficina.Vista/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="oficina.Vista/js/bootstrap.js" type="text/javascript"></script>
+        <script src="Vista/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="Vista/js/bootstrap.js" type="text/javascript"></script>
 
     </head>
     <body>
@@ -58,8 +58,8 @@
                 <div class="ufps-navbar-left nav">
                     
                     <li><a href="" class="ufps-navbar-btn" >Home </a></li>
-                    <li><a href="oficina.Vista/convenios.jsp"  class="ufps-navbar-btn  " >Convenios </a></li>
-                    <li><a href="oficina.Vista/actividades.jsp"  class="ufps-navbar-btn  " >Actividades </a></li>
+                    <li><a href="Vista/convenios.jsp"  class="ufps-navbar-btn  " >Convenios </a></li>
+                    <li><a href="Vista/actividades.jsp"  class="ufps-navbar-btn  " >Actividades </a></li>
 
 
                     </li>
@@ -91,7 +91,7 @@
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
                         
-                        <center><img src="oficina.Vista/img/Banner_120_2016.png" alt="Chania"></center>
+                        <center><img src="Vista/img/Banner_120_2016.png" alt="Chania"></center>
 
                         <div class="carousel-caption">
                             <div class="animated fadeInDown">
@@ -102,15 +102,15 @@
                     </div>
 
                     <div class="item">
-                        <center><img src="oficina.Vista/img/Banner_124_2016_2.png" alt="Chania"></center>
+                        <center><img src="Vista/img/Banner_124_2016_2.png" alt="Chania"></center>
                     </div>
 
                     <div class="item">
-                        <center><img src="oficina.Vista/img/Banner_127_2016.png" alt="Flower"></center>
+                        <center><img src="Vista/img/Banner_127_2016.png" alt="Flower"></center>
                     </div>
 
                     <div class="item">
-                        <center><img src="oficina.Vista/img/Banner_131_2016.png" alt="Flower"></center>
+                        <center><img src="Vista/img/Banner_131_2016.png" alt="Flower"></center>
                     </div>
                 </div>
 
