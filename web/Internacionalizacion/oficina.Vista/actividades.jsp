@@ -54,7 +54,7 @@
                 </div>
                 <div class="ufps-navbar-left nav">
 
-                    <li><a href="principal.jsp" class="  ufps-navbar-btn  " >Home </a></li>
+                    <li><a href="../index.jsp" class="  ufps-navbar-btn  " >Home </a></li>
                     <li><a href="convenios.jsp"  class="ufps-navbar-btn  " >Convenios </a></li>
                     <li><a href="actividades.jsp"  class="ufps-navbar-btn  " >Actividades </a></li>
 
