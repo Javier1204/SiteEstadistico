@@ -14,7 +14,7 @@ import java.sql.ResultSet;
  * @author javie
  */
 public class Conexion {
-     private static String bd = "site";
+    private static String bd = "site";
     private static String login = "ufps_32";
     private static String password = "ufps_26";
     private static String url = "jdbc:mysql://sandbox2.ufps.edu.co:3306/";
