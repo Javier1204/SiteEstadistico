@@ -1,6 +1,6 @@
 <%-- 
-    Document   : convenios
-    Created on : 5/10/2016, 05:50:46 PM
+    Document   : actividades
+    Created on : 27/10/2016, 11:40:04 PM
     Author     : JAVIER
 --%>
 
@@ -9,8 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Convenios - Ingenieria de Sistemas</title>
-
+        <title>Actividades Convenios</title>
         <link href="img/favicon.ico" rel="shortcut icon"/>
         <!--Metaetiqueta para el uso del conjunto de caracteres adecuado-->
         <meta charset="utf-8">
@@ -35,11 +34,11 @@
         <script src="../../public/js/ufps.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.js"></script>
         <script src="js/bootstrap.min.js"></script>
-       
+
     </head>
-    <body>        
+    <body>
         <header>
-            
+
             <center> <img id="banner" src="../../public/img/Banner-superior.png" alt="imagen" height="100px" width="100%" ></img></center>
         </header> 
 
@@ -62,72 +61,46 @@
 
                     </li>
                 </div>
-                
+
 
             </div>
         </div>
 
-        <!--Contenido -->
+        <!--Contenido-->
         <div  class="ufps-container" id="contenido">
 
-
-
-
-
-            
-            <ul class="nav nav-pills nav-justified" id="navegacion-convenios">
-                <li id="navegacion-li-convenios"><a href="#">Convenios Macro</a></li>
-                <li id="navegacion-li-convenios"><a href="#">Convenios Especifico</a></li>
-                <li id="navegacion-li-convenios"><a href="#">Convenios Interinstitucional</a></li>
-                
-            </ul>
-
-
-            <div class="row">
-
-
-                <div class="col-xs-12 col-md-4">
-                    <div class="thumbnail">
-                        <img src="img/banner-internacional.jpg" alt="imagen de evento">
-                        <div class="caption">
-                            <h3>Nombre Convenio</h3>
-                            <p>Metadatos convenio</p>
-                            <p><a href="#" class="btn ufps-btn" role="button">Ver convenio</a></p>
-                        </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <ul class="nav nav-pills nav-stacked">
+                            <!--<li class="active"><a href="#"><i class="fa fa-home fa-fw"></i>Home</a></li>-->
+                            <li><a href="http://www.jquery2dotnet.com"><i class="fa fa-list-alt fa-fw"></i>Registrar actividad</a></li>
+                            <li><a href="http://www.jquery2dotnet.com"><i class="fa fa-file-o fa-fw"></i>Consultar actividades</a></li>
+                            <li><a href="http://www.jquery2dotnet.com"><i class="fa fa-bar-chart-o fa-fw"></i>Modificar actividades</a></li>
+                            
+                        </ul>
                     </div>
-
-                </div>
-                <div class="col-xs-12 col-md-4">
-                    <div class="thumbnail">
-                        <img src="img/banner-internacional.jpg" alt="imagen de evento">
-                        <div class="caption">
-                            <h3>Nombre Convenio</h3>
-                            <p>Metadatos convenio</p>
-                            <p><a href="#" class="btn ufps-btn" role="button">Ver convenio</a></p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-xs-12 col-md-4">
-                    <div class="thumbnail">
-                        <img src="img/banner-internacional.jpg" alt="imagen de evento">
-                        <div class="caption">
-                            <h3>Nombre Convenio</h3>
-                            <p>Metadatos convenio</p>
-                            <p><a href="#" class="btn ufps-btn" role="button">Ver convenio</a></p>
-                        </div>
-                    </div>
-
-
+                    
                 </div>
             </div>
+            
+            
+
+
+
         </div>
 
 
-        <div class="ufps-container ufps-footer ">
-            <h5>Universidad Francisco de Paula Santander</h5>
-            <h6>Programa Ingeniería de Sistemas<br>
-                Desarrollador por: Francisco Javier Duarte García - Heiner Enrique Villamizar Molina</h6>
-        </div>  
     </body>
+
+    <!--Footer-->
+
+    <div class="ufps-container ufps-footer ">
+        <h5 class="text-center">Universidad Francisco de Paula Santander</h5>
+        <h6 class="text-center">Programa Ingeniería de Sistemas<br>
+            Desarrollador por: Francisco Javier Duarte García - Heiner Enrique Villamizar Molina</h6>
+
+
+    </div>  
+    <!--<%@ include file="../../plantilla/footer.jsp"%>-->
 </html>

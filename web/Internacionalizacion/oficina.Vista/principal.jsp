@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Ingenieria de sistemas</title>
 
-        <link href="../oficina.Vista/img/favicon.ico" rel="shortcut icon"  />
+        <link href="img/favicon.ico" rel="shortcut icon"  />
         <!--Metaetiqueta para el uso del conjunto de caracteres adecuado-->
         <meta charset="utf-8">
         <!--Metaetiqueta para corregir compatibilidad con navegador Microsft-->
@@ -19,24 +19,23 @@
         <!--Metaetiqueta para la correcta visualizaciÃ³n en dispositivos moviles-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--AÃ±ada primero el estilo de la libreria (ufps.css o ufps.min.css) y luego sus estilos propios-->
-        <link href="css/ufps.css" rel="stylesheet" type="text/css"/>
-        <link href="../oficina.Vista/css/styles.css" rel="stylesheet">
-        <link href="../oficina.Vista/css/bootstrap.css" rel="stylesheet">
-
+        <link href="css/ufps.css" rel="stylesheet" type="text/css"/>        
+        <link href="css/styles.css" rel="stylesheet" type="text/css"/>
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <!--Librerías para compatibilidad con versiones antiguas de Internet Explorer-->
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <!--Algunos componentes requieren el uso de la librerÃ­a en javascript-->
-
-        <script src="../oficina.Vista/js/jquery-3.1.0.min.js"></script>
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+    
 
         <script src="../../public/js/ufps.js" type="text/javascript"></script>
         <script src="../../public/js/ufps.min.js" type="text/javascript"></script>
         <script src="../../public/js/ufps.min.js" type="text/javascript"></script>
-        <script src="../oficina.Vista/js/bootstrap.js"></script>
-        <script src="../oficina.Vista/js/bootstrap.min.js"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>        
+        <script src="js/bootstrap.js" type="text/javascript"></script>
 
     </head>
     <body>
@@ -60,7 +59,7 @@
 
                     <li><a href="" class="ufps-navbar-btn" >Home </a></li>
                     <li><a href="../oficina.Vista/convenios.jsp"  class="ufps-navbar-btn  " >Convenios </a></li>
-                    <li><a href=""  class="ufps-navbar-btn  " >Actividades </a></li>
+                    <li><a href="../oficina.Vista/actividades.jsp"  class="ufps-navbar-btn  " >Actividades </a></li>
 
 
                     </li>
@@ -165,11 +164,12 @@
         </div>
 
         <div class="ufps-container ufps-footer ">
-            <h5>Universidad Francisco de Paula Santander</h5>
-            <h6>Programa Ingeniería de Sistemas<br>
+            <h5 class="text-center">Universidad Francisco de Paula Santander</h5>
+            <h6 class="text-center">Programa Ingeniería de Sistemas<br>
                 Desarrollador por: Francisco Javier Duarte García - Heiner Enrique Villamizar Molina</h6>
 
 
         </div>   
     </body>
+    
 </html>
