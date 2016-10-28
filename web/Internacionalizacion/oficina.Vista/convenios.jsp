@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Convenios - Ingenieria de Sistemas</title>
 
-        <link href="../Vista/img/favicon.ico" rel="shortcut icon"/>
+        <link href="oficina.Vista/img/favicon.ico" rel="shortcut icon"/>
         <!--Metaetiqueta para el uso del conjunto de caracteres adecuado-->
         <meta charset="utf-8">
         <!--Metaetiqueta para corregir compatibilidad con navegador Microsft-->
@@ -20,8 +20,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--AÃ±ada primero el estilo de la libreria (ufps.css o ufps.min.css) y luego sus estilos propios-->
         <link href="../../public/css/ufps.css" rel="stylesheet" type="text/css"/>
-        <link href="../Vista/css/styles.css" rel="stylesheet">
-        <link href="../Vista/css/bootstrap.css" rel="stylesheet">
+        <link href="oficina.Vista/css/styles.css" rel="stylesheet">
+        <link href="oficina.Vista/css/bootstrap.css" rel="stylesheet">
 
         <!--LibrerÃ­as para compatibilidad con versiones antiguas de Internet Explorer-->
         <!--[if lt IE 9]>
@@ -30,11 +30,11 @@
         <![endif]-->
         <!--Algunos componentes requieren el uso de la librerÃ­a en javascript-->
 
-        <script src="../Vista/js/jquery-3.1.0.min.js"></script>
+        <script src="oficina.Vista/js/jquery-3.1.0.min.js"></script>
         <script src="../../public/js/ufps.js" type="text/javascript"></script>
         <script src="../../public/js/ufps.min.js" type="text/javascript"></script>
-        <script src="../Vista/js/bootstrap.js"></script>
-        <script src="../Vista/js/bootstrap.min.js"></script>
+        <script src="oficina.Vista/js/bootstrap.js"></script>
+        <script src="oficina.Vista/js/bootstrap.min.js"></script>
     </head>
     <body>        
         <header>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="ufps-navbar-left nav">
 
-                    <li><a href="../Vista/principal.jsp" class="  ufps-navbar-btn  " >Home </a></li>
+                    <li><a href="oficina.Vista/principal.jsp" class="  ufps-navbar-btn  " >Home </a></li>
                     <li><a href=""  class="ufps-navbar-btn  " >Convenios </a></li>
                     <li><a href=""  class="ufps-navbar-btn  " >Actividades </a></li>
 
