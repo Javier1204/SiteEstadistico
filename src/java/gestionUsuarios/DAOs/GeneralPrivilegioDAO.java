@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package general.conexion;
+package gestionUsuarios.DAOs;
+
 /**
  *
- * @author Mauricio
+ * @author Lenovo
  */
-public class TestConn {
-    public static void main(String[] args) throws Exception{
-        Conexion.conectar();   
-    }
+public class GeneralPrivilegioDAO {
+    
 }
