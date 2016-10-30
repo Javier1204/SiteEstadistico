@@ -50,8 +50,10 @@ public class GeneralPrivilegioDAO extends ConexionGUDAOs{
             }
             PrivilegioDTO privilegio=new PrivilegioDTO();
             privilegio.setModulos(listaMod);
+            return privilegio;
         } catch (SQLException ex) {
             Logger.getLogger(GeneralPrivilegioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }finally{
             cerrarConexion();
         }
