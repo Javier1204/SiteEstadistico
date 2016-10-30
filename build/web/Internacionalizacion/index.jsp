@@ -60,6 +60,8 @@
                     <li><a href="" class="ufps-navbar-btn" >Home </a></li>
                     <li><a href="Vista/convenios.jsp"  class="ufps-navbar-btn  " >Convenios </a></li>
                     <li><a href="Vista/actividades.jsp"  class="ufps-navbar-btn  " >Actividades </a></li>
+                    <li><a href="Vista/registrarEntidad.jsp"  class="ufps-navbar-btn  " >Registro Entidad </a></li>
+                    <li><a href="Vista/registrarConvenio.jsp"  class="ufps-navbar-btn  " >Registro Convenio</a></li>
 
 
                     </li>
