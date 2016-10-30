@@ -76,7 +76,7 @@ public class GestionUsuario implements IGestionUsuarios{
 
     @Override
     public List<ModuloDTO> listarModulo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ControlGestionUsuarios.getInstance().listarModulos();
     }
 
     @Override

@@ -17,9 +17,10 @@ import java.util.logging.Logger;
  * @author Lenovo
  */
 public class GeneralRolDAO extends ConexionGUDAOs{
-    public GeneralRolDAO(){super();}
+    public GeneralRolDAO(){}
     public RolDTO getRol(String rol){
         try{
+            obtenerConexion();
             PreparedStatement ps=conn.prepareStatement("SELECT * FROM general_rol WHERE rol=?");
             ps.setString(1, rol);
             ResultSet rs=ps.executeQuery();

@@ -97,7 +97,6 @@ public interface IGestionUsuarios {
      */
     public boolean cambiarContrasena(ICuenta administrador, String usuario, String nuevaContra);
     
-    //aqui van los listar roles, modulos, rf por modulos
     /**
      * lista todos los roles que hay en el sistema
      * @return 

@@ -29,6 +29,7 @@ public class GeneralUsuarioRolDAO extends ConexionGUDAOs{
     public boolean existe(String rol, String user) {      
         
         try {
+            obtenerConexion();
             PreparedStatement ps=conn.prepareStatement("SELECT * FROM general_usuario_rol WHERE user=? AND rol=? ");
             ps.setString(1, user);
             ps.setString(2, rol);
@@ -48,7 +49,7 @@ public class GeneralUsuarioRolDAO extends ConexionGUDAOs{
     
     public List<RolDTO> obtenerRoles(String user){
         try{
-            
+            obtenerConexion();
             ArrayList<RolDTO> lista =new ArrayList<RolDTO>();
             PreparedStatement ps=conn.prepareStatement("SELECT rol FROM general_usuario_rol WHERE user=?");
             ps.setString(1, user);

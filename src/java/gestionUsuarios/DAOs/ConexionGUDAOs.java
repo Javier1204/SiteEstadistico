@@ -17,9 +17,9 @@ import java.sql.SQLException;
 public abstract class ConexionGUDAOs {
     protected Connection conn;
     protected ConexionGUDAOs(){
-        this.obtenerConexion();
+        //this.obtenerConexion();
     }
-    private void obtenerConexion() {
+    protected void obtenerConexion() {
         Pool pool = Conexion.getPool(); //llamo al objeto pool 
         Connection con = null;
         try {

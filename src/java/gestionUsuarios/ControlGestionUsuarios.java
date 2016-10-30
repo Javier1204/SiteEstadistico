@@ -5,11 +5,16 @@
  */
 package gestionUsuarios;
 
+import gestionUsuarios.DAOs.GeneralModuloDAO;
+import gestionUsuarios.DAOs.GeneralPrivilegioDAO;
 import gestionUsuarios.DAOs.GeneralUsuarioDAO;
 import gestionUsuarios.DAOs.GeneralUsuarioRolDAO;
+import gestionUsuarios.DTOs.ModuloDTO;
+import gestionUsuarios.DTOs.PrivilegioDTO;
 import gestionUsuarios.DTOs.RolDTO;
 import gestionUsuarios.DTOs.UsuarioDTO;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -44,8 +49,12 @@ public class ControlGestionUsuarios {
         GeneralUsuarioDAO us=new GeneralUsuarioDAO();
         UsuarioDTO u=us.getUsuario(user);
         ArrayList<RolDTO> roles=(ArrayList<RolDTO>) new GeneralUsuarioRolDAO().obtenerRoles(user);
-        
-        return null;
+        GeneralPrivilegioDAO pdao=new GeneralPrivilegioDAO();
+        PrivilegioDTO priv=pdao.getPrivilegioUsuario(user);
+        cuenta.construirCuenta(u, roles, priv);
+        return cuenta;
     }
-    
+    protected List<ModuloDTO> listarModulos(){
+        return new GeneralModuloDAO().listaModulos();
+    }
 }

@@ -61,6 +61,13 @@ public class Cuenta implements ICuenta{
     public List<String> listarRequerimientosFDeModulos(String modulo) {
         return privilegio.listarRF(modulo);
     }
+
+    @Override
+    public void construirCuenta(UsuarioDTO user, List<RolDTO> roles, PrivilegioDTO privilegios) {
+        this.usser=user;
+        this.roles=(ArrayList<RolDTO>) roles;
+        this.privilegio=privilegios;
+    }
     
     
 }

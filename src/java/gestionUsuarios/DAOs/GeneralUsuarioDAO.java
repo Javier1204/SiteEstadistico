@@ -22,6 +22,7 @@ public class GeneralUsuarioDAO extends ConexionGUDAOs{
     public String getPass(String user)
     {
         try{
+            obtenerConexion();
             PreparedStatement ps=conn.prepareStatement("SELECT password FROM general_usuario WHERE user=?");
             ps.setString(1, user);
             ResultSet rs=ps.executeQuery();
@@ -39,6 +40,7 @@ public class GeneralUsuarioDAO extends ConexionGUDAOs{
     
     public UsuarioDTO getUsuario(String user){
         try{
+            obtenerConexion();
             PreparedStatement ps=conn.prepareStatement("SELECT * FROM general_usuario WHERE user=?");
             ps.setString(1, user);
             ResultSet rs=ps.executeQuery();

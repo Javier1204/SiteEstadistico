@@ -5,6 +5,9 @@
  */
 package gestionUsuarios;
 
+import gestionUsuarios.DTOs.PrivilegioDTO;
+import gestionUsuarios.DTOs.RolDTO;
+import gestionUsuarios.DTOs.UsuarioDTO;
 import java.util.List;
 
 /**
@@ -20,5 +23,6 @@ public interface ICuenta {
     public List<String> listarModulos();
     public List<String> listarRequerimientosF();
     public List<String> listarRequerimientosFDeModulos(String modulos);
+    public void construirCuenta(UsuarioDTO user, List<RolDTO> roles, PrivilegioDTO privilegios);
     
 }
