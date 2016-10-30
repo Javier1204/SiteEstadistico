@@ -15,6 +15,16 @@ import java.util.List;
 public class ModuloDTO {
     private ArrayList<RequerimientoFDTO> requerimientosFs;
     private String nombre;
+
+    public ArrayList<RequerimientoFDTO> getRequerimientosFs() {
+        return requerimientosFs;
+    }
+
+    public void setRequerimientosFs(ArrayList<RequerimientoFDTO> requerimientosFs) {
+        this.requerimientosFs = requerimientosFs;
+    }
+    
+    
     protected boolean containRF(String nomReq){
         for (RequerimientoFDTO requerimientosF : requerimientosFs) {
             if(requerimientosF.getId().equalsIgnoreCase(nomReq))return true;
@@ -39,4 +49,6 @@ public class ModuloDTO {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+    
 }

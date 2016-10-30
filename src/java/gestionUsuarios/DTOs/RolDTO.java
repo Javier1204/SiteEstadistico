@@ -11,6 +11,15 @@ package gestionUsuarios.DTOs;
  */
 public class RolDTO {
     private String rol;
+    private String descripcion;
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
     public String getRol() {
         return rol;

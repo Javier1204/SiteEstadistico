@@ -14,6 +14,15 @@ import java.util.List;
  */
 public class PrivilegioDTO {
     private ArrayList<ModuloDTO> modulos;
+
+    public ArrayList<ModuloDTO> getModulos() {
+        return modulos;
+    }
+
+    public void setModulos(ArrayList<ModuloDTO> modulos) {
+        this.modulos = modulos;
+    }
+    
     public boolean containRF(String idRF){
         for (ModuloDTO modulo : modulos) {
             if(modulo.containRF(idRF))return true;

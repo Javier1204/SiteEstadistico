@@ -20,7 +20,8 @@ public class GestionUsuario implements IGestionUsuarios{
     private GestionUsuario(){}
     @Override
     public ICuenta loggearUsuario(String rol, String usuario, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ControlGestionUsuarios c=ControlGestionUsuarios.getInstance();
+        return c.loggearUser(rol, usuario, password);
     }
 
     @Override
