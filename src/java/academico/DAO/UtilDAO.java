@@ -5,8 +5,8 @@
  */
 package academico.DAO;
 
+import academico.DTO.EstudianteDTO;
 import academico.Facade.Facade;
-import academico.Interface.IPanelDocenteDAO;
 import general.conexion.Conexion;
 import general.conexion.Pool;
 import java.sql.Connection;
@@ -14,12 +14,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import academico.Interface.IUtilDAO;
 
 /**
  *
  * @author Mauricio
  */
-public class PanelDocenteDAO implements IPanelDocenteDAO {
+public class UtilDAO implements IUtilDAO {
 
     @Override
     public ArrayList<String> asignaturasDoc(int codig_doc) throws SQLException {
@@ -42,7 +43,7 @@ public class PanelDocenteDAO implements IPanelDocenteDAO {
                         + "WHERE general_asignatura.codigo =?");
                 stmt.setInt(1, i);
                 rs = stmt.executeQuery();
-                while(rs.next()){
+                while (rs.next()) {
                     asign.add(rs.getString(1));
                 }
                 stmt.close();
@@ -56,6 +57,44 @@ public class PanelDocenteDAO implements IPanelDocenteDAO {
             }
         }
         return asign;
+    }
+
+    @Override
+    public ArrayList<EstudianteDTO> obtenerEstudiantes(int cod_asign) throws SQLException {
+        Pool pool = Conexion.getPool();
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ArrayList<EstudianteDTO> estudiantes = null;
+        EstudianteDTO dto = null;
+        try {
+            estudiantes = new ArrayList();
+            pool.setUsuario("ufps_76");
+            pool.setUsuario("ufps_29");
+            pool.inicializarDataSource();
+            con = pool.getDataSource().getConnection();
+            stmt = con.prepareStatement("SELECT general_estudiante.codigo, general_estudiante.nombres, general_estudiante.apellidos\n"
+                    + "FROM academico_estudiantexgrupo, general_estudiante\n"
+                    + "WHERE academico_estudiantexgrupo.id_grupo =?\n"
+                    + "AND academico_estudiantexgrupo.codigo_estudiante = general_estudiante.codigo");
+            stmt.setInt(1, cod_asign);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                dto = new EstudianteDTO();
+                dto.setCodigo(rs.getInt(1));
+                dto.setNombre(rs.getString(2));
+                dto.setApellido(rs.getString(3));
+                estudiantes.add(dto);
+            }
+            stmt.close();
+            rs.close();
+        } catch (Exception ex) {
+            System.err.println(ex);
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+        return estudiantes;
     }
 
 }

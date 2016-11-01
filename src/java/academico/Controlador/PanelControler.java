@@ -5,7 +5,7 @@
  */
 package academico.Controlador;
 
-import academico.DAO.PanelDocenteDAO;
+import academico.DAO.UtilDAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class PanelControler {
     
     public ArrayList<String> asignaturasDoc(int codig_doc) throws SQLException{
-        PanelDocenteDAO dao = new PanelDocenteDAO();
+        UtilDAO dao = new UtilDAO();
         return dao.asignaturasDoc(codig_doc);
     }
 }
