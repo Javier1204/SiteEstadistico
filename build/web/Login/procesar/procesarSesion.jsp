@@ -4,14 +4,26 @@
     Author     : javie
 --%>
 
+<%@page import="gestionUsuarios.ICuenta"%>
+<%@page import="gestionUsuarios.GestionUsuario"%>
+<%@page import="gestionUsuarios.IGestionUsuarios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+<%
+    String user = request.getParameter("nombre_usuario");
+    String password = request.getParameter("password");
+    String tipo = request.getParameter("tipo");
+    System.out.println("llega");
+    IGestionUsuarios gestor = GestionUsuario.getInstance();
+    ICuenta exito = gestor.loggearUsuario(tipo, user, password);
+    String mensaje = "";
+    if (exito!=null) {
+        System.out.println("Entro");
+        session.setAttribute("usuario", exito);
+        session.setMaxInactiveInterval(1 * 60 * 60);
+        mensaje = "1";
+    } else {
+        mensaje = "Datos incorrectos";
+    }
+%>
+<%= mensaje%>

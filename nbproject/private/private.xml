@@ -3,15 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/web/Internacionalizacion/Vista/actividades.jsp</file>
-            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/web/Internacionalizacion/Vista/iniciarsesion.jsp</file>
-            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/web/Internacionalizacion/Vista/convenios.jsp</file>
-            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/web/Internacionalizacion/Vista/css/ufps.css</file>
-            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/internacionalizacion/Modelo/Negocio/Convenio.java</file>
-            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/internacionalizacion/Modelo/DAO/DAOConvenio.java</file>
-            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/web/Internacionalizacion/index.jsp</file>
-            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/internacionalizacion/Controlador/Facade/ControladorConvenio.java</file>
-            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/internacionalizacion/Modelo/DTO/Convenio.java</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/listar_modulos.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/src/java/gestionUsuarios/IGestionUsuarios.java</file>
         </group>
     </open-files>
 </project-private>

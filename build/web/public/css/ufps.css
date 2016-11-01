@@ -439,6 +439,7 @@ textarea {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+  border-bottom-color: 2px solid #ff0000;
 }
 
 @media (min-width: 768px) {
@@ -447,6 +448,9 @@ textarea {
   }
   .ufps-navbar .ufps-container {
     width: 100%;
+  }
+  .ufps-container-login{
+      width: 350px;
   }
 }
 
@@ -457,11 +461,17 @@ textarea {
   .ufps-navbar .ufps-container {
     width: 100%;
   }
+  .ufps-container-login{
+      width: 350px;
+  }
 }
 
 @media (min-width: 1200px) {
   .ufps-container {
     width: 1170px;
+  }
+  .ufps-container-login{
+      width: 350px;
   }
 }
 

@@ -1,1 +1,10 @@
 /nbproject/private/
+node_modules/
+dist/
+*.log
+nbproject/private/*    
+
+*.orig
+*~
+*.log
+*private.xml

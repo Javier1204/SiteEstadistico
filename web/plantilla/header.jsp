@@ -15,6 +15,7 @@
         <title>Departamento de sistemas e Informática UFPS</title>
         <link href="../public/css/ufps.min.css" rel="stylesheet" type="text/css"/>
         <link href="../public/css/styles.css" rel="stylesheet">
+        <link href="../public/css/ufps-estilo.css" rel="stylesheet">
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
         <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
         <script src="../public/js/ufps.js"></script>
@@ -29,7 +30,7 @@
         <header>
             <center> <img id="banner" src="../public/img/Banner-superior.png" alt="imagen" height="100px" width="100%" ></img></center>
         </header>
-        <div class="ufps-navbar ufps-navbar-fixed ufps-navbar-light" id="menuPrincipal">
+        <div class="ufps-navbar ufps-navbar ufps-navbar-light" id="menuPrincipal">
             <div class="ufps-container">
                 <div class="ufps-navbar-brand">
                     <div class="ufps-btn-menu" onclick="toggleMenu('menuPrincipal')">

@@ -5,4 +5,4 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% response.sendRedirect("plantilla/header.jsp"); %>
+<% response.sendRedirect("Login/login.jsp"); %>
