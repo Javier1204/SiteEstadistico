@@ -12,6 +12,7 @@ package academico.DTO;
 public class EquipoDTO {
     
     private int equipo_id;
+    private String nombre;
 
     public EquipoDTO() {
     }
@@ -22,6 +23,14 @@ public class EquipoDTO {
 
     public void setEquipo_id(int equipo_id) {
         this.equipo_id = equipo_id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
     
