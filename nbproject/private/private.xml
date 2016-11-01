@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/listar_modulos.jsp</file>
-            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/src/java/gestionUsuarios/IGestionUsuarios.java</file>
+            <file>file:/C:/Users/quagg/Documents/NetBeansProjects/SiteEstadistico/src/java/academico/DAO/UtilDAO.java</file>
+            <file>file:/C:/Users/quagg/Documents/NetBeansProjects/SiteEstadistico/src/java/academico/Controlador/EquipoControler.java</file>
+            <file>file:/C:/Users/quagg/Documents/NetBeansProjects/SiteEstadistico/src/java/academico/Facade/Facade.java</file>
+            <file>file:/C:/Users/quagg/Documents/NetBeansProjects/SiteEstadistico/src/java/academico/DAO/EquipoDAO.java</file>
         </group>
     </open-files>
 </project-private>
