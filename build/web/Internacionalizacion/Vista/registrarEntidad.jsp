@@ -151,7 +151,7 @@ request.getSession().setAttribute("respuesta_entidad", null);
                                 <div class="form-group">
 
                                     <label for="telefono">Telefono de Contacto</label>
-                                    <input name="telefono" type="text" class="ufps-input-line " id="telefono" >
+                                    <input name="telefono" type="number" class="ufps-input-line " id="telefono" >
                                 </div> </div>
 
                             <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
@@ -166,7 +166,7 @@ request.getSession().setAttribute("respuesta_entidad", null);
                                 </div> </div>
                             <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
                                 <label for="pais">NIT</label>
-                                    <input type="text" name ="nit" class="ufps-input-line">
+                                <input type="number" name ="nit" class="ufps-input-line">
                             </div>
 
 

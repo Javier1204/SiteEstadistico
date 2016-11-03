@@ -5,8 +5,10 @@
  */
 package internacionalizacion.Controlador;
 
+import internacionalizacion.Modelo.DAO.DAOConvenio;
 import internacionalizacion.Modelo.DAO.DAOEntidad;
 import internacionalizacion.Modelo.DTO.Entidad;
+import java.util.ArrayList;
 
 /**
  *
@@ -21,5 +23,6 @@ public class ControladorEntidad {
         return ent.registrarEntidad(e);
 
     }
+    
     
 }
