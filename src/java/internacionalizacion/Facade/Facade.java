@@ -14,9 +14,15 @@ import internacionalizacion.Modelo.DTO.Actividad;
  */
 public class Facade {
     
+    
+    //Metodos para el manejo de las actividades.
     public boolean RegistrarActividad(Actividad a){
         ControladorActividad c = new ControladorActividad();
         return c.RegistrarActividad(a);
     }
+    
+    
+    
+    //Metodos para el manejo de los convenios.
     
 }
