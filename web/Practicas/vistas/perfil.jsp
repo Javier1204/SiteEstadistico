@@ -1,9 +1,6 @@
-<%-- 
-    Document   : perfil
-    Created on : 1/11/2016, 12:25:16 PM
-    Author     : Administrador
---%>
 
+<%@page import="Practicas.DTO.perfilDTO" %>
+<%@page import="Practicas.DAO.perfilDAO" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

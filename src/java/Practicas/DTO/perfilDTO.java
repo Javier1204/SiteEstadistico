@@ -21,6 +21,11 @@ public class perfilDTO {
         this.nombre = nombre;
     }
 
+    public perfilDTO(int idperfil, String nombre) {
+        this.idperfil = idperfil;
+        this.nombre = nombre;
+    }
+    
     public int getIdperfil() {
         return idperfil;
     }
