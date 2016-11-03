@@ -198,9 +198,9 @@ request.getSession().setAttribute("respuesta_convenio", null);
                                 <div class="form-group" >
                                     <label for="entidad" >Seleccione la Entidad con quien se hace el Convenio</label>
                                     <select id="entidad" name="entidad" class="ufps-input-line ">
-                                        <option value="1">Entidad 1</option>
-                                        <option value="2">Entidad 2</option>
-                                        <option value="2">Entidad 3</option>
+                                        <option value="10">Entidad 1</option>
+                                        <option value="11">Entidad 2</option>
+                                        <option value="12">Entidad 3</option>
 
                                     </select>
 
@@ -211,7 +211,7 @@ request.getSession().setAttribute("respuesta_convenio", null);
 
                             <div class="ufps-col-tablet-12 ">  
                                 <div class="form-group">
-                                    <button type="submit" href="registrarConvenio.jsp" class="ufps-btn">Registrar Convenio</button>
+                                    <button type="submit" class="ufps-btn">Registrar Convenio</button>
                                 </div> </div>
 
                         </form></center>

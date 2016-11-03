@@ -16,21 +16,25 @@ import java.util.ArrayList;
  */
 public class ControladorConvenio {
 
-    public String registrarConvenio(String nombre, String descripcion, String vigencia, String tipo, String estado, String fechacreacion, String fechaterminacion, int entidad, boolean[] act) {
+    
+    //public String registrarConvenio(String nombre, String descripcion, String vigencia, String tipo, String estado, String fechacreacion, String fechaterminacion, int entidad, boolean[] act) {
+    public String registrarConvenio(String nombre, String descripcion, String vigencia, String tipo, String estado, String fechacreacion, String fechaterminacion, int entidad) {
         DAOConvenio convenio= new DAOConvenio();
         Convenio c= new Convenio(nombre, descripcion,vigencia,tipo,estado,fechacreacion,fechaterminacion, entidad);
         //consultar convenio por nombre para obtener su id
-        Convenio resultado =convenio.consultarConvenio(nombre);
-        Tipo_actividades a = new Tipo_actividades();
-        a.setIdconvenio(resultado.getId());
+        //Convenio resultado =convenio.consultarConvenio(nombre);
+        //System.out.println("El convenio creado es:"+c.getNombre());
+        //Tipo_actividades a = new Tipo_actividades();
+        /* a.setIdconvenio(resultado.getId());
         a.setMovilidad(act[0]);
         a.setPasantia(act[1]);
         a.setExtension(act[2]);
         a.setInvestigacion(act[3]);
         a.setSocial(act[4]);
         a.setPractica(act[5]);
-        ControladorTipo_actividades t = new ControladorTipo_actividades();
-        t.registrarTipo_actividades(a);
+       */
+        //ControladorTipo_actividades t = new ControladorTipo_actividades();
+        //t.registrarTipo_actividades(a);
         
         return convenio.registrarConvenio(c);
     }

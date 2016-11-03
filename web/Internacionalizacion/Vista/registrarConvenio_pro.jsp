@@ -21,27 +21,34 @@ int entidad=Integer.parseInt(request.getParameter("entidad"));
 boolean [] actividades = new boolean [6];
 
 if(request.getParameter("movilidad")!=null){
+    
     actividades[0]=true;
+    System.out.print(actividades[0]);
 }
 if(request.getParameter("pasantia")!=null){
     actividades[1]=true;
+    System.out.print(actividades[1]);
 }
 if(request.getParameter("extension")!=null){
     actividades[2]=true;
+    System.out.print(actividades[2]);
 }
 if(request.getParameter("investigacion")!=null){
     actividades[3]=true;
+    System.out.print(actividades[3]);
 }
 if(request.getParameter("social")!=null){
     actividades[4]=true;
+    System.out.print(actividades[4]);
 }
 if(request.getParameter("practica")!=null){
     actividades[5]=true;
+    System.out.print(actividades[5]);
 }
 
 
 Facade f = new Facade();
-String r = f.registrarConvenio(nombre,descripcion,vigencia,tipo,estado, fechacreacion,fechaterminacion,entidad,actividades);
+String r = f.registrarConvenio(nombre,descripcion,vigencia,tipo,estado, fechacreacion,fechaterminacion,entidad);
 request.getSession().setAttribute("respuesta_convenio", r);
 %>
 

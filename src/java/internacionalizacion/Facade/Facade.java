@@ -34,10 +34,11 @@ public class Facade {
     }
     
     //Metodos para el manejo de los convenios.
-     
-    public String registrarConvenio(String nombre,String descripcion,String vigencia,String tipo,String estado,String fechacreacion,String fechaterminacion,int entidad, boolean[] act) throws Exception{
+    //public String registrarConvenio(String nombre,String descripcion,String vigencia,String tipo,String estado,String fechacreacion,String fechaterminacion,int entidad, boolean[] act) throws Exception{
+    public String registrarConvenio(String nombre,String descripcion,String vigencia,String tipo,String estado,String fechacreacion,String fechaterminacion,int entidad) throws Exception{
          ControladorConvenio s=new ControladorConvenio();
-         return s.registrarConvenio(nombre, descripcion,vigencia,tipo,estado,fechacreacion,fechaterminacion, entidad,act);               
+         //return s.registrarConvenio(nombre, descripcion,vigencia,tipo,estado,fechacreacion,fechaterminacion, entidad,act); 
+         return s.registrarConvenio(nombre, descripcion,vigencia,tipo,estado,fechacreacion,fechaterminacion, entidad);               
     }
     
     public ArrayList<Convenio> obtenerConvenios(){
