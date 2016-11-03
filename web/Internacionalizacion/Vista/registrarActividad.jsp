@@ -108,7 +108,7 @@
 
                         <div class="form-group">
                             <label for="convenio">Seleccione convenio:</label>
-                            <select id="convenio" name="" class="ufps-input">
+                            <select id="convenio" name="convenio" class="ufps-input">
                                 
                                 <%
                                         ControladorConvenio c = new ControladorConvenio();
@@ -117,7 +117,7 @@
                                             Convenio convenio = (Convenio) con;
 
                                 %>                                    
-                                <option value="1"><%=convenio.getNombre()%></option>
+                                <option value=""><%=convenio.getNombre()%></option>
                              
                                 <% }
                                 %>
@@ -126,20 +126,20 @@
                         <div class="form-group">
 
                             <label for="nombre">Nombre actividad:</label>
-                            <input type="text" class="ufps-input" id="nombre">
+                            <input type="text" class="ufps-input" id="nombre" name="nombre" required="true">
                         </div>
                         <div class="form-group">
                             <label for="duracion" title="Duración de la actividad en semanas, dias o meses.">Duración actividad: <span class="glyphicon glyphicon-question-sign"></span></label>
-                            <input type="text" class="ufps-input" id="duracion">
+                            <input type="text" class="ufps-input" id="duracion" name="duracion" placeholder="duracion en dias, meses o años">
                         </div>
                         
                         <div class="form-group col-md-5">
                             <label for="creacion" title="Fecha en que se crea la actividad.">Fecha creación: <span class="glyphicon glyphicon-question-sign"></span></label>
-                            <input type="date" class="ufps-input" id="creacion">
+                            <input type="date" class="ufps-input" id="creacion" name="creacion">
                         </div>
                         <div class="form-group col-md-5">
                             <label for="terminacion" title="Finalización de la actividad.">Fecha terminación: <span class="glyphicon glyphicon-question-sign"></span></label>
-                            <input type="date" class="ufps-input" id="terminacion">
+                            <input type="date" class="ufps-input" id="terminacion" name="terminacion">
                         </div>
                         <div class="ufps-row">
                             <!--Se deben cargar dinamicamente de acuerdo a las registradas en convenio-->
@@ -153,6 +153,15 @@
                                         <option value="5">Extension</option>
                                         <option value="5">Investigacion</option>
                                     </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label for="hora" title="Hora que comienza la actividad para el caso de actividades sociales o de extensión.">Hora inico actividad: <span class="glyphicon glyphicon-question-sign"></span></label>
+                                <input type="text" class="ufps-input" id="hora" name="hora">
+                                </div>
+                            
+                                <div class="form-group col-md-3">
+                                <label for="semestre" title="Semestre academico en que se realiza la actividad.">Semestre academico: <span class="glyphicon glyphicon-question-sign"></span></label>
+                                <input type="number" class="ufps-input" id="semestre" name="semestre" min="1" max="10" required="required" placeholder="semestre">
                                 </div>
                                                    
                         </div>

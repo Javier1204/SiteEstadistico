@@ -149,7 +149,7 @@ request.getSession().setAttribute("respuesta_convenio", null);
                                 </label>
 
                                 <label>
-                                    <input name="extension"type="checkbox" value="">
+                                    <input name="extension" type="checkbox" value="">
                                     Extension
                                 </label>
                                 <label>
@@ -157,11 +157,11 @@ request.getSession().setAttribute("respuesta_convenio", null);
                                     Investigacion
                                 </label>
                                 <label>
-                                    <input name="social"type="checkbox" value="">
+                                    <input name="social" type="checkbox" value="">
                                     Social
                                 </label>
                                 <label>
-                                    <input name="Practicas"type="checkbox" value="">
+                                    <input name="practica" type="checkbox" value="">
                                     Practicas
                                 </label>
                             </div>
@@ -198,7 +198,7 @@ request.getSession().setAttribute("respuesta_convenio", null);
                                 <div class="form-group" >
                                     <label for="entidad" >Seleccione la Entidad con quien se hace el Convenio</label>
                                     <select id="entidad" name="entidad" class="ufps-input-line ">
-                                        <option value="1"> Entidad 1</option>
+                                        <option value="1">Entidad 1</option>
                                         <option value="2">Entidad 2</option>
                                         <option value="2">Entidad 3</option>
 
@@ -211,7 +211,7 @@ request.getSession().setAttribute("respuesta_convenio", null);
 
                             <div class="ufps-col-tablet-12 ">  
                                 <div class="form-group">
-                                    <button type="submit" class="ufps-btn">Registrar Convenio</button>
+                                    <button type="submit" href="registrarConvenio.jsp" class="ufps-btn">Registrar Convenio</button>
                                 </div> </div>
 
                         </form></center>

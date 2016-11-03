@@ -18,21 +18,30 @@ String fechacreacion =request.getParameter("fechacreacion");
 String fechaterminacion=request.getParameter("fechaterminacion");
 int entidad=Integer.parseInt(request.getParameter("entidad"));
 
-ArrayList<String> a= new ArrayList<String>();
+boolean [] actividades = new boolean [6];
 
 if(request.getParameter("movilidad")!=null){
-    a.add(request.getParameter("movilidad"));
+    actividades[0]=true;
 }
 if(request.getParameter("pasantia")!=null){
-    a.add(request.getParameter("pasantia"));
+    actividades[1]=true;
 }
 if(request.getParameter("extension")!=null){
-    a.add(request.getParameter("extension"));
+    actividades[2]=true;
+}
+if(request.getParameter("investigacion")!=null){
+    actividades[3]=true;
+}
+if(request.getParameter("social")!=null){
+    actividades[4]=true;
+}
+if(request.getParameter("practica")!=null){
+    actividades[5]=true;
 }
 
 
 Facade f = new Facade();
-String r = f.registrarConvenio(nombre,descripcion,vigencia,tipo,estado, fechacreacion,fechaterminacion,entidad,a);
+String r = f.registrarConvenio(nombre,descripcion,vigencia,tipo,estado, fechacreacion,fechaterminacion,entidad,actividades);
 request.getSession().setAttribute("respuesta_convenio", r);
 %>
 
