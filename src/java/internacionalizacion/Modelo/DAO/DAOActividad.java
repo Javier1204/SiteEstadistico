@@ -30,13 +30,23 @@ public class DAOActividad {
             pool.setUsuario("ufps_29");
             pool.inicializarDataSource();
             con = pool.getDataSource().getConnection();
-            PreparedStatement stmt = con.prepareStatement("SELECT MAX(codigo) FROM academico_equipo");
+            PreparedStatement stmt = con.prepareStatement("INSERT INTO `oficina_actividadconvenio`(`id_convenio`, `duracion`, `nombre`, `fechacreacion`, `fechaterminacion`, `semestre`, `tipoactividad`, `hora`, `responsable`, `lugar`, `descripcion`) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
             //fijar atributos
             //stmt.setArray(), x);
+            stmt.setInt(1, a.getIdconvenio());
+            stmt.setString(2, a.getDuracion());
+            stmt.setString(3, a.getNombre());
+            stmt.setString(4, a.getFechacreacion());
+            stmt.setString(5, a.getFechaterminacion());
+            stmt.setShort(6, a.getSemestre());
+            stmt.setInt(7, a.getTipoactividad());
+            stmt.setString(8, a.getHora());
+            stmt.setString(9, a.getResponsable());
+            stmt.setString(10, a.getLugar());
+            stmt.setString(3, a.getDescripcion());
+            
             stmt.executeQuery();
-            while (rs.next()) {
-                
-            }
+           
             stmt.close();
             
             

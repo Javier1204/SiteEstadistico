@@ -100,7 +100,7 @@
 
 
                 <div class="col-md-9" id="formularioactividades"><br>
-                    <form>
+                    <form action="registrarActividad_pro.jsp">
                         <fieldset>
                             <!-- Form Name -->
                             <legend><strong><h1>Formulario de Registro de Actividades</h1></strong></legend>
@@ -158,6 +158,16 @@
                                 <label for="hora" title="Hora que comienza la actividad para el caso de actividades sociales o de extensión.">Hora inico actividad: <span class="glyphicon glyphicon-question-sign"></span></label>
                                 <input type="text" class="ufps-input" id="hora" name="hora">
                                 </div>
+                            
+                            <div class="form-group col-md-3">
+                                <label for="responsable" title="Docente responsable">Docente responsable: <span class="glyphicon glyphicon-question-sign"></span></label>
+                                <input type="text" class="ufps-input" id="hora" name="responsable">
+                            </div>
+                            
+                            <div class="form-group col-md-3">
+                                <label for="hora" title="Lugar donde se realiza la actividad.">Lugar: <span class="glyphicon glyphicon-question-sign"></span></label>
+                                <input type="text" class="ufps-input" id="hora" name="lugar">
+                            </div>
                             
                                 <div class="form-group col-md-3">
                                 <label for="semestre" title="Semestre academico en que se realiza la actividad.">Semestre academico: <span class="glyphicon glyphicon-question-sign"></span></label>

@@ -17,8 +17,8 @@ public class Actividad {
     int idconvenio;
     String nombre;
     String duracion;
-    Date fechacreacion;
-    Date fechaterminacion;
+    String fechacreacion;
+    String fechaterminacion;
     short semestre;
     int tipoactividad;
     String hora;
@@ -62,19 +62,19 @@ public class Actividad {
         this.duracion = duracion;
     }
 
-    public Date getFechacreacion() {
+    public String getFechacreacion() {
         return fechacreacion;
     }
 
-    public void setFechacreacion(Date fechacreacion) {
+    public void setFechacreacion(String fechacreacion) {
         this.fechacreacion = fechacreacion;
     }
 
-    public Date getFechaterminacion() {
+    public String getFechaterminacion() {
         return fechaterminacion;
     }
 
-    public void setFechaterminacion(Date fechaterminacion) {
+    public void setFechaterminacion(String fechaterminacion) {
         this.fechaterminacion = fechaterminacion;
     }
 
@@ -126,7 +126,7 @@ public class Actividad {
         this.descripcion = descripcion;
     }
         
-    public Actividad(int id, int idconvenio, String nombre, String duracion, Date fechacreacion, Date fechaterminacion, short semestre, int tipoactividad, String hora, String responsable, String lugar, String descripcion) {
+    public Actividad(int id, int idconvenio, String nombre, String duracion, String fechacreacion, String fechaterminacion, short semestre, int tipoactividad, String hora, String responsable, String lugar, String descripcion) {
         this.id = id;
         this.idconvenio = idconvenio;
         this.nombre = nombre;
