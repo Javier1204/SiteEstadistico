@@ -50,7 +50,7 @@ request.getSession().setAttribute("respuesta_convenio", null);
         <script src="../../public/js/ufps.js" type="text/javascript"></script>
         <script src="../../public/js/ufps.min.js" type="text/javascript"></script>
 
-        a
+       
         <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
     </head>
     <body>
@@ -128,9 +128,9 @@ request.getSession().setAttribute("respuesta_convenio", null);
                                     <br><label for="tipo_convenio">Seleccione Tipo de Convenio</label> <br><br>
                                     <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
                                         <select id="tipo_convenio" name="tipo_convenio" class="ufps-input " >
-                                            <option value="1">Marco</option>
-                                            <option value="2">Especifico</option>
-                                            <option value="3">Interinstitucional</option>
+                                            <option value="Marco">Marco</option>
+                                            <option value="Especifico">Especifico</option>
+                                            <option value="Interinstitucional">Interinstitucional</option>
 
                                         </select><br><br>
                                     </div>
@@ -185,8 +185,8 @@ request.getSession().setAttribute("respuesta_convenio", null);
 
                                     <label for="estado">Estado</label>
                                     <select id="estado" name="estado" class="ufps-input-line ">
-                                        <option value="1">Aprobado</option>
-                                        <option value="2">Terminado</option>
+                                        <option value="Aprobado">Aprobado</option>
+                                        <option value="Terminado">Terminado</option>
 
                                     </select>
                                 </div> 

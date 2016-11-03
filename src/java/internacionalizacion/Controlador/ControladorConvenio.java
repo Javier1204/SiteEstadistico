@@ -15,11 +15,16 @@ import java.util.ArrayList;
  */
 public class ControladorConvenio {
 
-    public String registrarEntidad(String nombre, String descripcion, String vigencia, String tipo, String estado, String fechacreacion, String fechaterminacion, int entidad, ArrayList<String> actividades) {
+    public String registrarEntidad(String nombre, String descripcion, String vigencia, String tipo, String estado, String fechacreacion, String fechaterminacion, int entidad) {
         DAOConvenio convenio= new DAOConvenio();
         Convenio c= new Convenio(nombre, descripcion,vigencia,tipo,estado,fechacreacion,fechaterminacion, entidad);
         
         return convenio.registrarConvenio(c);
+    }
+    
+    public ArrayList<Convenio> obtenerConvenios(){
+        DAOConvenio dao = new DAOConvenio();
+        return dao.consultarConvenios();
     }
     
 }

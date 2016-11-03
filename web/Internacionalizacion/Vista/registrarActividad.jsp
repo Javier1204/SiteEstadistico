@@ -4,6 +4,9 @@
     Author     : JAVIER
 --%>
 
+<%@page import="internacionalizacion.Modelo.DTO.Convenio"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="internacionalizacion.Controlador.ControladorConvenio"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -106,8 +109,18 @@
                         <div class="form-group">
                             <label for="convenio">Seleccione convenio:</label>
                             <select id="convenio" name="" class="ufps-input">
-                                <option value="1">Convenio one</option>
-                                <option value="2">Convenio two</option>
+                                
+                                <%
+                                        ControladorConvenio c = new ControladorConvenio();
+                                        ArrayList<Convenio> convenios = c.obtenerConvenios();
+                                        for (Object con : convenios) {
+                                            Convenio convenio = (Convenio) con;
+
+                                %>                                    
+                                <option value="1"><%=convenio.getNombre()%></option>
+                             
+                                <% }
+                                %>
                             </select>
                         </div>
                         <div class="form-group">
