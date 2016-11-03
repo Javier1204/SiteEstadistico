@@ -21,6 +21,9 @@ import java.util.logging.Logger;
  */
 public class DAOActividad {
     
+    public DAOActividad(){        
+    }
+    
     public boolean RegistrarActividad(Actividad a) {
         Pool pool = Conexion.getPool();
         Connection con = null;

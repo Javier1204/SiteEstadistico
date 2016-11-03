@@ -20,7 +20,7 @@ public class Convenio {
     String descripcion;
     String estado;
     String vigencia;
-    int tipoconvenio;
+    String tipoconvenio;
     int entidad;
     String urlimagen;
     
@@ -84,11 +84,11 @@ public class Convenio {
         this.vigencia = vigencia;
     }
 
-    public int getTipoconvenio() {
+    public String getTipoconvenio() {
         return tipoconvenio;
     }
 
-    public void setTipoconvenio(int tipoconvenio) {
+    public void setTipoconvenio(String tipoconvenio) {
         this.tipoconvenio = tipoconvenio;
     }
 
@@ -108,12 +108,12 @@ public class Convenio {
         this.urlimagen = urlimagen;
     }
     
-    public Convenio(int id, String nombre, Date fechacreacion, Date fechaterminacion, String descripcion, String estado, String vigencia, int tipoconvenio, int entidad, String urlimagen) {
+    public Convenio(int id, String nombre, String descripcion, Date fechacreacion, Date fechaterminacion, String estado, String vigencia, String tipoconvenio, int entidad, String urlimagen) {
         this.id = id;
         this.nombre = nombre;
-        this.fechacreacion = fechacreacion;
-        this.fechaterminacion = fechaterminacion;
         this.descripcion = descripcion;
+        this.fechacreacion = fechacreacion;
+        this.fechaterminacion = fechaterminacion;        
         this.estado = estado;
         this.vigencia = vigencia;
         this.tipoconvenio = tipoconvenio;
