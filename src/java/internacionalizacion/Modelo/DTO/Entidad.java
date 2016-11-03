@@ -10,9 +10,8 @@ package internacionalizacion.Modelo.DTO;
  * @author JAVIER
  */
 public class Entidad {
+
     
-    int id;
-    int NIT;
     String nombre;
     String sector;
     String representante;
@@ -20,25 +19,30 @@ public class Entidad {
     String tipo;
     String telefono;
     int pais;
+    String nit;
     
-    public Entidad(){
-        
+    public Entidad() {
+
     }
 
-    public int getId() {
-        return id;
+    public Entidad(String nombre, String representante, String sector, String ambito, String tipo, String telefono, int pais, String nit) {
+         this.nit = nit;
+        this.nombre = nombre;
+        this.sector = sector;
+        this.representante = representante;
+        this.ambito = ambito;
+        this.tipo = tipo;
+        this.telefono = telefono;
+        this.pais = pais;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    
+    public String getnit() {
+        return nit;
     }
 
-    public int getNIT() {
-        return NIT;
-    }
-
-    public void setNIT(int NIT) {
-        this.NIT = NIT;
+    public void setNIT(String nit) {
+        this.nit = nit;
     }
 
     public String getNombre() {
@@ -98,15 +102,4 @@ public class Entidad {
     }
 
     
-    public Entidad(int id, int NIT, String nombre, String sector, String representante, String ambito, String tipo, String telefono, int pais) {
-        this.id = id;
-        this.NIT = NIT;
-        this.nombre = nombre;
-        this.sector = sector;
-        this.representante = representante;
-        this.ambito = ambito;
-        this.tipo = tipo;
-        this.telefono = telefono;
-        this.pais = pais;
-    }    
 }

@@ -5,6 +5,16 @@
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+if(request.getSession().getAttribute("respuesta_entidad")!=null){
+    
+    %>
+    <script type="text/javascript">
+    alert("<%=request.getSession().getAttribute("respuesta_entidad")%>");
+</script>
+<%}
+request.getSession().setAttribute("respuesta_entidad", null);
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -141,7 +151,7 @@
                                 <div class="form-group">
 
                                     <label for="telefono">Telefono de Contacto</label>
-                                    <input name="telefono" type="number" class="ufps-input-line " id="telefono" >
+                                    <input name="telefono" type="text" class="ufps-input-line " id="telefono" >
                                 </div> </div>
 
                             <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
@@ -154,6 +164,10 @@
 
                                     </select>
                                 </div> </div>
+                            <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
+                                <label for="pais">NIT</label>
+                                    <input type="text" name ="nit" class="ufps-input-line">
+                            </div>
 
 
 
