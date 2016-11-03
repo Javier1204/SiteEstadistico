@@ -118,19 +118,19 @@ request.getSession().setAttribute("respuesta_entidad", null);
                                 <div class="form-group"   >
                                     <label for="sector">Seleccione Sector:</label>
                                     <select id="sector" name="sector" class="ufps-input-line" border-width:2px margin:7px padding:7px>
-                                        <option value="Educación">Educación</option>
-                                        <option value="Comercial">Comercial</option>
-                                        <option value="Salud">Salud</option>
-                                        <option value="Financiero">Financiero</option>
+                                        <option value="1">Educacion</option>
+                                        <option value="2">Comercial</option>
+                                        <option value="2">Salud</option>
+                                        <option value="2">Financiero</option>
                                     </select>
                                 </div></div>
                             <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
                                 <div class="form-group">
                                     <label for="ambito">Seleccione Ambito de la empresa</label>
                                     <select id="ambito" name="ambito" class="ufps-input-line " >
-                                        <option value="Privado">Privado</option>
-                                        <option value="Público">Público</option>
-                                        <option value="Fundación">Fundación</option>
+                                        <option value="1">Privado</option>
+                                        <option value="2">Publico</option>
+                                        <option value="2">Fundacion</option>
 
                                     </select>
                                 </div> 
@@ -140,8 +140,8 @@ request.getSession().setAttribute("respuesta_entidad", null);
                                 <div class="form-group">
                                     <label for="tipo">Seleccione tipo entidad</label>
                                     <select id="tipo" name="tipo" class="ufps-input-line " >
-                                        <option value="Empresa">Empresa</option>
-                                        <option value="Universidad">Universidad</option>                                        
+                                        <option value="1">Empresa</option>
+                                        <option value="2">Universidad</option>                                        
 
                                     </select>
                                 </div> 
@@ -158,14 +158,14 @@ request.getSession().setAttribute("respuesta_entidad", null);
                                 <div class="form-group">
                                     <label for="pais">Seleccione el Pais de la Entidad</label>
                                     <select id="ambito" name="pais" class="ufps-input-line " >
-                                        <option value="">Pais 1</option>
-                                        <option value="">Pais 2</option>
-                                        <option value="">Fais 3</option>
+                                        <option value="1">Pais 1</option>
+                                        <option value="2">Pais 2</option>
+                                        <option value="2">Fais 3</option>
 
                                     </select>
                                 </div> </div>
                             <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
-                                <label for="nit">NIT</label>
+                                <label for="pais">NIT</label>
                                     <input type="text" name ="nit" class="ufps-input-line">
                             </div>
 

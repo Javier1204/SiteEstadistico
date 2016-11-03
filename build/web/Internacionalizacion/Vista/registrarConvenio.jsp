@@ -40,7 +40,7 @@
         <script src="../../public/js/ufps.js" type="text/javascript"></script>
         <script src="../../public/js/ufps.min.js" type="text/javascript"></script>
 
-        
+        a
         <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
     </head>
     <body>
@@ -118,9 +118,9 @@
                                     <br><label for="tipo_convenio">Seleccione Tipo de Convenio</label> <br><br>
                                     <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
                                         <select id="tipo_convenio" name="tipo_convenio" class="ufps-input " >
-                                            <option value="Marco">Marco</option>
-                                            <option value="Especifico">Especifico</option>
-                                            <option value="Interinstitucional">Interinstitucional</option>
+                                            <option value="1">Marco</option>
+                                            <option value="2">Especifico</option>
+                                            <option value="2">Interinstitucional</option>
 
                                         </select><br><br>
                                     </div>
@@ -175,8 +175,8 @@
 
                                     <label for="estado">Estado</label>
                                     <select id="estado" name="estado" class="ufps-input-line ">
-                                        <option value="Aprobado">Aprobado</option>
-                                        <option value="Terminado">Terminado</option>
+                                        <option value="1">Aprobado</option>
+                                        <option value="2">Terminado</option>
 
                                     </select>
                                 </div> 
