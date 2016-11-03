@@ -120,9 +120,10 @@
                                         <select id="tipo_convenio" name="tipo_convenio" class="ufps-input " >
                                             <option value="1">Marco</option>
                                             <option value="2">Especifico</option>
-                                            <option value="2">interinstitucional</option>
+                                            <option value="2">Interinstitucional</option>
 
-                                        </select></div>
+                                        </select><br><br>
+                                    </div>
                                 </div> </div>
                             <br> <br><label for="tipo_convenio">Seleccione Lo que se puede hacer en el presente convenio</label>
 
@@ -169,19 +170,24 @@
 
 
 
-                            <%--  <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
+                            <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
                                 <div class="form-group">
 
                                     <label for="estado">Estado</label>
-                                    <input name="estado" type="text " class="ufps-input-line " id="telefono" >
-                                </div> </div>
+                                    <select id="estado" name="estado" class="ufps-input-line ">
+                                        <option value="1">Aprobado</option>
+                                        <option value="2">Terminado</option>
 
-                            --%>
+                                    </select>
+                                </div> 
+                            </div>
+
+                            
 
                             <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
                                 <div class="form-group" >
                                     <label for="entidad" >Seleccione la Entidad con quien se hace el Convenio</label>
-                                    <select id="ambito" name="entidad" class="ufps-input-line ">
+                                    <select id="entidad" name="entidad" class="ufps-input-line ">
                                         <option value="1"> Entidad 1</option>
                                         <option value="2">Entidad 2</option>
                                         <option value="2">Entidad 3</option>

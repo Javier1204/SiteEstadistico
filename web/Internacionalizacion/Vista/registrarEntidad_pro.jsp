@@ -16,6 +16,7 @@ String nombre=request.getParameter("nombre");
 String representante=request.getParameter("representante");
 String sector=request.getParameter("sector");
 String ambito=request.getParameter("ambito");
+String tipo=request.getParameter("tipo");
 int telefono =Integer.parseInt(request.getParameter("telefono"));
 String pais=request.getParameter("pais");
 facade f = new facade();

@@ -123,7 +123,19 @@
                                         <option value="2">Fundacion</option>
 
                                     </select>
-                                </div> </div>
+                                </div> 
+                            </div>
+                            
+                            <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
+                                <div class="form-group">
+                                    <label for="tipo">Seleccione tipo entidad</label>
+                                    <select id="tipo" name="tipo" class="ufps-input-line " >
+                                        <option value="1">Empresa</option>
+                                        <option value="2">Universidad</option>                                        
+
+                                    </select>
+                                </div> 
+                            </div>
 
                             <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
                                 <div class="form-group">

@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package internacionalizacion.Controlador.Facade;
+package internacionalizacion.Facade;
 
 /**
  *
  * @author JAVIER
  */
-public class ControladorConvenio {
+public class Facade {
     
 }

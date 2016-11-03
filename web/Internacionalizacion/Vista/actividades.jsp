@@ -129,7 +129,7 @@
                             <input type="date" class="ufps-input" id="terminacion">
                         </div>
                         <div class="ufps-row">
-                            
+                            <!--Se deben cargar dinamicamente de acuerdo a las registradas en convenio-->
                                 <div class="form-group col-md-3">
                                     <label for="tipoactividad">Tipo actividad:</label>
                                     <select id="tipoactividad" name="" class="ufps-input">
@@ -138,6 +138,7 @@
                                         <option value="3">Movilidad</option>
                                         <option value="4">Social</option>
                                         <option value="5">Extension</option>
+                                        <option value="5">Investigacion</option>
                                     </select>
                                 </div>
                                                    
