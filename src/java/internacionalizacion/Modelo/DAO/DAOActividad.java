@@ -19,9 +19,9 @@ import java.util.logging.Logger;
  *
  * @author JAVIER
  */
-public class DAOActividad_Convenio {
-
-    public boolean RegistrarActividad_Convenio(Actividad act) {
+public class DAOActividad {
+    
+    public boolean RegistrarActividad(Actividad a) {
         Pool pool = Conexion.getPool();
         Connection con = null;
         ResultSet rs = null;
@@ -50,12 +50,10 @@ public class DAOActividad_Convenio {
                 try {
                     con.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(DAOActividad_Convenio.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(DAOActividad.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
        return true;
     }
 }
-
-

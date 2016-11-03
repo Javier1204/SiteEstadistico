@@ -39,7 +39,7 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="../../public/js/ufps.js" type="text/javascript"></script>
         <script src="../../public/js/ufps.min.js" type="text/javascript"></script>
-
+        <script src="js/formactividad.js" type="text/javascript"></script>
 
         <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
     </head>
@@ -143,13 +143,20 @@
                                 </div>
                                                    
                         </div>
-                         <div class="form-group">
-                            <label for="agregarestudiante" title="Agrega los estudiantes que realizan la actividad.">Agregar un estudiante a la actividad: <span class="glyphicon glyphicon-question-sign"></span></label>
-                            <input type="button" class="ufps-btn" id="agregarestudiante" value="Agregar Estudiante">
-                        </div>
                         <div class="form-group">
+                            <label for="agregarestudiante" title="Agrega los estudiantes que realizan la actividad.">Agregar un estudiante a la actividad: <span class="glyphicon glyphicon-question-sign"></span></label>
+                            <!--<input type="button" class="ufps-btn" id="agregarestudiante" value="Agregar Estudiante">-->
+                            <input type="button" class="ufps-btn" value="Agregar Estudiante" onClick="addInput('insertar');"><br><br>
+                            <div id="insertar" class="form-group col-md-12">
+                            
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                        
                             <label for="descripcion" title="Descripción de la actividad.">Descripción de la actividad: <span class="glyphicon glyphicon-question-sign"></span></label>
                             <input type="text" class="ufps-input" id="descripcion">
+                       
                         </div>
                         <div class="form-group">
                             <label for="nombreproyecto" title="Nombre del proyecto de pasantía.">Nombre proyecto pasantía: <span class="glyphicon glyphicon-question-sign"></span></label>
@@ -175,9 +182,8 @@
                             <input type="date" class="ufps-input" id="fechafin">
                         </div>
                         
-                        
-                        <div class="form-group">
-                                    <button type="submit" class="ufps-btn">Registrar</button>
+                        <div class="form-group col-md-3">
+                            <button type="submit" class="ufps-btn">Registrar</button>
                         </div>
 
                     </form>

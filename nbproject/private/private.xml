@@ -3,10 +3,35 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/quagg/Documents/NetBeansProjects/SiteEstadistico/src/java/academico/DAO/UtilDAO.java</file>
-            <file>file:/C:/Users/quagg/Documents/NetBeansProjects/SiteEstadistico/src/java/academico/Controlador/EquipoControler.java</file>
-            <file>file:/C:/Users/quagg/Documents/NetBeansProjects/SiteEstadistico/src/java/academico/Facade/Facade.java</file>
-            <file>file:/C:/Users/quagg/Documents/NetBeansProjects/SiteEstadistico/src/java/academico/DAO/EquipoDAO.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/gestionUsuarios/DAOs/GeneralRequerimientoFuncionalDAO.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/academico/DTO/EstudianteDTO.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/academico/Facade/Facade.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/general/conexion/Pool.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/internacionalizacion/Facade/Facade.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/general/DAO/GeneralDAO.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/web/Internacionalizacion/Vista/js/formactividad.js</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/internacionalizacion/Modelo/DTO/Acta.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/internacionalizacion/Modelo/DTO/Actividad_Estudiante.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/internacionalizacion/Modelo/DTO/Pais.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/internacionalizacion/Modelo/DAO/DAOConvenio.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/gestionUsuarios/DTOs/RolDTO.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/academico/Interface/IEquipoDAO.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/academico/DAO/UtilDAO.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/internacionalizacion/Modelo/DTO/Estudiante.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/gestionUsuarios/DTOs/ModuloDTO.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/gestionUsuarios/DAOs/GeneralModuloDAO.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/internacionalizacion/Modelo/DTO/Tipo_actividades.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/gestionUsuarios/DAOs/ConexionGUDAOs.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/internacionalizacion/Modelo/DTO/Actividad.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/web/Internacionalizacion/Vista/actividades.jsp</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/internacionalizacion/Modelo/DTO/Tipo_convenio.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/internacionalizacion/Modelo/DAO/DAOActividad.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/internacionalizacion/Modelo/DTO/Docente.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/internacionalizacion/Modelo/DTO/Convenio_Entidad.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/internacionalizacion/Modelo/DTO/Entidad.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/academico/DTO/EquipoDTO.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/general/DAO/GeneralControler.java</file>
+            <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/academico/DAO/EquipoDAO.java</file>
         </group>
     </open-files>
 </project-private>

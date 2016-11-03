@@ -3,20 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package internacionalizacion.Facade;
+package internacionalizacion.Controlador;
 
-import internacionalizacion.Controlador.ControladorActividad;
+import internacionalizacion.Modelo.DAO.DAOActividad;
 import internacionalizacion.Modelo.DTO.Actividad;
 
 /**
  *
  * @author JAVIER
  */
-public class Facade {
-    
+public class ControladorActividad {
+ 
     public boolean RegistrarActividad(Actividad a){
-        ControladorActividad c = new ControladorActividad();
-        return c.RegistrarActividad(a);
+        DAOActividad dao = new DAOActividad();
+        return dao.RegistrarActividad(a);
     }
     
 }
