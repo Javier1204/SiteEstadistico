@@ -15,17 +15,29 @@ public class Convenio {
     
     int id;
     String nombre;
-    Date fechacreacion;
-    Date fechaterminacion;
+    String fechacreacion;
+    String fechaterminacion;
     String descripcion;
     String estado;
     String vigencia;
-    int tipoconvenio;
+    String tipoconvenio;
     int entidad;
     String urlimagen;
     
     
     public Convenio() {
+    }
+
+    public Convenio(String nombre, String descripcion, String vigencia, String tipoconvenio, String estado, String fechacreacion, String fechaterminacion, int entidad) {
+        this.nombre = nombre;
+        this.fechacreacion = fechacreacion;
+        this.fechaterminacion = fechaterminacion;
+        this.descripcion = descripcion;
+        this.estado = estado;
+        this.vigencia = vigencia;
+        this.tipoconvenio = tipoconvenio;
+        this.entidad = entidad;
+        this.urlimagen = urlimagen;
     }
 
     public int getId() {
@@ -44,19 +56,19 @@ public class Convenio {
         this.nombre = nombre;
     }
 
-    public Date getFechacreacion() {
+    public String getFechacreacion() {
         return fechacreacion;
     }
 
-    public void setFechacreacion(Date fechacreacion) {
+    public void setFechacreacion(String fechacreacion) {
         this.fechacreacion = fechacreacion;
     }
 
-    public Date getFechaterminacion() {
+    public String getFechaterminacion() {
         return fechaterminacion;
     }
 
-    public void setFechaterminacion(Date fechaterminacion) {
+    public void setFechaterminacion(String fechaterminacion) {
         this.fechaterminacion = fechaterminacion;
     }
 
@@ -84,11 +96,11 @@ public class Convenio {
         this.vigencia = vigencia;
     }
 
-    public int getTipoconvenio() {
+    public String getTipoconvenio() {
         return tipoconvenio;
     }
 
-    public void setTipoconvenio(int tipoconvenio) {
+    public void setTipoconvenio(String tipoconvenio) {
         this.tipoconvenio = tipoconvenio;
     }
 
@@ -108,18 +120,7 @@ public class Convenio {
         this.urlimagen = urlimagen;
     }
     
-    public Convenio(int id, String nombre, Date fechacreacion, Date fechaterminacion, String descripcion, String estado, String vigencia, int tipoconvenio, int entidad, String urlimagen) {
-        this.id = id;
-        this.nombre = nombre;
-        this.fechacreacion = fechacreacion;
-        this.fechaterminacion = fechaterminacion;
-        this.descripcion = descripcion;
-        this.estado = estado;
-        this.vigencia = vigencia;
-        this.tipoconvenio = tipoconvenio;
-        this.entidad = entidad;
-        this.urlimagen = urlimagen;
-    }
+   
     
     
 }

@@ -6,6 +6,16 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+if(request.getSession().getAttribute("respuesta_convenio")!=null){
+    
+    %>
+    <script type="text/javascript">
+    alert("<%=request.getSession().getAttribute("respuesta_convenio")%>");
+</script>
+<%}
+request.getSession().setAttribute("respuesta_convenio", null);
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -85,7 +95,7 @@
 
 
                 <div class="col-md-12" id="formularioEntidad" ><br>
-                    <center><form action="registrarEntidad_pro.jsp" method="POST" center>
+                    <center><form action="registrarConvenio_pro.jsp" method="POST" center>
                             <fieldset>
                                 <!-- Form Name -->
                                 <legend><center><strong><h1>Formulario para el Registro de Convenios</h1></strong></center></legend>
@@ -120,7 +130,7 @@
                                         <select id="tipo_convenio" name="tipo_convenio" class="ufps-input " >
                                             <option value="1">Marco</option>
                                             <option value="2">Especifico</option>
-                                            <option value="2">Interinstitucional</option>
+                                            <option value="3">Interinstitucional</option>
 
                                         </select><br><br>
                                     </div>
