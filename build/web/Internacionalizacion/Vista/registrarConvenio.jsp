@@ -75,8 +75,8 @@ request.getSession().setAttribute("respuesta_convenio", null);
 
                     <li><a href="../index.jsp" class="  ufps-navbar-btn  " >Home </a></li>
                     <li><a href="convenios.jsp"  class="ufps-navbar-btn  " >Convenios </a></li>
-                    <li><a href="actividades.jsp"  class="ufps-navbar-btn  " >Actividades </a></li>
-                    <li><a href="actividades.jsp"  class="ufps-navbar-btn  " >Registrar Entidad </a></li>
+                    <li><a href="registrarActividad.jsp"  class="ufps-navbar-btn  " >Actividades </a></li>
+                    <li><a href="registrarEntidad.jsp"  class="ufps-navbar-btn  " >Registrar Entidad </a></li>
                     <li><a href="registrarConvenio.jsp"  class="ufps-navbar-btn  " >Registrar Convenio </a></li>
 
 

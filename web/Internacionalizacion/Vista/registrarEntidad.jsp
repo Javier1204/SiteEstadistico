@@ -74,8 +74,8 @@ request.getSession().setAttribute("respuesta_entidad", null);
 
                     <li><a href="../index.jsp" class="  ufps-navbar-btn  " >Home </a></li>
                     <li><a href="convenios.jsp"  class="ufps-navbar-btn  " >Convenios </a></li>
-                    <li><a href="actividades.jsp"  class="ufps-navbar-btn  " >Actividades </a></li>
-                    <li><a href="actividades.jsp"  class="ufps-navbar-btn  " >Registrar Entidad </a></li>
+                    <li><a href="registrarActividad.jsp"  class="ufps-navbar-btn  " >Actividades </a></li>
+                    <li><a href="registrarEntidad.jsp"  class="ufps-navbar-btn  " >Registrar Entidad </a></li>
                     <li><a href="registrarConvenio.jsp"  class="ufps-navbar-btn  " >Registrar Convenio </a></li>
 
                     </li>
@@ -118,19 +118,19 @@ request.getSession().setAttribute("respuesta_entidad", null);
                                 <div class="form-group"   >
                                     <label for="sector">Seleccione Sector:</label>
                                     <select id="sector" name="sector" class="ufps-input-line" border-width:2px margin:7px padding:7px>
-                                        <option value="1">Educacion</option>
-                                        <option value="2">Comercial</option>
-                                        <option value="2">Salud</option>
-                                        <option value="2">Financiero</option>
+                                        <option value="Educacion">Educacion</option>
+                                        <option value="Comercial">Comercial</option>
+                                        <option value="Salud">Salud</option>
+                                        <option value="Financiero">Financiero</option>
                                     </select>
                                 </div></div>
                             <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
                                 <div class="form-group">
                                     <label for="ambito">Seleccione Ambito de la empresa</label>
                                     <select id="ambito" name="ambito" class="ufps-input-line " >
-                                        <option value="1">Privado</option>
-                                        <option value="2">Publico</option>
-                                        <option value="2">Fundacion</option>
+                                        <option value="Privado">Privado</option>
+                                        <option value="Publico">Publico</option>
+                                        <option value="Fundacion">Fundacion</option>
 
                                     </select>
                                 </div> 
@@ -140,8 +140,8 @@ request.getSession().setAttribute("respuesta_entidad", null);
                                 <div class="form-group">
                                     <label for="tipo">Seleccione tipo entidad</label>
                                     <select id="tipo" name="tipo" class="ufps-input-line " >
-                                        <option value="1">Empresa</option>
-                                        <option value="2">Universidad</option>                                        
+                                        <option value="Empresa">Empresa</option>
+                                        <option value="Universidad">Universidad</option>                                        
 
                                     </select>
                                 </div> 
