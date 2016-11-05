@@ -4,6 +4,7 @@
     Author     : HeinerV
 --%>
 
+<%@page import="internacionalizacion.Modelo.DTO.Tipo_actividades"%>
 <%@page import="java.util.ArrayList"%>
 
 <%@page import="internacionalizacion.Facade.Facade"%>
@@ -48,7 +49,20 @@ if(request.getParameter("practica")!=null){
 
 
 Facade f = new Facade();
+
 String r = f.registrarConvenio(nombre,descripcion,vigencia,tipo,estado, fechacreacion,fechaterminacion,entidad);
+Tipo_actividades act = new Tipo_actividades();
+int id = f.consultarConvenio(nombre).getId();
+System.out.println("El id del convenio es------------------"+id);
+act.setIdconvenio(id);
+act.setMovilidad(actividades[0]);
+act.setPasantia(actividades[1]);
+act.setExtension(actividades[2]);
+act.setInvestigacion(actividades[3]);
+act.setSocial(actividades[4]);
+act.setPractica(actividades[5]);
+
+f.RegistrarTipo_Actividades(act);
 request.getSession().setAttribute("respuesta_convenio", r);
 %>
 

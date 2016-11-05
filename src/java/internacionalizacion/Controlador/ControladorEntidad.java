@@ -5,7 +5,6 @@
  */
 package internacionalizacion.Controlador;
 
-import internacionalizacion.Modelo.DAO.DAOConvenio;
 import internacionalizacion.Modelo.DAO.DAOEntidad;
 import internacionalizacion.Modelo.DTO.Entidad;
 import java.util.ArrayList;
@@ -22,6 +21,12 @@ public class ControladorEntidad {
         Entidad e = new Entidad(nombre, representante, sector, ambito, tipo, telefono, pais, nit);
         return ent.registrarEntidad(e);
 
+    }
+    
+    public ArrayList<Entidad> consultarEntidades(){
+        
+        DAOEntidad dao = new DAOEntidad();
+        return dao.consultarEntidades();
     }
     
     

@@ -20,7 +20,7 @@ public class Actividad {
     String fechacreacion;
     String fechaterminacion;
     short semestre;
-    int tipoactividad;
+    String tipoactividad;
     String hora;
     String responsable;
     String lugar;
@@ -86,11 +86,11 @@ public class Actividad {
         this.semestre = semestre;
     }
 
-    public int getTipoactividad() {
+    public String getTipoactividad() {
         return tipoactividad;
     }
 
-    public void setTipoactividad(int tipoactividad) {
+    public void setTipoactividad(String tipoactividad) {
         this.tipoactividad = tipoactividad;
     }
 
@@ -126,7 +126,7 @@ public class Actividad {
         this.descripcion = descripcion;
     }
         
-    public Actividad(int id, int idconvenio, String nombre, String duracion, String fechacreacion, String fechaterminacion, short semestre, int tipoactividad, String hora, String responsable, String lugar, String descripcion) {
+    public Actividad(int id, int idconvenio, String nombre, String duracion, String fechacreacion, String fechaterminacion, short semestre, String tipoactividad, String hora, String responsable, String lugar, String descripcion) {
         this.id = id;
         this.idconvenio = idconvenio;
         this.nombre = nombre;

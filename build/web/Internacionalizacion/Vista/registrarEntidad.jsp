@@ -170,7 +170,7 @@ request.getSession().setAttribute("respuesta_entidad", null);
                                             System.out.println(p.getNombre());
                                         
                                         %>
-                                        <option><%=p.getNombre()%></option>
+                                        <option value="<%=p.getId()%>"><%=p.getNombre()%></option>
                                        
                                         <%
                                             }

@@ -4,9 +4,13 @@
     Author     : HeinerV
 --%>
 
+<%@page import="internacionalizacion.Modelo.DTO.Entidad"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="internacionalizacion.Facade.Facade"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
+    Facade fachada = new Facade();
 if(request.getSession().getAttribute("respuesta_convenio")!=null){
     
     %>
@@ -198,10 +202,15 @@ request.getSession().setAttribute("respuesta_convenio", null);
                                 <div class="form-group" >
                                     <label for="entidad" >Seleccione la Entidad con quien se hace el Convenio</label>
                                     <select id="entidad" name="entidad" class="ufps-input-line ">
-                                        <option value="10">Entidad 1</option>
-                                        <option value="11">Entidad 2</option>
-                                        <option value="12">Entidad 3</option>
-
+                                        
+                                        <%
+                                            ArrayList<Entidad> entidades = fachada.obtenerEntidades();
+                                            for(Entidad e: entidades){
+                                        %>
+                                        <option value="<%=e.getId()%>"><%=e.getNombre()%></option>
+                                        
+                                        <%}
+                                        %>
                                     </select>
 
                                 </div> </div>

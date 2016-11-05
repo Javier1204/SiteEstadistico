@@ -96,7 +96,7 @@ public class DAOConvenio {
             ResultSet resultado = stm.executeQuery();//ejecuto la consulta
             Convenio c;
             while(resultado.next()){
-                c = new Convenio();
+                
                 int id = resultado.getInt(1);
                 String nombre = resultado.getString(2);
                 String descripcion = resultado.getString(3);
@@ -107,8 +107,9 @@ public class DAOConvenio {
                 String tipo_convenio = resultado.getString(8);
                 int entidad = resultado.getInt(9);
                 String urlimagen = resultado.getString(10);
-                c.setId(id);
                 c = new Convenio(nombre,descripcion,creacion,terminacion,vigencia,estado,tipo_convenio,entidad);
+                c.setId(id);
+                
                 convenios.add(c);
             }
             
@@ -152,8 +153,8 @@ public class DAOConvenio {
             pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
-            stm = con.prepareStatement("Select * from `general_convenio` where nombre='?'");//genero el sql. 
-            
+            stm = con.prepareStatement("Select * from `general_convenio` where nombre=?");//genero el sql. 
+            stm.setString(1, nombreconvenio);
             ResultSet resultado = stm.executeQuery();//ejecuto la consulta
             
             while(resultado.next()){
@@ -168,8 +169,18 @@ public class DAOConvenio {
                 String tipo_convenio = resultado.getString(8);
                 int entidad = resultado.getInt(9);
                 String urlimagen = resultado.getString(10);
+                
                 c.setId(id);
-                c = new Convenio(nombre,descripcion,creacion,terminacion,vigencia,estado,tipo_convenio,entidad);
+                c.setNombre(nombre);
+                c.setDescripcion(descripcion);
+                c.setFechacreacion(creacion);
+                c.setFechaterminacion(terminacion);
+                c.setVigencia(vigencia);
+                c.setEstado(estado);
+                c.setTipoconvenio(tipo_convenio);
+                c.setEntidad(entidad);
+                c.setUrlimagen(urlimagen);
+                
                 
             }
             

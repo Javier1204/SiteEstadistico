@@ -27,7 +27,7 @@ public class DAOActividad {
         ResultSet rs = null;
         try {
             pool.setUsuario("ufps_76");
-            pool.setUsuario("ufps_29");
+            pool.setContrasena("ufps_29");
             pool.inicializarDataSource();
             con = pool.getDataSource().getConnection();
             PreparedStatement stmt = con.prepareStatement("INSERT INTO `oficina_actividadconvenio`(`id_convenio`, `duracion`, `nombre`, `fechacreacion`, `fechaterminacion`, `semestre`, `tipoactividad`, `hora`, `responsable`, `lugar`, `descripcion`) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
@@ -39,17 +39,17 @@ public class DAOActividad {
             stmt.setString(4, a.getFechacreacion());
             stmt.setString(5, a.getFechaterminacion());
             stmt.setShort(6, a.getSemestre());
-            stmt.setInt(7, a.getTipoactividad());
+            stmt.setString(7, a.getTipoactividad());
             stmt.setString(8, a.getHora());
             stmt.setString(9, a.getResponsable());
             stmt.setString(10, a.getLugar());
-            stmt.setString(3, a.getDescripcion());
+            stmt.setString(11, a.getDescripcion());
             
-            stmt.executeQuery();
+            stmt.executeUpdate();
            
             stmt.close();
             
-            
+            System.out.println("Se registro la actividad!");
             
             rs.close();
         } catch (Exception ex) {

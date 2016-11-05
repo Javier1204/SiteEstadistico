@@ -11,7 +11,7 @@ package internacionalizacion.Modelo.DTO;
  */
 public class Entidad {
 
-    
+    int id;
     String nombre;
     String sector;
     String representante;
@@ -26,7 +26,7 @@ public class Entidad {
     }
 
     public Entidad(String nombre, String representante, String sector, String ambito, String tipo, String telefono, int pais, String nit) {
-         this.nit = nit;
+        this.nit = nit;
         this.nombre = nombre;
         this.sector = sector;
         this.representante = representante;
@@ -36,11 +36,18 @@ public class Entidad {
         this.pais = pais;
     }
 
-    
-    public String getnit() {
-        return nit;
+    public int getId() {
+        return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNit() {
+        return nit;
+    }
+        
     public void setNIT(String nit) {
         this.nit = nit;
     }

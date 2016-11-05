@@ -36,14 +36,12 @@ public class DAOPais {
         ArrayList<Pais> paises = new ArrayList<>();
         try {
             pool.setUsuario("ufps_76");
-            pool.setUsuario("ufps_29");
+            pool.setContrasena("ufps_29");
             pool.inicializarDataSource();
             con = pool.getDataSource().getConnection();
-            stmt = con.prepareStatement("Select * from oficina_pais");
-            stmt.setInt(0, 0);
+            stmt = con.prepareStatement("Select * from oficina_pais");            
             rs = stmt.executeQuery();
-            
-                     
+                                 
             
             while(rs.next()){
                 pais = new Pais();
@@ -53,8 +51,7 @@ public class DAOPais {
                 pais.setId(id);
                 pais.setNombre(nombre);
                 paises.add(pais);
-                System.out.println(id);
-                System.out.println(nombre);
+                
             }
                  
             stmt.close();
