@@ -3,12 +3,17 @@
     Created on : 29/10/2016, 05:59:06 PM
     Author     : HeinerV
 --%>
+
+<%@page import="java.util.ArrayList"%>
+<%@page import="internacionalizacion.Modelo.DTO.Pais"%>
+<%@page import="internacionalizacion.Facade.Facade"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
+    Facade f = new Facade();
 if(request.getSession().getAttribute("respuesta_entidad")!=null){
     
-    %>
+%>
     <script type="text/javascript">
     alert("<%=request.getSession().getAttribute("respuesta_entidad")%>");
 </script>
@@ -158,10 +163,18 @@ request.getSession().setAttribute("respuesta_entidad", null);
                                 <div class="form-group">
                                     <label for="pais">Seleccione el Pais de la Entidad</label>
                                     <select id="ambito" name="pais" class="ufps-input-line " >
-                                        <option value="1">Pais 1</option>
-                                        <option value="2">Pais 2</option>
-                                        <option value="2">Fais 3</option>
-
+                                        <%
+                                          ArrayList<Pais> paises = f.obtenerPaises();
+                                          
+                                        for(Pais p: paises){
+                                            System.out.println(p.getNombre());
+                                        
+                                        %>
+                                        <option><%=p.getNombre()%></option>
+                                       
+                                        <%
+                                            }
+                                        %>
                                     </select>
                                 </div> </div>
                             <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">

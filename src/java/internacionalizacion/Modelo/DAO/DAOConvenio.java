@@ -44,7 +44,7 @@ public class DAOConvenio {
             stm = con.prepareStatement("insert into general_convenio (id, nombre, descripcion,fechacreacion,fechaterminacion, vigencia,estado,tipo_convenio, id_entidad, urlimagen) values(null,'"
                     + ""+c.getNombre()+"','"+c.getDescripcion()+"','"+c.getFechacreacion()+"','"+c.getFechaterminacion()+"','"+c.getVigencia()+"','"+c.getEstado()+"','"+c.getTipoconvenio()+"','"+c.getEntidad()+"',null)");//genero el sql. 
             System.out.println(c.getNombre());
-           int can = stm.executeUpdate();//ejecuto la consulta
+            int can = stm.executeUpdate();//ejecuto la consulta
             stm.close();//cierro el preparedstatement
             
             if(can == 1){

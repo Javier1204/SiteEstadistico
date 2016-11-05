@@ -10,6 +10,7 @@ import internacionalizacion.Modelo.DAO.DAOConvenio;
 
 import internacionalizacion.Modelo.DTO.Actividad;
 import internacionalizacion.Modelo.DTO.Convenio;
+import internacionalizacion.Modelo.DTO.Pais;
 import java.util.ArrayList;
 
 /**
@@ -44,6 +45,14 @@ public class Facade {
     public ArrayList<Convenio> obtenerConvenios(){
         DAOConvenio dao = new DAOConvenio();
         return dao.consultarConvenios();
+    }
+    
+    //Metodos para el manejo de paises
+    
+    public ArrayList<Pais> obtenerPaises(){
+        ControladorPais c = new ControladorPais();
+        return c.obtenerPaises();
+        
     }
     
 }
