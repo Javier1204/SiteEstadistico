@@ -29,7 +29,6 @@ function nuevoAjax()
 }
 
 function ingresar(){
-    alert("entra");
      var nombre_usuario= document.getElementById("nombre_usuario");
      var password = document.getElementById("password");
      var tipo_usuario= document.getElementById("tipo");
