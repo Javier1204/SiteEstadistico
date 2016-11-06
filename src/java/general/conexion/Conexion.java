@@ -69,7 +69,7 @@ public class Conexion {
 
         //ejemplo para usar el pool de conexiones. 
         Pool pool = Conexion.getPool(); //llamo al objeto pool 
-        Connection con = null;
+        Connection con = null;  
         PreparedStatement stm = null;
         try {
             /**

@@ -3,8 +3,23 @@
     Created on : 29/10/2016, 05:59:06 PM
     Author     : HeinerV
 --%>
+
+<%@page import="java.util.ArrayList"%>
+<%@page import="internacionalizacion.Modelo.DTO.Pais"%>
+<%@page import="internacionalizacion.Facade.Facade"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    Facade f = new Facade();
+if(request.getSession().getAttribute("respuesta_entidad")!=null){
+    
+%>
+    <script type="text/javascript">
+    alert("<%=request.getSession().getAttribute("respuesta_entidad")%>");
+</script>
+<%}
+request.getSession().setAttribute("respuesta_entidad", null);
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -64,8 +79,8 @@
 
                     <li><a href="../index.jsp" class="  ufps-navbar-btn  " >Home </a></li>
                     <li><a href="convenios.jsp"  class="ufps-navbar-btn  " >Convenios </a></li>
-                    <li><a href="actividades.jsp"  class="ufps-navbar-btn  " >Actividades </a></li>
-                    <li><a href="actividades.jsp"  class="ufps-navbar-btn  " >Registrar Entidad </a></li>
+                    <li><a href="registrarActividad.jsp"  class="ufps-navbar-btn  " >Actividades </a></li>
+                    <li><a href="registrarEntidad.jsp"  class="ufps-navbar-btn  " >Registrar Entidad </a></li>
                     <li><a href="registrarConvenio.jsp"  class="ufps-navbar-btn  " >Registrar Convenio </a></li>
 
                     </li>
@@ -108,40 +123,64 @@
                                 <div class="form-group"   >
                                     <label for="sector">Seleccione Sector:</label>
                                     <select id="sector" name="sector" class="ufps-input-line" border-width:2px margin:7px padding:7px>
-                                        <option value="1">Educacion</option>
-                                        <option value="2">Comercial</option>
-                                        <option value="2">Salud</option>
-                                        <option value="2">Financiero</option>
+                                        <option value="Educacion">Educacion</option>
+                                        <option value="Comercial">Comercial</option>
+                                        <option value="Salud">Salud</option>
+                                        <option value="Financiero">Financiero</option>
                                     </select>
                                 </div></div>
                             <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
                                 <div class="form-group">
                                     <label for="ambito">Seleccione Ambito de la empresa</label>
                                     <select id="ambito" name="ambito" class="ufps-input-line " >
-                                        <option value="1">Privado</option>
-                                        <option value="2">Publico</option>
-                                        <option value="2">Fundacion</option>
+                                        <option value="Privado">Privado</option>
+                                        <option value="Publico">Publico</option>
+                                        <option value="Fundacion">Fundacion</option>
 
                                     </select>
-                                </div> </div>
+                                </div> 
+                            </div>
+                            
+                            <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
+                                <div class="form-group">
+                                    <label for="tipo">Seleccione tipo entidad</label>
+                                    <select id="tipo" name="tipo" class="ufps-input-line " >
+                                        <option value="Empresa">Empresa</option>
+                                        <option value="Universidad">Universidad</option>                                        
+
+                                    </select>
+                                </div> 
+                            </div>
 
                             <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
                                 <div class="form-group">
 
                                     <label for="telefono">Telefono de Contacto</label>
-                                    <input name="telefono" type="number" class="ufps-input-line " id="telefono" >
+                                    <input name="telefono" type="text" class="ufps-input-line " id="telefono" >
                                 </div> </div>
 
                             <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
                                 <div class="form-group">
                                     <label for="pais">Seleccione el Pais de la Entidad</label>
                                     <select id="ambito" name="pais" class="ufps-input-line " >
-                                        <option value="1">Pais 1</option>
-                                        <option value="2">Pais 2</option>
-                                        <option value="2">Fais 3</option>
-
+                                        <%
+                                          ArrayList<Pais> paises = f.obtenerPaises();
+                                          
+                                        for(Pais p: paises){
+                                            System.out.println(p.getNombre());
+                                        
+                                        %>
+                                        <option value="<%=p.getId()%>"><%=p.getNombre()%></option>
+                                       
+                                        <%
+                                            }
+                                        %>
                                     </select>
                                 </div> </div>
+                            <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
+                                <label for="pais">NIT</label>
+                                    <input type="text" name ="nit" class="ufps-input-line">
+                            </div>
 
 
 

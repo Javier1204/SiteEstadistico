@@ -4,8 +4,22 @@
     Author     : HeinerV
 --%>
 
+<%@page import="internacionalizacion.Modelo.DTO.Entidad"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="internacionalizacion.Facade.Facade"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    Facade fachada = new Facade();
+if(request.getSession().getAttribute("respuesta_convenio")!=null){
+    
+    %>
+    <script type="text/javascript">
+    alert("<%=request.getSession().getAttribute("respuesta_convenio")%>");
+</script>
+<%}
+request.getSession().setAttribute("respuesta_convenio", null);
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -40,7 +54,7 @@
         <script src="../../public/js/ufps.js" type="text/javascript"></script>
         <script src="../../public/js/ufps.min.js" type="text/javascript"></script>
 
-        a
+       
         <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
     </head>
     <body>
@@ -65,8 +79,8 @@
 
                     <li><a href="../index.jsp" class="  ufps-navbar-btn  " >Home </a></li>
                     <li><a href="convenios.jsp"  class="ufps-navbar-btn  " >Convenios </a></li>
-                    <li><a href="actividades.jsp"  class="ufps-navbar-btn  " >Actividades </a></li>
-                    <li><a href="actividades.jsp"  class="ufps-navbar-btn  " >Registrar Entidad </a></li>
+                    <li><a href="registrarActividad.jsp"  class="ufps-navbar-btn  " >Actividades </a></li>
+                    <li><a href="registrarEntidad.jsp"  class="ufps-navbar-btn  " >Registrar Entidad </a></li>
                     <li><a href="registrarConvenio.jsp"  class="ufps-navbar-btn  " >Registrar Convenio </a></li>
 
 
@@ -85,7 +99,7 @@
 
 
                 <div class="col-md-12" id="formularioEntidad" ><br>
-                    <center><form action="registrarEntidad_pro.jsp" method="POST" center>
+                    <center><form action="registrarConvenio_pro.jsp" method="POST" center>
                             <fieldset>
                                 <!-- Form Name -->
                                 <legend><center><strong><h1>Formulario para el Registro de Convenios</h1></strong></center></legend>
@@ -118,11 +132,12 @@
                                     <br><label for="tipo_convenio">Seleccione Tipo de Convenio</label> <br><br>
                                     <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
                                         <select id="tipo_convenio" name="tipo_convenio" class="ufps-input " >
-                                            <option value="1">Marco</option>
-                                            <option value="2">Especifico</option>
-                                            <option value="2">interinstitucional</option>
+                                            <option value="Marco">Marco</option>
+                                            <option value="Especifico">Especifico</option>
+                                            <option value="Interinstitucional">Interinstitucional</option>
 
-                                        </select></div>
+                                        </select><br><br>
+                                    </div>
                                 </div> </div>
                             <br> <br><label for="tipo_convenio">Seleccione Lo que se puede hacer en el presente convenio</label>
 
@@ -138,7 +153,7 @@
                                 </label>
 
                                 <label>
-                                    <input name="extension"type="checkbox" value="">
+                                    <input name="extension" type="checkbox" value="">
                                     Extension
                                 </label>
                                 <label>
@@ -146,11 +161,11 @@
                                     Investigacion
                                 </label>
                                 <label>
-                                    <input name="social"type="checkbox" value="">
+                                    <input name="social" type="checkbox" value="">
                                     Social
                                 </label>
                                 <label>
-                                    <input name="Practicas"type="checkbox" value="">
+                                    <input name="practica" type="checkbox" value="">
                                     Practicas
                                 </label>
                             </div>
@@ -169,23 +184,33 @@
 
 
 
-                            <%--  <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
+                            <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
                                 <div class="form-group">
 
                                     <label for="estado">Estado</label>
-                                    <input name="estado" type="text " class="ufps-input-line " id="telefono" >
-                                </div> </div>
+                                    <select id="estado" name="estado" class="ufps-input-line ">
+                                        <option value="Aprobado">Aprobado</option>
+                                        <option value="Terminado">Terminado</option>
 
-                            --%>
+                                    </select>
+                                </div> 
+                            </div>
+
+                            
 
                             <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
                                 <div class="form-group" >
                                     <label for="entidad" >Seleccione la Entidad con quien se hace el Convenio</label>
-                                    <select id="ambito" name="entidad" class="ufps-input-line ">
-                                        <option value="1"> Entidad 1</option>
-                                        <option value="2">Entidad 2</option>
-                                        <option value="2">Entidad 3</option>
-
+                                    <select id="entidad" name="entidad" class="ufps-input-line ">
+                                        
+                                        <%
+                                            ArrayList<Entidad> entidades = fachada.obtenerEntidades();
+                                            for(Entidad e: entidades){
+                                        %>
+                                        <option value="<%=e.getId()%>"><%=e.getNombre()%></option>
+                                        
+                                        <%}
+                                        %>
                                     </select>
 
                                 </div> </div>

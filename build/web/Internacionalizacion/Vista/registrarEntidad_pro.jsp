@@ -7,7 +7,7 @@ esta clase es temporal
 --%>
 
 
-<%@page import="facade.facade"%>
+<%@page import="internacionalizacion.Facade.Facade"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
@@ -16,14 +16,15 @@ String nombre=request.getParameter("nombre");
 String representante=request.getParameter("representante");
 String sector=request.getParameter("sector");
 String ambito=request.getParameter("ambito");
-int telefono =Integer.parseInt(request.getParameter("telefono"));
-String pais=request.getParameter("pais");
-facade f = new facade();
-String r = f.registrarEntidad(nombre);
+String telefono =request.getParameter("telefono");
+String tipo=request.getParameter("tipo");
+int pais=Integer.parseInt(request.getParameter("pais"));
+String nit=request.getParameter("nit");
+Facade f = new Facade();
+String r = f.registrarEntidad(nombre,representante,sector,ambito,tipo, telefono,pais,nit);
+request.getSession().setAttribute("respuesta_entidad", r);
 %>
-<script type="text/javascript">
-    alert("<%= r %>");
-</script>
+
     
 <%
 response.sendRedirect("registrarEntidad.jsp");
