@@ -6,11 +6,10 @@
 package Practicas.Facade;
 
 import Practicas.Controlador.*;
-import Practicas.Controlador.empresaControlador;
-import Practicas.DTO.perfilDTO;
+import Practicas.DTO.*;
 import java.util.ArrayList;
 import java.util.List;
-import practicas.DTO.empresaDTO;
+
 
 /**
  *
@@ -41,5 +40,10 @@ public class Facade {
     public List<perfilDTO> listarPerfil(){
         perfilControlador c= new perfilControlador();
         return c.listarPerfiles();
+    }
+    
+    public estudianteDTO buscarEstudiante(int codigo){
+        estudianteControlador c= new estudianteControlador();
+        return c.buscarEstudiante(codigo);
     }
 }

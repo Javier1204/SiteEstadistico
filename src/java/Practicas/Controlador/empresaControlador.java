@@ -5,7 +5,7 @@
  */
 package Practicas.Controlador;
 import Practicas.DAO.empresaDAO;
-import practicas.DTO.empresaDTO;
+import Practicas.DTO.empresaDTO;
 import java.util.ArrayList;
 /**
  *

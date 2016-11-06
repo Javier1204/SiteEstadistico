@@ -1,4 +1,4 @@
-package practicas.DTO;
+package Practicas.DTO;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

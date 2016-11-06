@@ -1,4 +1,8 @@
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="Practicas.Facade.Facade" %>
+<%@page import="Practicas.DTO.estudianteDTO"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -41,32 +45,37 @@
              </div>
         </div>
       
-      
+      <%
+          Facade f = new Facade();
+      %>
+        
       <div  class="ufps-container" id="contenido">
-          
-          <center><strong><h1>REGISTRO DE ESTUDIANTE DE PRACTICAS</h1></strong></center>
+          <form method="POST" action="cargar_datos_estudiante.jsp">    
+          <center><strong><h1>REGISTRO DE ESTUDIANTE DE PRACTICAS</h1></strong></center>          
           <fieldset>
               <h2>Estudiante</h2>
               Para iniciar el proceso escriba su código
               <br><br>
               <div class="form-group-lg">
-                  <label for="codigoEst"><b>Codigo:</b></label>
-                    <input type="text" class="ufps-input" id="codigoEst" >                              
+                  <label><b>Codigo:</b></label>
+                    <input type="text" class="ufps-input" id="codigoEst" name="codigoEst" >                              
               </div>
               
               <div class="ufps-col-tablet-5 ufps-col-offset-7">  
                 <div class="form-group">
-                    <button type="submit" class="ufps-btn">Buscar</button>
+                    <button type="submit" class="ufps-btn" id="btnBuscar">Buscar</button>
                 </div> 
               </div>
           </fieldset>
+         
         <br><br>          
+         
           <fieldset>
               <h2> Datos Basicos</h2>
               <br>
               <div class="form-group">
                   <label for="nombreEst"><b>Nombres:</b></label>
-                     <input type="text" class="ufps-input" id="nombreEst" >                              
+                     <input type="text" class="ufps-input" id="nombreEst">                              
                 
               </div>
               <div class="form-group"> 
@@ -94,11 +103,12 @@
      
               <br>
           </fieldset>
+         </form>    
      <BR>     
       </div>
         
        <div class="ufps-container" id="contenido"> 
-       
+        <form method="POST"> 
            <fieldset>
                <h2>    Perfiles de practica</h2>
                
@@ -136,7 +146,7 @@
             <BR>   
             <center> <div class="ufps-col-tablet-12">  
                 <div class="form-group">
-                    <button type="submit" class="ufps-btn">Aceptar</button>
+                    <button type="submit" class="ufps-btn" id="btnAgregarPerfil">Aceptar</button>
                 </div> 
             </div></center>
                
@@ -154,7 +164,7 @@
             <td></td>
             <td>
                 <div class="form-group">
-                   <button type="submit" class="ufps-btn-light">Eliminar</button> 
+                   <button type="submit" class="ufps-btn-light" id="btnEliminarPerfil">Eliminar</button> 
                 </div>  
             </td> 
            </tr>
@@ -164,11 +174,14 @@
                <br>
                
            </fieldset>
+           </form>
        </div>
       
         <BR>
          <div class="ufps-container" id="contenido"> 
+          
         <fieldset>
+        
             <h2>Documentos adicionales:</h2> 
             Aqui deberá cargar los documentos solicitados
             <br> <br>
@@ -214,18 +227,19 @@
                         <input type="submit" value="Subir archivo" />
                     </form> 
                 </div>
-               <br><br>    
+               <br><br>  
+               
+               <form method="POST">    
+               <center><div class="ufps-col-tablet-12 ">  
+                <div class="form-group">
+                <button type="submit" class="ufps-btn" id="btnRegistrarEstudiante">Finalizar Registro</button>
+                </div></div></center>
+               </form> 
         </fieldset>
-         </div>>     
-        <BR>
-        
-       <center><div class="ufps-col-tablet-12 ">  
-            <div class="form-group">
-                <button type="submit" class="ufps-btn">Finalizar Registro</button>
-            </div> 
-       </div></center>
-    
        
+        </div>     
+        
+        <BR>
         
     </body>
     <BR><BR><BR>

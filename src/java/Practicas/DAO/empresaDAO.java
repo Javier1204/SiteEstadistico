@@ -7,7 +7,7 @@ package Practicas.DAO;
 
 import general.conexion.Conexion;
 import general.conexion.Pool;
-import practicas.DTO.empresaDTO;
+import Practicas.DTO.empresaDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
