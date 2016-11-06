@@ -120,21 +120,14 @@
                                 <div class="form-group" >
                                     <label for="estadoConvenio" >Seleccione el estado del  Convenio</label>
                                     <select id="estadoConvenio" name="estadoConv" class="ufps-input-line ">
-                                        <option value="1"> Aprobado</option>
-                                        <option value="2">Terminado</option>
+                                        <option value="Aprobado"> Aprobado</option>
+                                        <option value="Terminado">Terminado</option>
                                         
 
                                     </select>
 
                                 </div> </div>
               
-              <div class="ufps-col-tablet-5 ufps-col-tablet-offset-1">
-                                 <div class="form-group">
- 
-                                     <label for="tipoConvenio">Tipo:</label>
-                                     <input name="tipoConvenio" type="text" class="ufps-input-line" id="linea5" >
-                                 </div>  
-              </div>
               
               
               
