@@ -12,40 +12,53 @@ package practicas.DTO;
  */
 public class empresaDTO {
     
-    int idempresa;
-    int NIT;
+    int id;
+    String NIT;
     String sectorEmpresa;
     String representanteEmpresa;
     String nombreEmpresa;
     String tipoAmbito;
+    String direccion;
     String telefono;
+    
+    public String getDireccion() {
+        return direccion;
+    }
 
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+  
+   public String getNIT() {
+        return NIT;
+    }
+
+    public void setNIT(String NIT) {
+        this.NIT = NIT;
+    }
     public empresaDTO() {
     }
 
-    public empresaDTO(int NIT, String sectorEmpresa, String nombreEmpresa, String tipoAmbito) {
-        this.NIT = NIT;
+    public empresaDTO( String NIT, String sectorEmpresa, String nombreEmpresa, String tipoAmbito, String direccion, String telefono) {
+        
+        this.NIT=NIT;
         this.sectorEmpresa = sectorEmpresa;
         this.nombreEmpresa = nombreEmpresa;
         this.tipoAmbito = tipoAmbito;
+        this.direccion=direccion;
+        this.telefono=telefono;
     }
 
     
     public int getIdempresa() {
-        return idempresa;
+        return id;
     }
 
-    public void setIdempresa(int idempresa) {
-        this.idempresa = idempresa;
+    public void setIdempresa(int id) {
+        this.id = id;
     }
 
-    public int getNIT() {
-        return NIT;
-    }
-
-    public void setNIT(int NIT) {
-        this.NIT = NIT;
-    }
+ 
 
     public String getSectorEmpresa() {
         return sectorEmpresa;
