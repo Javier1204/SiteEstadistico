@@ -5,7 +5,7 @@
  */
 package Practicas.Facade;
 
-import Practicas.Controlador.PerfilControlador;
+import Practicas.Controlador.*;
 import Practicas.Controlador.empresaControlador;
 import Practicas.DTO.perfilDTO;
 import java.util.ArrayList;
@@ -18,12 +18,12 @@ import practicas.DTO.empresaDTO;
 public class Facade {
     
      public String RegistrarPerfil(perfilDTO p){
-        PerfilControlador c = new PerfilControlador();
+        perfilControlador c = new perfilControlador();
         return c.RegistrarPerfil(p);
     }
      
     public int idperfilMaximo(){
-        PerfilControlador c= new PerfilControlador();
+        perfilControlador c= new perfilControlador();
         return c.id_perfil_maximo();
     } 
     

@@ -2,7 +2,7 @@
 <%@page import="Practicas.Facade.Facade"%>
 <%@page import="Practicas.DTO.perfilDTO" %>
 <%@page import="Practicas.DAO.perfilDAO" %>
-<%@page import="Practicas.Controlador.PerfilControlador" %>
+<%@page import="Practicas.Controlador.perfilControlador" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
