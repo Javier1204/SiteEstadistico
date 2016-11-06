@@ -9,6 +9,7 @@ import Practicas.Controlador.*;
 import Practicas.Controlador.empresaControlador;
 import Practicas.DTO.perfilDTO;
 import java.util.ArrayList;
+import java.util.List;
 import practicas.DTO.empresaDTO;
 
 /**
@@ -35,5 +36,10 @@ public class Facade {
     public ArrayList<empresaDTO> obtenerEmpresa(){
         empresaControlador c = new empresaControlador();
         return c.consultarEmpresas();
+    }
+    
+    public List<perfilDTO> listarPerfil(){
+        perfilControlador c= new perfilControlador();
+        return c.listarPerfiles();
     }
 }

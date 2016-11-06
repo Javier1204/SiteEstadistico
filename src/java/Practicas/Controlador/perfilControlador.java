@@ -7,6 +7,7 @@ package Practicas.Controlador;
 
 import Practicas.DAO.perfilDAO;
 import Practicas.DTO.perfilDTO;
+import java.util.List;
 
 /**
  *
@@ -22,5 +23,10 @@ public class perfilControlador {
     public String RegistrarPerfil(perfilDTO p) {
        perfilDAO dao = new perfilDAO();
        return dao.registrarPerfil(p);
+    }
+    
+    public List<perfilDTO> listarPerfiles(){
+        perfilDAO dao = new perfilDAO();
+        return dao.listarPerfiles();
     }
 }

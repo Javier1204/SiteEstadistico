@@ -72,8 +72,7 @@ request.getSession().setAttribute("respuesta_perfil", null);
         <center><h2>PERFILES DE PRACTICA</h2></center>
         
         <% 
-            List <perfilDTO> lista= f.listarPerfiles();
-            
+            List <perfilDTO> lista= f.listarPerfil();           
         %>
         
         <div class="ufps-container" id="contenido">

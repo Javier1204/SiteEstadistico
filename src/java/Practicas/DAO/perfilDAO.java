@@ -77,11 +77,11 @@ public class perfilDAO implements PerfilInterface{
         Connection conn;
         PreparedStatement pst;
         ResultSet rs;
-        String sql = "select * from practicas8_perfil";
+        String sql = "select * from practicas_perfil";
         try{
             Pool pool = Conexion.getPool();
             pool.setUsuario("ufps_76");
-            pool.setUsuario("ufps_29");
+            pool.setContrasena("ufps_29");
             pool.inicializarDataSource();
             conn = pool.getDataSource().getConnection();
             
@@ -89,7 +89,7 @@ public class perfilDAO implements PerfilInterface{
             rs= pst.executeQuery();
             
             while(rs.next()){
-                lista.add(new perfilDTO(rs.getInt("idpefil"),rs.getString("nombre")));
+                lista.add(new perfilDTO(rs.getInt("id_perfil"),rs.getString("nombre")));
             }
             conn.close();
             
