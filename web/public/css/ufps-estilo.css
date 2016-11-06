@@ -44,3 +44,8 @@ and open the template in the editor.
     margin-left: 350px;
     margin-right: 350px;
 }
+
+.box{
+    height: 400px;
+    padding: 10px;
+}

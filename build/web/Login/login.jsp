@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <jsp:include page="../plantilla/header.jsp"></jsp:include>
 <script src="js/ajax.js"></script>
+<div class="box">
         <div class="contenido">
             <center><h2>Iniciar sesión</h2></center>
             <form method="post" action="javascript:ingresar()" name="login" class="form" id="login">
@@ -29,4 +30,5 @@
                 <label id="divError"> </label>
             </form>
         </div>
+</div>
 <jsp:include page="../plantilla/footer.jsp"></jsp:include>
