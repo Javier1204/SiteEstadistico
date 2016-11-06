@@ -14,9 +14,10 @@ import java.util.List;
  */
 public interface PerfilInterface {
     
-    public boolean registrarPerfil(Object o);
+    public String registrarPerfil(perfilDTO p);
     public boolean editarPerfil(Object o);
     public boolean eliminarPerfil(Object o);
     public List<perfilDTO> listarPerfiles();
     public perfilDTO buscarPerfil(int id);
+    public int id_maximo_perfil();
 }

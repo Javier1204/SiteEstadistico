@@ -7,12 +7,12 @@ package Practicas.DAO;
 
 import Practicas.DTO.perfilDTO;
 import Practicas.Interface.PerfilInterface;
-import com.mysql.jdbc.PreparedStatement;
 
 import general.conexion.Conexion;
 import general.conexion.Pool;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -27,28 +27,33 @@ import java.util.logging.Logger;
 public class perfilDAO implements PerfilInterface{
     
    
-    public boolean registrarPerfil(Object o) {
-        boolean rta= false;
+    public String registrarPerfil(perfilDTO p) {
+        String rta= "No conecto";
+        Pool pool = Conexion.getPool(); //llamo al objeto pool 
+        Connection con = null;
+        PreparedStatement pst = null;
         
         try {
-            Connection con = null;
-            Pool pool = Conexion.getPool();
-            pool.setUsuario("ufps_76");
-            pool.setUsuario("ufps_29");
-            pool.inicializarDataSource();
-            con = pool.getDataSource().getConnection();
+          
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
+            con = pool.getDataSource().getConnection(); 
+           
+            String sql="insert into practicas_perfil (id_perfil, nombre) values ("+p.getIdperfil()+",'"+p.getNombre()+"')";
             
-            perfilDTO p = (perfilDTO) o;
-            PreparedStatement pst;
-            String sql="insert into practica_perfil (nombre) values (?)";
+            pst= con.prepareStatement(sql);
             
-            pst=(PreparedStatement) con.prepareStatement(sql);
-            pst.setString(1, p.getNombre());
             int a= pst.executeUpdate();
             con.close();
             
-            if(a!=0)
-                rta=true;
+            if(a == 1){
+                System.out.println(" registrar");
+                rta= "Registro";
+            }else{
+                 System.out.println("no registrar");
+                rta = "No registro";
+            }
          
         } catch (SQLException ex) {
             Logger.getLogger(perfilDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -72,7 +77,7 @@ public class perfilDAO implements PerfilInterface{
         Connection conn;
         PreparedStatement pst;
         ResultSet rs;
-        String sql = "select * from practica_perfil";
+        String sql = "select * from practicas8_perfil";
         try{
             Pool pool = Conexion.getPool();
             pool.setUsuario("ufps_76");
@@ -96,6 +101,35 @@ public class perfilDAO implements PerfilInterface{
 
     public perfilDTO buscarPerfil(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    @Override
+    public int id_maximo_perfil() {
+        int mx=0;
+        try {
+            Connection con = null;
+            Pool pool = Conexion.getPool();
+            pool.setUsuario("ufps_76");
+            pool.setContrasena("ufps_29");
+            pool.inicializarDataSource();
+            con = pool.getDataSource().getConnection();
+           
+            PreparedStatement pst;
+            pst = (PreparedStatement) con.prepareStatement("SELECT * FROM practicas_perfil");//genero el sql. 
+            ResultSet resultado = pst.executeQuery();//ejecuto la consulta
+            
+            while(resultado.next()){
+                mx  = resultado.getInt("id_perfil"); 
+                System.out.println("Numero maximo: "+mx);
+            }
+           
+            pst.close();//cierro el
+         
+        } catch (SQLException ex) {
+            Logger.getLogger(perfilDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return mx;
     }
     
    

@@ -3,35 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package Practicas.Facade;
 
-package Praticas.Facade;
-
-import Practicas.Controlador.*;
-import Practicas.DAO.convenioDAO;
-import Practicas.DTO.convenioDTO;
-import Practicas.DTO.docenteDTO;
-import Practicas.DTO.documentos_estudiantes_DTO;
-import Practicas.DTO.informeDTO;
+import Practicas.Controlador.PerfilControlador;
+import Practicas.Controlador.empresaControlador;
 import Practicas.DTO.perfilDTO;
-import Practicas.DTO.perfil_estudianteDTO;
-import Practicas.DTO.practicaDTO;
-import Practicas.DTO.tutor_empresaDTO;
 import java.util.ArrayList;
 import practicas.DTO.empresaDTO;
 
 /**
  *
- * @author JAVIER
+ * @author Administrador
  */
 public class Facade {
     
+     public String RegistrarPerfil(perfilDTO p){
+        PerfilControlador c = new PerfilControlador();
+        return c.RegistrarPerfil(p);
+    }
+     
+    public int idperfilMaximo(){
+        PerfilControlador c= new PerfilControlador();
+        return c.id_perfil_maximo();
+    } 
     
-    
-    
-    
-    //METODOS PARA EL MANEJO DE LAS ENTIDADES.
-    
-    public String registrarEmpresa( String NIT, String sectorEmpresa, String nombreEmpresa, String tipoAmbito, String direccion, String telefono) throws Exception{
+     public String registrarEmpresa( String NIT, String sectorEmpresa, String nombreEmpresa, String tipoAmbito, String direccion, String telefono) throws Exception{
          empresaControlador s=new empresaControlador();
          return s.registrarEmpresa(NIT, sectorEmpresa, nombreEmpresa, tipoAmbito, direccion, telefono);               
     }
@@ -40,6 +36,4 @@ public class Facade {
         empresaControlador c = new empresaControlador();
         return c.consultarEmpresas();
     }
-    
-    
 }
