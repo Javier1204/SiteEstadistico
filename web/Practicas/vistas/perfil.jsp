@@ -1,4 +1,5 @@
 
+<%@page import="java.util.List"%>
 <%@page import="Practicas.Facade.Facade"%>
 <%@page import="Practicas.DTO.perfilDTO" %>
 <%@page import="Practicas.DAO.perfilDAO" %>
@@ -70,6 +71,11 @@ request.getSession().setAttribute("respuesta_perfil", null);
     
         <center><h2>PERFILES DE PRACTICA</h2></center>
         
+        <% 
+            List <perfilDTO> lista= f.listarPerfiles();
+            
+        %>
+        
         <div class="ufps-container" id="contenido">
             <form action="perfil_pro.jsp" method="POST">
             <fieldset>
@@ -101,9 +107,12 @@ request.getSession().setAttribute("respuesta_perfil", null);
                     <td>Opcion</td>
                 </tr>
            
+                <%
+                    for(perfilDTO p: lista){
+                %>
                 <tr>
-                <td></td>
-                <td></td>
+                <td> <%= p.getIdperfil() %> </td>
+                <td> <%= p.getNombre() %> </td>
                 <td>
                     <div class="form-group">
                     <button type="submit" class="ufps-btn-light"><b>Eliminar</b></button> 
@@ -111,6 +120,9 @@ request.getSession().setAttribute("respuesta_perfil", null);
                     </div>  
                 </td> 
                 </tr>
+                <%
+                    }
+                %>
             </table>
         </fieldset>
         </div>
