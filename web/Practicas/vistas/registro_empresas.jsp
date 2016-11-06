@@ -1,5 +1,21 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="internacionalizacion.Facade.Facade"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    Facade f = new Facade();
+if(request.getSession().getAttribute("respuesta_entidad")!=null){
+    
+%>
+    <script type="text/javascript">
+    alert("<%=request.getSession().getAttribute("respuesta_entidad")%>");
+</script>
+<%}
+request.getSession().setAttribute("respuesta_entidad", null);
+%>
+
+
+
 <html>
     <head>
      
@@ -121,7 +137,7 @@
       
         <BR>
        <center><div class="ufps-col-tablet-12 ">  
-            <div class="btn-group btn-group-justified"">
+            <div class="btn-group btn-group-justified">
                 <button type="submit" class="ufps-btn">Registrar Empresa</button>
                 
             </div>
