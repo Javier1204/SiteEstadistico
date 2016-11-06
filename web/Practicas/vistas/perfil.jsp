@@ -1,8 +1,22 @@
 
+<%@page import="Practicas.Facade.Facade"%>
 <%@page import="Practicas.DTO.perfilDTO" %>
 <%@page import="Practicas.DAO.perfilDAO" %>
+<%@page import="Practicas.Controlador.PerfilControlador" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    Facade f = new Facade();
+if(request.getSession().getAttribute("respuesta_perfil")!=null){
+    
+%>
+    <script type="text/javascript">
+    alert("<%=request.getSession().getAttribute("respuesta_perfil")%>");
+</script>
+<%}
+request.getSession().setAttribute("respuesta_perfil", null);
+%>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -57,28 +71,30 @@
         <center><h2>PERFILES DE PRACTICA</h2></center>
         
         <div class="ufps-container" id="contenido">
+            <form action="perfil_pro.jsp" method="POST">
             <fieldset>
             <h2>Agregar perfil</h2>
             
              <br>
               <div class="ufps-col-tablet-5 ufps-col-tablet-offset-0">
                   <label for="nombrePerfil"><b>Nombre del perfil: </b></label>
-                    <input type="text" class="ufps-input" id="nombrePerfil" >                              
+                   <input type="text" class="ufps-input" id="nombrePerfil" name="nombrePerfil">                              
               </div>
               
               <div class="ufps-col-tablet-9 ufps-col-offset-0">  
                 <div class="form-group">
-                    <button type="submit" class="ufps-btn">AGREGAR</button>
+                    <button type="submit" class="ufps-btn" id="btnAgregar">AGREGAR</button>
                 </div> 
               </div>
             </fieldset>
+            </form>    
         </div>
         <BR><BR>
         <div class="ufps-container" id="contenido">    
             <fieldset>
                 <h2>Listado de perfiles actuales </h2>
                 <br>
-                 <table class="ufps-table">
+                 <table class="ufps-table" id="tablaperfiles" name="tablaperfiles">
                 <tr class="ufps-table-inserted tr"> 
                     <td>Perfil</td>
                     <td>Valor</td>
