@@ -23,12 +23,6 @@ public class PrivilegioDTO {
         this.modulos = modulos;
     }
     
-    public boolean containRF(String idRF){
-        for (ModuloDTO modulo : modulos) {
-            if(modulo.containRF(idRF))return true;
-        }
-        return true;
-    }
     public boolean containModulo(String nombreM)
     {
         for (ModuloDTO modulo : modulos) {
@@ -45,20 +39,4 @@ public class PrivilegioDTO {
         return lista;
     }
     
-    public List<String> listarRF()
-    {
-        ArrayList<String> lista=new ArrayList<>();
-        for (ModuloDTO m : modulos) {
-            lista.addAll(m.listarRF());
-        }
-        return lista;
-    }
-    
-    public List<String> listarRF(String modulo)
-    {
-        for (ModuloDTO m : modulos) {
-            if(m.getNombre().equalsIgnoreCase(modulo))return m.listarRF();
-        }
-        return null;
-    }
 }

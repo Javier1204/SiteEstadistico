@@ -15,14 +15,12 @@ import java.util.List;
  * @author Lenovo
  */
 public interface ICuenta {
-    
-    public boolean containReqerimiento(String rf);
+    public String getUser();
+    public String getPassword();
     public boolean containModulo(String nomModulo);
     public boolean containRol(String rol);
     public List<String> listarRoles();
     public List<String> listarModulos();
-    public List<String> listarRequerimientosF();
-    public List<String> listarRequerimientosFDeModulos(String modulos);
     public void construirCuenta(UsuarioDTO user, List<RolDTO> roles, PrivilegioDTO privilegios);
     
 }

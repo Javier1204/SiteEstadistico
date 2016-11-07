@@ -7,6 +7,7 @@ package gestionUsuarios;
 
 import gestionUsuarios.DAOs.GeneralModuloDAO;
 import gestionUsuarios.DAOs.GeneralPrivilegioDAO;
+import gestionUsuarios.DAOs.GeneralRolDAO;
 import gestionUsuarios.DAOs.GeneralUsuarioDAO;
 import gestionUsuarios.DAOs.GeneralUsuarioRolDAO;
 import gestionUsuarios.DTOs.ModuloDTO;
@@ -56,5 +57,11 @@ public class ControlGestionUsuarios {
     }
     protected List<ModuloDTO> listarModulos(){
         return new GeneralModuloDAO().listaModulos();
+    }
+    
+    protected List<RolDTO> listarRoles(){
+        GeneralRolDAO roldao=new GeneralRolDAO();
+        return roldao.listarRoles();
+        
     }
 }

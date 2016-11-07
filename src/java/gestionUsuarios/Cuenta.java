@@ -20,10 +20,7 @@ public class Cuenta implements ICuenta{
     private ArrayList<RolDTO> roles;
     private PrivilegioDTO privilegio;
 
-    @Override
-    public boolean containReqerimiento(String rf) {
-        return this.privilegio.containRF(rf);
-    }
+    
 
     @Override
     public boolean containModulo(String nomModulo) {
@@ -52,15 +49,6 @@ public class Cuenta implements ICuenta{
         return privilegio.listarModulosN();
     }
 
-    @Override
-    public List<String> listarRequerimientosF() {
-        return privilegio.listarRF();
-    }
-
-    @Override
-    public List<String> listarRequerimientosFDeModulos(String modulo) {
-        return privilegio.listarRF(modulo);
-    }
 
     @Override
     public void construirCuenta(UsuarioDTO user, List<RolDTO> roles, PrivilegioDTO privilegios) {
@@ -68,6 +56,18 @@ public class Cuenta implements ICuenta{
         this.roles=(ArrayList<RolDTO>) roles;
         this.privilegio=privilegios;
     }
+
+    @Override
+    public String getUser() {
+        return this.usser.getUssername();
+    }
+
+    @Override
+    public String getPassword() {
+        return this.usser.getPassword();
+    }
+
+
     
     
 }

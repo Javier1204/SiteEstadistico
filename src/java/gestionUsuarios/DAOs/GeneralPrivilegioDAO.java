@@ -7,7 +7,6 @@ package gestionUsuarios.DAOs;
 
 import gestionUsuarios.DTOs.ModuloDTO;
 import gestionUsuarios.DTOs.PrivilegioDTO;
-import gestionUsuarios.DTOs.RequerimientoFDTO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,28 +26,14 @@ public class GeneralPrivilegioDAO extends ConexionGUDAOs{
     {
         try{
             obtenerConexion();
-            PreparedStatement ps=conn.prepareStatement("SELECT modulo, rf FROM general_privilegios WHERE user=?");
+            PreparedStatement ps=conn.prepareStatement("SELECT modulo FROM general_privilegio WHERE user=?");
             ps.setString(1, user);
             ResultSet rs=ps.executeQuery();
-            HashMap<String, ArrayList<RequerimientoFDTO>> modulos=new HashMap<String, ArrayList<RequerimientoFDTO>>();
+            ArrayList<ModuloDTO> listaMod=new ArrayList<ModuloDTO>();
             while(rs.next()){
                 String nomModulo=rs.getString(1);
-                GeneralRequerimientoFuncionalDAO rfDAO=new GeneralRequerimientoFuncionalDAO();
-                RequerimientoFDTO rfdto=rfDAO.getRequerimiento(nomModulo, rs.getString(2));
-                
-                if(modulos.containsKey(nomModulo)){                   
-                                        
-                    modulos.get(nomModulo).add(rfdto);
-                }else{//creo modulos para el hashmap
-                    modulos.put(nomModulo, new ArrayList<RequerimientoFDTO>());
-                    modulos.get(nomModulo).add(rfdto);
-                }
-            }
-            ArrayList<ModuloDTO> listaMod=new ArrayList<ModuloDTO>();
-            for (String mod : modulos.keySet()) {//creo objetos modulos                
                 GeneralModuloDAO modDAO=new GeneralModuloDAO();
-                ModuloDTO m=modDAO.getModulo(mod);                
-                m.setRequerimientosFs(modulos.get(mod));
+                ModuloDTO m=modDAO.getModulo(nomModulo);    
                 listaMod.add(m);
             }
             PrivilegioDTO privilegio=new PrivilegioDTO();
@@ -64,6 +49,6 @@ public class GeneralPrivilegioDAO extends ConexionGUDAOs{
     }
     public static void main(String[] args) {
         GeneralPrivilegioDAO p=new GeneralPrivilegioDAO();
-        System.out.println(p.getPrivilegioUsuario("1151052").getModulos().get(0).getNombre());
+        System.out.println(p.getPrivilegioUsuario("1151234").getModulos().get(0).getNombre());
     }
 }

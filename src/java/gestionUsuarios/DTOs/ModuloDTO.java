@@ -13,7 +13,6 @@ import java.util.List;
  * @author Lenovo
  */
 public class ModuloDTO {
-    private ArrayList<RequerimientoFDTO> requerimientosFs;
     private String nombre;
     private String descripcion;
 
@@ -26,31 +25,7 @@ public class ModuloDTO {
     }
     
 
-    public ArrayList<RequerimientoFDTO> getRequerimientosFs() {
-        return requerimientosFs;
-    }
-
-    public void setRequerimientosFs(ArrayList<RequerimientoFDTO> requerimientosFs) {
-        this.requerimientosFs = requerimientosFs;
-    }
     
-    
-    protected boolean containRF(String nomReq){
-        for (RequerimientoFDTO requerimientosF : requerimientosFs) {
-            if(requerimientosF.getId().equalsIgnoreCase(nomReq))return true;
-        }
-        return false;
-    }
-    
-    
-    protected List<String> listarRF()
-    {
-        ArrayList<String> lista=new ArrayList<>();
-        for (RequerimientoFDTO rf : requerimientosFs) {
-            lista.add(rf.getId()+"-"+rf.getNombreRF());
-        }
-        return listarRF();
-    }
 
     public String getNombre() {
         return nombre;

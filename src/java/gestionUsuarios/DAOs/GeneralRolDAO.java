@@ -9,6 +9,8 @@ import gestionUsuarios.DTOs.RolDTO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -37,6 +39,26 @@ public class GeneralRolDAO extends ConexionGUDAOs{
         }finally{
             cerrarConexion();
         }
+    }
+    public List<RolDTO> listarRoles(){
+        try{
+            obtenerConexion();
+            PreparedStatement ps=conn.prepareStatement("SELECT rol, descripcion FROM general_rol");
+            ResultSet rs=ps.executeQuery();
+            ArrayList<RolDTO> lista=new ArrayList<>();
+            while(rs.next()){
+                RolDTO r=new RolDTO();
+                r.setRol(rs.getString(1));
+                r.setDescripcion(rs.getString(2));
+                lista.add(r);
+            }
+            return lista;
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralRolDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            cerrarConexion();
+        }
+        return null;
     }
     public static void main(String[] args) {
         GeneralRolDAO rol=new GeneralRolDAO();

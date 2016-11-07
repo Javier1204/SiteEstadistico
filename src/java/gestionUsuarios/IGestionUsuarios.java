@@ -6,7 +6,6 @@
 package gestionUsuarios;
 
 import gestionUsuarios.DTOs.ModuloDTO;
-import gestionUsuarios.DTOs.RequerimientoFDTO;
 import gestionUsuarios.DTOs.RolDTO;
 import java.util.List;
 
@@ -79,7 +78,7 @@ public interface IGestionUsuarios {
      * @return boolean si se pudo realizar el registro, fasle sino pudo por que el rol, el usuario, o alguno de los RF
      * no existe
      */
-    public boolean asignarPrivilegios(ICuenta usuario, String rol, String modulo, List<String> RF);
+    public boolean asignarModulo(ICuenta usuario, String rol, String modulo);
     
     /**
      * Cambia la contraseña del usuario que esta loggueado
@@ -108,10 +107,4 @@ public interface IGestionUsuarios {
      */
     public List<ModuloDTO>  listarModulo();
     
-    /**
-     * lista los RFs que tiene un modulo
-     * @param nomModulo nombre del modulo de los cuales necesita requerimientos
-     * @return 
-     */
-    public List<RequerimientoFDTO> listarRFsDeModulos(String nomModulo);
 }

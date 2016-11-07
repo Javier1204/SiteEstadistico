@@ -6,7 +6,6 @@
 package gestionUsuarios;
 
 import gestionUsuarios.DTOs.ModuloDTO;
-import gestionUsuarios.DTOs.RequerimientoFDTO;
 import gestionUsuarios.DTOs.RolDTO;
 import java.util.List;
 
@@ -49,10 +48,6 @@ public class GestionUsuario implements IGestionUsuarios{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public boolean asignarPrivilegios(ICuenta usuario, String rol, String modulo, List<String> RF) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     
     public static IGestionUsuarios getInstance() {
@@ -71,7 +66,9 @@ public class GestionUsuario implements IGestionUsuarios{
 
     @Override
     public List<RolDTO> listarRoles() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ControlGestionUsuarios c=ControlGestionUsuarios.getInstance();
+        return c.listarRoles();
+        
     }
 
     @Override
@@ -80,8 +77,8 @@ public class GestionUsuario implements IGestionUsuarios{
     }
 
     @Override
-    public List<RequerimientoFDTO> listarRFsDeModulos(String nomModulo) {
+    public boolean asignarModulo(ICuenta usuario, String rol, String modulo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
