@@ -6,6 +6,7 @@
 package gestionUsuarios.DAOs;
 
 import gestionUsuarios.DTOs.RolDTO;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,11 +19,12 @@ import java.util.logging.Logger;
  *
  * @author Lenovo
  */
-public class GeneralRolDAO extends ConexionGUDAOs{
-    public GeneralRolDAO(){}
+public class GeneralRolDAO {
+    protected Connection conn;
+    public GeneralRolDAO(Connection con){conn=con;}
     public RolDTO getRol(String rol){
         try{
-            obtenerConexion();
+            //obtenerConexion();
             PreparedStatement ps=conn.prepareStatement("SELECT * FROM general_rol WHERE rol=?");
             ps.setString(1, rol);
             ResultSet rs=ps.executeQuery();
@@ -37,12 +39,12 @@ public class GeneralRolDAO extends ConexionGUDAOs{
             Logger.getLogger(GeneralRolDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }finally{
-            cerrarConexion();
+            //cerrarConexion();
         }
     }
     public List<RolDTO> listarRoles(){
         try{
-            obtenerConexion();
+            //obtenerConexion();
             PreparedStatement ps=conn.prepareStatement("SELECT rol, descripcion FROM general_rol");
             ResultSet rs=ps.executeQuery();
             ArrayList<RolDTO> lista=new ArrayList<>();
@@ -56,12 +58,12 @@ public class GeneralRolDAO extends ConexionGUDAOs{
         } catch (SQLException ex) {
             Logger.getLogger(GeneralRolDAO.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
-            cerrarConexion();
+            //cerrarConexion();
         }
         return null;
     }
     public static void main(String[] args) {
-        GeneralRolDAO rol=new GeneralRolDAO();
-        System.out.println(rol.getRol("super administrador").getDescripcion());
+        //GeneralRolDAO rol=new GeneralRolDAO();
+        //System.out.println(rol.listarRoles().get(0).getRol());
     }
 }

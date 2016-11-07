@@ -6,6 +6,7 @@
 package gestionUsuarios.DAOs;
 
 import gestionUsuarios.DTOs.UsuarioDTO;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,13 +17,14 @@ import java.util.logging.Logger;
  *
  * @author Lenovo
  */
-public class GeneralUsuarioDAO extends ConexionGUDAOs{
-    public GeneralUsuarioDAO(){super();}
+public class GeneralUsuarioDAO {
+    protected Connection conn;
+    public GeneralUsuarioDAO(Connection con){conn=con;}
     
     public String getPass(String user)
     {
         try{
-            obtenerConexion();
+            //obtenerConexion();
             PreparedStatement ps=conn.prepareStatement("SELECT password FROM general_usuario WHERE user=?");
             ps.setString(1, user);
             ResultSet rs=ps.executeQuery();
@@ -34,13 +36,13 @@ public class GeneralUsuarioDAO extends ConexionGUDAOs{
             Logger.getLogger(GeneralUsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }finally{
-            cerrarConexion();
+            //cerrarConexion();
         }
     }
     
     public UsuarioDTO getUsuario(String user){
         try{
-            obtenerConexion();
+            //obtenerConexion();
             PreparedStatement ps=conn.prepareStatement("SELECT * FROM general_usuario WHERE user=?");
             ps.setString(1, user);
             ResultSet rs=ps.executeQuery();
@@ -56,12 +58,12 @@ public class GeneralUsuarioDAO extends ConexionGUDAOs{
             Logger.getLogger(GeneralUsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }finally{
-            cerrarConexion();
+            //cerrarConexion();
         }
         
     }
     public static void main(String[] args) {
-        GeneralUsuarioDAO us=new GeneralUsuarioDAO();
-        System.out.println(us.getPass("1151052"));
+        //GeneralUsuarioDAO us=new GeneralUsuarioDAO();
+        //System.out.println(us.getPass("1151052"));
     }
 }

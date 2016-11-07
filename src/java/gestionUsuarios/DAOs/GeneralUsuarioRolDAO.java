@@ -22,14 +22,14 @@ import java.util.logging.Logger;
  *
  * @author Lenovo
  */
-public class GeneralUsuarioRolDAO extends ConexionGUDAOs{
-
-    public GeneralUsuarioRolDAO(){super();}
+public class GeneralUsuarioRolDAO {
+    protected Connection conn;
+    public GeneralUsuarioRolDAO(Connection con){conn=con;}
     
     public boolean existe(String rol, String user) {      
         
         try {
-            obtenerConexion();
+            //obtenerConexion();
             PreparedStatement ps=conn.prepareStatement("SELECT * FROM general_usuario_rol WHERE user=? AND rol=? ");
             ps.setString(1, user);
             ps.setString(2, rol);
@@ -42,21 +42,21 @@ public class GeneralUsuarioRolDAO extends ConexionGUDAOs{
             Logger.getLogger(GeneralUsuarioRolDAO.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         } finally {
-            this.cerrarConexion();
+            //this.cerrarConexion();
         }
         
     }
     
     public List<RolDTO> obtenerRoles(String user){
         try{
-            obtenerConexion();
+            //obtenerConexion();
             ArrayList<RolDTO> lista =new ArrayList<RolDTO>();
             PreparedStatement ps=conn.prepareStatement("SELECT rol FROM general_usuario_rol WHERE user=?");
             ps.setString(1, user);
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
                 RolDTO rol=null;
-                GeneralRolDAO rDAO=new GeneralRolDAO();
+                GeneralRolDAO rDAO=new GeneralRolDAO(conn);
                 rol=rDAO.getRol(rs.getString(1));
                 lista.add(rol);
             }
@@ -65,15 +65,15 @@ public class GeneralUsuarioRolDAO extends ConexionGUDAOs{
             Logger.getLogger(GeneralUsuarioRolDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }finally{
-            cerrarConexion();
+            //cerrarConexion();
         }
     }
     
    
     
     public static void main(String[] args) {
-        GeneralUsuarioRolDAO gur=new GeneralUsuarioRolDAO();
-        System.out.println(gur.obtenerRoles("1151052").get(0).getDescripcion());
+        //GeneralUsuarioRolDAO gur=new GeneralUsuarioRolDAO();
+        //System.out.println(gur.obtenerRoles("1151052").get(0).getDescripcion());
     }
 
 }

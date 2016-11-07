@@ -15,11 +15,11 @@ import java.sql.SQLException;
  * @author Lenovo
  */
 public abstract class ConexionGUDAOs {
-    protected Connection conn;
+    //protected Connection conn;
     protected ConexionGUDAOs(){
         //this.obtenerConexion();
     }
-    protected void obtenerConexion() {
+    public static Connection obtenerConexion() {
         Pool pool = Conexion.getPool(); //llamo al objeto pool 
         Connection con = null;
         try {
@@ -35,20 +35,21 @@ public abstract class ConexionGUDAOs {
 
             if (con != null) {
                 System.out.println("me conecte");
-                this.conn = con;
+                //this.conn = con;
+                return con;
             }
         } catch (SQLException ex) {
             System.err.println(ex);
             //en el caso de que se encunetren en una consulta real se recomienta usar
             //    con.rollback();
         }
-
+        return null;
     }
     
-     protected void cerrarConexion() {
+    public static void cerrarConexion(Connection con) {
         try {
-            if (conn != null) {
-                conn.close(); // se cierra la conexion. este es un paso muy importante
+            if (con != null) {
+                con.close(); // se cierra la conexion. este es un paso muy importante
                 System.out.println("se cerro la conexion");
             }
         } catch (SQLException ex) {

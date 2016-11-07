@@ -6,6 +6,7 @@
 package gestionUsuarios.DAOs;
 
 import gestionUsuarios.DTOs.ModuloDTO;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,11 +19,12 @@ import java.util.logging.Logger;
  *
  * @author Lenovo
  */
-public class GeneralModuloDAO extends ConexionGUDAOs{
-    public GeneralModuloDAO (){}
+public class GeneralModuloDAO {
+    protected Connection conn;
+    public GeneralModuloDAO (Connection con){conn=con;}
     public ModuloDTO getModulo(String modulo){
         try{
-            obtenerConexion();
+            //obtenerConexion();
             PreparedStatement ps=conn.prepareStatement("SELECT modulo, descripcion FROM general_modulo WHERE modulo=?");
             ps.setString(1, modulo);
             ResultSet rs=ps.executeQuery();
@@ -37,13 +39,13 @@ public class GeneralModuloDAO extends ConexionGUDAOs{
             Logger.getLogger(GeneralModuloDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }finally{
-            cerrarConexion();
+            //cerrarConexion();
         }
     }
     public List<ModuloDTO> listaModulos()
     {
         try{
-            obtenerConexion();
+            //obtenerConexion();
             PreparedStatement ps=conn.prepareStatement("SELECT modulo, descripcion FROM general_modulo");
             ResultSet rs=ps.executeQuery();
             ArrayList<ModuloDTO> lista=new ArrayList<>();
@@ -58,12 +60,14 @@ public class GeneralModuloDAO extends ConexionGUDAOs{
             Logger.getLogger(GeneralModuloDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }finally{
-            cerrarConexion();
+            //cerrarConexion();
         }
     }
     public static void main(String[] args) {
-        GeneralModuloDAO moduloDAO=new GeneralModuloDAO();
+        Connection con=ConexionGUDAOs.obtenerConexion();
+        GeneralModuloDAO moduloDAO=new GeneralModuloDAO(con);
         //System.out.println(moduloDAO.getModulo("integrador").getDescripcion());
         System.out.println(moduloDAO.listaModulos().get(0).getNombre());
+        ConexionGUDAOs.cerrarConexion(con);
     }
 }
