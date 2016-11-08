@@ -35,22 +35,22 @@ public class DAOEntidad {
             pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
-            stm = con.prepareStatement("insert into oficina_entidad (id,nombre,representante,sector,ambito,tipo, telefono,id_pais,nit) values(null,'"
-                    + ""+e.getNombre()+"','"+e.getRepresentante()+"','"+e.getSector()+"','"+e.getAmbito()+"','"+e.getTipo()+"','"+e.getTelefono()+"','"+e.getPais()+"','"+e.getNit()+"')");//genero el sql. 
-            System.out.println(e.getPais());
+            stm = con.prepareStatement("insert into oficina_entidad(id,nombre,representante,sector,ambito,tipo, telefono,id_pais,nit,direccion) values(null,'"+e.getNombre()+"','"+e.getRepresentante()+"','"+e.getSector()+"','"+e.getAmbito()+"','"+e.getTipo()+"','"+e.getTelefono()+"','"+e.getPais()+"','"+e.getNit()+"','"+e.getDireccion()+"')");//genero el sql. 
+                  
+            
             int can = stm.executeUpdate();//ejecuto la consulta
             stm.close();//cierro el preparedstatement
             
             if(can == 1){
-                System.out.println(" registrar");
+                System.out.println(" Se registro entidad");
                 return "Se registro entidad";
             }else{
-                 System.out.println("no registrar");
+                 System.out.println("no registro entidad");
                 return "No se registro entidad";
             }
         } catch (SQLException ex) {
             System.err.println(ex);
-             System.out.println("no  registrar");
+             System.out.println("no  registro entidad");
             //en el caso de que se encunetren en una consulta real se recomienta usar
             //    con.rollback();
         } finally {

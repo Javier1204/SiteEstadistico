@@ -11,14 +11,17 @@
 <!DOCTYPE html>
 <%
     Facade f = new Facade();
-if(request.getSession().getAttribute("respuesta_entidad")!=null){
-    
+    if (request.getSession().getAttribute("respuesta_entidad") != null) {
+
 %>
-    <script type="text/javascript">
-    alert("<%=request.getSession().getAttribute("respuesta_entidad")%>");
+<div class="ufps-alert-green">
+    <span class="ufps-close-alert-btn">x</span> Se registro Correctamente La entidad.
+</div>
+<script type="text/javascript">
+//    alert("<%=request.getSession().getAttribute("respuesta_entidad")%>");
 </script>
 <%}
-request.getSession().setAttribute("respuesta_entidad", null);
+    request.getSession().setAttribute("respuesta_entidad", null);
 %>
 <html>
     <head>
@@ -110,7 +113,10 @@ request.getSession().setAttribute("respuesta_entidad", null);
                                     <label for="nombre">Nombre Entidad</label>
                                     <input name="nombre" type="text" class="ufps-input-line" id="entidad" >
                                 </div>  </div>
-
+                            <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
+                                <label for="pais">NIT</label>
+                                <input type="text" name ="nit" class="ufps-input-line">
+                            </div>
                             <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">    
                                 <div class="form-group" >
 
@@ -140,7 +146,7 @@ request.getSession().setAttribute("respuesta_entidad", null);
                                     </select>
                                 </div> 
                             </div>
-                            
+
                             <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
                                 <div class="form-group">
                                     <label for="tipo">Seleccione tipo entidad</label>
@@ -156,31 +162,30 @@ request.getSession().setAttribute("respuesta_entidad", null);
                                 <div class="form-group">
 
                                     <label for="telefono">Telefono de Contacto</label>
-                                    <input name="telefono" type="text" class="ufps-input-line " id="telefono" >
+                                    <input name="telefono" type="number" class="ufps-input-line " id="telefono" >
                                 </div> </div>
+                            <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
+                                <label for="pais">Direccion</label>
+                                    <input type="text" name ="direccion" class="ufps-input-line">
+                            </div>
 
                             <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
                                 <div class="form-group">
                                     <label for="pais">Seleccione el Pais de la Entidad</label>
                                     <select id="ambito" name="pais" class="ufps-input-line " >
                                         <%
-                                          ArrayList<Pais> paises = f.obtenerPaises();
-                                          
-                                        for(Pais p: paises){
-                                            System.out.println(p.getNombre());
-                                        
+                                            ArrayList<Pais> paises = f.obtenerPaises();
+
+                                            for (Pais p : paises) {
                                         %>
                                         <option value="<%=p.getId()%>"><%=p.getNombre()%></option>
-                                       
+
                                         <%
                                             }
                                         %>
                                     </select>
                                 </div> </div>
-                            <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
-                                <label for="pais">NIT</label>
-                                    <input type="text" name ="nit" class="ufps-input-line">
-                            </div>
+
 
 
 

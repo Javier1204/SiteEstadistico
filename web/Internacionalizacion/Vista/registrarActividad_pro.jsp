@@ -12,7 +12,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-    
+request.setCharacterEncoding("UTF-8");    
 int convenio = Integer.parseInt(request.getParameter("convenio"));
 String nombre = request.getParameter("nombre");
 String duracion = request.getParameter("duracion");

@@ -39,9 +39,9 @@ public class Facade {
     
     //METODOS PARA EL MANEJO DE LAS ENTIDADES.
     
-    public String registrarEntidad(String nombre,String representante,String sector,String ambito,String tipo,String telefono,int pais,String nit) throws Exception{
+    public String registrarEntidad(String nombre,String representante,String sector,String ambito,String tipo,String telefono,String direccion,int pais,String nit) throws Exception{
          ControladorEntidad s=new ControladorEntidad();
-         return s.registrarEntidad(nombre,representante,sector,ambito,tipo,telefono,pais,nit);               
+         return s.registrarEntidad(nombre,representante,sector,ambito,tipo,telefono,direccion,pais,nit);               
     }
     
     public ArrayList<Entidad> obtenerEntidades(){

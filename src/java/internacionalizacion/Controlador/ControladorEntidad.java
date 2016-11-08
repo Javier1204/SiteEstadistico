@@ -15,10 +15,10 @@ import java.util.ArrayList;
  */
 public class ControladorEntidad {
     
-    public String registrarEntidad(String nombre, String representante, String sector, String ambito, String tipo, String telefono, int pais, String nit) {
+    public String registrarEntidad(String nombre, String representante, String sector, String ambito, String tipo, String telefono,String direccion, int pais, String nit) {
 
         DAOEntidad ent = new DAOEntidad();
-        Entidad e = new Entidad(nombre, representante, sector, ambito, tipo, telefono, pais, nit);
+        Entidad e = new Entidad(nombre, representante, sector, ambito, tipo, telefono, direccion, pais, nit);
         return ent.registrarEntidad(e);
 
     }

@@ -20,12 +20,15 @@ public class Entidad {
     String telefono;
     int pais;
     String nit;
+  String direccion;
+   
+  
     
     public Entidad() {
 
     }
 
-    public Entidad(String nombre, String representante, String sector, String ambito, String tipo, String telefono, int pais, String nit) {
+    public Entidad(String nombre, String representante, String sector, String ambito, String tipo, String telefono,String direccion,  int pais, String nit) {
         this.nit = nit;
         this.nombre = nombre;
         this.sector = sector;
@@ -34,6 +37,7 @@ public class Entidad {
         this.tipo = tipo;
         this.telefono = telefono;
         this.pais = pais;
+        this.direccion=direccion;
     }
 
     public int getId() {
@@ -106,6 +110,14 @@ public class Entidad {
 
     public void setPais(int pais) {
         this.pais = pais;
+    
+    }
+     public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     

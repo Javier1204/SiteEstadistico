@@ -9,7 +9,7 @@
 
 <%@page import="internacionalizacion.Facade.Facade"%>
 <%
-    
+request.setCharacterEncoding("UTF-8");
 String nombre=request.getParameter("nombre");
 String descripcion=request.getParameter("descripcion");
 String vigencia=request.getParameter("vigencia");

@@ -52,12 +52,12 @@ public class DAOConvenio {
                 return "Se registro convenio";
             }else{
                  System.out.println("no registrar");
-                return "No se registro entidad";
+                return "No se registro convenio";
             }
             
         } catch (SQLException ex) {
             System.err.println(ex);
-             System.out.println("no  registrar");
+             System.out.println("no  registro convenio");
             //en el caso de que se encunetren en una consulta real se recomienta usar
             //    con.rollback();
         } finally {

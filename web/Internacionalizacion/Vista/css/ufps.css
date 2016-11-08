@@ -2411,7 +2411,12 @@ ul.ufps-tabs li a:focus,
 }
 
 .ufps-alert-green {
+    
+    padding: 20px;
   background-color: #3fa435;
+  color: white;
+  margin-bottom: 15px;
+  
 }
 
 .ufps-alert-yellow {

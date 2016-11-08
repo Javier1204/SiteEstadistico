@@ -14,6 +14,9 @@
 if(request.getSession().getAttribute("respuesta_convenio")!=null){
     
     %>
+    <div class="ufps-alert-green" center>
+    <span class="ufps-close-alert-btn">x</span> Se registro Correctamente el Convenio.
+</div>
     <script type="text/javascript">
     alert("<%=request.getSession().getAttribute("respuesta_convenio")%>");
 </script>

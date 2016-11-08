@@ -12,16 +12,18 @@ esta clase es temporal
 <!DOCTYPE html>
 <%
     
+request.setCharacterEncoding("UTF-8");
 String nombre=request.getParameter("nombre");
 String representante=request.getParameter("representante");
 String sector=request.getParameter("sector");
 String ambito=request.getParameter("ambito");
 String telefono =request.getParameter("telefono");
+String direccion =request.getParameter("direccion");
 String tipo=request.getParameter("tipo");
 int pais=Integer.parseInt(request.getParameter("pais"));
 String nit=request.getParameter("nit");
 Facade f = new Facade();
-String r = f.registrarEntidad(nombre,representante,sector,ambito,tipo, telefono,pais,nit);
+String r = f.registrarEntidad(nombre,representante,sector,ambito,tipo,telefono,direccion,pais,nit);
 request.getSession().setAttribute("respuesta_entidad", r);
 %>
 
