@@ -24,7 +24,7 @@ import academico.Interface.IUtilDAO;
 public class UtilDAO implements IUtilDAO {
 
     @Override
-    public ArrayList<EstudianteDTO> obtenerEstudiantes(int cod_asign) throws SQLException {
+    public ArrayList<EstudianteDTO> obtenerEstudiantes(int cod_grp) throws SQLException {
         Pool pool = Conexion.getPool();
         Connection con = null;
         PreparedStatement stmt = null;
@@ -40,11 +40,11 @@ public class UtilDAO implements IUtilDAO {
                     + "FROM academico_estudiantexgrupo, general_estudiante\n"
                     + "WHERE academico_estudiantexgrupo.id_grupo =?\n"
                     + "AND academico_estudiantexgrupo.codigo_estudiante = general_estudiante.codigo");
-            stmt.setString(1, "" + cod_asign);
+            stmt.setInt(1, cod_grp);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 dto = new EstudianteDTO();
-                dto.setCodigo(rs.getInt(1));
+                dto.setCodigo(rs.getString(1));
                 dto.setNombre(rs.getString(2));
                 dto.setApellido(rs.getString(3));
                 estudiantes.add(dto);

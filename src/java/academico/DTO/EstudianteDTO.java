@@ -11,17 +11,16 @@ package academico.DTO;
  */
 public class EstudianteDTO {
     
-    private int codigo;
-    private String nombre, apellido;
+    private String codigo, nombre, apellido;
 
     public EstudianteDTO() {
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
