@@ -28,3 +28,17 @@ function borrarInput(divName)
         indice++;
     
 }
+
+function consultarconvenios()
+{
+        
+$(document).ready(function () {
+    $("#convenios").click(function (evento) {
+        evento.preventDefault();
+        $("#destino").load("consultarConvenios.jsp");
+        
+        
+        console.log("Hola");
+    });
+});
+}

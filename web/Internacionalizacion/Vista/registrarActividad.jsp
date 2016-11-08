@@ -11,18 +11,20 @@
 
 <%
     Facade fachada = new Facade();
-boolean x =Boolean.parseBoolean(request.getSession().getAttribute("respuesta_actividad").toString());
-  if(x != false) {
-System.out.println(x);
+
+  if(request.getSession().getAttribute("respuesta_actividad") != null) {
+
 %>
-<div class="alert alert-success">
-  <a href="#" class="alert-link">Se ha registrado la actividad</a>
+<div class="ufps-alert-green" center>
+    <span class="ufps-close-alert-btn">x</span> Se registro Correctamente la actividad!.
 </div>
+
+
     <script type="text/javascript">
-    alert("<%=request.getSession().getAttribute("respuesta_actividad")%>");
-</script>
+    alert("Registro exitoso!");
+    </script>
 <%}
-   request.getSession().setAttribute("respuesta_actividad", false);
+   request.getSession().setAttribute("respuesta_actividad", true);
 %>
 
 
@@ -60,7 +62,7 @@ System.out.println(x);
         <script src="../../public/js/ufps.js" type="text/javascript"></script>
         <script src="../../public/js/ufps.min.js" type="text/javascript"></script>
         <script src="js/formactividad.js" type="text/javascript"></script>
-
+        
         <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
     </head>
     <body>
@@ -73,8 +75,8 @@ System.out.println(x);
             <div class="ufps-container-fluid">
                 <div class="ufps-navbar-brand">
                     <div class="ufps-btn-menu" onclick="toggleMenu('menu')">
-                        <div class="ufps-btn-menu-bar"> </div>
-                        <div class="ufps-btn-menu-bar"> </div>
+                        <div class="ufps-btn-menu-bar">hdasd </div>
+                        <div class="ufps-btn-menu-bar">dadas </div>
                         <div class="ufps-btn-menu-bar"> </div>
                     </div>
 
@@ -83,7 +85,7 @@ System.out.println(x);
 
                     <li><a href="../index.jsp" class="  ufps-navbar-btn  " >Home </a></li>
                     <li><a href="convenios.jsp"  class="ufps-navbar-btn  " >Convenios </a></li>
-                    <li><a href="actividades.jsp"  class="ufps-navbar-btn  " >Actividades </a></li>
+                    <li><a href="registrarActividad.jsp"  class="ufps-navbar-btn  " >Actividades </a></li>
                     <li><a href="registrarEntidad.jsp"  class="ufps-navbar-btn  " >Registrar Entidad </a></li>
                     <li><a href="registrarConvenio.jsp"  class="ufps-navbar-btn  " >Registrar Convenio </a></li>
 
@@ -103,9 +105,9 @@ System.out.println(x);
                 <div class="col-md-3">
                     <ul class="nav nav-pills nav-stacked"><br>
                         <input type="button" class="ufps-btn-accordion" value="Registrar actividad"><br><br>
-                        <input type="button" class="ufps-btn-accordion" value="Consultar actividades"><br><br>
+                        <input type="button" id ="actividades" class="ufps-btn-accordion" value="Consultar actividades"><br><br>
                         <input type="button" class="ufps-btn-accordion" value="Actualizar actividad"><br><br>
-                        <input type="button" class="ufps-btn-accordion" value="Consultar convenios"><br><br>
+                        <input type="button" id="convenios" class="ufps-btn-accordion" value="Consultar convenios" onclick="consultarconvenios()"><br><br>
                         <input type="button" class="ufps-btn" value="Cerrar Sesión">
                         <!--<li class="active"><a href="#"><i class="fa fa-home fa-fw"></i>Home</a></li>-->
                         <!--<li><a href="http://www.jquery2dotnet.com"><i class="fa fa-list-alt fa-fw"></i>Registrar actividad</a></li><br>
@@ -116,7 +118,7 @@ System.out.println(x);
                 </div>
 
 
-                <div class="col-md-9" id="formularioactividades"><br>
+                <div class="col-md-9" id="destino"><br>
                     <form action="registrarActividad_pro.jsp" method="POST">
                         <fieldset>
                             <!-- Form Name -->
@@ -125,7 +127,7 @@ System.out.println(x);
 
                         <div class="form-group">
                             <label for="convenio">Seleccione convenio:</label>
-                            <select id="convenio" name="convenio" class="ufps-input" onchange="cargaractividades(this)">
+                            <select id="convenio" name="convenio" class="ufps-input" onchange="">
 
                                 <%
                                     //ControladorConvenio c = new ControladorConvenio();
@@ -143,10 +145,7 @@ System.out.println(x);
                             </select>
                         </div>
                             
-                            <div class="alert alert-success alert-dismissable">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <strong>¡Exito!</strong> Se ha registrado correctamente la actividad!
-</div>
+                            
                         <div class="form-group">
 
                             <label for="nombre">Nombre actividad:</label>
@@ -195,7 +194,7 @@ System.out.println(x);
 
                             <div class="form-group col-md-3">
                                 <label for="semestre" title="Semestre academico en que se realiza la actividad.">Semestre academico: <span class="glyphicon glyphicon-question-sign"></span></label>
-                                <input type="number" class="ufps-input" id="semestre" name="semestre" min="1" max="10" required="required" placeholder="semestre">
+                                <input type="number" class="ufps-input" id="semestre" name="semestre" min="1" max="2" required="required" placeholder="semestre">
                             </div>
 
                         </div>
