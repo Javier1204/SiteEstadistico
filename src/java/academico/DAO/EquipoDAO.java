@@ -50,7 +50,7 @@ public class EquipoDAO implements IEquipoDAO {
                 con = pool.getDataSource().getConnection();
                 stmt2 = con.prepareStatement("INSERT INTO `academico_equipo`(`nombre_equipo`) VALUES (?)");
                 stmt2.setString(1, s);
-                int total = stmt.executeUpdate();
+                int total = stmt2.executeUpdate();
                 if (total > 0) {
                     System.out.println("it worked");
                     stmt2.close();
@@ -62,7 +62,7 @@ public class EquipoDAO implements IEquipoDAO {
             pool.inicializarDataSource();
             con = pool.getDataSource().getConnection();
             stmt3 = con.prepareStatement("SELECT MAX(codigo) FROM academico_equipo");
-            rs = stmt.executeQuery();
+            rs = stmt3.executeQuery();
             while (rs.next()) {
                 rangos[1] = rs.getInt(1);
             }
