@@ -15,8 +15,4 @@ import java.util.ArrayList;
  */
 public class PanelControler {
     
-    public ArrayList<String> asignaturasDoc(int codig_doc) throws SQLException{
-        UtilDAO dao = new UtilDAO();
-        return dao.asignaturasDoc(codig_doc);
-    }
 }

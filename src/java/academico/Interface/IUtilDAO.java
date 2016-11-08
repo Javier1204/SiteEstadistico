@@ -6,6 +6,7 @@
 package academico.Interface;
 
 import academico.DTO.EstudianteDTO;
+import academico.DTO.GrupoDTO;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -15,6 +16,6 @@ import java.util.ArrayList;
  */
 public interface IUtilDAO {
     
-    public ArrayList<String> asignaturasDoc(int codig_doc) throws SQLException;
+    public ArrayList<GrupoDTO> asignaturasDoc(String codig_doc) throws SQLException;
     public ArrayList<EstudianteDTO> obtenerEstudiantes (int cod_asign) throws SQLException;
 }

@@ -6,7 +6,6 @@
 package academico.Facade;
 
 import academico.Controlador.*;
-import general.DAO.GeneralControler;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -15,11 +14,6 @@ import java.util.ArrayList;
  * @author Mauricio
  */
 public class Facade {
-    
-    public ArrayList<Integer> obtenerAsignaturas(int codig_doc) throws SQLException{
-        GeneralControler cont = new GeneralControler();
-        return cont.obtenerAsignaturas(codig_doc);
-    }
     
     public int[] registrarEquipos(ArrayList<String> equipos) throws SQLException{
         EquipoControler cont = new EquipoControler();

@@ -2,7 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
         <group>
             <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/gestionUsuarios/DAOs/GeneralRequerimientoFuncionalDAO.java</file>
             <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/academico/DTO/EstudianteDTO.java</file>
@@ -33,6 +32,14 @@
             <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/academico/DTO/EquipoDTO.java</file>
             <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/general/DAO/GeneralControler.java</file>
             <file>file:/H:/Users/JAVIER/Desktop/SiteEstadistico/src/java/academico/DAO/EquipoDAO.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/quagg/Documents/NetBeansProjects/SiteEstadistico/src/java/general/DAO/GeneralDAO.java</file>
+            <file>file:/C:/Users/quagg/Documents/NetBeansProjects/SiteEstadistico/src/java/academico/DAO/UtilDAO.java</file>
+            <file>file:/C:/Users/quagg/Documents/NetBeansProjects/SiteEstadistico/src/java/academico/Interface/IProyectoDAO.java</file>
+            <file>file:/C:/Users/quagg/Documents/NetBeansProjects/SiteEstadistico/src/java/academico/DTO/ProyectoDTO.java</file>
+            <file>file:/C:/Users/quagg/Documents/NetBeansProjects/SiteEstadistico/src/java/academico/DAO/ProyectoDAO.java</file>
+            <file>file:/C:/Users/quagg/Documents/NetBeansProjects/SiteEstadistico/src/java/academico/DAO/EquipoDAO.java</file>
         </group>
     </open-files>
 </project-private>

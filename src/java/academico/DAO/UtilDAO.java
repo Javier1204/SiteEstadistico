@@ -6,6 +6,7 @@
 package academico.DAO;
 
 import academico.DTO.EstudianteDTO;
+import academico.DTO.GrupoDTO;
 import academico.Facade.Facade;
 import general.conexion.Conexion;
 import general.conexion.Pool;
@@ -21,43 +22,6 @@ import academico.Interface.IUtilDAO;
  * @author Mauricio
  */
 public class UtilDAO implements IUtilDAO {
-
-    @Override
-    public ArrayList<String> asignaturasDoc(int codig_doc) throws SQLException {
-        ArrayList<String> asign = null;
-        Pool pool = Conexion.getPool();
-        Connection con = null;
-        PreparedStatement stmt = null;
-        Facade fc = new Facade();
-        try {
-            asign = new ArrayList();
-            ArrayList<Integer> codigos = fc.obtenerAsignaturas(codig_doc);
-            pool.setUsuario("ufps_76");
-            pool.setContrasena("ufps_29");
-            pool.inicializarDataSource();
-            con = pool.getDataSource().getConnection();
-            ResultSet rs = null;
-            for (int i : codigos) {
-                stmt = con.prepareStatement("SELECT general_asignatura.nombre\n"
-                        + "FROM general_asignatura\n"
-                        + "WHERE general_asignatura.codigo =?");
-                stmt.setInt(1, i);
-                rs = stmt.executeQuery();
-                while (rs.next()) {
-                    asign.add(rs.getString(1));
-                }
-                stmt.close();
-                rs.close();
-            }
-        } catch (Exception ex) {
-            System.err.println(ex);
-        } finally {
-            if (con != null) {
-                con.close();
-            }
-        }
-        return asign;
-    }
 
     @Override
     public ArrayList<EstudianteDTO> obtenerEstudiantes(int cod_asign) throws SQLException {
@@ -76,9 +40,9 @@ public class UtilDAO implements IUtilDAO {
                     + "FROM academico_estudiantexgrupo, general_estudiante\n"
                     + "WHERE academico_estudiantexgrupo.id_grupo =?\n"
                     + "AND academico_estudiantexgrupo.codigo_estudiante = general_estudiante.codigo");
-            stmt.setInt(1, cod_asign);
+            stmt.setString(1, "" + cod_asign);
             ResultSet rs = stmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 dto = new EstudianteDTO();
                 dto.setCodigo(rs.getInt(1));
                 dto.setNombre(rs.getString(2));
@@ -95,6 +59,40 @@ public class UtilDAO implements IUtilDAO {
             }
         }
         return estudiantes;
+    }
+
+    @Override
+    public ArrayList<GrupoDTO> asignaturasDoc(String codig_doc) throws SQLException {
+        Pool pool = Conexion.getPool();
+        Connection conn = null;
+        ArrayList<GrupoDTO> data = new ArrayList();
+        try {
+            pool.setUsuario("ufps_76");
+            pool.setContrasena("ufps_29");
+            pool.inicializarDataSource();
+            conn = pool.getDataSource().getConnection();
+            PreparedStatement stmt = conn.prepareStatement("SELECT general_asignatura.nombre, general_asignatura.codigo, "
+                    + "carga_grupo.id_grupo FROM general_asignatura, carga_grupo, carga_carga_academica "
+                    + "WHERE carga_carga_academica.codig_doc = ? AND carga_grupo.id_carga = carga_carga_academica.id");
+            stmt.setString(1, codig_doc);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                GrupoDTO dto = new GrupoDTO();
+                dto.setNombre(rs.getString(1));
+                dto.setCod_asign(rs.getString(2));
+                dto.setCod_grupo(rs.getInt(3));
+                data.add(dto);
+            }
+            stmt.close();
+            rs.close();
+        } catch (Exception ex) {
+            System.err.println(ex);
+        } finally {
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return data;
     }
 
 }
