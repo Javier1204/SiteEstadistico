@@ -15,14 +15,14 @@
   if(request.getSession().getAttribute("respuesta_actividad") != null) {
 
 %>
-<div class="ufps-alert-green" center>
+<!--<div class="ufps-alert-green" center>
     <span class="ufps-close-alert-btn">x</span> Se registro Correctamente la actividad!.
 </div>
 
 
     <script type="text/javascript">
     alert("Registro exitoso!");
-    </script>
+    </script>-->
 <%}
    request.getSession().setAttribute("respuesta_actividad", true);
 %>
@@ -88,7 +88,7 @@
                     <li><a href="registrarActividad.jsp"  class="ufps-navbar-btn  " >Actividades </a></li>
                     <li><a href="registrarEntidad.jsp"  class="ufps-navbar-btn  " >Registrar Entidad </a></li>
                     <li><a href="registrarConvenio.jsp"  class="ufps-navbar-btn  " >Registrar Convenio </a></li>
-
+                    <li><a href="consultarConvenios.jsp"  class="ufps-navbar-btn  " >Consultar Convenios</a></li>
 
                     </li>
                 </div>

@@ -62,9 +62,9 @@
                     <li><a href="Vista/registrarActividad.jsp"  class="ufps-navbar-btn  " >Actividades </a></li>
                     <li><a href="Vista/registrarEntidad.jsp"  class="ufps-navbar-btn  " >Registro Entidad </a></li>
                     <li><a href="Vista/registrarConvenio.jsp"  class="ufps-navbar-btn  " >Registro Convenio</a></li>
+                    <li><a href="Vista/consultarConvenios.jsp"  class="ufps-navbar-btn  " >Consultar Convenios</a></li>
 
-
-                    </li>
+                    
                 </div>
                 <div class="ufps-navbar-right nav">
                     <li> <a href="" class="ufps-navbar-btn "><span class="glyphicon glyphicon-user"></span> Iniciar Sesión </a></li>

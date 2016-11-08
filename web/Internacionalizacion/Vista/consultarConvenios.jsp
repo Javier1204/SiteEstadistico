@@ -13,11 +13,67 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="../../public/css/ufps-estilo.css" rel="stylesheet" type="text/css"/>
-        <link href="../../public/css/ufps.css" rel="stylesheet" type="text/css"/>
+        <link href="../../public/css/ufps.css" rel="stylesheet" type="text/css"/>        
+        <link href="css/ufps.css" rel="stylesheet" type="text/css"/>
+        <link href="css/styles.css" rel="stylesheet" type="text/css"/>
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css"/>
         <script src="../../public/js/ufps.js" type="text/javascript"></script>
         <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        
+        <!--LibrerÃ­as para compatibilidad con versiones antiguas de Internet Explorer-->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <!--Algunos componentes requieren el uso de la librerÃ­a en javascript-->
+        <script src="js/moment.js" type="text/javascript"></script>
+        <script src="js/jquery-3.1.1.js" type="text/javascript"></script>
+        <script src="js/jquery-3.1.0.min.js"></script>
+        <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="../../public/js/ufps.js" type="text/javascript"></script>
+        <script src="../../public/js/ufps.min.js" type="text/javascript"></script>
+        
     </head>
     <body>
+        
+        <header>
+
+            <center> <img id="banner" src="../../public/img/Banner-superior.png" alt="imagen" height="100px" width="100%" ></img></center>
+        </header> 
+
+        <div class="ufps-navbar ufps-container " id="menu"  center>
+            <div class="ufps-container-fluid">
+                <div class="ufps-navbar-brand">
+                    <div class="ufps-btn-menu" onclick="toggleMenu('menu')">
+                        <div class="ufps-btn-menu-bar"> </div>
+                        <div class="ufps-btn-menu-bar"> </div>
+                        <div class="ufps-btn-menu-bar"> </div>
+                        <div class="ufps-btn-menu-bar"> </div>
+
+                    </div>
+
+                </div>
+                <div class="ufps-navbar-left nav">
+
+                    <li><a href="../index.jsp" class="  ufps-navbar-btn  " >Home </a></li>
+                    <li><a href="convenios.jsp"  class="ufps-navbar-btn  " >Convenios </a></li>
+                    <li><a href="registrarActividad.jsp"  class="ufps-navbar-btn  " >Actividades </a></li>
+                    <li><a href="registrarEntidad.jsp"  class="ufps-navbar-btn  " >Registrar Entidad </a></li>
+                    <li><a href="registrarConvenio.jsp"  class="ufps-navbar-btn  " >Registrar Convenio </a></li>
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <!--Contenido-->
+        <div  class="ufps-container" id="contenido">
+        <h1 class="text-center">LISTADO DE CONVENIOS</h1>
         <%
             Facade f = new Facade();
         %>
@@ -51,14 +107,12 @@
                                         <td><%=c.getNombre()%></td>
                                         <td><%=c.getDescripcion()%></td>
                                         <td><%=c.getEstado()%></td>
+                                        <td><%=c.getTipoconvenio()%></td>
                                         <td><%=c.getFechacreacion()%></td>
                                         <td><%=c.getFechaterminacion()%></td>
-                                        <td><%=c.getTipoconvenio()%></td>
-                                        <td><%=c.getVigencia()%></td>
-                                        
                                         <td><%=c.getEntidad()%></td>
-                                       
-                                        
+                                        <td><%=c.getVigencia()%></td>
+                                                                             
                                         
                                     </tr>
                                     <% }
@@ -66,6 +120,26 @@
 
 
                                 </tbody>
-                            </table>
+        </table>
+                        
+
+            <!-- Formulario de registro de actividades del convenio-->
+
+
+        </div>
+
+
+    </body>
+
+    <!--Footer-->
+
+    <div class="ufps-container ufps-footer ">
+        <h5 class="text-center">Universidad Francisco de Paula Santander</h5>
+        <h6 class="text-center">Programa Ingeniería de Sistemas<br>
+            Desarrollador por: Francisco Javier Duarte García - Heiner Enrique Villamizar Molina</h6>
+
+
+    </div>
+       
     </body>
 </html>
