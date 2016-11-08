@@ -48,10 +48,10 @@ function ingresar(){
                 }
                 else {
                     if (rta.indexOf("1") >= 0) {
-                        login.action = "../Integrador/listar_modulos.jsp";
+                        login.action = "listar_modulos.jsp";
                         login.submit();
                     } else if (rta.indexOf("2") >= 0) {
-                        login.action = "../Integrador/listar_modulos.jsp";
+                        login.action = "listar_modulos.jsp";
                         login.submit();
                     } 
                 }

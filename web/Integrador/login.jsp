@@ -5,8 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<jsp:include page="../plantilla/header.jsp"></jsp:include>
+<jsp:include page="plantillas/headerpublico.jsp"></jsp:include>
 <script src="js/ajax.js"></script>
 <div class="box">
         <div class="contenido">
@@ -20,10 +19,19 @@
                         No seleccion
                     </option>
                     <option>
-                        super administrador
+                        administrador
                     </option>                  
                     <option>
-                        Cliente
+                        docente
+                    </option>
+                      <option>
+                        coordinador
+                    </option>
+                      <option>
+                        estudiante
+                    </option>
+                      <option>
+                        director de semilleros
                     </option>
                 </select>
                 <input type="submit" class="ufps-btn ufps-btn-light" name="ingresar" id="ingresar" value="Ingresar" />
@@ -31,4 +39,4 @@
             </form>
         </div>
 </div>
-<jsp:include page="../plantilla/footer.jsp"></jsp:include>
+<jsp:include page="plantillas/footer.jsp"></jsp:include>

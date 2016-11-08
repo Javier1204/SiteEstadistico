@@ -1,7 +1,7 @@
 <%-- 
-    Document   : header
-    Created on : 6/10/2016, 03:48:21 PM
-    Author     : javie
+    Document   : headerpublico
+    Created on : 07-nov-2016, 19:08:53
+    Author     : carlos
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -42,13 +42,8 @@
                 </div>
                 <div class="ufps-navbar-left">
 
-                    <a href="" class="ufps-navbar-btn">Home</a>
-                    <div class="ufps-dropdown" id="dropdown4">
-                        <button onclick="openDropdown('dropdown4')" class="ufps-dropdown-btn">Componentes</button>
-                        <div class="ufps-dropdown-content">
-                         
-                        </div>
-</div>            
+                   
+                          
                 </div>
                 <div class="ufps-navbar-right">
                     <div class="ufps-navbar-corporate">
@@ -58,4 +53,3 @@
 
             </div>
         </div>
-    
