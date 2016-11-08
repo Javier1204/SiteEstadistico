@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -42,18 +42,28 @@ public class EquipoDAO implements IEquipoDAO {
                 }
             }
             stmt.close();
+
             for (String s : names) {
+                pool.setUsuario("ufps_76");
+                pool.setContrasena("ufps_29");
+                pool.inicializarDataSource();
+                con = pool.getDataSource().getConnection();
                 stmt2 = con.prepareStatement("INSERT INTO `academico_equipo`(`nombre_equipo`) VALUES (?)");
                 stmt2.setString(1, s);
                 int total = stmt.executeUpdate();
-                if(total > 0){
+                if (total > 0) {
                     System.out.println("it worked");
                     stmt2.close();
                 }
             }
+
+            pool.setUsuario("ufps_76");
+            pool.setContrasena("ufps_29");
+            pool.inicializarDataSource();
+            con = pool.getDataSource().getConnection();
             stmt3 = con.prepareStatement("SELECT MAX(codigo) FROM academico_equipo");
             rs = stmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 rangos[1] = rs.getInt(1);
             }
             stmt3.close();
