@@ -26,12 +26,13 @@ public class EquipoDAO implements IEquipoDAO {
         Pool pool = Conexion.getPool();
         Connection con = null;
         ResultSet rs = null;
+        PreparedStatement stmt, stmt2, stmt3;
         try {
             pool.setUsuario("ufps_76");
-            pool.setUsuario("ufps_29");
+            pool.setContrasena("ufps_29");
             pool.inicializarDataSource();
             con = pool.getDataSource().getConnection();
-            PreparedStatement stmt = con.prepareStatement("SELECT MAX(codigo) FROM academico_equipo");
+            stmt = con.prepareStatement("SELECT MAX(codigo) FROM academico_equipo");
             rs = stmt.executeQuery();
             while (rs.next()) {
                 if (rs.getInt(1) < 1) {
@@ -42,7 +43,7 @@ public class EquipoDAO implements IEquipoDAO {
             }
             stmt.close();
             for (String s : names) {
-                PreparedStatement stmt2 = con.prepareStatement("INSERT INTO `academico_equipo`(`nombre_equipo`) VALUES (?)");
+                stmt2 = con.prepareStatement("INSERT INTO `academico_equipo`(`nombre_equipo`) VALUES (?)");
                 stmt2.setString(1, s);
                 int total = stmt.executeUpdate();
                 if(total > 0){
@@ -50,7 +51,7 @@ public class EquipoDAO implements IEquipoDAO {
                     stmt2.close();
                 }
             }
-            PreparedStatement stmt3 = con.prepareStatement("SELECT MAX(codigo) FROM academico_equipo");
+            stmt3 = con.prepareStatement("SELECT MAX(codigo) FROM academico_equipo");
             rs = stmt.executeQuery();
             while(rs.next()){
                 rangos[1] = rs.getInt(1);

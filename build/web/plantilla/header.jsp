@@ -46,9 +46,7 @@
                     <div class="ufps-dropdown" id="dropdown4">
                         <button onclick="openDropdown('dropdown4')" class="ufps-dropdown-btn">Componentes</button>
                         <div class="ufps-dropdown-content">
-                            <a href="#">Proceso de docencia</a>
-                            <a href="#">Carga academica</a>
-                            <a href="#">Amigos academicos</a>
+                         
                         </div>
 </div>            
                 </div>

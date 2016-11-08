@@ -29,7 +29,7 @@ public class ProyectoDAO implements IProyectoDAO{
         try{
             proyectos = new ArrayList();
             pool.setUsuario("ufps_76");
-            pool.setUsuario("ufps_29");
+            pool.setContrasena("ufps_29");
             pool.inicializarDataSource();
             con = pool.getDataSource().getConnection();
             PreparedStatement stmt = con.prepareStatement("SELECT academico_proyecto.id, academico_proyecto.nombre, academico_proyecto.keywords, "

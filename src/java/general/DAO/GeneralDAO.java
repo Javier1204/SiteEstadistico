@@ -33,7 +33,7 @@ public class GeneralDAO {
         try {
             asignaturas = new ArrayList();
             pool.setUsuario("ufps_76");
-            pool.setUsuario("ufps_29");
+            pool.setContrasena("ufps_29");
             pool.inicializarDataSource();
             con = pool.getDataSource().getConnection();
             stmt = con.prepareStatement("SELECT carga_grupo.cod_asignatura\n"
