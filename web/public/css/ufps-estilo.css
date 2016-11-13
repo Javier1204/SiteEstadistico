@@ -34,18 +34,27 @@ and open the template in the editor.
     height: 50px;
 }
 
-.contenido{
+.contenidologin{
     background-color: rgba(236,240,241,0.7);
     border-radius: 4px;
     -webki-border-radius:4px;
     -moz-border-radius: 4px;
-    border-left: 2px solid #cc0000;
+    border-left: 3px solid #9d0609;
     box-shadow: 0px 2px 10px #d6d6d6;
-    margin-left: 350px;
-    margin-right: 350px;
+   margin: 0 auto;
+   height: 440px;
+   width: 600px;
 }
 
-.box{
-    height: 400px;
-    padding: 10px;
+
+.contenidopublicacion{
+    background-color: rgba(236,240,241,0.7);
+    border-radius: 4px;
+    -webki-border-radius:4px;
+    -moz-border-radius: 4px;
+   border-left: 3px solid #9d0609;
+    box-shadow: 0px 2px 10px #d6d6d6;
+   margin: 0 auto;
+   height: 440px;
+   width: 1200px;
 }
