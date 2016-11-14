@@ -25,13 +25,14 @@ public class GeneralModuloDAO {
     public ModuloDTO getModulo(String modulo){
         try{
             //obtenerConexion();
-            PreparedStatement ps=conn.prepareStatement("SELECT modulo, descripcion FROM general_modulo WHERE modulo=?");
+            PreparedStatement ps=conn.prepareStatement("SELECT modulo, descripcion,url FROM general_modulo WHERE modulo=?");
             ps.setString(1, modulo);
             ResultSet rs=ps.executeQuery();
             if(rs.absolute(1)){
                 ModuloDTO modDTO=new ModuloDTO();
                 modDTO.setNombre(rs.getString(1));
                 modDTO.setDescripcion(rs.getString(2));
+                modDTO.setUrl(rs.getString(3));
                 return modDTO;
             }
             return null;
@@ -46,13 +47,14 @@ public class GeneralModuloDAO {
     {
         try{
             //obtenerConexion();
-            PreparedStatement ps=conn.prepareStatement("SELECT modulo, descripcion FROM general_modulo");
+            PreparedStatement ps=conn.prepareStatement("SELECT modulo, descripcion,url FROM general_modulo");
             ResultSet rs=ps.executeQuery();
             ArrayList<ModuloDTO> lista=new ArrayList<>();
             while(rs.next()){
                 ModuloDTO modDTO=new ModuloDTO();
                 modDTO.setNombre(rs.getString(1));
                 modDTO.setDescripcion(rs.getString(2));
+                modDTO.setUrl(rs.getString(3));
                 lista.add(modDTO);
             }
             return lista;

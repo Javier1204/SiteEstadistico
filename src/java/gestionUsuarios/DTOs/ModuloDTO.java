@@ -15,6 +15,7 @@ import java.util.List;
 public class ModuloDTO {
     private String nombre;
     private String descripcion;
+    private String url;
 
     public String getDescripcion() {
         return descripcion;
@@ -33,6 +34,14 @@ public class ModuloDTO {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
     
     

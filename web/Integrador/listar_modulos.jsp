@@ -77,7 +77,7 @@
                 <% for(ModuloDTO mod : modulos){ %>
                 <ul>
                     <li>
-                        <a href=""><%= mod.getNombre()%></a>
+                        <a href="<%= mod.getUrl() %>"><%= mod.getNombre()%></a>
                     </li>
                 </ul>
                 <% } %>
