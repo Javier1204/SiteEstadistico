@@ -55,6 +55,68 @@ and open the template in the editor.
    border-left: 3px solid #9d0609;
     box-shadow: 0px 2px 10px #d6d6d6;
    margin: 0 auto;
-   height: 440px;
+   
    width: 1200px;
+
 }
+
+.contenidopublicacionhome{
+      background-color: rgba(236,240,241,0.7);
+    border-radius: 4px;
+    -webki-border-radius:4px;
+    -moz-border-radius: 4px;
+   border-left: 3px solid #9d0609;
+    box-shadow: 0px 2px 10px #d6d6d6;
+   margin: 0 auto;
+   padding: 15px;
+   width: 1200px;
+   margin-bottom:  130px;
+}
+
+
+#contenidohome{
+    margin: 0 auto;
+    padding:20px;
+    background-color: #D7DADA;
+     box-shadow: 0px 2px 10px #d6d6d6;
+     width: 70%;
+     margin-bottom: 30px;
+     
+    
+    
+}
+
+#contenidopublicacioncreada{
+    margin: 0 auto;
+    padding:20px;
+    background-color: rgba(236,240,241,0.7);
+     box-shadow: 0px 2px 10px #d6d6d6;
+     width: 100%;
+     text-align: justify;
+     border-bottom: 1px #9d0609 solid;
+    
+    
+}
+
+#tablapublicacion{
+    margin: 0 auto;
+     width: 80%;
+     margin-top: 15px;
+    
+}
+
+#tablapublicacion tr{
+      height: 50px;
+     text-align: left;
+      padding: 15px;
+       border-bottom: 1px solid black;
+}
+
+#tablapublicacion th{
+     height: 50px;
+     text-align: center;
+      padding: 15px;
+       border-bottom: 1px solid black;
+}
+
+

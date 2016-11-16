@@ -14,7 +14,7 @@
 <%
   ICuenta exito=  (ICuenta) session.getAttribute("usuario");
   
-  if( !exito.containRol("administrador")){
+  if( exito !=null && !exito.containRol("administrador")){
   response.sendRedirect("login.jsp");
   }
 
@@ -29,7 +29,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Departamento de sistemas e Informática UFPS</title>
-        <link href="../public/css/ufps.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../public/css/ufps.css" rel="stylesheet" type="text/css"/>
         <link href="../public/css/ufps-estilo.css" rel="stylesheet">
         <script src="../public/js/ufps.js"></script>
           <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -50,7 +50,7 @@
                 </div>
                 <div class="ufps-navbar-left">
                     <a href="listar_publicaciones.jsp" class="ufps-navbar-btn">Home</a>
-
+                   <a href="listar_modulos.jsp" class="ufps-navbar-btn">Administración</a>
 
                 </div>
                 <div class="ufps-navbar-right">
@@ -63,8 +63,36 @@
 
             </div>
         </div>
-        <div class="contenidopublicacion">
-            <center>Bienvenido al modulo de administracion de publicaciones</center>
+        <div class="contenidopublicacionhome">
+            <center><h2><b>Bienvenido al modulo de administracion de publicaciones</b></h2></center>
+            <div id="contenidohome">
+                <button  class="ufps-btn ufps-btn-light" >Crear publicación</button>
+              
+                
+                <table id="tablapublicacion">
+                    <tr>
+                       <th>Fecha</th>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
+                    </tr>
+                      <tr>
+                        <td>11/11/2016</td>
+                        <td>Proceso docencia noviembre</td>
+                        <td><img src="../public/img/integrador/visualizar.png"  height="30px" width="30px" title="modificar publicacion" style="margin-right: 20px;"> <img src="../public/img/integrador/eliminar.png"  height="30px" width="30px" title="eliminar publicacion" style="margin-right: 20px;"></td>
+                    </tr>
+                      <tr>
+                        <td>11/11/2016</td>
+                        <td>Proyectos semilleros</td>
+                        <td><img src="../public/img/integrador/visualizar.png"  height="30px" width="30px" title="modificar publicacion" style="margin-right: 20px;"> <img src="../public/img/integrador/eliminar.png"  height="30px" width="30px" title="eliminar publicacion" style="margin-right: 20px;"></td>
+                    </tr>
+                     <tr>
+                        <td>11/11/2016</td>
+                        <td>Articulos grupo GIDIS</td>
+                        <td><img src="../public/img/integrador/visualizar.png"  height="30px" width="30px" title="modificar publicacion" style="margin-right: 20px;"> <img src="../public/img/integrador/eliminar.png"  height="30px" width="30px" title="eliminar publicacion" style="margin-right: 20px;"></td>
+                    </tr>
+                </table>
+            </div>
+
         </div>
 
          <jsp:include page="../plantilla/footer.jsp"></jsp:include>
