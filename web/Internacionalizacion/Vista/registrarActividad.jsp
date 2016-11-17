@@ -201,12 +201,14 @@
                         <div class="form-group">
                             <label for="agregarestudiante" title="Agrega los estudiantes que realizan la actividad.">Agregar un estudiante a la actividad: <span class="glyphicon glyphicon-question-sign"></span></label>
                             <!--<input type="button" class="ufps-btn" id="agregarestudiante" value="Agregar Estudiante">-->
-                            <input type="button" class="ufps-btn" value="Agregar Estudiante" onClick="addInput('insertar');"><br><br>
-                            <div id="insertar" class="form-group col-md-12">
+                            <input type="button" class="ufps-btn" value="Agregar Estudiante" onClick="addInput('insertar');">
+                            <input type="button" class="ufps-btn" value="Quitar Estudiante" onClick="borrarInput('insertar');"><br><br>
+                            <div class="row">
+                            <div id="insertar" class="form-group col-md-4">
 
                             </div>
                         </div>
-
+                        </div>
                         <div class="form-group">
 
                             <label for="descripcion" title="Descripción de la actividad.">Descripción de la actividad: <span class="glyphicon glyphicon-question-sign"></span></label>

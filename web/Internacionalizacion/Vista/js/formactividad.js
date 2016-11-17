@@ -5,14 +5,18 @@
  */
 
 var indice = 0;
+var newdiv;
 
 function addInput(divName)
 {    
         var n;
-        var newdiv = document.createElement('div');
+        newdiv = document.createElement('div');
+        div2 = document.createElement('div');
         //newdiv.innerHTML = "<label>Ingrese codigo estudiante: </label>";
-        newdiv.innerHTML = "<label>Ingrese codigo estudiante: </label><input type='text' class='ufps-input' name='boton"+indice+"'>";
+        newdiv.innerHTML = "<label>Ingrese codigo estudiante: </label><input type='text' class='ufps-input' name='boton"+indice+"'>"
+        + "<input type='button' class='ufps-btn' value='Quitar Estudiante' onClick=borrarInput('insertar');>";
         document.getElementById(divName).appendChild(newdiv);
+        
         indice++;
     
 }
@@ -21,11 +25,12 @@ function addInput(divName)
 function borrarInput(divName)
 {    
         var n;
-        var newdiv = document.createElement('div');
+        //var newdiv = document.removeChild();
         //newdiv.innerHTML = "<label>Ingrese codigo estudiante: </label>";
-        newdiv.innerHTML = "<label>Ingrese codigo estudiante: </label><input type='text' class='ufps-input' name='boton"+indice+"'>";
-        document.getElementById(divName).appendChild(newdiv);
-        indice++;
+        //newdiv.innerHTML = "<label>Ingrese codigo estudiante: </label><input type='text' class='ufps-input' name='boton"+indice+"'>";
+        String boton = document.getElementsByName("boton"+indice);
+        document.getElementById(divName).removeChild(document.getElementsByName("boton"+indice));
+        indice--;
     
 }
 
