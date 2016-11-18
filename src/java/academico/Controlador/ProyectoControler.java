@@ -5,10 +5,19 @@
  */
 package academico.Controlador;
 
+import academico.DAO.ProyectoDAO;
+import academico.DTO.ProyectoDTO;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 /**
  *
  * @author Mauricio
  */
 public class ProyectoControler {
     
+    public ArrayList<ProyectoDTO> obtenerProyectos(int id_grp) throws SQLException{
+        ProyectoDAO dao = new ProyectoDAO();
+        return dao.obtenerProyectos(id_grp);
+    }
 }
