@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="es" ng-app="myApp">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Departamento de sistemas e Informática UFPS</title>
+        <link href="css/ufps.min.css" rel="stylesheet" type="text/css"/>
+        <script src="js/angular.min.js"></script>
+        <script src="js/controllerEventos.js"></script>
+       
+    </head>
+    <body ng-controller="index" ng-cloak>
+        <header>
+            <center> <img id="banner" src="img/Banner-superior.png" alt="imagen" height="100px" width="100%" ></center>
+        </header>
+        <div class="ufps-navbar ufps-navbar-fixed ufps-navbar-light" id="menuPrincipal">
+        <div class="ufps-container">
+            <div class="ufps-navbar-brand">
+                <div class="ufps-btn-menu" onclick="toggleMenu('menuPrincipal')">
+                    <div class="ufps-btn-menu-bar"></div>
+                    <div class="ufps-btn-menu-bar"></div>
+                    <div class="ufps-btn-menu-bar"></div>
+                </div>
+                Semilleros Ing-Sistemas
+            </div>
+            <div class="ufps-navbar-left">
+                  
+                <a href="index.html" class="ufps-navbar-btn ufps-active">Inicio</a>
+                <a href="semilleros.html" class="ufps-navbar-btn">Semilleros</a>
+                <a href="proyectos.html" class="ufps-navbar-btn ">Proyectos</a>
+                <a href="inscripcion.html" class="ufps-navbar-btn ">Inscribirme a semillero</a>
+            </div>
+           
+
+        </div>
+        
+   <br>  
+          <table class="ufps-table ufps-text-left ufps-table-inserted">
+  <thead>
+    <tr>
+      <th>Nombre Semillero</th>
+      <th>Descripcion</th>
+      <th>Fecha De Inicio</th>
+      <th>Fecha De Finalizacion</th>
+       <th>Organizador</th>
+       <th>Costo</th>
+      <th>Tipo De Evento</th>
+      
+      
+    </tr> 
+  </thead>
+  <tbody>
+    <tr ng-repeat="evento in Eventos  | filter:busqueda">
+        <td>{{evento.nombre}}</td>
+        <td>{{evento.descripcion}}</td>
+        <td>{{evento.fechaIni}}</td>
+        <td>{{evento.fechaFin}}</td>
+        <td>{{evento.organizador}}</td>
+        <td>{{evento.costo}}</td>
+        <td>{{evento.tipoEvento.idTipo}}</td>
+       
+     
+
+    </tr>
+  </tbody>
+</table>    
+        
+        
+  
+       
+<div class="ufps-footer">
+    <h3>Universidad Francisco de Paula Santander</h3>
+    <p>Programa Ingeniería de Sistemas</p>
+     <p>Desarrollado por: Bayardo Pineda,Oscar Gelvez</p>
+</div>             
+      
+       
+        <script src="js/ufps.js"></script>
+  </body>
+</html>
+       
