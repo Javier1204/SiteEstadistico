@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="es" ng-app="myApp">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Departamento de sistemas e Informática UFPS</title>
+        <link href="../css/ufps.min.css" rel="stylesheet" type="text/css"/>
+         <script src="../js/angular.min.js"></script>
+        <script src="../js/controllerEventos.js"></script>
+       
+    </head>
+    <body style="overflow:auto">
+        <header>
+            <center> <img id="banner" src="../img/Banner-superior.png" alt="imagen" height="100px" width="100%" ></center>
+        </header>
+        <div class="ufps-navbar ufps-navbar-fixed ufps-navbar-light" id="menuPrincipal">
+            <div class="ufps-container">
+            <div class="ufps-navbar-brand">
+                <div class="ufps-btn-menu" onclick="toggleMenu('menuPrincipal')">
+                    <div class="ufps-btn-menu-bar"></div>
+                    <div class="ufps-btn-menu-bar"></div>
+                    <div class="ufps-btn-menu-bar"></div>
+                </div>
+                Semilleros Ing-Sistemas
+            </div>
+            <div class="ufps-navbar-left">
+            <a href="index.html" class="ufps-navbar-btn ">Inicio</a> 
+            <div class="ufps-dropdown" id="dropdown4">
+                <button onclick="openDropdown('dropdown4')" class="ufps-dropdown-btn ">Proyectos</button>
+                <div class="ufps-dropdown-content">
+                    <a href="proyectos.html" class="ufps-navbar-btn ">Registrar Proyecto</a>
+                    <a href="consultaProyectos.html" class="ufps-navbar-btn ">Consultar Proyecto</a>
+                    <a href="trabajosG.html" class="ufps-navbar-btn ">Registro Trabajo Grado</a> 
+                </div>
+            </div>  
+             <a href="#" class="ufps-navbar-btn ">.</a>
+            <a href="registrarLinea.html" class="ufps-navbar-btn ">Lineas De Investigacion</a>
+            <a href="miembros.html" class="ufps-navbar-btn ">Miembros</a>
+           <div class="ufps-dropdown" id="dropdown5">
+                <button onclick="openDropdown('dropdown5')" class="ufps-dropdown-btn ufps-activeBtn">Eventos</button>
+                <div class="ufps-dropdown-content">
+                    <a href="eventos.html" class="ufps-navbar-btn ">Registrar Evento</a>
+                    <a href="tipoEventos.html" class="ufps-navbar-btn ufps-active">Registrar Tipo Evento</a>
+                  
+                </div>
+            </div>
+            <a href="reportes.html" class="ufps-navbar-btn ">reportes</a>
+            </div>
+           
+
+        </div>
+            <div  class="ufps-container" id="contenido" ng-controller="cntrlTipoEventos" ng-cloak>
+         <center>  <h4>REGISTRAR TIPO DE EVENTO</h4> </center>
+         <form ng-submit="registrarTipoEvento()">
+               <div class="ufps-col-mobile-12 ufps-col-netbook-6">
+                 <div class="form-group ">
+                    <label for="firstname">Nombre</label>
+                    <input type="text" class="ufps-input" ng-model="nombre" placeholder="Nombre" required>
+                </div>
+                       
+                </div>
+         <div class="ufps-col-mobile-12 ufps-col-netbook-6">
+             <div class="form-group ">
+                    <label for="firstname">Descripcion</label>
+                    <input type="text" class="ufps-input" ng-model="descripcion" placeholder="Descripcion" required>
+                </div>
+           
+            
+        </div>
+         <center>
+              <input type="submit" class="ufps-btn acomodarBt" value="Registrar">
+         </center>
+     </form>
+         <hr>
+        <div class="ufps-col-mobile-12 ufps-col-netbook-12">
+            <center>  <h4>TIPO DE EVENTOS DISPONIBLES</h4> </center>
+ <table class="ufps-table ufps-text-left ufps-table-inserted">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>Accion</th>
+ 
+      
+    </tr> 
+  </thead>
+  <tbody>
+    <tr ng-repeat="tipoE in tipoEvento  | filter:busqueda">
+        <td>{{tipoE.idTipo}}</td>
+        <td>{{tipoE.nombre}}</td>
+        <td>{{tipoE.descripcion}}</td>
+        <td>
+            <input type="button" class="ufps-btn ufps-btn-green" value="Editar" data-toggle="modal" data-target="#myModal">
+            <input type="button" class="ufps-btn" value="Eliminar" data-toggle="modal" data-target="#myModal">
+
+        </td>
+     
+
+    </tr>
+  </tbody>
+</table>       
+            
+        </div>
+ <hr>                    
+   
+                
+                
+                
+  </div>        
+    
+        
+        
+  
+       
+<div class="ufps-footer">
+    <h3>Universidad Francisco de Paula Santander</h3>
+    <p>Programa Ingeniería de Sistemas</p>
+     <p>Desarrollado por: Bayardo Pineda,Oscar Gelvez</p>
+</div>             
+      
+       
+        <script src="../js/ufps.js"></script>
+         <script src="../js/jquery-1.12.3.js"></script>
+  </body>
+</html>
+       

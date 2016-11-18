@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="myApp">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Departamento de sistemas e Informática UFPS</title>
+        <link href="../css/ufps.min.css" rel="stylesheet" type="text/css"/>
+        <script src="../js/angular.min.js"></script>
+        <script src="../js/principal.js"></script>
+       
+       
+    </head>
+    <body>
+        <header>
+            <center> <img id="banner" src="../img/Banner-superior.png" alt="imagen" height="100px" width="100%" ></center>
+        </header>
+        <div class="ufps-navbar ufps-navbar ufps-navbar-light" id="menuPrincipal">
+        <div class="ufps-container">
+            <div class="ufps-navbar-brand ">
+                <div class="ufps-btn-menu" onclick="toggleMenu('menuPrincipal')">
+                    <div class="ufps-btn-menu-bar"></div>
+                    <div class="ufps-btn-menu-bar"></div>
+                    <div class="ufps-btn-menu-bar"></div>
+                </div>
+                Semilleros Ing-Sistemas
+            </div>
+            <div class="ufps-navbar-left">
+                  
+                <a href="index.html" class="ufps-navbar-btn ufps-active">Inicio</a>
+                <a href="registrarSemillero.html" class="ufps-navbar-btn">Registrar Semillero</a>
+                <a href="directores.html" class="ufps-navbar-btn ">Directores Semilleros</a>
+                <a href="generarInformes.html" class="ufps-navbar-btn ">Generar Informes</a>
+            </div>
+           
+
+        </div>
+        </div>  
+    <br>  
+    <div ng-controller="index" ng-cloak>
+          <table class="ufps-table ufps-text-left ufps-table-inserted">
+  <thead>
+    <tr>
+      <th>Sigla Semillero</th>
+      <th>Nombre Semillero</th>
+      <th>Director</th>
+      <th>Grupo de investigacion</th>
+      <th>Accion</th>
+      
+    </tr> 
+  </thead>
+  <tbody>
+    <tr ng-repeat="data in data  | filter:busqueda">
+        <td>{{data.sigla}}</td>
+        <td>{{data.nombre}}</td>
+        <td>{{data.director}}</td>
+        <td>{{data.grupoInvestigacionAsoc}}</td>
+        <td>
+            <input type="button" class="ufps-btn ufps-btn-green" onclick="openModal('modal')" value="Editar" data-toggle="modal" data-target="#myModal">
+            <input type="button" class="ufps-btn"  value="Eliminar">
+
+        </td>
+     
+
+    </tr>
+  </tbody>
+</table>       
+    </div>      
+  
+       
+<div class="ufps-footer">
+    <h3>Universidad Francisco de Paula Santander</h3>
+    <p>Programa Ingeniería de Sistemas</p>
+    <p>Desarrollado por: Bayardo Pineda,Oscar Gelvez</p>
+</div>             
+      
+       
+        <script src="../js/ufps.js"></script>
+  </body>
+</html>
+       

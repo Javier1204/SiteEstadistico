@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="myApp">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Departamento de sistemas e Informática UFPS</title>
+        <link href="../css/ufps.min.css" rel="stylesheet" type="text/css"/>
+       
+       
+    </head>
+    <body ng-controller="cntrl" ng-cloak>
+        <header>
+            <center> <img id="banner" src="../img/Banner-superior.png" alt="imagen" height="100px" width="100%" ></center>
+        </header>
+        <div class="ufps-navbar ufps-navbar-fixed ufps-navbar-light" id="menuPrincipal">
+        <div class="ufps-container">
+            <div class="ufps-navbar-brand ">
+                <div class="ufps-btn-menu" onclick="toggleMenu('menuPrincipal')">
+                    <div class="ufps-btn-menu-bar"></div>
+                    <div class="ufps-btn-menu-bar"></div>
+                    <div class="ufps-btn-menu-bar"></div>
+                </div>
+                Semilleros Ing-Sistemas
+            </div>
+            <div class="ufps-navbar-left">
+                  
+                <a href="index.html" class="ufps-navbar-btn ">Inicio</a>
+                <a href="registrarSemillero.html" class="ufps-navbar-btn ufps-active">Registrar Semillero</a>
+                <a href="directores.html" class="ufps-navbar-btn ">Directores Semilleros</a>
+                <a href="generarInformes.html" class="ufps-navbar-btn ">Generar Informes</a>
+            </div>
+           
+
+        </div>
+        
+    <br>  
+         <form ng-submit="registrarSemillero()" method="post">
+        <div class="ufps-row" >
+            
+     <div class="ufps-col-mobile-12 ufps-col-netbook-6" > 
+         <label>Nombre Semillero</label><input type="text" ng-model="nombreS" placeholder="Nombre Del Semillero" class="ufps-input" required>
+          <label>Director Semillero</label><input type="text" ng-model="directorS" placeholder="Director del semillero" class="ufps-input" required>
+     </div >
+     
+     <div class="ufps-col-mobile-12 ufps-col-netbook-6" > 
+         <label>Sigla Semillero</label><input type="text" ng-model="siglaS" placeholder="Sigla Del Semillero" class="ufps-input" required>
+         <label>Grupo De Investigacion</label>
+          <select class="ufps-input" required ng-model="grupoS">
+              <option value="">---Please select---</option>
+              <option ng-repeat="option in grupo" value="{{option.nombregrupo}}"  >{{option.nombregrupo}}</option>
+    </select>
+     </div >
+     
+     
+    
+ </div >
+ <center>
+       <input type="submit" class="ufps-btn" name="accion" value="Registrar" > 
+ </center>
+    </form> 
+  
+       
+<div class="ufps-footer">
+    <h3>Universidad Francisco de Paula Santander</h3>
+    <p>Programa Ingeniería de Sistemas</p>
+     <p>Desarrollado por: Bayardo Pineda,Oscar Gelvez</p>
+</div>             
+      
+       
+        <script src="../js/ufps.js"></script>
+        <script src="../js/angular.min.js"></script>
+        <script src="../js/principal.js"></script>
+         <script src="../js/jquery-1.12.3.js"></script>
+  </body>
+</html>

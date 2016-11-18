@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Departamento de sistemas e Informática UFPS</title>
+        <link href="../css/ufps.min.css" rel="stylesheet" type="text/css"/>
+       
+       
+    </head>
+    <body>
+        <header>
+            <center> <img id="banner" src="../img/Banner-superior.png" alt="imagen" height="100px" width="100%" ></center>
+        </header>
+        <div class="ufps-navbar ufps-navbar-fixed ufps-navbar-light" id="menuPrincipal">
+        <div class="ufps-container">
+            <div class="ufps-navbar-brand ">
+                <div class="ufps-btn-menu" onclick="toggleMenu('menuPrincipal')">
+                    <div class="ufps-btn-menu-bar"></div>
+                    <div class="ufps-btn-menu-bar"></div>
+                    <div class="ufps-btn-menu-bar"></div>
+                </div>
+                Semilleros Ing-Sistemas
+            </div>
+            <div class="ufps-navbar-left">
+                  
+                <a href="index.html" class="ufps-navbar-btn ">Inicio</a>
+                <a href="registrarSemillero.html" class="ufps-navbar-btn">Registrar Semillero</a>
+                <a href="directores.html" class="ufps-navbar-btn ufps-active">Directores Semilleros</a>
+                <a href="generarInformes.html" class="ufps-navbar-btn ">Generar Informes</a>
+            </div>
+           
+
+        </div>
+        
+    <br>  
+          <table class="ufps-table ufps-text-left ufps-table-inserted">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellidos</th>
+      <th>Semillero</th>
+      <th>Accion</th>
+      
+      
+    </tr> 
+  </thead>
+  <tbody>
+    <tr ng-repeat="proyecto in data  | filter:busqueda">
+        <td>{{proyecto.nombre}}</td>
+        <td>{{proyecto.descripcion}}</td>
+        <td>{{proyecto.director}}</td>
+        <td>{{proyecto.semillero}}</td>
+        <td></td>
+       
+     
+
+    </tr>
+  </tbody>
+</table>       
+        
+  
+       
+<div class="ufps-footer">
+    <h3>Universidad Francisco de Paula Santander</h3>
+    <p>Programa Ingeniería de Sistemas</p>
+    <p>Desarrollado por: Bayardo Pineda,Oscar Gelvez</p>
+</div>             
+      
+       
+        <script src="../js/ufps.js"></script>
+  </body>
+</html>
+       
