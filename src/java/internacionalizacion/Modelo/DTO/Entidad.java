@@ -15,12 +15,11 @@ public class Entidad {
     String nombre;
     String sector;
     String representante;
-    String ambito;
     String tipo;
     String telefono;
     int pais;
     String nit;
-  String direccion;
+    String direccion;
    
   
     
@@ -28,12 +27,11 @@ public class Entidad {
 
     }
 
-    public Entidad(String nombre, String representante, String sector, String ambito, String tipo, String telefono,String direccion,  int pais, String nit) {
+    public Entidad(String nombre, String representante, String sector, String tipo, String telefono,String direccion,  int pais, String nit) {
         this.nit = nit;
         this.nombre = nombre;
         this.sector = sector;
         this.representante = representante;
-        this.ambito = ambito;
         this.tipo = tipo;
         this.telefono = telefono;
         this.pais = pais;
@@ -78,14 +76,6 @@ public class Entidad {
 
     public void setRepresentante(String representante) {
         this.representante = representante;
-    }
-
-    public String getAmbito() {
-        return ambito;
-    }
-
-    public void setAmbito(String ambito) {
-        this.ambito = ambito;
     }
 
     public String getTipo() {

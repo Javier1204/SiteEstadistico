@@ -6,10 +6,11 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Ingenieria de sistemas</title>
+    
 
         <a href="Vista/img/favicon.ico"></a>
         <!--Metaetiqueta para el uso del conjunto de caracteres adecuado-->

@@ -35,7 +35,7 @@ public class DAOEntidad {
             pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
-            stm = con.prepareStatement("insert into oficina_entidad(id,nombre,representante,sector,ambito,tipo, telefono,id_pais,nit,direccion) values(null,'"+e.getNombre()+"','"+e.getRepresentante()+"','"+e.getSector()+"','"+e.getAmbito()+"','"+e.getTipo()+"','"+e.getTelefono()+"','"+e.getPais()+"','"+e.getNit()+"','"+e.getDireccion()+"')");//genero el sql. 
+            stm = con.prepareStatement("insert into oficina_entidad(id,nombre,representante,sector,tipo, telefono,id_pais,nit,direccion) values(null,'"+e.getNombre()+"','"+e.getRepresentante()+"','"+e.getSector()+",'"+e.getTipo()+"','"+e.getTelefono()+"','"+e.getPais()+"','"+e.getNit()+"','"+e.getDireccion()+"')");//genero el sql. 
                   
             
             int can = stm.executeUpdate();//ejecuto la consulta
@@ -93,22 +93,20 @@ public class DAOEntidad {
                 String nit = resultado.getString(2);
                 String sector = resultado.getString(3);
                 String representante = resultado.getString(4);
-                String nombre = resultado.getString(5);
-                String ambito = resultado.getString(6);
-                String tipo = resultado.getString(7);
-                String telefono = resultado.getString(8);
-                int pais = resultado.getInt(9);
+                String nombre = resultado.getString(5);                
+                String tipo = resultado.getString(6);
+                String telefono = resultado.getString(7);
+                int pais = resultado.getInt(8);
                
                 e.setId(id);
                 e.setNIT(nit);
                 e.setSector(sector);
                 e.setRepresentante(representante);
                 e.setNombre(nombre);
-                e.setAmbito(ambito);
                 e.setTelefono(telefono);
                 e.setTipo(tipo);
                 e.setPais(pais);
-                
+                System.out.println("Entidad: "+e.toString());
                 entidades.add(e);
             }
             

@@ -56,7 +56,7 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="../../public/js/ufps.js" type="text/javascript"></script>
         <script src="../../public/js/ufps.min.js" type="text/javascript"></script>
-
+        <script src="js/formentidad.js" type="text/javascript"></script>
 
         <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
     </head>
@@ -129,30 +129,31 @@
                                 <div class="form-group"   >
                                     <label for="sector">Seleccione Sector:</label>
                                     <select id="sector" name="sector" class="ufps-input-line" border-width:2px margin:7px padding:7px>
-                                        <option value="Educacion">Educacion</option>
+                                        <option value="Agropecuario">Agropecuario</option>
                                         <option value="Comercial">Comercial</option>
-                                        <option value="Salud">Salud</option>
+                                        <option value="Comunicaciones">Comunicaciones</option>
+                                        <option value="Construccion">Construccion</option>
+                                        <option value="Educacion">Educacion</option>
+                                        <option value="Energetico">Energetico</option>
                                         <option value="Financiero">Financiero</option>
+                                        <option value="Industrial">Industrial</option>
+                                        <option value="Minero">Minero</option>                                        
+                                        <option value="Salud">Salud</option>
+                                        <option value="Servicios">Servicios</option>
+                                        <option value="Solidario">Solidario</option>
+                                        <option value="Transporte">Transporte</option>                                                                   
+                                        <option value="Turistico">Turistico</option>                                   
+                                        
                                     </select>
                                 </div></div>
-                            <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
-                                <div class="form-group">
-                                    <label for="ambito">Seleccione Ambito de la empresa</label>
-                                    <select id="ambito" name="ambito" class="ufps-input-line " >
-                                        <option value="Privado">Privado</option>
-                                        <option value="Publico">Publico</option>
-                                        <option value="Fundacion">Fundacion</option>
-
-                                    </select>
-                                </div> 
-                            </div>
 
                             <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
                                 <div class="form-group">
                                     <label for="tipo">Seleccione tipo entidad</label>
                                     <select id="tipo" name="tipo" class="ufps-input-line " >
-                                        <option value="Empresa">Empresa</option>
-                                        <option value="Universidad">Universidad</option>                                        
+                                        <option value="Publico">Publico</option>
+                                        <option value="Privado">Privado</option>
+                                        <option value="Mixto">Mixto</option>                                         
 
                                     </select>
                                 </div> 
@@ -166,21 +167,28 @@
                                 </div> </div>
                             <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
                                 <label for="pais">Direccion</label>
-                                    <input type="text" name ="direccion" class="ufps-input-line">
+                                <input type="text" name ="direccion" class="ufps-input-line">
                             </div>
 
                             <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
                                 <div class="form-group">
                                     <label for="pais">Seleccione el Pais de la Entidad</label>
-                                    <select id="ambito" name="pais" class="ufps-input-line " >
+                                    <select name="pais" class="ufps-input-line " >
                                         <%
                                             ArrayList<Pais> paises = f.obtenerPaises();
 
                                             for (Pais p : paises) {
+
+                                                if (p.getNombre().equals("Colombia")) {
+                                        %>   
+                                        <option value="<%=p.getId()%>" selected><%=p.getNombre()%></option>
+
+                                        <%
+                                        } else {
                                         %>
                                         <option value="<%=p.getId()%>"><%=p.getNombre()%></option>
 
-                                        <%
+                                        <%}
                                             }
                                         %>
                                     </select>

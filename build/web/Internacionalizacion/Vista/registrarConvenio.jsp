@@ -142,6 +142,13 @@ request.getSession().setAttribute("respuesta_convenio", null);
                                         </select><br><br>
                                     </div>
                                 </div> </div>
+                            <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
+                                <div class="form-group">
+                                    <br><label for="tipo_convenio">Por favor cargue el acta o documento del convenio</label> <br><br>
+                                    <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
+                                        <button type="file" class="ufps-btn">Cargar acta</button>
+                                    <br> <br></div>
+                                </div> </div>
                             <br> <br><label for="tipo_convenio">Seleccione Lo que se puede hacer en el presente convenio</label>
 
                             <br><div class="checkbox">

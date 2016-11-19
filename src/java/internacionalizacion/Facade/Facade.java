@@ -41,7 +41,7 @@ public class Facade {
     
     public String registrarEntidad(String nombre,String representante,String sector,String ambito,String tipo,String telefono,String direccion,int pais,String nit) throws Exception{
          ControladorEntidad s=new ControladorEntidad();
-         return s.registrarEntidad(nombre,representante,sector,ambito,tipo,telefono,direccion,pais,nit);               
+         return s.registrarEntidad(nombre,representante,sector,tipo,telefono,direccion,pais,nit);               
     }
     
     public ArrayList<Entidad> obtenerEntidades(){
