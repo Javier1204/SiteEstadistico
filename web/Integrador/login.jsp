@@ -50,8 +50,8 @@
             <center><h2>Iniciar sesión</h2></center>
             <form method="post" action="javascript:ingresar()" name="login" class="form" id="login">
                 <center> <label>Ingresa tus datos para iniciar sesión</label></center>
-                <input type="text" name="nombre_usuario" id="nombre_usuario" placeholder="Nombre de usuario" class="ufps-input ufps-red" />
-                <input type="password" name="contraseña" id="password" placeholder="Contraseña" class="ufps-input ufps-red" />
+                <input type="text" name="nombre_usuario" id="nombre_usuario" placeholder="Nombre de usuario" class="ufps-input ufps-black" />
+                <input type="password" name="contraseña" id="password" placeholder="Contraseña" class="ufps-input ufps-black" />
                 <select class="ufps-input ufps_red" id="tipo" >
                     <option selected >
                         No seleccion

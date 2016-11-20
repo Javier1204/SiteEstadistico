@@ -62,4 +62,41 @@ function ingresar(){
             document.getElementById("divError").value = "Verificando Usuario...";
         }
     }
+    
+   
 }
+
+ //javascript carlos torres 19/11/2016
+    
+    /*
+     * genera el pop-up para crear publicacion
+     */
+    function abrirVentana(){
+       
+        $.ajax({
+		type : "GET",
+		url : "../GestorPublicaciones",
+                data : {
+			'medio' : 'abrirVentanaCrearPublicacion'
+		},
+		cache : false,
+		success : function(data) {
+			var $dialog = $('<div id="ventana" syle="height=450px;"></div>')
+					.html(data).dialog({
+						autoOpen : false,
+						modal : true,
+						height : 600,
+						width : 600,
+						title : "",
+						close : function(event, ui) {
+							$(this).dialog('destroy').remove();
+						}
+					});
+
+			$dialog.dialog('open');
+			
+
+		}
+	});
+        
+    }

@@ -25,14 +25,16 @@
     <head>
            <script src="js/ajax.js"></script>
          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Departamento de sistemas e Informática UFPS</title>
         <link href="../public/css/ufps.css" rel="stylesheet" type="text/css"/>
         <link href="../public/css/ufps-estilo.css" rel="stylesheet">
         <script src="../public/js/ufps.js"></script>
+        <script src="js/ajax.js"></script>
           <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+          <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+          <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     </head>
     <body>
          <header>
@@ -66,7 +68,7 @@
         <div class="contenidopublicacionhome">
             <center><h2><b>Bienvenido al modulo de administracion de publicaciones</b></h2></center>
             <div id="contenidohome">
-                <button  class="ufps-btn ufps-btn-light" >Crear publicación</button>
+               <button  class="ufps-btn ufps-btn-light"  onclick="abrirVentana()">Crear publicación</button>
               
                 
                 <table id="tablapublicacion">
