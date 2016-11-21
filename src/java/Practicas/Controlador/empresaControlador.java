@@ -13,18 +13,17 @@ import java.util.ArrayList;
  */
 public class empresaControlador {
     
-    public String registrarEmpresa( String NIT, String sectorEmpresa, String nombreEmpresa, String tipoAmbito, String direccion, String telefono) {
-                                    //String NIT, String sectorEmpresa, String nombreEmpresa, String tipoAmbito, String direccion, String telefono
-        empresaDAO ent = new empresaDAO();
-        empresaDTO e = new empresaDTO( NIT, sectorEmpresa, nombreEmpresa, tipoAmbito, direccion, telefono);
-        return ent.registrarEmpresa(e);
-    
-    }
+        
     
     public ArrayList<empresaDTO> consultarEmpresas(){
         
         empresaDAO dao = new empresaDAO();
         return dao.consultarEmpresa();
+    }
+    public String registrarEmpresa( empresaDTO p) {
+                                    
+        empresaDAO ent = new empresaDAO();
+        return ent.registrarEmpresa(p);
     }
     
 }

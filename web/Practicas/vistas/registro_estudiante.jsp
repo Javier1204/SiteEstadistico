@@ -1,4 +1,8 @@
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="Practicas.DTO.perfil_estudianteDTO"%>
+<%@page import="Practicas.DTO.perfilDTO"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Practicas.Facade.Facade" %>
 <%@page import="Practicas.DTO.estudianteDTO"%>
@@ -13,6 +17,7 @@
         <title>Prácticas</title
         <link href="../estilos/css/ufps.min.css" rel="stylesheet" type="text/css"/>
         <link href="../estilos/css/ufps.css" rel="stylesheet">
+        <link href="../estilos/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
         <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
         <script src="../estilos/js/ufps.js"></script>
@@ -47,27 +52,18 @@
       
       <%
           Facade f = new Facade();
+          //AQUI OBTIENE LA SESION DEL ESTUDIANTE
+          //escriba el codigo de un estudiante q tenga en la base de datos
+          int codigo = 1151111;
+          estudianteDTO ed = new estudianteDTO();
+          ed = f.buscarEstudiante(codigo);
+          System.out.println("Estudiante consultado. " + ed.toString());
+         //no trae la drieccion? si ya vi que en no le agrego lo otro probemos con ese y si funciona yo completo lo ortr
       %>
         
       <div  class="ufps-container" id="contenido">
           <form method="POST" action="cargar_datos_estudiante.jsp">    
-          <center><strong><h1>REGISTRO DE ESTUDIANTE DE PRACTICAS</h1></strong></center>          
-          <fieldset>
-              <h2>Estudiante</h2>
-              Para iniciar el proceso escriba su código
-              <br><br>
-              <div class="form-group-lg">
-                  <label><b>Codigo:</b></label>
-                    <input type="text" class="ufps-input" id="codigoEst" name="codigoEst" >                              
-              </div>
-              
-              <div class="ufps-col-tablet-5 ufps-col-offset-7">  
-                <div class="form-group">
-                    <button type="submit" class="ufps-btn" id="btnBuscar">Buscar</button>
-                </div> 
-              </div>
-          </fieldset>
-         
+          <center><strong><h1>REGISTRO DE ESTUDIANTE DE PRACTICAS</h1></strong></center>                  
         <br><br>          
          
           <fieldset>
@@ -75,17 +71,17 @@
               <br>
               <div class="form-group">
                   <label for="nombreEst"><b>Nombres:</b></label>
-                     <input type="text" class="ufps-input" id="nombreEst">                              
+                     <input type="text" class="ufps-input" id="nombreEst" value="<%=ed.getNombresEstudiante()%>">                              
                 
               </div>
               <div class="form-group"> 
                   <label for="apellidosEst"><b>Apellidos:</b></label>
-                  <input type="text" class="ufps-input" id="apellidosEst">            
+                  <input type="text" class="ufps-input" id="apellidosEst" value="<%=ed.getApellidosEstudiante()%>">            
               </div
               <br>
                <div class="form-group">
                   <label for="direccionEst"><b>Direccion:</b></label>
-                  <input type="text" class="ufps-input" id="direccionEst" >
+                  <input type="text" class="ufps-input" id="direccionEst">
                </div>  
                 <div class="form-group col-md-6">
                     <label for="nacimiento" title="FechaNacimiento"><b>Fecha Nacimiento:</b><span class="glyphicon glyphicon-question-sign"></span></label>
@@ -107,8 +103,19 @@
      <BR>     
       </div>
         
+        <%
+            List <perfil_estudianteDTO> lista2= f.listarPerfilesEstudiante(codigo);
+            List <perfilDTO> lista = f.listarPerfil();
+            //int tam = lista.size();
+            //int [] valores= new int[tam];
+            //int ind=1;
+            //for(int x=0; x<tam; x++){
+              //  valores[x] = ind;
+               // ind++;
+           // }
+        %>
        <div class="ufps-container" id="contenido"> 
-        <form method="POST"> 
+        <form method="POST" action="agregar_perfil.jsp"> 
            <fieldset>
                <h2>    Perfiles de practica</h2>
                
@@ -120,48 +127,68 @@
                                  <div class="form-group">
                                      <br><label for="perfiles">Seleccione Perfil</label> <br><br>
                                      <div class="ufps-col-tablet-6 ufps-col-tablet-offset-1">
-                                         <select id="perfil" name="perfiles" class="ufps-input " >
-                                             <option value="1">Capacitación</option>
-                                             <option value="2">Mantenimiento Hardware</option>
-                                             <option value="3">Mantenimiento Redes</option>
-                                             <option value="4">Desarrollo Software</option>
-                                             <option value="5">Desarrollo Web</option>
+                                         <select id="comboPerfiles" name="comboPerfiles" id="comboPerfiles" class="ufps-input " >
+                                             <% for(perfilDTO p: lista){
+                                             %>
+                                             <option value="<%=p.getIdperfil() %>"> <%= p.getNombre() %> </option>
+                                             <%
+                                                 }
+                                             %>
                                     </select></div>
                                  </div>  
               </div>
               
+                <%
+                %>                    
                <div class="ufps-col-tablet-5 ufps-col-tablet-offset-1">
                                  <div class="form-group">
                                      <br><label for="valor_perfil">Asigne valor</label> <br><br>
-                                     <div class="ufps-col-tablet-6 ufps-col-tablet-offset-1">
-                                         <select id="valor" name="tipo_convenio" class="ufps-input " >
-                                             <option value="1">1</option>
-                                             <option value="2">2</option>
-                                             <option value="3">3</option>
-                                             <option value="4">4</option>
-                                             <option value="5">5</option>
+                                                                         
+                                            <input type="text" class="ufps-input" id="comboValor" >
+                                        </div>  
+                                         <%-- <select id="comboValor" name="comboValor" id="comboValor" class="ufps-input " >
+                                             <%// for(int i=0; i<tam; i++){
+                                                 
+                                            // %>
+                                             <option value="<%=valores[i] %>"> <%=valores[i]%> </option>
+                                          //   <% 
+                                        //         System.out.println(valores[i]);
+                                      //       }
+                                    //         %>
                                     </select></div>
-                                 </div>  
-              </div>
+                                         --%>
+                                         </div>
+                                 
+              
             <BR>   
+            <input type="hidden" class="ufps-input" id="codigoEst" value="<%=codigo %>" name="codigoEst"> 
+          
             <center> <div class="ufps-col-tablet-12">  
                 <div class="form-group">
                     <button type="submit" class="ufps-btn" id="btnAgregarPerfil">Aceptar</button>
                 </div> 
             </div></center>
-               
+              
                 <br><br>
-        
+               
+            </fieldset></form></div>  
+        <fieldset>
         <table class="ufps-table">
             <tr class="ufps-table-inserted tr"> 
-            <td>Perfil</td>
+            <td>Id de Perfil</td>
+            <td>Nombre de Perfil</td>
             <td>Valor</td>
             <td>Opcion</td>
            </tr>
            
+           <% for (perfil_estudianteDTO est: lista2){
+               perfilDTO pd= f.buscarPerfil(est.getIdperfil());
+           
+           %>
            <tr>
-            <td></td>
-            <td></td>
+            <td><%= est.getIdperfil() %></td>
+            <td><%= pd.getNombre() %></td>
+            <td> <%= est.getValor() %> </td>
             <td>
                 <div class="form-group">
                    <button type="submit" class="ufps-btn-light" id="btnEliminarPerfil">Eliminar</button> 
@@ -169,12 +196,16 @@
             </td> 
            </tr>
            
+           
+           <%               
+                   } 
+           %>
         </table>
                
                <br>
                
            </fieldset>
-           </form>
+          
        </div>
       
         <BR>

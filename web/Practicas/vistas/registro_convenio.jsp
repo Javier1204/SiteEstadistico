@@ -1,11 +1,24 @@
 
+<%@page import="Practicas.Facade.Facade"%>
+<%@page import="Practicas.DTO.empresaDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%-- 
     Document   : registro_convenio
     Created on : 30/10/2016, 05:16:28 PM
     Author     : Administrador
 --%>
-
+<%
+    Facade fachada = new Facade();
+if(request.getSession().getAttribute("respuesta_convenio")!=null){
+    
+    %>
+    <script type="text/javascript">
+    alert("<%=request.getSession().getAttribute("respuesta_convenio")%>");
+</script>
+<%}
+request.getSession().setAttribute("respuesta_convenio", null);
+%>
 <html>
     <head>
      
@@ -74,8 +87,12 @@
       
       
       <div  class="ufps-container" id="contenido">
+          <center><form action="registrarConvenio_pro.jsp" method="POST" center>
           
+                    
           <center><strong><h1>REGISTRO DE LOS CONVENIOS</h1></strong></center>
+          
+          
           <fieldset>
               <h2> Datos Basicos</h2>
               <br>
@@ -87,10 +104,10 @@
               </div>
               
               
+              
               <div class="ufps-col-tablet-5 ufps-col-tablet-offset-1"> 
-                              <label for="fechaCreacion">Fecha de Creacion:</label>
-                              <input type="date" class="ufps-input" id="linea1" name="fechaCreacion">
-                                     
+                               <label for="creacion" title="Fecha en que se creó el convenio.">Fecha creación: <span class="glyphicon glyphicon-question-sign"></span></label>
+                                    <input type="date" class="ufps-input" id="fechacreacion" name="fechacreacion">                                     
                                 
               </div>
               
@@ -100,8 +117,8 @@
               <div class="ufps-col-tablet-5 ufps-col-tablet-offset-1">
                                  <div class="form-group">
  
-                                     <label for="FechaTerminacion">Fecha de terminacion:</label>
-                                     <input type="date" class="ufps-input" id="linea3" name="fechaTerminacion">
+                                     <label for="creacion" title="Fecha en que se termina el convenio ">Fecha terminacion <span class="glyphicon glyphicon-question-sign"></span></label>
+                                    <input type="date" class="ufps-input" id="creacion" name="fechaterminacion">
                                  </div>  
               </div>
              
@@ -118,11 +135,11 @@
                             
               <div class="ufps-col-tablet-5 ufps-col-tablet-offset-1">
                                 <div class="form-group" >
-                                    <label for="estadoConvenio" >Seleccione el estado del  Convenio</label>
-                                    <select id="estadoConvenio" name="estadoConv" class="ufps-input-line ">
-                                        <option value="Aprobado"> Aprobado</option>
+                                    <label for="estado">Estado</label>
+                                    <select id="estado" name="estado" class="ufps-input-line ">
+                                        <option value="Aprobado">Aprobado</option>
                                         <option value="Terminado">Terminado</option>
-                                        
+
 
                                     </select>
 
@@ -143,27 +160,36 @@
                                 <div class="form-group" >
                                     <label for="entidad" >Seleccione la Entidad asociada al Convenio</label>
                                     <select id="entidad" name="entidad" class="ufps-input-line ">
-                                        <option value="1"> Entidad 1</option>
-                                        <option value="2">Entidad 2</option>
-                                        <option value="2">Entidad 3</option>
-
+                                        
+                                        <%
+                                            ArrayList<empresaDTO> entidades = fachada.obtenerEmpresa();
+                                            for(empresaDTO e: entidades){
+                                        %>
+                                        <option value="<%=e.getIdempresa()%>"><%=e.getNombreEmpresa()%></option>
+                                        
+                                        <%}
+                                        %>
                                     </select>
 
                                 </div> </div>          
-              
-          </fieldset>
-     <BR>     
+        
+              <BR>
+         <center><div class="ufps-col-tablet-12 ">  
+            <div class="btn-group btn-group-justified">
+                <button type="submit" class="ufps-btn">Registrar Convenio</button>
+                <button type="submit" class="ufps-btn">Volver</button>
+            </div></div></center>
+        </fieldset>        
+       
+          </center>
+          
+     <BR>   
+     </form>>
       </div>
         
       
-        <BR>
-       <center><div class="ufps-col-tablet-12 ">  
-            <div class="btn-group btn-group-justified"">
-                <button type="submit" class="ufps-btn">Registrar Convenio</button>
-                
-            </div>
-                
-       </div></center>
+        
+    
     
     </body>
     <BR><BR><BR>

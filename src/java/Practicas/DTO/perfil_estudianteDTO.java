@@ -5,43 +5,32 @@
  */
 package Practicas.DTO;
 
-import java.sql.Date;
-
 /**
  *
  * @author Administrador
  */
 public class perfil_estudianteDTO {
     
-    String codigoestudiante;
+    int codigoestudiante;
     int idperfil;
     int valor;
-    Date fecha;
+    boolean estado;
 
     public perfil_estudianteDTO() {
     }
 
-    public perfil_estudianteDTO(String codigoestudiante, int idperfil, int valor, Date fecha) {
+    public perfil_estudianteDTO(int codigoestudiante, int idperfil, int valor,  boolean estado) {
         this.codigoestudiante = codigoestudiante;
         this.idperfil = idperfil;
         this.valor = valor;
-        this.fecha = fecha;
-    }
-    
-
-    public Date getFecha() {
-        return fecha;
+        this.estado = estado;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public String getCodigoestudiante() {
+    public int getCodigoestudiante() {
         return codigoestudiante;
     }
 
-    public void setCodigoestudiante(String codigoestudiante) {
+    public void setCodigoestudiante(int codigoestudiante) {
         this.codigoestudiante = codigoestudiante;
     }
 
@@ -60,6 +49,14 @@ public class perfil_estudianteDTO {
     public void setValor(int valor) {
         this.valor = valor;
     }
-    
+
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+     
     
 }

@@ -67,6 +67,9 @@ public class tutor_empresaDTO {
         this.email = email;
     }
     
-    
+   @Override
+    public String toString() {
+        return "tutor_empresaDTO{" + "idtutor=" + idtutor + ", nombreTutor=" + nombreTutor + ", telefono=" + telefono + ", cargo=" + cargo + ", email=" + email + '}';
+    } 
     
 }

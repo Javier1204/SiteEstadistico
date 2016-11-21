@@ -20,10 +20,11 @@ public class empresaDTO {
     String tipoAmbito;
     String direccion;
     String telefono;
-    
+    //No le falta el constructor?
     public String getDireccion() {
         return direccion;
     }
+    
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
@@ -38,8 +39,8 @@ public class empresaDTO {
     }
     public empresaDTO() {
     }
-
-    public empresaDTO( String NIT, String sectorEmpresa, String nombreEmpresa, String tipoAmbito, String direccion, String telefono) {
+//aqui esta... donde lo llama?
+    public empresaDTO( String NIT, String sectorEmpresa, String nombreEmpresa, String tipoAmbito, String telefono, String direccion) {
         
         this.NIT=NIT;
         this.sectorEmpresa = sectorEmpresa;
@@ -98,6 +99,11 @@ public class empresaDTO {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    @Override
+    public String toString() {
+        return "empresaDTO{" + "id=" + id + ", NIT=" + NIT + ", sectorEmpresa=" + sectorEmpresa + ", representanteEmpresa=" + representanteEmpresa + ", nombreEmpresa=" + nombreEmpresa + ", tipoAmbito=" + tipoAmbito + ", direccion=" + direccion + ", telefono=" + telefono + '}';
     }
     
     

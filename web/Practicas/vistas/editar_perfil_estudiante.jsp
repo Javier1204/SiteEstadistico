@@ -1,4 +1,6 @@
 
+<%@page import="Practicas.DTO.estudianteDTO"%>
+<%@page import="Practicas.Facade.Facade"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -42,6 +44,15 @@
              </div>
         </div>
       
+        <%
+          Facade f = new Facade();
+          
+          int codigo = 1150234;
+          estudianteDTO ed = new estudianteDTO();
+          ed = f.buscarEstudiante(codigo);
+          System.out.println("Estudiante consultado. " + ed.toString());
+         
+      %>
       
       <div  class="ufps-container" id="contenido">
           
@@ -50,14 +61,25 @@
           <fieldset>
               <h2> Datos Basicos</h2>
               <br>
+              
+              <div class="form-group">
+                  <label for="codigo"><b>Codigo:</b></label>
+                     <input type="text" class="ufps-input" id="codigo" value="<%=ed.getCodigoEstudiante()%>">                               
+                
+              </div>
+              <div class="form-group">
+                  <label for="cedula"><b>Cedula:</b></label>
+                     <input type="text" class="ufps-input" id="cedula" value="<%=ed.getCedula()%>">                               
+                
+              </div>
               <div class="form-group">
                   <label for="nombreEst"><b>Nombres:</b></label>
-                     <input type="text" class="ufps-input" id="nombreEst" >                              
+                     <input type="text" class="ufps-input" id="nombreEst" value="<%=ed.getNombresEstudiante()%>">                              
                 
               </div>
               <div class="form-group"> 
                   <label for="apellidosEst"><b>Apellidos:</b></label>
-                  <input type="text" class="ufps-input" id="apellidosEst">            
+                  <input type="text" class="ufps-input" id="apellidosEst" value="<%=ed.getApellidosEstudiante()%>">            
               </div
               <br>
                <div class="form-group">
@@ -77,7 +99,13 @@
                     <label for="emailEst"><b>Email:</b></label>
                     <input type="text" class="ufps-input" id="emailEst" >
                 </div>  
-     
+                
+              <div class="form-group">
+                    <label for="semestre"><b>Semestre:</b></label>
+                    <input type="text" class="ufps-input" id="semestre" value="<%=ed.getSemestre()%>" >
+                    
+                </div>  
+    
               <br>
           </fieldset>
      <BR>     

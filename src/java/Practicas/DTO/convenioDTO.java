@@ -15,28 +15,35 @@ public class convenioDTO {
  
     int idconvenio;
     String nombreConvenio;
-    Date fechainicio;
-    Date fechafin;
+    String fechainicio;
+    String fechafin;
     int idempresa;
     String descripcion; 
-    byte vigencia;
+    String vigencia;
     String estado;
 
     public convenioDTO() {
     }
 
-    public convenioDTO(String nombreConvenio, Date fechainicio, Date fechafin, String estado) {
+//    public convenioDTO(String nombreConvenio,String descripcion, String fechainicio, String fechafin,String vigencia,String estado, int idempresa) {
+//        
+//    }
+
+    public convenioDTO(String nombreConvenio, String descripcion, String fechainicio, String fechafin, String vigencia, String estado, int idempresa) {
         this.nombreConvenio = nombreConvenio;
         this.fechainicio = fechainicio;
         this.fechafin = fechafin;
+        this.idempresa = idempresa;
+        this.descripcion = descripcion;
+        this.vigencia = vigencia;
         this.estado = estado;
     }
-    
     
 
     public int getIdconvenio() {
         return idconvenio;
     }
+    
 
     public void setIdconvenio(int idconvenio) {
         this.idconvenio = idconvenio;
@@ -50,19 +57,19 @@ public class convenioDTO {
         this.nombreConvenio = nombreConvenio;
     }
 
-    public Date getFechainicio() {
+    public String getFechainicio() {
         return fechainicio;
     }
 
-    public void setFechainicio(Date fechainicio) {
+    public void setFechainicio (String fechainicio) {
         this.fechainicio = fechainicio;
     }
 
-    public Date getFechafin() {
+    public String getFechafin() {
         return fechafin;
     }
 
-    public void setFechafin(Date fechafin) {
+    public void setFechafin(String fechafin) {
         this.fechafin = fechafin;
     }
 
@@ -82,11 +89,11 @@ public class convenioDTO {
         this.descripcion = descripcion;
     }
 
-    public byte getVigencia() {
+    public String getVigencia() {
         return vigencia;
     }
 
-    public void setVigencia(byte vigencia) {
+    public void setVigencia(String vigencia) {
         this.vigencia = vigencia;
     }
 
@@ -97,6 +104,9 @@ public class convenioDTO {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+
+    
     
     
 }

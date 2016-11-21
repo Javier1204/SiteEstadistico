@@ -5,9 +5,9 @@
  */
 package Practicas.DAO;
 
+import Practicas.DTO.tutor_empresaDTO;
 import general.conexion.Conexion;
 import general.conexion.Pool;
-import Practicas.DTO.empresaDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,12 +20,12 @@ import java.util.logging.Logger;
  *
  * @author Usuario
  */
-public class empresaDAO {
+public class tutorDAO {
     
-    public String registrarEmpresa(empresaDTO p) {
+    public String registrarTutor(tutor_empresaDTO p) {
         //corra el programa 
         System.out.println(p.toString());
-     String rta= "No conecto";
+        String rta= "No conecto";
         Pool pool = Conexion.getPool(); //llamo al objeto pool 
         Connection con = null;
         PreparedStatement pst = null;
@@ -37,7 +37,7 @@ public class empresaDAO {
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection(); 
            
-            String sql="insert into oficina_entidad (NIT,sector,nombre,ambito,telefono,direccion) values ('"+p.getNIT()+"','"+p.getSectorEmpresa()+"','"+p.getNombreEmpresa()+"','"+p.getTipoAmbito()+"','"+p.getTelefono()+"','"+p.getDireccion()+"')";
+            String sql="insert into practicas_tutor_empresa (nombre,telefono,cargo,email) values ('"+p.getNombreTutor()+"','"+p.getTelefono()+"','"+p.getCargo()+"','"+p.getEmail()+"')";
             
             pst= con.prepareStatement(sql);
             
@@ -54,17 +54,17 @@ public class empresaDAO {
             
          
         } catch (SQLException ex) {
-            Logger.getLogger(perfilDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(tutorDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return rta;
     }
     
-     public ArrayList<empresaDTO> consultarEmpresa() {
+    public ArrayList<tutor_empresaDTO> consultarTutor() {
      //ejemplo para usar el pool de conexiones. 
         Pool pool = Conexion.getPool(); //llamo al objeto pool 
         Connection con = null;
         PreparedStatement stm = null;
-        ArrayList<empresaDTO> empresas = new ArrayList();
+        ArrayList<tutor_empresaDTO> tutores = new ArrayList();
         
         try {
             /**
@@ -76,31 +76,26 @@ public class empresaDAO {
             pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
-            stm = con.prepareStatement("Select * from oficina_entidad");//genero el sql. 
+            stm = con.prepareStatement("Select * from practicas_tutor_empresa");//genero el sql. 
             
             ResultSet resultado = stm.executeQuery();//ejecuto la consulta
-            empresaDTO e;
+            tutor_empresaDTO e;
             while(resultado.next()){
-                e = new empresaDTO();
+                e = new tutor_empresaDTO();
                 int id = resultado.getInt(1);
-                String NIT = resultado.getString(2);
-                String sector = resultado.getString(3);
-                String nombre = resultado.getString(5);
-                String ambito = resultado.getString(6);
-                String telefono = resultado.getString(8);
-                String direccion = resultado.getString(10);
-               
-                e.setIdempresa(id);
-                e.setNIT(NIT);
-                e.setSectorEmpresa(sector);
-                e.setNombreEmpresa(nombre);
-                e.setTipoAmbito(ambito);
+                String nombre = resultado.getString(2);
+                String telefono = resultado.getString(3);
+                String cargo = resultado.getString(4);
+                String email = resultado.getString(5);
+                
+                e.setIdtutor(id);
+                e.setNombreTutor(nombre);
                 e.setTelefono(telefono);
-                e.setDireccion(direccion);
+                e.setCargo(cargo);
+                e.setEmail(email);
+                             
                 
-                
-                
-                empresas.add(e);
+                tutores.add(e);
             }
             
             
@@ -123,7 +118,8 @@ public class empresaDAO {
                 System.err.println(ex);
             }
         }   
-        return empresas;
+        return tutores;
     
 }
+    
 }

@@ -29,4 +29,9 @@ public class perfilControlador {
         perfilDAO dao = new perfilDAO();
         return dao.listarPerfiles();
     }
+
+    public perfilDTO buscarPerfil(int id) {
+       perfilDAO dao = new perfilDAO();
+       return dao.buscarPerfil(id);
+    }
 }

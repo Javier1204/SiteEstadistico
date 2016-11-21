@@ -4,6 +4,8 @@
     Author     : Administrador
 --%>
 
+<%@page import="Practicas.DTO.docenteDTO"%>
+<%@page import="Practicas.Facade.Facade"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -39,7 +41,7 @@
                      </div>
  
                  </div>
-                 <div class="ufps-navbar-left nav"><li><a href="../index.jsp" class="  ufps-navbar-btn  " >Inicio </a></li> </div>
+                 <div class="ufps-navbar-left nav"><li><a href="index.jsp" class="  ufps-navbar-btn  " >Inicio </a></li> </div>
                  
                  <div class="ufps-navbar-left nav">
  
@@ -54,8 +56,17 @@
  
              </div>
         </div>
+      <%
+          Facade f = new Facade();
+          
+          int codigo = 1150833;
+          docenteDTO ed = new docenteDTO();
+          ed = f.buscarDocente(codigo);
+          System.out.println("Estudiante consultado. " + ed.toString());
+         
+      %>
       
-      
+        
       <div  class="ufps-container" id="contenido">
           
           <center><strong><h1>DATOS BASICOS DOCENTE</h1></strong></center>    
@@ -65,44 +76,44 @@
               <br>
               <div class="form-group">
                   <label for="nombreDoc"><b>Nombres:</b></label>
-                     <input type="text" class="ufps-input" id="nombreDoc" >                              
+                     <input type="text" class="ufps-input" id="nombreDoc" value="<%=ed.getNombreDocente()%>" >                              
                 
               </div>
               <div class="form-group"> 
                   <label for="apellidosDoc"><b>Apellidos:</b></label>
-                  <input type="text" class="ufps-input" id="apellidosDoc">            
+                  <input type="text" class="ufps-input" id="apellidosDoc" value="<%=ed.getApellidosDocente()%>" >            
               </div
               <br>
                <div class="form-group">
                   <label for="cedulaDoc"><b>Cedula:</b></label>
-                  <input type="text" class="ufps-input" id="cedulaDoc" >
+                  <input type="text" class="ufps-input" id="cedulaDoc" value="<%=ed.getCedulaDocente()%>" >
                </div>  
               
               <div class="form-group col-md-6">
                     <label for="nacimientoDoc" title="FechaNacimiento"><b>Fecha Nacimiento:</b><span class="glyphicon glyphicon-question-sign"></span></label>
-                    <input type="date" class="ufps-input" id="nacimientoDoc">
+                    <input type="date" class="ufps-input" id="nacimientoDoc" value="<%=ed.getFechaNacimiento()%>"  >
                 </div> 
               
               <div class="form-group">
-                  <label for="codigoDoc"><b>Codigo:</b></label>
-                  <input type="text" class="ufps-input" id="codigoDoc" >
+                  <label for="codigo"><b>Codigo:</b></label>
+                  <input type="text" class="ufps-input" id="codigo" value="<%=ed.getCodigo()%>" >
                </div>
               
              
               
               <div class="form-group">
                   <label for="direccionDoc"><b>Direccion de la Residencia:</b></label>
-                  <input type="text" class="ufps-input" id="direccionDoc" >
+                  <input type="text" class="ufps-input" id="direccionDoc" value="<%=ed.getDireccion()%>" >
                </div>
                            
                 <div class="form-group">
                     <label for="celDoc"><b>Celular:</b></label>
-                    <input name="celDoc" type="text" class="ufps-input" id="celDoc" >
+                    <input name="celDoc" type="text" class="ufps-input" id="celDoc" value="<%=ed.getCelular()%>" >
                 </div>
             
                 <div class="form-group">
                     <label for="emailpers"><b>Correo Personal:</b></label>
-                    <input type="text" class="ufps-input" id="emailpers" >
+                    <input type="text" class="ufps-input" id="emailpers" value="<%=ed.getEmail()%>" >
                 </div>  
      
               <br>
@@ -119,29 +130,29 @@
                
                <div class="form-group">
                     <label for="nivelEst"><b>Nivel de Estudio:</b></label>
-                    <input type="text" class="ufps-input" id="nivelEst" >
+                    <input type="text" class="ufps-input" id="nivelEst" value="<%=ed.getNivelEstudio()%>">
                 </div>
                
                <div class="form-group">
                     <label for="tituloPre"><b>Titulo de Pregrado:</b></label>
-                    <input type="text" class="ufps-input" id="tituloPre" >
+                    <input type="text" class="ufps-input" id="tituloPre" value="<%=ed.getTituloPregrado() %>">
                 </div>
                
                
                
                <div class="form-group">
                     <label for="tipoVin"><b>Tipo de Vinculación:</b></label>
-                    <input type="text" class="ufps-input" id="tipoVin" >
+                    <input type="text" class="ufps-input" id="tipoVin" value="<%=ed.getTipoVinculacion() %>" >
                 </div>
                
                <div class="form-group">
                     <label for="anos_exp"><b>Años de Experiencia:</b></label>
-                    <input type="text" class="ufps-input" id="anos_exp" >
+                    <input type="text" class="ufps-input" id="anos_exp" value="<%=ed.getAñosExperiencia() %>">
                 </div>
                
                <div class="form-group">
                     <label for="emailInst"><b>Correo Institucional:</b></label>
-                    <input type="text" class="ufps-input" id="emailInst" >
+                    <input type="text" class="ufps-input" id="emailInst" value="<%=ed.getEmail2() %>" >
                 </div>
                
                

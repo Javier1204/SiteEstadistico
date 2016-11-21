@@ -1,5 +1,6 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="internacionalizacion.Facade.Facade"%>
+
+<%@page import="Practicas.Facade.Facade"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
@@ -18,10 +19,7 @@ request.getSession().setAttribute("respuesta_entidad", null);
 
 <html>
     <head>
-     
-        
-      
-        
+             
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -68,7 +66,7 @@ request.getSession().setAttribute("respuesta_entidad", null);
       
       
       <div  class="ufps-container" id="contenido">
-          
+          <form action="Registrar_empresa_p.jsp" method ="POST">
           <center><strong><h1>REGISTRO DE LA EMPRESA</h1></strong></center>
           <fieldset>
               <h2> Datos Basicos</h2>
@@ -110,12 +108,13 @@ request.getSession().setAttribute("respuesta_entidad", null);
                                      <br><label for="actEmpresa">Actividad de la empresa:</label> <br><br>
                                      <div class="ufps-col-tablet-6 ufps-col-tablet-offset-1">
                                          <select id="actEmpresa" name="actEmpresa" class="ufps-input " >
-                                             <option value="1">Industrial</option>
-                                             <option value="2">Comercial</option>
-                                             <option value="3">Estatal</option>
-                                             <option value="4">Educativa</option>
+                                             <option value="Industrial">Industrial</option>
+                                             <option value="Comercial">Comercial</option>
+                                             <option value="Estatal">Estatal</option>
+                                             <option value="Educativa">Educativa</option>
                                     </select></div>
-                                 </div>  
+                                 </div>
+                  
               </div>
               
                <div class="ufps-col-tablet-5 ufps-col-tablet-offset-1">
@@ -123,27 +122,32 @@ request.getSession().setAttribute("respuesta_entidad", null);
                                      <br><label for="tipoEmpresa">Tipo de empresa:</label> <br><br>
                                      <div class="ufps-col-tablet-6 ufps-col-tablet-offset-1">
                                          <select id="tipoEmpresa" name="tipoEmpresa" class="ufps-input " >
-                                             <option value="1">Publica</option>
-                                             <option value="2">Privada</option>
-                                             <option value="3">Mixta</option>
+                                             <option value="Publica">Publica</option>
+                                             <option value="Privada">Privada</option>
+                                             <option value="Mixta">Mixta</option>
 
                                     </select></div>
-                                 </div>  
+                                 </div>
+                   
               </div>
-          </fieldset>
-     <BR>     
-      </div>
-        
-      
+          
+        <BR> 
         <BR>
-       <center><div class="ufps-col-tablet-12 ">  
+       <center><div class="group">  
             <div class="btn-group btn-group-justified">
                 <button type="submit" class="ufps-btn">Registrar Empresa</button>
-                
+                <button type="submit" class="ufps-btn">Volver</button>
             </div>
                 
        </div></center>
-    
+      
+      </fieldset>
+</form>
+      </div>
+        
+      
+       
+
     </body>
     <BR><BR><BR>
     <footer>

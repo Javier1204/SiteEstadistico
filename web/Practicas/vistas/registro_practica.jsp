@@ -3,6 +3,22 @@
     Created on : 30/10/2016, 05:19:56 PM
     Author     : Administrador
 --%>
+<%@page import="Practicas.DTO.estudianteDTO"%>
+<%@page import="Practicas.DTO.tutor_empresaDTO"%>
+<%@page import="Practicas.DTO.convenioDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Practicas.Facade.Facade"%>
+<%
+    Facade fachada = new Facade();
+if(request.getSession().getAttribute("respuesta_registro_practica")!=null){
+    
+    %>
+    <script type="text/javascript">
+    alert("<%=request.getSession().getAttribute("respuesta_registro_practica")%>");
+</script>
+<%}
+request.getSession().setAttribute("respuesta_registro_practica", null);
+%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
@@ -102,28 +118,91 @@
              
                 <h2>Relaciones</h2>
                 
-             <div class="form-group">
-                 <label for="idconvenio"><b>N° de convenio*: </b></label>
-                  <input type="button" class="ufps-btn" id="idconvenio" value="Agregar Convenio">  
-                  <input type="button" class="ufps-btn" id="idconvenio" value="Buscar Convenio">  
-              </div>
-             <br> 
-                <div class="form-group">
-                 <label for="tutor"><b>Tutor en la empresa: </b></label>
-                  <input type="button" class="ufps-btn" id="idtutor" value="Agregar Tutor">  
-                  <input type="button" class="ufps-btn" id="idtutor" value="Buscar Tutor">  
-                </div>
-              <br>     
-                <div class="form-group">
+             
+                  <div class="ufps-col-tablet-5 ufps-col-offset-7">
+                                <div class="form-group" >
+                                    <label for="idconvenio" >Seleccione el convenio asociado a la Practica*</label>
+                                    <select id="idconvenio" name="idconvenio" class="ufps-input-line ">
+                                        
+                                        <%
+                                            ArrayList<convenioDTO> convenios = fachada.obtenerConvenios();
+                                            for(convenioDTO e: convenios){
+                                        %>
+                                        <option value="<%=e.getIdconvenio()%>"><%=e.getNombreConvenio()%></option>
+                                        
+                                        <%}
+                                        %>
+                  
+             
+                          </select>
+
+                                </div> </div>
+                                        
+                  <div class="form-group">
+                     <a href="registro_convenio.jsp" class="btn ufps-btn" role="button">Nuevo Convenio</a>
+                     </div>
+                                                     
+                <BR>
+                <br>
+                <br>
+             
+             <div class="ufps-col-tablet-5 ufps-col-offset-7">
+                                <div class="form-group" >
+                                    <label for="idtutor" >Seleccione el Tutor asociado a la Empresa*</label>
+                                    <select id="idtutor" name="idtutor" class="ufps-input-line ">
+                                        
+                                        <%
+                                            ArrayList<tutor_empresaDTO> tutores = fachada.obtenerTutores();
+                                            for(tutor_empresaDTO e: tutores){
+                                        %>
+                                        <option value="<%=e.getIdtutor()%>"><%=e.getNombreTutor()%></option>
+                                        
+                                        <%}
+                                        %>
+                  
+             
+                          </select>
+
+                                </div> </div>
+                                        
+                  <div class="form-group">
+                      <a href="registro_Tutor.jsp" class="btn ufps-btn" role="button">Nuevo Tutor Empresa</a>
+                     </div>
+                <BR>
+                <br>
+                <br>
+                             
+                                  
+                <div class="ufps-col-tablet-5 ufps-col-offset-7">
                  <label for="docente"><b>Tutor docente: </b></label>
-                  <input type="button" class="ufps-btn" id="iddocente" value="Buscar Docente">   
+                  <input type="button" class="ufps-btn" id="idocente" value="Buscar Docente">   
                 </div>
               <br>
-                <div class="form-group">
-                 <label for="semestre"><b>Estudiante: </b></label>
-                  <input type="button" class="ufps-btn" id="idestudiante" value="Asignar estudiante">  
-              </div>
-              <br>
+              <BR>
+                <br>
+                <br>
+             
+                <div class="ufps-col-tablet-5 ufps-col-offset-7">
+                                <div class="form-group" >
+                                    <label for="idestudiante" >Seleccione estudiante ascociado a la Empresa*</label>
+                                    <select id="idestudiante" name="idestudiante" class="ufps-input-line ">
+                                        
+                                        <%
+                                            ArrayList<estudianteDTO> estudiantes = fachada.obtenerEstudiante();
+                                            for(estudianteDTO e: estudiantes){
+                                        %>
+                                        <option value="<%=e.getCodigoEstudiante()%>"><%=e.getNombresEstudiante()%></option>
+                                        
+                                        <%}
+                                        %>
+                  
+             
+                          </select>
+
+                     </div> </div>
+                                        
+                  
+                
             </fieldset>
             
             <BR>

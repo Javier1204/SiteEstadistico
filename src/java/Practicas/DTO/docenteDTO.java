@@ -13,17 +13,17 @@ import java.sql.Date;
  */
 public class docenteDTO {
  
-    String codigodocente;
+    String codigo;
     String cedulaDocente;
     String nombreDocente;
     String apellidosDocente;
   
     Date fechaNacimiento;
     String celular;
-    String email;
+    String emailPersonal;
     String nivelEstudio;
     String tituloPregrado;
-    String email2;
+    String emailInstitucional;
     String tipoVinculacion;
     byte añosExperiencia;
     String direccion;
@@ -31,8 +31,8 @@ public class docenteDTO {
     public docenteDTO() {
     }
 
-    public docenteDTO(String codigodocente, String cedulaDocente, String nombreDocente, String apellidosDocente, Date fechaNacimiento, String nivelEstudio, String tipoVinculacion) {
-        this.codigodocente = codigodocente;
+    public docenteDTO(String codigo, String cedulaDocente, String nombreDocente, String apellidosDocente, Date fechaNacimiento, String nivelEstudio, String tipoVinculacion) {
+        this.codigo = codigo;
         this.cedulaDocente = cedulaDocente;
         this.nombreDocente = nombreDocente;
         this.apellidosDocente = apellidosDocente;
@@ -42,12 +42,12 @@ public class docenteDTO {
     }
 
     
-    public String getCodigodocente() {
-        return codigodocente;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setCodigodocente(String codigodocente) {
-        this.codigodocente = codigodocente;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getCedulaDocente() {
@@ -93,11 +93,11 @@ public class docenteDTO {
     }
 
     public String getEmail() {
-        return email;
+        return emailPersonal;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.emailPersonal = email;
     }
 
     public String getNivelEstudio() {
@@ -117,11 +117,11 @@ public class docenteDTO {
     }
 
     public String getEmail2() {
-        return email2;
+        return emailInstitucional;
     }
 
     public void setEmail2(String email2) {
-        this.email2 = email2;
+        this.emailInstitucional = email2;
     }
 
     public String getTipoVinculacion() {
@@ -146,6 +146,11 @@ public class docenteDTO {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    @Override
+    public String toString() {
+        return "docenteDTO{" + "codigo=" + codigo + ", cedulaDocente=" + cedulaDocente + ", nombreDocente=" + nombreDocente + ", apellidosDocente=" + apellidosDocente + ", fechaNacimiento=" + fechaNacimiento + ", celular=" + celular + ", emailPersonal=" + emailPersonal + ", nivelEstudio=" + nivelEstudio + ", tituloPregrado=" + tituloPregrado + ", emailInstitucional=" + emailInstitucional + ", tipoVinculacion=" + tipoVinculacion + ", a\u00f1osExperiencia=" + añosExperiencia + ", direccion=" + direccion + '}';
     }
 
     

@@ -100,7 +100,31 @@ public class perfilDAO implements PerfilInterface{
     }
 
     public perfilDTO buscarPerfil(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        perfilDTO dato = new perfilDTO();
+        Connection conn;
+        PreparedStatement pst;
+        ResultSet rs;
+        String sql = "select * from practicas_perfil where id_perfil = "+ id;
+        try{
+            Pool pool = Conexion.getPool();
+            pool.setUsuario("ufps_76");
+            pool.setContrasena("ufps_29");
+            pool.inicializarDataSource();
+            conn = pool.getDataSource().getConnection();
+            
+            pst = (PreparedStatement) conn.prepareStatement(sql);
+            rs= pst.executeQuery();
+            
+            while(rs.next()){
+                dato.setIdperfil(rs.getInt("id_perfil"));
+                dato.setNombre(rs.getString("nombre"));
+            }
+            conn.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(perfilDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return dato;
     }
 
     

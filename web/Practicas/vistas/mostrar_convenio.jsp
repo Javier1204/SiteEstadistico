@@ -3,6 +3,21 @@
     Created on : 2/11/2016, 08:45:44 AM
     Author     : Administrador
 --%>
+<%@page import="Practicas.DTO.convenioDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="Practicas.Facade.Facade"%>
+<%
+    Facade f = new Facade();
+if(request.getSession().getAttribute("respuesta_mostrar_convenio")!=null){
+    
+%>
+    <script type="text/javascript">
+    alert("<%=request.getSession().getAttribute("respuesta_mostrar_convenio")%>");
+</script>
+<%}
+request.getSession().setAttribute("respuesta_mostrar_convenio", null);
+%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -59,6 +74,12 @@
         </div>
     
         <center><h2>LISTADO DE CONVENIOS</h2></center>
+     
+        <% 
+            List <convenioDTO> lista= f.obtenerConvenios();           
+        %>
+
+        
         
         <div class="ufps-container" id="contenido">
             <fieldset>
@@ -84,18 +105,18 @@
                     <td>Fecha de inicio</td>
                     <td>Fecha de terminacion</td>
                     <td>Estado</td>
-                    <td>Tipo de Convenio</td>
                     <td>Empresa</td>
                 </tr>
            
+                <%
+                    for(convenioDTO p: lista){
+                %>
                 <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td> <%= p.getNombreConvenio() %> </td>
+                <td> <%= p.getFechainicio() %> </td>
+                <td> <%= p.getFechafin() %> </td>
+                <td> <%= p.getEstado() %> </td>
+                <td> <%= p.getIdempresa() %> </td>
                 <td>
                     <div class="form-group">
                     <button type="submit" class="ufps-btn-light"><b>Eliminar</b></button> 
@@ -103,6 +124,9 @@
                     </div>  
                 </td> 
                 </tr>
+                <%
+                    }
+                %>
             </table>
         </fieldset>
         </div>

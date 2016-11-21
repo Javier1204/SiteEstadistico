@@ -14,6 +14,10 @@ public class estudianteDTO {
     
     String codigoEstudiante;
     String cedula;
+    String direccion;
+    String telefono;
+    String email;
+    String fechaNacimiento;
     String nombresEstudiante;
     String apellidosEstudiante;
     int semestre;
@@ -21,11 +25,12 @@ public class estudianteDTO {
     public estudianteDTO() {
     }
 
-    public estudianteDTO(String codigoEstudiante, String cedula, String nombresEstudiante, String apellidosEstudiante) {
+    public estudianteDTO(String codigoEstudiante, String cedula, String nombresEstudiante, String apellidosEstudiante,int semestre) {
         this.codigoEstudiante = codigoEstudiante;
         this.cedula = cedula;
         this.nombresEstudiante = nombresEstudiante;
         this.apellidosEstudiante = apellidosEstudiante;
+        this.semestre=semestre;
     }
 
     
@@ -67,6 +72,11 @@ public class estudianteDTO {
 
     public void setSemestre(int semestre) {
         this.semestre = semestre;
+    }
+
+    @Override
+    public String toString() {
+        return "estudianteDTO{" + "codigoEstudiante=" + codigoEstudiante + ", cedula=" + cedula + ", nombresEstudiante=" + nombresEstudiante + ", apellidosEstudiante=" + apellidosEstudiante + ", semestre=" + semestre + '}';
     }
    
     
