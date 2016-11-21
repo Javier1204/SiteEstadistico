@@ -1,0 +1,20 @@
+--Se tiene listo:
+** la pagina con los servicios del modulo carga de docentes
+** se tiene la vista de actualizar los datos de un docente
+** 
+- Falta:
+** vistas de:
+--Docente:
+* actividades de docencia
+* actividades de investigacion
+* actividades de extension
+
+**codigo:
+* habilitar los servicios segun usuario que ingresó
+* funcinalidades de vistas de los 2 usuarios
+
+--Director:
+* Habilitar el sistema: fecha de inicio o fin
+* Habilitar los docentes: seleccionar de una lista uno por uno o todos
+* Dar prorroga a uno o varios docentes
+* Generar estadisticas en pdf y graficos
