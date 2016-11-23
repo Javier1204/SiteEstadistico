@@ -22,6 +22,25 @@ import java.util.ArrayList;
 public class PublicacionesDAO {
 
     /**
+     * este metodo elimina una publicaicon en la base de datos
+     * segun el id
+     * @param id
+     * @return 
+     */
+    public boolean eliminarPublicacion(int id){
+    return false;
+    }
+    
+    /**
+     * este metodo modifica una publicacion en la base de datos.
+     * @param dto
+     * @return 
+     */
+    public boolean modificarPublicacion(PublicacionDTO dto){
+    return false;
+    }
+    
+    /**
      * este metodo lista todas las publicaciones registradas de mayor a menor segun la fecha
      * @return 
      */

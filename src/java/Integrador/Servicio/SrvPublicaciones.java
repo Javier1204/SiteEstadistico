@@ -26,4 +26,15 @@ public class SrvPublicaciones {
     return dao.listarPublicaciones();
     }
     
+    public boolean eliminarPublicacion(int id){
+    PublicacionesDAO dao=new PublicacionesDAO();
+    return dao.eliminarPublicacion(id);
+    }
+    
+    public boolean modificarPublicacion(PublicacionDTO dto){
+    PublicacionesDAO dao=new PublicacionesDAO();
+    return dao.modificarPublicacion(dto);
+    }
+    
+    
 }

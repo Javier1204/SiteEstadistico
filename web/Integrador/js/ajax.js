@@ -61,9 +61,7 @@ function ingresar(){
         {
             document.getElementById("divError").value = "Verificando Usuario...";
         }
-    }
-    
-   
+    }  
 }
 
  //javascript carlos torres 19/11/2016
@@ -115,6 +113,7 @@ function ingresar(){
      * @returns {undefined}
      */
     function registrarPublicacion(){
+        
         var titulo = $("#titulo").val();
         var modulo = $("#modulo").val();
         var informe = $("#informe").val();

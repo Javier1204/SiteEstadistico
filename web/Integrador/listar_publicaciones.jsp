@@ -10,13 +10,12 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
- 
-    
-    ArrayList<PublicacionDTO> lista = (ArrayList<PublicacionDTO>) request.getAttribute("publicaciones") ;
+
+    ArrayList<PublicacionDTO> lista = (ArrayList<PublicacionDTO>) request.getAttribute("publicaciones");
 
 %> 
 <!DOCTYPE html>
-  
+
 <html>
     <head>
         <script src="Integrador/js/ajax.js"></script>
@@ -26,10 +25,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Departamento de sistemas e Informática UFPS</title>
         <link href="public/css/ufps.min.css" rel="stylesheet" type="text/css"/>
-        <link href="public/css/ufps-estilo.css" rel="stylesheet">
+        <link href="public/css/ufps-estilo.css" rel="stylesheet"/>
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
         <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
-        <script src="public/js/ufps.js"></script>
+        <script src="public/js/ufps.js"></script>  
+
     </head>
     <body>
         <header>
@@ -61,20 +61,19 @@
             </div>
         </div>
         <div class="contenidopublicacion">
-              <% for(PublicacionDTO p: lista){ %>
+
+            <% for (PublicacionDTO p : lista) {%>
             <div id="contenidopublicacioncreada">
-                <h2><%= p.getTitulo()%></h2> 
-                <p><%= p.getContenido()%>
-                    <br><br>
-                    <% if(p.getInforme()!=null) { %>
-                    <a href="<%= p.getInforme().getUrl() %>>"><img src="../public/img/integrador/descargar.png"  height="30px" width="30px" title="descargar publicacion" style="margin-right: 20px;"> Descargar informe</a>
-                    <% } %>
+
+                 <h2><%= p.getTitulo()%></h2> 
+                 <p><%= p.getContenido()%>
+                 <br><br>
+                 <% if (p.getInforme() != null) {%>
+                 <a href="<%= p.getInforme().getUrl()%>>"><img src="public/img/integrador/descargar.png"  height="30px" width="30px" title="descargar publicacion" style="margin-right: 20px;"> Descargar informe</a>
+                 <% }%>
                 </p>
             </div>
-                <% } %>
-          
-            
-            
+           <% }%>
         </div>
 
         <jsp:include page="../plantilla/footer.jsp"></jsp:include>

@@ -76,8 +76,12 @@ public class GestorPublicaciones extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
           String medio = request.getParameter("medio");
-        if ("registrarPublicacion".equals("registrarPublicacion")) {
+        if ("registrarPublicacion".equals(medio)) {
             this.crearPublicacion(request, response);
+        }else if("eliminarPublicacion".equals(medio)){
+          this.eliminarPublicacion(request, response);
+        }else if("modificarPublicacion".equals(medio)){
+        this.modificarPublicacion(request, response);
         }
     }
 
@@ -117,6 +121,15 @@ public class GestorPublicaciones extends HttpServlet {
             out.println(this.srvPublicaciones.crearPublicacion(dto));
         }
         
+    }
+    
+    private void modificarPublicacion(HttpServletRequest request, HttpServletResponse response){
+    
+    
+    }
+    
+    private void eliminarPublicacion(HttpServletRequest request, HttpServletResponse response){
+    
     }
     
 }
