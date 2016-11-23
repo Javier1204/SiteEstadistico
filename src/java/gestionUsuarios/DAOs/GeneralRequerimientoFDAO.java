@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -42,4 +44,25 @@ public class GeneralRequerimientoFDAO {
         }
         return null;
     }
+    public List<RequerimientosFDTO> getRFs(String modulo){
+        try{
+            PreparedStatement ps=conn.prepareStatement("SELECT id, nombre,  url FROM general_requerimiento_funcional WHERE modulo=? ");
+            
+            ps.setString(1, modulo);
+            ResultSet rs=ps.executeQuery();
+            ArrayList<RequerimientosFDTO> lista=new ArrayList<RequerimientosFDTO>();
+            while(rs.next()){
+                RequerimientosFDTO rfdto=new RequerimientosFDTO();
+                rfdto.setId(rs.getString(1));
+                rfdto.setNombre(rs.getString(2));
+                rfdto.setUrl(rs.getString(3));
+                lista.add(rfdto);
+            }
+            return lista;
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralRequerimientoFDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
 }

@@ -65,6 +65,22 @@ public class GeneralModuloDAO {
             //cerrarConexion();
         }
     }
+    public boolean insertar(ModuloDTO mod){
+        try{
+           PreparedStatement ps=conn.prepareStatement("INSERT INTO general_modulo (modulo, descripcion, url) VALUES (?, ?, ?)"); 
+           ps.setString(1, mod.getNombre());
+           ps.setString(2, mod.getDescripcion());
+           ps.setString(3, mod.getUrl());
+           int row=ps.executeUpdate();
+           if(row>0){
+               return true;
+           }
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralModuloDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;        
+    }
     public static void main(String[] args) {
         Connection con=ConexionGUDAOs.obtenerConexion();
         GeneralModuloDAO moduloDAO=new GeneralModuloDAO(con);

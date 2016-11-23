@@ -75,6 +75,20 @@ public class GeneralUsuarioDAO {
         }
         return false;
     }
+    public boolean insertar(String user, String pass){
+        try{
+            PreparedStatement ps=conn.prepareStatement("INSERT INTO general_usuario (user, password) VALUES (?, ?)");
+            ps.setString(1, user);
+            ps.setString(2, pass);
+            ResultSet rs=ps.executeQuery();
+            if(rs.absolute(1)){
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralUsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
     public static void main(String[] args) {
         //GeneralUsuarioDAO us=new GeneralUsuarioDAO();
         //System.out.println(us.getPass("1151052"));

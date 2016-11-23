@@ -64,11 +64,29 @@ public class GeneralUsuarioRolDAO {
         } catch (SQLException ex) {
             Logger.getLogger(GeneralUsuarioRolDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
-        }finally{
-            //cerrarConexion();
         }
     }
     
+    
+    public boolean insertar(String user, String rol){
+        try{
+            //obtenerConexion();
+            
+            PreparedStatement ps=conn.prepareStatement("INSERT INTO general_usuario_rol (user, rol) VALUES (?, ?)");
+            ps.setString(1, user);
+            ps.setString(2, rol);
+            int row=ps.executeUpdate();
+            if(row>0){
+                return true;
+            }
+            
+            return false;
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralUsuarioRolDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        return false;
+    }
    
     
     public static void main(String[] args) {

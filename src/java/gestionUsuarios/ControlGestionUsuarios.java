@@ -17,6 +17,8 @@ import gestionUsuarios.DTOs.UsuarioDTO;
 import java.util.ArrayList;
 import java.util.List;
 import gestionUsuarios.DAOs.ConexionGUDAOs;
+import gestionUsuarios.DAOs.GeneralRequerimientoFDAO;
+import gestionUsuarios.DTOs.RequerimientosFDTO;
 import java.sql.Connection;
 
 /**
@@ -84,6 +86,21 @@ public class ControlGestionUsuarios {
             ConexionGUDAOs.cerrarConexion(con);
         }
     }
+    
+    protected List<ModuloDTO> listarModulosConRFs() {
+        Connection con = ConexionGUDAOs.obtenerConexion();
+        try {
+            ArrayList<ModuloDTO> lista= (ArrayList<ModuloDTO>) new GeneralModuloDAO(con).listaModulos();
+            for (ModuloDTO mod : lista) {
+                GeneralRequerimientoFDAO rfDAO=new GeneralRequerimientoFDAO(con);
+                
+                mod.setRequerimientos((ArrayList<RequerimientosFDTO>) rfDAO.getRFs(mod.getNombre()));
+            }
+            return lista;
+        } finally {
+            ConexionGUDAOs.cerrarConexion(con);
+        }
+    }
 
     protected List<RolDTO> listarRoles() {
         Connection con = ConexionGUDAOs.obtenerConexion();
@@ -94,5 +111,43 @@ public class ControlGestionUsuarios {
             ConexionGUDAOs.cerrarConexion(con);
         }
 
+    }
+    
+    protected List<String> asignarRoles(ICuenta usuario, List<String> roles) {
+        Connection con = ConexionGUDAOs.obtenerConexion();
+        ArrayList<String> noAgregados=new ArrayList<String>();
+        try {
+            GeneralUsuarioRolDAO urDAO=new GeneralUsuarioRolDAO(con);
+            for (String role : roles) {
+                if(!urDAO.insertar(usuario.getUser(), role))noAgregados.add(role);
+            }
+            return noAgregados;
+        } finally {
+            ConexionGUDAOs.cerrarConexion(con);
+        }
+    }
+    
+    protected boolean registrarUsuario(String usuario, String pass) {
+        Connection con = ConexionGUDAOs.obtenerConexion();
+        try {
+            GeneralUsuarioDAO uDAO=new GeneralUsuarioDAO(con);
+            return uDAO.insertar(usuario, pass);
+        } finally {
+            ConexionGUDAOs.cerrarConexion(con);
+        }
+    }
+    
+    protected boolean registrarModulo(String nombreModulo, String descripcion, String url) {
+        Connection con = ConexionGUDAOs.obtenerConexion();
+        try {
+            GeneralModuloDAO mDAO=new GeneralModuloDAO(con);
+            ModuloDTO mod=new ModuloDTO();
+            mod.setNombre(nombreModulo);
+            mod.setDescripcion(descripcion);
+            mod.setUrl(url);
+            return mDAO.insertar(mod);
+        } finally {
+            ConexionGUDAOs.cerrarConexion(con);
+        }
     }
 }

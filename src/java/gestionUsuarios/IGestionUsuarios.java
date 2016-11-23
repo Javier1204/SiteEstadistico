@@ -33,7 +33,7 @@ public interface IGestionUsuarios {
      * @return true si se puedo realizar con exito, false sino puede ser que ya este registrado un modulo con el mismo
      * nombre
      */
-    public boolean registrarModulo(String nombreModulo, String descripcion);
+    public boolean registrarModulo(String nombreModulo, String descripcion, String url);
     
     /**
      * elimina el modulo del sistema, 
@@ -76,16 +76,15 @@ public interface IGestionUsuarios {
      * @return puede retornar que la operacion fue un exito o si ocurrió un error, por ejemplo que
      * ya existia un ussername igual, o no existe ese rol
      */
-    public String registrarUsuario(String usuario, String pass);
+    public boolean registrarUsuario(String usuario, String pass);
     
     /**
      * Asigna roles a una cuenta
      * @param usuario Objeto cuenta al cual se le va a asignar las nuevos roles
      * @param roles roles que quiere asignar
-     * @return true si se puedo realizar, false sino se pudo realizar por motivos como que los roles no
-     * existen o el usuario no existe
+     * @return lista de los roles que no pudo agregar
      */
-    public boolean asignarRoles(ICuenta usuario, List<String> roles);
+    public List<String> asignarRoles(ICuenta usuario, List<String> roles);
     
     
     /**
@@ -134,6 +133,12 @@ public interface IGestionUsuarios {
      */
     public List<ModuloDTO>  listarModulo();
     
+    /**
+     * lista todos los modulos que hay en el sistema, junto con sus requermientos funcionales
+     * @return 
+     */
+    public List<ModuloDTO>  listarModuloConRFs();
+   
     /**
      * lista todos los requerimientos funcionales de un modulo
      * @param modulo modulo del cual se necesitan los RF

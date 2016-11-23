@@ -33,8 +33,8 @@ public class GestionUsuario implements IGestionUsuarios{
 
     
     @Override
-    public boolean asignarRoles(ICuenta usuario, List<String> roles) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<String> asignarRoles(ICuenta usuario, List<String> roles) {
+        return ControlGestionUsuarios.getInstance().asignarRoles(usuario, roles);
     }
 
 
@@ -63,8 +63,8 @@ public class GestionUsuario implements IGestionUsuarios{
 
     
     @Override
-    public boolean registrarModulo(String nombreModulo, String descripcion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean registrarModulo(String nombreModulo, String descripcion, String url) {
+        return ControlGestionUsuarios.getInstance().registrarModulo(nombreModulo, descripcion, url); c
     }
 
     @Override
@@ -83,8 +83,8 @@ public class GestionUsuario implements IGestionUsuarios{
     }
 
     @Override
-    public String registrarUsuario(String usuario, String pass) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean registrarUsuario(String usuario, String pass) {
+        return ControlGestionUsuarios.getInstance().registrarUsuario(usuario, pass);
     }
 
     @Override
@@ -106,10 +106,31 @@ public class GestionUsuario implements IGestionUsuarios{
     public List<RequerimientosFDTO> listarRF(String modulo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    @Override
+    public List<ModuloDTO> listarModuloConRFs() {
+        return ControlGestionUsuarios.getInstance().listarModulosConRFs();
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public static void main(String[] args) {
         ICuenta cuenta=new GestionUsuario().loggearUsuario("admin", "admin");
         System.out.println(cuenta.getPassword());
+        System.out.println(new GestionUsuario().listarRoles());
+        System.out.println(new GestionUsuario().listarModulo());        
+        System.out.println(new GestionUsuario().listarModuloConRFs());
     }
+
+    
     
 
 }
