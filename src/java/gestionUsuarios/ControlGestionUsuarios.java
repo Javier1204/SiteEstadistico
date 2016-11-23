@@ -32,13 +32,13 @@ public class ControlGestionUsuarios {
         return new ControlGestionUsuarios();
     }
 
-    protected ICuenta loggearUser(String rol, String user, String pass) {
+    protected ICuenta loggearUser(String user, String pass) {
         System.out.println("INICIO de logueo");
         Connection con = ConexionGUDAOs.obtenerConexion();
         try {
-            if (!this.existeUsuario(rol, user, con))return null;
+            if (!this.existeUsuario(user, con))return null;
             if (!this.validaPass(user, pass, con)) return null;
-            ICuenta cuenta = cargarCuenta(rol, user, pass, con);
+            ICuenta cuenta = cargarCuenta(user, pass, con);
             System.out.println("FIN de logueo");
             return cuenta;
         } finally {
@@ -47,9 +47,9 @@ public class ControlGestionUsuarios {
 
     }
 
-    private boolean existeUsuario(String rol, String user, Connection con) {
-        GeneralUsuarioRolDAO ur = new GeneralUsuarioRolDAO(con);
-        return ur.existe(rol, user);
+    private boolean existeUsuario(String user, Connection con) {
+        GeneralUsuarioDAO ur = new GeneralUsuarioDAO(con);
+        return ur.existeUser(user);
     }
 
     private boolean validaPass(String user, String pass, Connection con) {
@@ -62,14 +62,17 @@ public class ControlGestionUsuarios {
         return dato;
     }
 
-    private ICuenta cargarCuenta(String rol, String user, String pass, Connection con) {
+    private ICuenta cargarCuenta(String user, String pass, Connection con) {
         Cuenta cuenta = new Cuenta();
         GeneralUsuarioDAO us = new GeneralUsuarioDAO(con);
         UsuarioDTO u = us.getUsuario(user);
         ArrayList<RolDTO> roles = (ArrayList<RolDTO>) new GeneralUsuarioRolDAO(con).obtenerRoles(user);
-        GeneralPrivilegioDAO pdao = new GeneralPrivilegioDAO(con);
-        PrivilegioDTO priv = pdao.getPrivilegioUsuario(user);
-        cuenta.construirCuenta(u, roles, priv);
+        for (RolDTO role : roles) {
+            GeneralPrivilegioDAO pdao = new GeneralPrivilegioDAO(con);
+            PrivilegioDTO priv = pdao.getPrivilegioUsuarioPorRol(role.getRol());
+            role.setPrivilegio(priv);
+        }        
+        cuenta.construirCuenta(u, roles);
         return cuenta;
     }
 

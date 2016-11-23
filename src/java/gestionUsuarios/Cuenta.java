@@ -5,7 +5,9 @@
  */
 package gestionUsuarios;
 
+import gestionUsuarios.DTOs.ModuloDTO;
 import gestionUsuarios.DTOs.PrivilegioDTO;
+import gestionUsuarios.DTOs.RequerimientosFDTO;
 import gestionUsuarios.DTOs.RolDTO;
 import gestionUsuarios.DTOs.UsuarioDTO;
 import java.util.ArrayList;
@@ -18,13 +20,15 @@ import java.util.List;
 public class Cuenta implements ICuenta{
     private UsuarioDTO usser;
     private ArrayList<RolDTO> roles;
-    private PrivilegioDTO privilegio;
 
     
 
     @Override
-    public boolean containModulo(String nomModulo) {
-        return privilegio.containModulo(nomModulo);
+    public boolean containModulo(String rol, String nomModulo) {
+        for (RolDTO role : roles) {
+            if(role.getRol().equalsIgnoreCase(rol))return role.containModulo(nomModulo);
+        }
+        return false;
     }
 
     @Override
@@ -36,26 +40,20 @@ public class Cuenta implements ICuenta{
     }
 
     @Override
-    public List<String> listarRoles() {
-        ArrayList<String> lista=new ArrayList<>();
-        for (RolDTO rol : roles) {
-            lista.add(rol.getRol());
+    public ArrayList<RolDTO> listarRoles() {
+        return roles;
+    }
+
+    @Override
+    public ArrayList<ModuloDTO> listarModulos(String rol) {
+        for (RolDTO role : roles) {
+            if(role.getRol().equalsIgnoreCase(rol))return role.getPrivilegio().getModulos();
         }
-        return lista;
-    }
-
-    @Override
-    public List<String> listarModulos() {
-        return privilegio.listarModulosN();
+        return null;
     }
 
 
-    @Override
-    public void construirCuenta(UsuarioDTO user, List<RolDTO> roles, PrivilegioDTO privilegios) {
-        this.usser=user;
-        this.roles=(ArrayList<RolDTO>) roles;
-        this.privilegio=privilegios;
-    }
+    
 
     @Override
     public String getUser() {
@@ -65,6 +63,79 @@ public class Cuenta implements ICuenta{
     @Override
     public String getPassword() {
         return this.usser.getPassword();
+    }
+
+    @Override
+    public boolean containRF(String modulo, String rf) {
+        
+        for (RolDTO role : roles) {
+            if(role.containRF(modulo, rf))return true;
+        }
+        return false;
+    }
+
+    
+
+    @Override
+    public RolDTO getRol(String rol) {
+        for (RolDTO role : roles) {
+            if(role.getRol().equalsIgnoreCase(rol)){
+                return role;
+            }
+        }
+        return null;
+    }
+
+    
+
+    
+
+    
+
+    @Override
+    public boolean containModulo(String nomModulo) {
+        for (RolDTO role : roles) {
+            if(role.containModulo(nomModulo))return true;
+        }
+        return false;
+    }
+
+    @Override
+    public ModuloDTO getModulo(String rol, String modulo) {
+        for (RolDTO role : roles) {
+            if(role.getRol().equalsIgnoreCase(rol))return role.getModuloDTO(modulo);
+        }
+        return null;
+    }
+
+    @Override
+    public RequerimientosFDTO getRequerimiento(String rol, String modulo, String rf) {
+        for (RolDTO role : roles) {
+            if(role.getRol().equalsIgnoreCase(rol))return role.getRequerimiento(modulo, rf);
+        }
+        return null;
+    }
+
+    @Override
+    public PrivilegioDTO getPrivilegioDTO(String rol) {
+        for (RolDTO role : roles) {
+            if(role.getRol().equalsIgnoreCase(rol))return role.getPrivilegio();
+        }
+        return null;
+    }
+
+    @Override
+    public List<RequerimientosFDTO> listarRFs(String rol, String modulo) {
+        for (RolDTO role : roles) {
+            if(role.getRol().equalsIgnoreCase(rol))return role.getPrivilegio().listarRFs(modulo);
+        }
+        return null;
+    }
+
+    @Override
+    public void construirCuenta(UsuarioDTO user, List<RolDTO> roles) {
+        this.usser=user;
+        this.roles=(ArrayList<RolDTO>)roles;
     }
 
 

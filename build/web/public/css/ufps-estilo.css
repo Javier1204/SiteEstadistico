@@ -72,6 +72,13 @@ and open the template in the editor.
    width: 1200px;
    margin-bottom:  130px;
 }
+   
+   .contenidopopup{
+          background-color: rgba(236,240,241,0.7);
+          height: 100%;
+          width: 100%;
+       
+   }
 
 
 #contenidohome{

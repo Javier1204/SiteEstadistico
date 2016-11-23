@@ -38,5 +38,33 @@ public class PrivilegioDTO {
         }
         return lista;
     }
+    public boolean containRF(String modulo, String rf){
+        for (ModuloDTO mod : modulos) {
+            if(mod.getNombre().equalsIgnoreCase(modulo)){
+                return mod.containRF(rf);
+            }
+        }
+        return false;
+    }
+    public ModuloDTO getModulo(String modulo){
+        for (ModuloDTO mod : modulos) {
+            if(mod.getNombre().equalsIgnoreCase(modulo))return mod;
+        }
+        return null;
+    }
+    public RequerimientosFDTO getRequerimiento(String modulo, String rf) {
+        for (ModuloDTO mod : modulos) {
+            if(mod.getNombre().equalsIgnoreCase(modulo)){
+                return mod.getRequerimiento(rf);
+            }
+        }
+        return null;
+    }
+    public List<RequerimientosFDTO> listarRFs(String modulo) {
+        for (ModuloDTO mod : modulos) {
+            if(mod.getNombre().equalsIgnoreCase(modulo))return mod.getRequerimientos();
+        }
+        return null;
+    }
     
 }

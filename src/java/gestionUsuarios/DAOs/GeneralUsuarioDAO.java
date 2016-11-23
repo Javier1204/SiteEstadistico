@@ -62,6 +62,19 @@ public class GeneralUsuarioDAO {
         }
         
     }
+    public boolean existeUser(String user){
+        try{
+            PreparedStatement ps=conn.prepareStatement("SELECT * FROM general_usuario WHERE user=?");
+            ps.setString(1, user);
+            ResultSet rs=ps.executeQuery();
+            if(rs.absolute(1)){
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralUsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
     public static void main(String[] args) {
         //GeneralUsuarioDAO us=new GeneralUsuarioDAO();
         //System.out.println(us.getPass("1151052"));

@@ -6,6 +6,8 @@
 package gestionUsuarios;
 
 import gestionUsuarios.DTOs.ModuloDTO;
+import gestionUsuarios.DTOs.PrivilegioDTO;
+import gestionUsuarios.DTOs.RequerimientosFDTO;
 import gestionUsuarios.DTOs.RolDTO;
 import java.util.List;
 
@@ -17,22 +19,30 @@ public interface IGestionUsuarios {
     
     /**
      * Permite verificar si el usuario y contraseña se encuentran en la base de datos
-     * @param rol rol del usuario que se va a registrar, si el usuario  tiene varios roles solo elige uno
      * @param usuario ussername
      * @param password contraseña
      * @return retorna la cuenta del usuario con todos los datos cargados, es decir, que contiene todos los roles, 
      * todos los modulos y requerimientos funcionales en los cuales que puede desempeñar el usuario.
      */
-    public ICuenta loggearUsuario(String rol, String usuario, String password);
+    public ICuenta loggearUsuario(String usuario, String password);
     
     /**
      * permite registra un modulo en el sistema, para que el sistema sea escalable
-     * @param usuario   registrar modulos solo lo pueden hacer roles super administrador y coordinador
+     * @param descripcion descripcion del modulo
      * @param nombreModulo  nombre del modulo que se va a registrar
      * @return true si se puedo realizar con exito, false sino puede ser que ya este registrado un modulo con el mismo
      * nombre
      */
-    public boolean registrarModulo(ICuenta adminOcord, String nombreModulo);
+    public boolean registrarModulo(String nombreModulo, String descripcion);
+    
+    /**
+     * elimina el modulo del sistema, 
+     * ALERTA: al hacer esto se eleminan todos los requerimientos funcionales de ese modulo
+     * @param modulo modulo que quiere elminar
+     * @return true si pudo eliminar el modulo
+     */
+    public boolean eliminarModulo(String modulo);
+    
     /**
      * permite registrar requerimientos funcionales a un modulo
      * @param usuario esta función solo la pueden hacer los usuarios con roles administrador o coordinador
@@ -42,8 +52,15 @@ public interface IGestionUsuarios {
      * @return return true si pudo realizar el proceso de resgitro, false sino pudo por diferentes
      * motivos como por ejemplo que nombre del modulo no exista, que el RF ya fue regustrado
      */
-    public boolean registrarRF(ICuenta adminOcor, String nombreModulo, String RF, String nombreRF);
+    public boolean registrarRF(String nombreModulo, String RF, String nombreRF, String url);
     
+    /**
+     * Elimina el RF de un modulo, si este requeriminato lo usa un rol será desasignado
+     * @param modulo modulo que contiene el RF
+     * @param rf requerimiento funacional
+     * @return 
+     */
+    public boolean eliminarRF(String modulo, String rf);
     /**
      * validar si el usuario esta en el sistema
      * @param rol rol del usuario que desea buscar
@@ -51,15 +68,16 @@ public interface IGestionUsuarios {
      * @return true si existe ese usuario, false sino existe en el sistema
      */
     public boolean validarUsuario(String rol, String usuario);
+    
     /**
      * permite registrar usuarios en la base de datos
      * @param usuario   ussername
      * @param pass  password
-     * @param roles roles que puede tener ese usuario
      * @return puede retornar que la operacion fue un exito o si ocurrió un error, por ejemplo que
      * ya existia un ussername igual, o no existe ese rol
      */
-    public String registrarUsuario(String usuario, String pass, List<String> roles);
+    public String registrarUsuario(String usuario, String pass);
+    
     /**
      * Asigna roles a una cuenta
      * @param usuario Objeto cuenta al cual se le va a asignar las nuevos roles
@@ -68,18 +86,25 @@ public interface IGestionUsuarios {
      * existen o el usuario no existe
      */
     public boolean asignarRoles(ICuenta usuario, List<String> roles);
-    /**
-     * Asigna privilegios a una cuenta
-     * @param usuario cuenta a la cual le va a asignar RF (requerimientos funcionales)
-     * @param rol rol de la cuenta que le va a asigar esos privilegios
-     * @param RF requerimientos funcionales que va a agregar a esa cuenta tener en cuenta que cada RF
-     * esta identificado por un ID que lo define cada módulo, es decir RF1, RF2, RF3... esto solo para un
-     * modulo
-     * @return boolean si se pudo realizar el registro, fasle sino pudo por que el rol, el usuario, o alguno de los RF
-     * no existe
-     */
-    public boolean asignarModulo(ICuenta usuario, String rol, String modulo);
     
+    
+    /**
+     * Asigna privilegios (requerimientos funcionales de modulos) a un rol
+     * @param rol rol al cual se le van a agregar requerimientos funcionales
+     * @param privilegios los privilegios deben tener los modulos con los requerimientos funcionales 
+     * que va a agregarle a ese rol, el sistema se encarga de guarda los nuevos modulos
+     * @return boolean si se pudieron agregar los modulos a el rol, false sino se pudo
+     */
+    public boolean asignarPrivilegios(String rol, PrivilegioDTO privilegios);
+    
+    /**
+     * quitar Requerimientos funcionales a un rol
+     * @param rol rol al cual se le van a quitar los requerimientos funcionales
+     * @param privilegios Todos los roles que va a quitarle, si estos ya los tiene reguistrados
+     * ignora la peticion
+     * @return todos los privilegios que fueron eliminados.
+     */
+    public PrivilegioDTO quitarPrivilegios(String rol, PrivilegioDTO privilegios);
     /**
      * Cambia la contraseña del usuario que esta loggueado
      * @param cuenta cuenta del usuario que la va a cambiar
@@ -87,6 +112,7 @@ public interface IGestionUsuarios {
      * @return la cuenta con la contraseña cambiada si ocurrio un error retorna null
      */
     public ICuenta cambiarContrasena(ICuenta cuenta, String nuevaContra);
+    
     /**
      * El superadministador cambia la contraseña de cualquier usuario
      * @param administrador cuenta del superadministrador
@@ -94,17 +120,25 @@ public interface IGestionUsuarios {
      * @param nuevaContra nuevaContraseña
      * @return true si pudo registrar exitosamente, false sino, porque el usuario no existe
      */
-    public boolean cambiarContrasena(ICuenta administrador, String usuario, String nuevaContra);
+    public boolean cambiarContrasena(String usuario, String viejaContrasena, String nuevaContra);
     
     /**
      * lista todos los roles que hay en el sistema
      * @return 
      */
     public List<RolDTO>  listarRoles();
+    
     /**
-     * lista todos los modulos que hay en el sistema
+     * lista todos los modulos que hay en el sistema, junto con sus requermientos funcionales
      * @return 
      */
     public List<ModuloDTO>  listarModulo();
+    
+    /**
+     * lista todos los requerimientos funcionales de un modulo
+     * @param modulo modulo del cual se necesitan los RF
+     * @return lista de todos los requerimientos funcionales de ese modulo
+     */
+    public List<RequerimientosFDTO> listarRF(String modulo);
     
 }
