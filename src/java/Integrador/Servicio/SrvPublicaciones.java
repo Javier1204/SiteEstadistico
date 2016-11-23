@@ -7,6 +7,7 @@ package Integrador.Servicio;
 
 import Integrador.DAO.PublicacionesDAO;
 import Integrador.DTO.PublicacionDTO;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,6 +19,11 @@ public class SrvPublicaciones {
     PublicacionesDAO dao=new PublicacionesDAO();
     return dao.crearPublicaciones(dto);
     
+    }
+    
+    public ArrayList<PublicacionDTO> listarPublicaciones(){
+    PublicacionesDAO dao=new PublicacionesDAO();
+    return dao.listarPublicaciones();
     }
     
 }

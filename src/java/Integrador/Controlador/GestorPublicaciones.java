@@ -5,11 +5,14 @@
  */
 package Integrador.Controlador;
 
+import Integrador.DTO.PublicacionDTO;
+import Integrador.Servicio.SrvPublicaciones;
 import gestionUsuarios.DTOs.ModuloDTO;
 import gestionUsuarios.GestionUsuario;
 import gestionUsuarios.IGestionUsuarios;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,8 +26,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "GestorPublicaciones", urlPatterns = {"/GestorPublicaciones"})
 public class GestorPublicaciones extends HttpServlet {
-
     
+    private SrvPublicaciones srvPublicaciones = new SrvPublicaciones();
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -38,12 +41,29 @@ public class GestorPublicaciones extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       String medio= request.getParameter("medio");
-        if("abrirVentanaCrearPublicacion".equalsIgnoreCase("abrirVentanaCrearPublicacion")){
-        retornarVentanaCrearPublicacion(request,response);
+        String medio = request.getParameter("medio");
+        if ("abrirVentanaCrearPublicacion".equals(medio)) {
+            retornarVentanaCrearPublicacion(request, response);
+        }else{
+           this.listarPublicaciones(request, response);
         }
     }
 
+    /**
+     * este metodo lista todas las publicaciones registradas en el sistema de mayor a menor
+     * segun la fecha
+     * @param request
+     * @param response
+     * @throws IOException
+     * @throws ServletException 
+     */
+    private void listarPublicaciones(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+        ArrayList<PublicacionDTO> lista = this.srvPublicaciones.listarPublicaciones();
+        request.setAttribute("publicaciones",lista);
+        request.getRequestDispatcher("Integrador/listar_publicaciones.jsp").forward(request, response);
+   
+    }
+    
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -55,7 +75,10 @@ public class GestorPublicaciones extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      
+          String medio = request.getParameter("medio");
+        if ("registrarPublicacion".equals("registrarPublicacion")) {
+            this.crearPublicacion(request, response);
+        }
     }
 
     /**
@@ -71,16 +94,29 @@ public class GestorPublicaciones extends HttpServlet {
     /**
      * este metodo retorna la ventana pop-up para crear una publicacion
      */
-    private void retornarVentanaCrearPublicacion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
-      IGestionUsuarios gestor = GestionUsuario.getInstance();
-  List<ModuloDTO> modulos = gestor.listarModulo();
-  request.setAttribute("modulos", modulos);
+    private void retornarVentanaCrearPublicacion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        IGestionUsuarios gestor = GestionUsuario.getInstance();
+        List<ModuloDTO> modulos = gestor.listarModulo();
+        request.setAttribute("modulos", modulos);
         request.getRequestDispatcher("Integrador/crear_publicacion.jsp").forward(request, response);
-          
+        
     }
     
-    private void crearPublicacion(HttpServletRequest request, HttpServletResponse response){
-    
+    private void crearPublicacion(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        
+        try (PrintWriter out = response.getWriter()) {
+            String titulo = request.getParameter("titulo");
+            String modulo = request.getParameter("modulo");
+            String informe = request.getParameter("informe");
+            String texto = request.getParameter("texto");
+         
+            PublicacionDTO dto = new PublicacionDTO();
+            dto.setTitulo(titulo);
+           dto.setInforme(null);
+            dto.setContenido(texto);
+            out.println(this.srvPublicaciones.crearPublicacion(dto));
+        }
+        
     }
-
+    
 }

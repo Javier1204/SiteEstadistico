@@ -51,7 +51,7 @@
                     Site Estadístico
                 </div>
                 <div class="ufps-navbar-left">
-                    <a href="listar_publicaciones.jsp" class="ufps-navbar-btn">Home</a>
+                    <a href="GestionPublicaciones" class="ufps-navbar-btn">Home</a>
                    <a href="listar_modulos.jsp" class="ufps-navbar-btn">Administración</a>
 
                 </div>

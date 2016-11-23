@@ -5,17 +5,32 @@
  */
 package Integrador.DTO;
 
+import java.sql.Date;
+
 /**
  *
  * @author carlos
  */
 public class PublicacionDTO {
     
+    private int id;
     private String titulo;
     private String contenido;
-    private String nombreModulo;
-    private String nombreInforme;
+   private InformeDTO informe;
+   private Date fecha;
 
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+   
+   
+   
+   
     public String getTitulo() {
         return titulo;
     }
@@ -32,21 +47,23 @@ public class PublicacionDTO {
         this.contenido = contenido;
     }
 
-    public String getNombreModulo() {
-        return nombreModulo;
+    public InformeDTO getInforme() {
+        return informe;
     }
 
-    public void setNombreModulo(String nombreModulo) {
-        this.nombreModulo = nombreModulo;
+    public void setInforme(InformeDTO informe) {
+        this.informe = informe;
     }
 
-    public String getNombreInforme() {
-        return nombreInforme;
+    public int getId() {
+        return id;
     }
 
-    public void setNombreInforme(String nombreInforme) {
-        this.nombreInforme = nombreInforme;
+    public void setId(int id) {
+        this.id = id;
     }
+
+   
     
     
     

@@ -100,3 +100,48 @@ function ingresar(){
 	});
         
     }
+    
+    /**
+     * este metodo cierra el pop-up
+     * @returns {undefined}
+     */
+    function eliminarVentana() {
+	$("#ventana").dialog('destroy').remove();
+}
+
+    
+    /**
+     * este metodo registra una publicacion en el sistema
+     * @returns {undefined}
+     */
+    function registrarPublicacion(){
+        var titulo = $("#titulo").val();
+        var modulo = $("#modulo").val();
+        var informe = $("#informe").val();
+        var texto = $("#texto").val();
+       
+         $.ajax({
+		type : "POST",
+		url : "../GestorPublicaciones",
+                data : {
+			'medio' : 'registrarPublicacion',
+                        'titulo': titulo,
+                        'modulo': modulo,
+                        'informe':informe,
+                        'texto':texto
+		},
+		cache : false,
+		success : function(data) {
+		
+                    if(data){
+                            alert("registro exitoso");
+                            eliminarVentana();
+                        }else{
+                            alert("Error en el registro");
+                        }
+			
+
+		}
+	});
+        
+    }
