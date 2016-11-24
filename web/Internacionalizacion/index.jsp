@@ -20,8 +20,8 @@
         <!--Metaetiqueta para la correcta visualizaciÃ³n en dispositivos moviles-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--AÃ±ada primero el estilo de la libreria (ufps.css o ufps.min.css) y luego sus estilos propios-->
-        <link href="Vista/css/ufps.css" rel="stylesheet" type="text/css"/>        
-        <link href="Vista/css/styles.css" rel="stylesheet" type="text/css"/>
+        <!--<link href="Vista/css/ufps.css" rel="stylesheet" type="text/css"/>-->        
+        <!--<link href="Vista/css/styles.css" rel="stylesheet" type="text/css"/>-->
         <link href="Vista/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <!--Librerías para compatibilidad con versiones antiguas de Internet Explorer-->
         <!--[if lt IE 9]>
@@ -40,11 +40,12 @@
 
     </head>
     <body>
-        
+        <jsp:include page="../plantilla/header.jsp"></jsp:include>
+        <!--
         <header>
             <center> <img id="banner" src="../public/img/Banner-superior.png" alt="imagen" height="100px" width="100%" ></img></center>
         </header>  
-        <!--Menu-->
+        
 
         <div class="ufps-navbar-light ufps-container " id="menu" >
             <div class="ufps-container-fluid">
@@ -74,7 +75,7 @@
 
             </div>
         </div>
-
+-->
         <!--Contenido-->
 
 
@@ -167,12 +168,12 @@
         </div>
 
         <div class="ufps-container ufps-footer ">
-            <h5 class="text-center">Universidad Francisco de Paula Santander</h5>
-            <h6 class="text-center">Programa Ingeniería de Sistemas<br>
-                Desarrollador por: Francisco Javier Duarte García - Heiner Enrique Villamizar Molina</h6>
-
+            <h3 class="text-center">Universidad Francisco de Paula Santander</h3>
+            <h4 class="text-center">Programa Ingeniería de Sistemas</h4>
+            <h5>Desarrollador por: Francisco Javier Duarte García - Heiner Enrique Villamizar Molina</h5>
 
         </div>   
     </body>
+   
     
 </html>

@@ -14,7 +14,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Departamento de sistemas e Informática UFPS</title>
         <link href="../public/css/ufps.min.css" rel="stylesheet" type="text/css"/>
-        <link href="../public/css/styles.css" rel="stylesheet">
         <link href="../public/css/ufps-estilo.css" rel="stylesheet">
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
         <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
