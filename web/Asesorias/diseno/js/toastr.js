@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Toastr
  * Version 2.0.1
  * Copyright 2012 John Papa and Hans Fjällemark.  
@@ -9,7 +9,7 @@
  * Author: John Papa and Hans Fjällemark
  * Project: https://github.com/CodeSeven/toastr
  */
-        ;
+        
 (function (define) {
     define(['jquery'], function ($) {
         return (function () {

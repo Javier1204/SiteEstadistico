@@ -64,7 +64,7 @@ public class GestionUsuario implements IGestionUsuarios{
     
     @Override
     public boolean registrarModulo(String nombreModulo, String descripcion, String url) {
-        return ControlGestionUsuarios.getInstance().registrarModulo(nombreModulo, descripcion, url); c
+        return ControlGestionUsuarios.getInstance().registrarModulo(nombreModulo, descripcion, url);
     }
 
     @Override
