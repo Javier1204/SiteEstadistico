@@ -41,8 +41,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--AÃ±ada primero el estilo de la libreria (ufps.css o ufps.min.css) y luego sus estilos propios-->
         <link href="css/csspropio.css" rel="stylesheet" type="text/css"/>
-        <link href="../../public/css/ufps.css" rel="stylesheet" type="text/css"/>
-        <link href="css/ufps.css" rel="stylesheet" type="text/css"/>
+        <link href="../public/css/ufps.css" rel="stylesheet" type="text/css"/>
+        
+        
         <link href="css/styles.css" rel="stylesheet" type="text/css"/>
         <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css"/>
@@ -67,37 +68,12 @@
         <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
     </head>
     <body>
-        <header>
+        <jsp:include page="../plantilla/header.jsp"></jsp:include>
 
-            <center> <img id="banner" src="../../public/img/Banner-superior.png" alt="imagen" height="100px" width="100%" ></img></center>
-        </header> 
-
-        <div class="ufps-navbar ufps-container " id="menu" >
-            <div class="ufps-container-fluid">
-                <div class="ufps-navbar-brand">
-                    <div class="ufps-btn-menu" onclick="toggleMenu('menu')">
-                        <div class="ufps-btn-menu-bar">hdasd </div>
-                        <div class="ufps-btn-menu-bar">dadas </div>
-                        <div class="ufps-btn-menu-bar"> </div>
-                    </div>
-
-                </div>
-                <div class="ufps-navbar-left nav">
-
-                    <li><a href="../index.jsp" class="  ufps-navbar-btn  " >Home </a></li>
-                    <li><a href="convenios.jsp"  class="ufps-navbar-btn  " >Convenios </a></li>
-                    <li><a href="registrarActividad.jsp"  class="ufps-navbar-btn  " >Actividades </a></li>
-                    <li><a href="consultarConvenios.jsp"  class="ufps-navbar-btn  " >Consultar Convenios</a></li>
-
-                    </li>
-                </div>
-
-
-            </div>
-        </div>
+        
 
         <!--Contenido-->
-        <div  class="ufps-container" id="contenido">
+        <div  class="ufps-container" style="width: 1250px" id="contenido">
 
 
             <div class="ufps-row">
@@ -125,7 +101,7 @@
                         </fieldset>
 
                         <div class="form-group">
-                            <label for="convenio">Seleccione convenio:</label>
+                            <br><label for="convenio">Seleccione convenio:</label>
                             <select id="convenio" name="convenio" class="ufps-input" onchange="">
 
                                 <%
@@ -266,5 +242,5 @@
 
 
     </div>  
-    <!--<%@ include file="../../plantilla/footer.jsp"%>-->
+    
 </html>

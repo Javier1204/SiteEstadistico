@@ -11,15 +11,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="../../public/css/ufps-estilo.css" rel="stylesheet" type="text/css"/>
-        <link href="../../public/css/ufps.css" rel="stylesheet" type="text/css"/>        
-        <link href="css/ufps.css" rel="stylesheet" type="text/css"/>
-        <link href="css/styles.css" rel="stylesheet" type="text/css"/>
-        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="../public/css/ufps-estilo.css" rel="stylesheet" type="text/css"/>
+        <link href="../public/css/ufps.css" rel="stylesheet" type="text/css"/>               
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>      
         <link href="css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css"/>
-        <script src="../../public/js/ufps.js" type="text/javascript"></script>
-        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <script src="../public/js/ufps.js" type="text/javascript"></script>
+        
         
         <!--LibrerÃ­as para compatibilidad con versiones antiguas de Internet Explorer-->
         <!--[if lt IE 9]>
@@ -29,16 +28,17 @@
         <!--Algunos componentes requieren el uso de la librerÃ­a en javascript-->
         <script src="js/moment.js" type="text/javascript"></script>
         <script src="js/jquery-3.1.1.js" type="text/javascript"></script>
-        <script src="js/jquery-3.1.0.min.js"></script>
+        <script src="js/jquery-3.1.0.min.js" type="text/javascript"></script>
         <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
-        <script src="js/bootstrap.js"></script>
+        <script src="js/bootstrap.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script src="../../public/js/ufps.js" type="text/javascript"></script>
-        <script src="../../public/js/ufps.min.js" type="text/javascript"></script>
+        <script src="../public/js/ufps.js" type="text/javascript"></script>
+        <script src="../public/js/ufps.min.js" type="text/javascript"></script>
         
     </head>
     <body>
-        
+        <jsp:include page="../plantilla/header.jsp"></jsp:include>
+        <!--
         <header>
 
             <center> <img id="banner" src="../../public/img/Banner-superior.png" alt="imagen" height="100px" width="100%" ></img></center>
@@ -70,10 +70,10 @@
 
             </div>
         </div>
-
+-->
         <!--Contenido-->
         <div  class="ufps-container" id="contenido">
-        <h1 class="text-center">LISTADO DE CONVENIOS</h1>
+            <h1 class="text-center" style="text-align: center">LISTADO DE CONVENIOS</h1>
         <%
             Facade f = new Facade();
         %>
