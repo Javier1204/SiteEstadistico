@@ -12,7 +12,7 @@
 <%
     Facade fachada = new Facade();
 
-  if(request.getSession().getAttribute("respuesta_actividad") != null) {
+    if (request.getSession().getAttribute("respuesta_actividad") != null) {
 
 %>
 <!--<div class="ufps-alert-green" center>
@@ -24,7 +24,7 @@
     alert("Registro exitoso!");
     </script>-->
 <%}
-   request.getSession().setAttribute("respuesta_actividad", true);
+    request.getSession().setAttribute("respuesta_actividad", true);
 %>
 
 
@@ -40,12 +40,13 @@
         <!--Metaetiqueta para la correcta visualizaciÃ³n en dispositivos moviles-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--AÃ±ada primero el estilo de la libreria (ufps.css o ufps.min.css) y luego sus estilos propios-->
+        <link href="css/csspropio.css" rel="stylesheet" type="text/css"/>
         <link href="../../public/css/ufps.css" rel="stylesheet" type="text/css"/>
         <link href="css/ufps.css" rel="stylesheet" type="text/css"/>
         <link href="css/styles.css" rel="stylesheet" type="text/css"/>
         <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css"/>
-
+       
 
         <!--LibrerÃ­as para compatibilidad con versiones antiguas de Internet Explorer-->
         <!--[if lt IE 9]>
@@ -62,7 +63,7 @@
         <script src="../../public/js/ufps.js" type="text/javascript"></script>
         <script src="../../public/js/ufps.min.js" type="text/javascript"></script>
         <script src="js/formactividad.js" type="text/javascript"></script>
-        
+
         <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
     </head>
     <body>
@@ -130,10 +131,9 @@
                                 <%
                                     //ControladorConvenio c = new ControladorConvenio();
                                     ArrayList<Convenio> convenios = fachada.obtenerConvenios();
-                                         
-                                       
-                                    for(Convenio con : convenios){
-                                       
+
+                                    for (Convenio con : convenios) {
+
 
                                 %>                                    
                                 <option value="<%=con.getId()%>"><%=con.getNombre()%></option>
@@ -142,8 +142,8 @@
                                 %>
                             </select>
                         </div>
-                            
-                            
+
+
                         <div class="form-group">
 
                             <label for="nombre">Nombre actividad:</label>
@@ -166,7 +166,7 @@
                             <!--Se deben cargar dinamicamente de acuerdo a las registradas en convenio-->
                             <div class="form-group col-md-3">
                                 <label for="tipoactividad">Tipo actividad:</label>
-                                <select id="tipoactividad" name="tipoactividad" class="ufps-input">
+                                <select id="tipoactividad" name="tipoactividad" class="ufps-input" onchange="mostrarpasantia()">
                                     <option value="Practica">Practica</option>
                                     <option value="Pasantia">Pasantia</option>
                                     <option value="Movilidad">Movilidad</option>
@@ -202,10 +202,10 @@
                             <input type="button" class="ufps-btn" value="Agregar Estudiante" onClick="addInput('insertar');">
                             <input type="button" class="ufps-btn" value="Quitar Estudiante" onClick="borrarInput('insertar');"><br><br>
                             <div class="row">
-                            <div id="insertar" class="form-group col-md-4">
+                                <div id="insertar" class="form-group col-md-4">
 
+                                </div>
                             </div>
-                        </div>
                         </div>
                         <div class="form-group">
 
@@ -213,30 +213,35 @@
                             <input type="text" class="ufps-input" id="descripcion" name="descripcion">
 
                         </div>
-                        <div class="form-group">
-                            <label for="nombreproyecto" title="Nombre del proyecto de pasantía.">Nombre proyecto pasantía: <span class="glyphicon glyphicon-question-sign"></span></label>
-                            <input type="text" class="ufps-input" id="nombreproyecto">
 
-                        </div>
-                        <div class="form-group">
-                            <label for="tutorempresa" title="Tutor de la empresa.">Tutor empresa pasantía: <span class="glyphicon glyphicon-question-sign"></span></label>
-                            <input type="text" class="ufps-input" id="tutorempresa">
+                            <div class="panel" id="panelpasantia" style='display:none'>
+                                <div class="panel-heading"><h4>Formulario para Registro de Pasantia</h4></div>
+                                <div class="panel-body">
+                            <div class="form-group">
+                                <label for="nombreproyecto" title="Nombre del proyecto de pasantía.">Nombre proyecto pasantía: <span class="glyphicon glyphicon-question-sign"></span></label>
+                                <input type="text" class="ufps-input" id="nombreproyecto">
 
-                        </div>
-                        <div class="form-group">
-                            <label for="tutoruni" title="Tutor de la universidad.">Tutor universidad pasantía: <span class="glyphicon glyphicon-question-sign"></span></label>
-                            <input type="text" class="ufps-input" id="tutoruni">
+                            </div>
+                            <div class="form-group">
+                                <label for="tutorempresa" title="Tutor de la empresa.">Tutor empresa pasantía: <span class="glyphicon glyphicon-question-sign"></span></label>
+                                <input type="text" class="ufps-input" id="tutorempresa">
 
-                        </div>
-                        <div class="form-group col-md-5">
-                            <label for="fechainicio" title="Fecha inicio de la pasantía.">Fecha inicio pasantía: <span class="glyphicon glyphicon-question-sign"></span></label>
-                            <input type="date" class="ufps-input" id="fechainicio">
-                        </div>
-                        <div class="form-group col-md-5">
-                            <label for="fechafin" title="Fecha terminación pasantía.">Fecha fin pasantía: <span class="glyphicon glyphicon-question-sign"></span></label>
-                            <input type="date" class="ufps-input" id="fechafin">
-                        </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="tutoruni" title="Tutor de la universidad.">Tutor universidad pasantía: <span class="glyphicon glyphicon-question-sign"></span></label>
+                                <input type="text" class="ufps-input" id="tutoruni">
 
+                            </div>
+                            <div class="form-group col-md-5">
+                                <label for="fechainicio" title="Fecha inicio de la pasantía.">Fecha inicio pasantía: <span class="glyphicon glyphicon-question-sign"></span></label>
+                                <input type="date" class="ufps-input" id="fechainicio">
+                            </div>
+                            <div class="form-group col-md-5">
+                                <label for="fechafin" title="Fecha terminación pasantía.">Fecha fin pasantía: <span class="glyphicon glyphicon-question-sign"></span></label>
+                                <input type="date" class="ufps-input" id="fechafin">
+                            </div>
+                                </div>
+                        </div>
                         <div class="form-group col-md-3">
                             <button type="submit" class="ufps-btn">Registrar</button>
                         </div>

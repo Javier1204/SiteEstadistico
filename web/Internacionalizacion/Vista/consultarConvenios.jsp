@@ -88,8 +88,8 @@
                                         <th>CREACION</th>
                                         <th>TERMINACION</th>
                                         <th>ENTIDAD</th>
-                                        <th>VIGENCIA</th
-                                       
+                                        <th>VIGENCIA</th>
+                                        <th>ACTA</th>
 
                                     </tr>
                                 </thead>
@@ -112,7 +112,7 @@
                                         <td><%=c.getFechaterminacion()%></td>
                                         <td><%=c.getEntidad()%></td>
                                         <td><%=c.getVigencia()%></td>
-                                                                             
+                                        <td><input class="ufps-btn" type="button" value="Ver acta"></td>                                 
                                         
                                     </tr>
                                     <% }

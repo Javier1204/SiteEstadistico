@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Internacionalizacion.Modelo.DAO;
+package internacionalizacion.Modelo.DAO;
 
 import general.conexion.Conexion;
 import general.conexion.Pool;
-import Internacionalizacion.Modelo.DTO.Convenio;
+import internacionalizacion.Modelo.DTO.Convenio;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -89,7 +89,7 @@ public class DAOConvenio {
             pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
-            stm = con.prepareStatement("Select * from general_convenio");//genero el sql. 
+            stm = con.prepareStatement("Select * from general_convenio c order by c.nombre");//genero el sql. 
             
             ResultSet resultado = stm.executeQuery();//ejecuto la consulta
             Convenio c;

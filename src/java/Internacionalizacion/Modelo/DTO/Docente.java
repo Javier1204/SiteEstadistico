@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Internacionalizacion.Modelo.DTO;
+package internacionalizacion.Modelo.DTO;
 
 import java.sql.Date;
 

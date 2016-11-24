@@ -2153,6 +2153,24 @@ textarea {
   max-height: 500px;
 }
 
+/* Panels */
+
+.ufps-panel {
+    padding-top: 0px;
+    background: #d61117;   
+    border-color: #d61117;
+    border: 1px solid transparent;
+}
+
+.ufps-panel-heading {
+    
+    background-color: #d61117;
+    border-color: #d61117;
+    color: #fff;   
+}
+.ufps-panel-body{
+    
+}
 
 /* Tabs */
 

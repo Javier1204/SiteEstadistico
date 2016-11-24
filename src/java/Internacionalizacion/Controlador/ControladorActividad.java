@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Internacionalizacion.Controlador;
+package internacionalizacion.Controlador;
 
-import Internacionalizacion.Modelo.DAO.DAOActividad;
-import Internacionalizacion.Modelo.DTO.Actividad;
+import internacionalizacion.Modelo.DAO.DAOActividad;
+import internacionalizacion.Modelo.DTO.Actividad;
 
 /**
  *

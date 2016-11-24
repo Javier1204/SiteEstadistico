@@ -2255,21 +2255,20 @@ textarea {
 
 /*Panels */
 
-.panel {
-    padding-top: 30px;
-    background: #d61117;
-   
-   
+.ufps-panel {
+    padding-top: 0px;
+       
+    border-color: #d61117;
+    border: 1px solid transparent;
 }
 
-.panel-heading {
+.ufps-panel-heading {
     
-    background: #d61117;
-    color: #fff;
-    
+    background-color: #d61117;
+    border-color: #d61117;
+    color: #fff;   
 }
-
-.panel-body {
+.ufps-panel-body{
     
 }
 

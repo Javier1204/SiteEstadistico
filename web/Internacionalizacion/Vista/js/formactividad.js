@@ -47,3 +47,15 @@ $(document).ready(function () {
     });
 });
 }
+
+function mostrarpasantia(){
+    
+    var actividad = document.getElementById('tipoactividad').value;
+    
+    if(actividad==='Pasantia'){
+        if(document.getElementById('panelpasantia').style.display==='none')
+            document.getElementById('panelpasantia').style.display = 'block';                    
+    }
+    else
+            document.getElementById('panelpasantia').style.display = 'none';
+}

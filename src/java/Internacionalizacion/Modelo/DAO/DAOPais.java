@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Internacionalizacion.Modelo.DAO;
+package internacionalizacion.Modelo.DAO;
 
 import general.conexion.Conexion;
 import general.conexion.Pool;
-import Internacionalizacion.Modelo.DTO.Actividad;
-import Internacionalizacion.Modelo.DTO.Pais;
+import internacionalizacion.Modelo.DTO.Actividad;
+import internacionalizacion.Modelo.DTO.Pais;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

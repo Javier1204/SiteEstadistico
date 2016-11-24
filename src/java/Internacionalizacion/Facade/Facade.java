@@ -3,23 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Internacionalizacion.Facade;
+package internacionalizacion.Facade;
 
-import Internacionalizacion.Controlador.ControladorTipo_actividades;
-import Internacionalizacion.Controlador.ControladorActividad;
-import Internacionalizacion.Controlador.ControladorEntidad;
-import Internacionalizacion.Controlador.ControladorPais;
-import Internacionalizacion.Controlador.ControladorConvenio;
-import Internacionalizacion.Controlador.ControladorActividad_Estudiante;
-import Internacionalizacion.Modelo.DAO.DAOActividad_Estudiante;
-import Internacionalizacion.Modelo.DAO.DAOConvenio;
 
-import Internacionalizacion.Modelo.DTO.Actividad;
-import Internacionalizacion.Modelo.DTO.Actividad_Estudiante;
-import Internacionalizacion.Modelo.DTO.Convenio;
-import Internacionalizacion.Modelo.DTO.Entidad;
-import Internacionalizacion.Modelo.DTO.Pais;
-import Internacionalizacion.Modelo.DTO.Tipo_actividades;
+import internacionalizacion.Controlador.ControladorActividad;
+import internacionalizacion.Controlador.ControladorActividad_Estudiante;
+import internacionalizacion.Controlador.ControladorConvenio;
+import internacionalizacion.Controlador.ControladorEntidad;
+import internacionalizacion.Controlador.ControladorPais;
+import internacionalizacion.Controlador.ControladorTipo_actividades;
+import internacionalizacion.Modelo.DTO.Actividad;
+import internacionalizacion.Modelo.DTO.Actividad_Estudiante;
+import internacionalizacion.Modelo.DTO.Convenio;
+import internacionalizacion.Modelo.DTO.Entidad;
+import internacionalizacion.Modelo.DTO.Pais;
+import internacionalizacion.Modelo.DTO.Tipo_actividades;
 import java.util.ArrayList;
 
 /**
