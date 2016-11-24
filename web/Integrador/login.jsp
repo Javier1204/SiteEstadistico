@@ -73,7 +73,7 @@
                     </option>
                 </select>
                 <input type="submit" class="ufps-btn ufps-btn-light" name="ingresar" id="ingresar" value="Ingresar" />
-                <label id="divError"> </label>
+                <center><label id="divError"> </label></center>
             </form>
         </div>
 

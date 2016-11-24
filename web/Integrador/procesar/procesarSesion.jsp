@@ -12,10 +12,9 @@
 <%
     String user = request.getParameter("nombre_usuario");
     String password = request.getParameter("password");
-    String tipo = request.getParameter("tipo");
     System.out.println("llega");
     IGestionUsuarios gestor = GestionUsuario.getInstance();
-    ICuenta exito = gestor.loggearUsuario(tipo, user, password);
+    ICuenta exito = gestor.loggearUsuario(user, password);
     String mensaje = "";
     if (exito!=null) {
         System.out.println("Entro");

@@ -1,25 +1,14 @@
 <%-- 
-    Document   : listar_modulos
-    Created on : 6/10/2016, 04:06:56 PM
+    Document   : registrar_usuario
+    Created on : 23/11/2016, 12:34:37 PM
     Author     : javie
 --%>
 
-<%@page import="java.util.List"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="gestionUsuarios.DTOs.ModuloDTO"%>
-<%@page import="gestionUsuarios.IGestionUsuarios"%>
-<%@page import="gestionUsuarios.GestionUsuario"%>
-<%@page import="gestionUsuarios.ICuenta"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
-<%
-  IGestionUsuarios gestor = GestionUsuario.getInstance();
-  List<ModuloDTO> modulos = gestor.listarModulo();
-%>   
-
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,7 +24,7 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <title>JSP Page</title>
+        <title>Departamento Ing Sistemas</title>
     </head>
     <body>
         <header>
@@ -63,27 +52,19 @@
             </div>
         </div>
         <div class="ufps-container ufps-fix-navbar-fixed">
-            <div class="ufps-col-mobile-12 ufps-col-tablet-3">
-                <h4>   <a href="#componentes">Componentes</a> </h4>
-                <% for(ModuloDTO mod : modulos){ %>
-                <ul>
-                    <li>
-                        <a href="<%= mod.getUrl() %>"><%= mod.getNombre()%></a>
-                    </li>
-                </ul>
-                <% } %>
-            </div>
-            <div class="ufps-col-mobile-12 ufps-col-tablet-9" id="componentes">
-                <% for(ModuloDTO mod : modulos){ %>
-                <section>
-                    <div id="titulo">
-                        <h2><%=mod.getNombre()%></h2>
-                        <p>
-                            <%=mod.getDescripcion()%>
-                        </p>
-                    </div>    
-                </section>
-                <% } %>
-            </div>
+            <center> <h1>Registrar usuario</h1></center>
+        <form method="post" action="" name="registro" class="form" id="registro">
+                 <div>
+                    <label >Nombre usuario</label><br>
+                    <input type="text" name="nombre_usuario" id="nombre_usuario" placeholder="Nombre de usuario" class="ufps-input ufps-black" />
+                </div>
+                 <div>
+                    <label >Contraseña</label><br>
+                    <input type="text" name="nombre_usuario" id="nombre_usuario" placeholder="Nombre de usuario" class="ufps-input ufps-black" />
+                </div>
+                 <input type="submit" class="ufps-btn acomodarBtn" value="Registrar" ng-disabled="desactivarC">
+        </form>
         </div>
-<jsp:include page="../plantilla/footer.jsp"></jsp:include>
+        <jsp:include page="../plantilla/footer.jsp"></jsp:include>
+    </body>
+</html>

@@ -26,7 +26,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Departamento de sistemas e Informática UFPS</title>
         <link href="../public/css/ufps.min.css" rel="stylesheet" type="text/css"/>
-        <link href="../public/css/styles.css" rel="stylesheet">
         <link href="../public/css/ufps-estilo.css" rel="stylesheet">
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
         <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
@@ -42,7 +41,7 @@
         <header>
             <center> <img id="banner" src="../public/img/Banner-superior.png" alt="imagen" height="100px" width="100%" ></img></center>
         </header>
-        <div class="ufps-navbar ufps-navbar ufps-navbar-light" id="menuPrincipal">
+        <div class="ufps-navbar  ufps-navbar-light" id="menuPrincipal">
             <div class="ufps-container">
                 <div class="ufps-navbar-brand">
                     <div class="ufps-btn-menu" onclick="toggleMenu('menuPrincipal')">
@@ -52,42 +51,24 @@
                     </div>
                     Site Estadístico
                 </div>
-                <div class="ufps-navbar-left">
-
-                  
-                    <div class="ufps-dropdown" id="dropdown4">
-                        <button onclick="openDropdown('dropdown4')" class="ufps-dropdown-btn">Componentes</button>
-                        <div class="ufps-dropdown-content">
-                            <% for (ModuloDTO mod : modulos) {%>
-
-                            <a href=""><%= mod.getNombre()%></a>
-
-                            <% }%>
-                        </div>
-                    </div>            
+                <div class="ufps-navbar-left">          
                 </div>
                 <div class="ufps-navbar-right">
-                    
-                   
                   <div class="ufps-navbar-right">
                     <div class="ufps-navbar-corporate">
                         <a href="procesar/cerrarSesion.jsp" class="ufps-navbar-btn"> Cerrar sesion </a>
                     </div>
                 </div>
-                    
                 </div>
-
             </div>
         </div>
-
-
         <div class="ufps-container ufps-fix-navbar-fixed">
             <div class="ufps-col-mobile-12 ufps-col-tablet-3">
                 <h4>   <a href="#componentes">Componentes</a> </h4>
                 <% for(ModuloDTO mod : modulos){ %>
                 <ul>
                     <li>
-                        <a href=""><%= mod.getNombre()%></a>
+                        <a href="<%= mod.getUrl() %>"><%= mod.getNombre()%></a>
                     </li>
                 </ul>
                 <% } %>
@@ -105,4 +86,4 @@
                 <% } %>
             </div>
         </div>
-        <jsp:include page="plantillas/footer.jsp"></jsp:include>
+<jsp:include page="../plantilla/footer.jsp"></jsp:include>
