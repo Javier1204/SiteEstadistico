@@ -95,7 +95,7 @@ public class DAOConvenio {
             Convenio c;
             while(resultado.next()){
                 
-                int id = resultado.getInt(1);
+                String id = resultado.getString(1);
                 String nombre = resultado.getString(2);
                 String descripcion = resultado.getString(3);
                 String creacion = resultado.getString(4);
@@ -158,7 +158,7 @@ public class DAOConvenio {
             
             while(resultado.next()){
                 c = new Convenio();
-                int id = resultado.getInt(1);
+                String id = resultado.getString(1);
                 String nombre = resultado.getString(2);
                 String descripcion = resultado.getString(3);
                 String creacion = resultado.getString(4);

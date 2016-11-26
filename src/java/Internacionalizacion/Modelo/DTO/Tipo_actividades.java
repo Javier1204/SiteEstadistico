@@ -12,7 +12,7 @@ package internacionalizacion.Modelo.DTO;
 public class Tipo_actividades {
     
     int id;
-    int idconvenio;
+    String idconvenio;
     boolean movilidad;
     boolean practica;
     boolean extension;
@@ -32,11 +32,11 @@ public class Tipo_actividades {
         this.id = id;
     }
 
-    public int getIdconvenio() {
+    public String getIdconvenio() {
         return idconvenio;
     }
 
-    public void setIdconvenio(int idconvenio) {
+    public void setIdconvenio(String idconvenio) {
         this.idconvenio = idconvenio;
     }
 
@@ -88,7 +88,7 @@ public class Tipo_actividades {
         this.pasantia = pasantia;
     }
 
-    public Tipo_actividades(int id, int idconvenio, boolean movilidad, boolean practica, boolean extension, boolean investigacion, boolean social, boolean pasantia) {
+    public Tipo_actividades(int id, String idconvenio, boolean movilidad, boolean practica, boolean extension, boolean investigacion, boolean social, boolean pasantia) {
         this.id = id;
         this.idconvenio = idconvenio;
         this.movilidad = movilidad;

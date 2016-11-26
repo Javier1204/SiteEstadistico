@@ -56,7 +56,7 @@ Facade f = new Facade();
 
 String r = f.registrarConvenio(radicado,nombre,descripcion,vigencia,tipo,estado, fechacreacion,fechaterminacion,entidad, fecharadicacion);
 Tipo_actividades act = new Tipo_actividades();
-int id = f.consultarConvenio(nombre).getId();
+String id = f.consultarConvenio(nombre).getId();
 System.out.println("El id del convenio es------------------"+id);
 act.setIdconvenio(id);
 act.setMovilidad(actividades[0]);

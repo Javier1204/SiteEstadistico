@@ -41,7 +41,7 @@ public class DAOTipo_actividades {
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement("INSERT INTO `oficina_tipo_actividades`(`idconvenio`, `movilidad`, `pasantia`, `investigacion`, `extension`, `social`, `practica`) VALUES (?,?,?,?,?,?,?)");//genero el sql. 
             
-            stm.setInt(1, act.getIdconvenio());
+            stm.setString(1, act.getIdconvenio());
             stm.setBoolean(2, act.isMovilidad());
             stm.setBoolean(3, act.isPasantia());
             stm.setBoolean(4, act.isInvestigacion());
@@ -72,7 +72,7 @@ public class DAOTipo_actividades {
     }
     
     
-     public ArrayList<String> consultarTipo_actividades(int idconvenio) {
+     public ArrayList<String> consultarTipo_actividades(String idconvenio) {
      //ejemplo para usar el pool de conexiones. 
         Pool pool = Conexion.getPool(); //llamo al objeto pool 
         Connection con = null;

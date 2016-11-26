@@ -14,7 +14,7 @@
 <!DOCTYPE html>
 <%
 request.setCharacterEncoding("UTF-8");    
-int convenio = Integer.parseInt(request.getParameter("convenio"));
+String convenio = request.getParameter("convenio");
 System.out.println("Codigo de convenio es: "+convenio);
 String nombre = request.getParameter("nombre");
 String duracion = request.getParameter("duracion");
