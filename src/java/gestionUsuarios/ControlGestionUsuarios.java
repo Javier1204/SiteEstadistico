@@ -150,4 +150,18 @@ public class ControlGestionUsuarios {
             ConexionGUDAOs.cerrarConexion(con);
         }
     }
+    
+    public boolean registrarRol(String rol, String descripicion){
+        Connection con = ConexionGUDAOs.obtenerConexion();
+        try {
+            RolDTO rolDTO=new RolDTO();
+            rolDTO.setRol(rol);
+            rolDTO.setDescripcion(descripicion);
+            GeneralRolDAO rolDAO=new GeneralRolDAO(con);
+            return rolDAO.insertarRol(rolDTO);
+            
+        } finally {
+            ConexionGUDAOs.cerrarConexion(con);
+        }
+    }
 }

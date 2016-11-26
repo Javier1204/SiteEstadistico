@@ -62,6 +62,23 @@ public class GeneralRolDAO {
         }
         return null;
     }
+    public boolean insertarRol(RolDTO rolDTO)
+    {
+        try{
+            //obtenerConexion();
+            PreparedStatement ps=conn.prepareStatement("INSERT INTO general_rol(rol, descripcion) VALUES (?,?)");
+            ps.setString(1, rolDTO.getRol());
+            ps.setString(2, rolDTO.getDescripcion());
+            int row=ps.executeUpdate();
+            if(row==0)return true;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralRolDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            //cerrarConexion();
+        }
+        return false;
+    }
     public static void main(String[] args) {
         //GeneralRolDAO rol=new GeneralRolDAO();
         //System.out.println(rol.listarRoles().get(0).getRol());

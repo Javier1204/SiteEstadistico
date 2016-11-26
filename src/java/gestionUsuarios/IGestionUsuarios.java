@@ -30,6 +30,7 @@ public interface IGestionUsuarios {
      * permite registra un modulo en el sistema, para que el sistema sea escalable
      * @param descripcion descripcion del modulo
      * @param nombreModulo  nombre del modulo que se va a registrar
+     * @param url
      * @return true si se puedo realizar con exito, false sino puede ser que ya este registrado un modulo con el mismo
      * nombre
      */
@@ -48,6 +49,7 @@ public interface IGestionUsuarios {
      * @param usuario esta función solo la pueden hacer los usuarios con roles administrador o coordinador
      * @param nombreModulo nomnbre del modulo al cual se va a asignar los RF
      * @param RF ID del RF, es decir RF1, RF2, RF3... dependiend del ID que tenga su RF es su documento
+     * @param url
      * @param nombreRF nombre del RF ejemplo: "consultar docentes"
      * @return return true si pudo realizar el proceso de resgitro, false sino pudo por diferentes
      * motivos como por ejemplo que nombre del modulo no exista, que el RF ya fue regustrado
@@ -145,5 +147,16 @@ public interface IGestionUsuarios {
      * @return lista de todos los requerimientos funcionales de ese modulo
      */
     public List<RequerimientosFDTO> listarRF(String modulo);
+    
+    /**
+     * registra un rol
+     * @param rol
+     * @param descripcion
+     * @return 
+     */
+    public boolean registrarRol(String rol, String descripcion);
+    
+    public boolean eliminarRol(String rol);
+    
     
 }

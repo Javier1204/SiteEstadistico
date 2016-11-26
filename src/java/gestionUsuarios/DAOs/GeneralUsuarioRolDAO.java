@@ -89,6 +89,7 @@ public class GeneralUsuarioRolDAO {
     }
    
     
+    
     public static void main(String[] args) {
         //GeneralUsuarioRolDAO gur=new GeneralUsuarioRolDAO();
         //System.out.println(gur.obtenerRoles("1151052").get(0).getDescripcion());

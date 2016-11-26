@@ -112,16 +112,17 @@ public class GestionUsuario implements IGestionUsuarios{
         return ControlGestionUsuarios.getInstance().listarModulosConRFs();
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+       
+    @Override
+    public boolean registrarRol(String rol, String descripcion) {
+        return ControlGestionUsuarios.getInstance().registrarRol(rol, descripcion);
+    }
+
+    @Override
+    public boolean eliminarRol(String rol) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public static void main(String[] args) {
         ICuenta cuenta=new GestionUsuario().loggearUsuario("admin", "admin");
         System.out.println(cuenta.getPassword());
