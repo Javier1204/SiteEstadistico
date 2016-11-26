@@ -43,9 +43,9 @@ public class InformeDAO {
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
                 InformeDTO p = new InformeDTO();
-                p.setIdInforme(rs.getInt(1));
+                p.setId_informe(rs.getInt(1));
                 p.setNombre(rs.getString(2));
-                p.setUrl(rs.getString(3));
+                p.setUrl_informe(rs.getString(3));
                 p.setModulo(rs.getString(4));
                 p.setSemestre(rs.getInt(5));
                 p.setAno(rs.getInt(6));
@@ -91,9 +91,9 @@ public class InformeDAO {
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
                 InformeDTO p = new InformeDTO();
-                p.setIdInforme(rs.getInt(1));
+                p.setId_informe(rs.getInt(1));
                 p.setNombre(rs.getString(2));
-                p.setUrl(rs.getString(3));
+                p.setUrl_informe(rs.getString(3));
                 p.setModulo(rs.getString(4));
                 p.setSemestre(rs.getInt(5));
                 p.setAno(rs.getInt(6));
