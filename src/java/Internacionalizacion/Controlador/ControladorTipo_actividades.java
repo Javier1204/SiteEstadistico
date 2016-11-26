@@ -20,7 +20,7 @@ public class ControladorTipo_actividades {
         return dao.registrarTipo_actividades(act);
     }
     
-    public ArrayList<String> obtenerActividades(int idconvenio){
+    public ArrayList<String> obtenerActividades(String idconvenio){
         DAOTipo_actividades dao = new DAOTipo_actividades();
         return dao.consultarTipo_actividades(idconvenio);
     }

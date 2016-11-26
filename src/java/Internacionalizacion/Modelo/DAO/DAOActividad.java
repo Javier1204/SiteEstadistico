@@ -33,7 +33,7 @@ public class DAOActividad {
             PreparedStatement stmt = con.prepareStatement("INSERT INTO `oficina_actividadconvenio`(`id_convenio`, `duracion`, `nombre`, `fechacreacion`, `fechaterminacion`, `semestre`, `tipoactividad`, `hora`, `responsable`, `lugar`, `descripcion`) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
             //fijar atributos
             //stmt.setArray(), x);
-            stmt.setInt(1, a.getIdconvenio());
+            stmt.setString(1, a.getIdconvenio());
             stmt.setString(2, a.getDuracion());
             stmt.setString(3, a.getNombre());
             stmt.setString(4, a.getFechacreacion());
@@ -67,7 +67,7 @@ public class DAOActividad {
        return true;
     }
     
-    public Actividad consultarActividad_By_IDConvenio(int convenio) {
+    public Actividad consultarActividad_By_IDConvenio(String convenio) {
      //ejemplo para usar el pool de conexiones. 
         Pool pool = Conexion.getPool(); //llamo al objeto pool 
         Connection con = null;
@@ -85,13 +85,13 @@ public class DAOActividad {
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement("SELECT * FROM `oficina_actividadconvenio` WHERE `id_convenio`=?");//genero el sql. 
-            stm.setInt(1, convenio);
+            stm.setString(1, convenio);
             ResultSet resultado = stm.executeQuery();//ejecuto la consulta
             
             while(resultado.next()){
                 a = new Actividad();
                 int id = resultado.getInt(1);
-                int id_convenio = resultado.getInt(2);
+                String id_convenio = resultado.getString(2);
                 String duracion = resultado.getString(3);
                 String nombre = resultado.getString(4);
                 String creacion = resultado.getString(5);

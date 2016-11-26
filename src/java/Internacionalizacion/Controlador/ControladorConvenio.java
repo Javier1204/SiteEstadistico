@@ -18,7 +18,7 @@ public class ControladorConvenio {
 
 
     //public String registrarConvenio(String nombre, String descripcion, String vigencia, String tipo, String estado, String fechacreacion, String fechaterminacion, int entidad, boolean[] act) {
-    public String registrarConvenio(int radicado, String nombre, String descripcion, String vigencia, String tipo, String estado, String fechacreacion, String fechaterminacion, int entidad, String fecharadicacion) {
+    public String registrarConvenio(String radicado, String nombre, String descripcion, String vigencia, String tipo, String estado, String fechacreacion, String fechaterminacion, int entidad, String fecharadicacion) {
         DAOConvenio convenio= new DAOConvenio();
         Convenio c= new Convenio(radicado, nombre, descripcion ,fechacreacion, fechaterminacion,fecharadicacion,vigencia,estado,tipo,entidad);
         //consultar convenio por nombre para obtener su id

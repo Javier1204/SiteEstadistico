@@ -19,7 +19,7 @@ public class ControladorActividad {
         return dao.RegistrarActividad(a);
     }
     
-    public Actividad consultarActividad_By_IDConvenio(int convenio) {    
+    public Actividad consultarActividad_By_IDConvenio(String convenio) {    
         DAOActividad dao = new DAOActividad();
         return dao.consultarActividad_By_IDConvenio(convenio);    
     }

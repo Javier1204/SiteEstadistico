@@ -14,7 +14,7 @@ import java.util.Date;
 public class Actividad {
         
     int id;
-    int idconvenio;
+    String idconvenio;
     String nombre;
     String duracion;
     String fechacreacion;
@@ -38,11 +38,11 @@ public class Actividad {
         this.id = id;
     }
 
-    public int getIdconvenio() {
+    public String getIdconvenio() {
         return idconvenio;
     }
 
-    public void setIdconvenio(int idconvenio) {
+    public void setIdconvenio(String idconvenio) {
         this.idconvenio = idconvenio;
     }
 
@@ -126,7 +126,7 @@ public class Actividad {
         this.descripcion = descripcion;
     }
         
-    public Actividad(int id, int idconvenio, String nombre, String duracion, String fechacreacion, String fechaterminacion, short semestre, String tipoactividad, String hora, String responsable, String lugar, String descripcion) {
+    public Actividad(int id, String idconvenio, String nombre, String duracion, String fechacreacion, String fechaterminacion, short semestre, String tipoactividad, String hora, String responsable, String lugar, String descripcion) {
         this.id = id;
         this.idconvenio = idconvenio;
         this.nombre = nombre;

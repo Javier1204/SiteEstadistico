@@ -34,7 +34,7 @@ public class Facade {
         return c.RegistrarActividad(a);
     }
     
-     public Actividad consultarActividad_By_IDConvenio(int convenio) {    
+     public Actividad consultarActividad_By_IDConvenio(String convenio) {    
         ControladorActividad c = new ControladorActividad();
         return c.consultarActividad_By_IDConvenio(convenio);    
     }
@@ -47,7 +47,7 @@ public class Facade {
         return c.registrarTipo_actividades(act);
     }
     
-     public ArrayList<String> obtenerActividades(int idconvenio){
+     public ArrayList<String> obtenerActividades(String idconvenio){
         ControladorTipo_actividades c = new ControladorTipo_actividades();
         return c.obtenerActividades(idconvenio);
     }
@@ -66,7 +66,7 @@ public class Facade {
     
     //METODOS PARA EL MANEJO DE LOS CONVENIOS.
     
-    public String registrarConvenio(int radicado,String nombre,String descripcion,String vigencia,String tipo,String estado,String fechacreacion,String fechaterminacion,int entidad, String fecharadicacion) throws Exception{
+    public String registrarConvenio(String radicado,String nombre,String descripcion,String vigencia,String tipo,String estado,String fechacreacion,String fechaterminacion,int entidad, String fecharadicacion) throws Exception{
          ControladorConvenio s=new ControladorConvenio();         
          return s.registrarConvenio(radicado, nombre, descripcion ,vigencia, tipo, estado, fechacreacion, fechaterminacion,entidad,fecharadicacion);               
     }

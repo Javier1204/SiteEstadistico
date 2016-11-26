@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Convenio {
     
-    int id;
+    String id;
     String nombre;
     String fechacreacion;
     String fechaterminacion;
@@ -29,7 +29,7 @@ public class Convenio {
     public Convenio() {
     }
 
-    public Convenio(int radicado, String nombre, String descripcion, String creacion, String terminacion, String fecharadicacion, String vigencia, String estado, String tipo, int entidad) {
+    public Convenio(String radicado, String nombre, String descripcion, String creacion, String terminacion, String fecharadicacion, String vigencia, String estado, String tipo, int entidad) {
         //this.id = id;
         this.id = radicado;
         this.nombre = nombre;
@@ -44,11 +44,11 @@ public class Convenio {
         //this.urlimagen = urlimagen;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
