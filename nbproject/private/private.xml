@@ -2,7 +2,28 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
-        <group/>
+        <group>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/registrarModulo.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/registrarRF.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/procesar/procesarRegUsuario.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/login.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/registrar_usuario.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/registrarRol.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/asignarRF.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/js/ajax.js</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/procesar/procesarRegModulo.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/registrarRF.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/procesar/procesarRegUsuario.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/procesar/procesarRegistroRol.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/src/java/gestionUsuarios/GestionUsuario.java</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/registrar_usuario.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/asignarRF.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/js/ajax.js</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/registrarRol.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/procesar/validarIdRF.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/procesar/procesarRegistroRF.jsp</file>
+        </group>
     </open-files>
 </project-private>

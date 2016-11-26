@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package internacionalizacion.Controlador;
+package Internacionalizacion.Controlador;
 
-import internacionalizacion.Modelo.DAO.DAOTipo_actividades;
-import internacionalizacion.Modelo.DTO.Tipo_actividades;
+import Internacionalizacion.Modelo.DAO.DAOTipo_actividades;
+import Internacionalizacion.Modelo.DTO.Tipo_actividades;
 import java.util.ArrayList;
 
 /**
