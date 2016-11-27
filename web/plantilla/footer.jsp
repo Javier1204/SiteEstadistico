@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <footer>
-    <div class="ufps-container ufps-footer ">
+    <div class="ufps-container ufps-footer">
         <h3>Universidad Francisco de Paula Santander</h3>
         <p>Programa Ingeniería de Sistemas</p>
     </div>   
