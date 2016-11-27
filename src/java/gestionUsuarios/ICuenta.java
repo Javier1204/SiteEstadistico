@@ -70,13 +70,26 @@ public interface ICuenta {
      */
     public PrivilegioDTO getPrivilegioDTO(String rol);
     public ArrayList<RolDTO> listarRoles();
+
+    /**
+     *
+     * @param rol
+     * @return
+     */
     public ArrayList<ModuloDTO> listarModulos(String rol);
+    
+    /**
+     * lista todos los modulos que tiene el usuario, sin los requerimientos
+     * @return 
+     */
+    public List<ModuloDTO> listarModulos();
     /**
      * lista los requerimientos funcaionales del modulo de un rol
      * @param rol
      * @param modulo
      * @return 
      */
+    
     public List<RequerimientosFDTO> listarRFs(String rol, String modulo);
     /**
      * crea una cuenta

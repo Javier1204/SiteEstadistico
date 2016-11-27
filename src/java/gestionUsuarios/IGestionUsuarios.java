@@ -9,6 +9,7 @@ import gestionUsuarios.DTOs.ModuloDTO;
 import gestionUsuarios.DTOs.PrivilegioDTO;
 import gestionUsuarios.DTOs.RequerimientosFDTO;
 import gestionUsuarios.DTOs.RolDTO;
+import gestionUsuarios.DTOs.UsuarioDTO;
 import java.util.List;
 
 /**
@@ -96,7 +97,7 @@ public interface IGestionUsuarios {
      * que va a agregarle a ese rol, el sistema se encarga de guarda los nuevos modulos
      * @return boolean si se pudieron agregar los modulos a el rol, false sino se pudo
      */
-    public boolean asignarPrivilegios(String rol, PrivilegioDTO privilegios);
+    public void asignarPrivilegios(String rol, PrivilegioDTO privilegios);
     
     /**
      * quitar Requerimientos funcionales a un rol
@@ -158,5 +159,6 @@ public interface IGestionUsuarios {
     
     public boolean eliminarRol(String rol);
     
+    public List<UsuarioDTO> listarUsuarios();
     
 }

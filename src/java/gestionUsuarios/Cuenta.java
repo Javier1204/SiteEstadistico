@@ -138,6 +138,25 @@ public class Cuenta implements ICuenta{
         this.roles=(ArrayList<RolDTO>)roles;
     }
 
+    @Override
+    public List<ModuloDTO> listarModulos() {
+        ArrayList<ModuloDTO> lista=new ArrayList<ModuloDTO>();
+        for (RolDTO rol:this.roles ){
+            ArrayList<ModuloDTO> modulos=rol.getPrivilegio().getModulos();
+            for (ModuloDTO modulo : modulos) {
+                boolean e=false;
+                for (ModuloDTO lismod : lista) {
+                    if(modulo.getNombre().equalsIgnoreCase(lismod.getNombre())){
+                        e=true;
+                        break;
+                    }
+                }
+                if(!e)lista.add(modulo);
+            }
+        }
+        return lista;
+    }
+
 
     
     

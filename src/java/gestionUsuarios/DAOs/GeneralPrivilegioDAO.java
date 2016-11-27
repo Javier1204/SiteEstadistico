@@ -69,7 +69,25 @@ public class GeneralPrivilegioDAO {
         }
 
     }
-
+    public boolean insertarPrivilegio(String rol, String rf, String modulo){
+        try {
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO general_privilegio(rol, rf, modulo) VALUES (?, ?, ?)");
+            ps.setString(1, rol);
+            ps.setString(2, rf);
+            ps.setString(3, modulo);
+            
+            int row=ps.executeUpdate();
+            if(row==1){
+                return true;
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralPrivilegioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("rol: "+rol+" rf: "+rf+" modulo: "+modulo+" YA EXISTE");
+        }
+        return false;
+    }
     public static void main(String[] args) {
         //GeneralPrivilegioDAO p=new GeneralPrivilegioDAO();
         //System.out.println(p.getPrivilegioUsuario("1151234").getModulos().get(0).getNombre());

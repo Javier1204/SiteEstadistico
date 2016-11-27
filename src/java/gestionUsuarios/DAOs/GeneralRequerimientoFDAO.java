@@ -64,5 +64,22 @@ public class GeneralRequerimientoFDAO {
         }
         return null;
     }
-    
+    public boolean insertarRF(RequerimientosFDTO rfDTO, String modulo){
+        try{
+            PreparedStatement ps=conn.prepareStatement("INSERT INTO general_requerimiento_funcional(id, nombre, modulo, url) VALUES (?,?,?,?)");
+            ps.setString(1, rfDTO.getId());
+            ps.setString(2, rfDTO.getNombre());
+            ps.setString(3, modulo);
+            ps.setString(4, rfDTO.getUrl());
+            
+            int row=ps.executeUpdate();
+            if(row==1){
+                return true;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralRequerimientoFDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 }

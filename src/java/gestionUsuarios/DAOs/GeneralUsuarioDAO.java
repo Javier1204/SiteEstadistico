@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -80,8 +81,8 @@ public class GeneralUsuarioDAO {
             PreparedStatement ps=conn.prepareStatement("INSERT INTO general_usuario (user, password) VALUES (?, ?)");
             ps.setString(1, user);
             ps.setString(2, pass);
-            ResultSet rs=ps.executeQuery();
-            if(rs.absolute(1)){
+            int row=ps.executeUpdate();
+            if(row==1){
                 return true;
             }
         } catch (SQLException ex) {
@@ -89,8 +90,26 @@ public class GeneralUsuarioDAO {
         }
         return false;
     }
+    public ArrayList<UsuarioDTO> listarUsuarios(){
+        try{
+            ArrayList<UsuarioDTO> lista=new ArrayList<UsuarioDTO>();
+            PreparedStatement ps=conn.prepareStatement("SELECT user, password FROM general_usuario");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                UsuarioDTO usu=new UsuarioDTO();
+                usu.setUssername(rs.getString(1));
+                usu.setPassword(rs.getString(2));
+                lista.add(usu);
+            }
+            return lista;
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralUsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
     public static void main(String[] args) {
-        //GeneralUsuarioDAO us=new GeneralUsuarioDAO();
-        //System.out.println(us.getPass("1151052"));
+        GeneralUsuarioDAO us=new GeneralUsuarioDAO(ConexionGUDAOs.obtenerConexion());
+        System.out.println(us.listarUsuarios());
+        System.out.println("");
     }
 }

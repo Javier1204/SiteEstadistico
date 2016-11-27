@@ -9,6 +9,8 @@ import gestionUsuarios.DTOs.ModuloDTO;
 import gestionUsuarios.DTOs.PrivilegioDTO;
 import gestionUsuarios.DTOs.RequerimientosFDTO;
 import gestionUsuarios.DTOs.RolDTO;
+import gestionUsuarios.DTOs.UsuarioDTO;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -74,7 +76,7 @@ public class GestionUsuario implements IGestionUsuarios{
 
     @Override
     public boolean registrarRF(String nombreModulo, String RF, String nombreRF, String url) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ControlGestionUsuarios.getInstance().registrarRF(nombreModulo, RF, nombreRF, url);
     }
 
     @Override
@@ -88,8 +90,8 @@ public class GestionUsuario implements IGestionUsuarios{
     }
 
     @Override
-    public boolean asignarPrivilegios(String rol, PrivilegioDTO privilegios) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void asignarPrivilegios(String rol, PrivilegioDTO privilegios) {
+        ControlGestionUsuarios.getInstance().asignarPrivilegios(rol, privilegios);
     }
 
     @Override
@@ -104,7 +106,7 @@ public class GestionUsuario implements IGestionUsuarios{
 
     @Override
     public List<RequerimientosFDTO> listarRF(String modulo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ControlGestionUsuarios.getInstance().listarRF(modulo);
     }
     
     @Override
@@ -125,10 +127,16 @@ public class GestionUsuario implements IGestionUsuarios{
 
     public static void main(String[] args) {
         ICuenta cuenta=new GestionUsuario().loggearUsuario("admin", "admin");
+        ArrayList<ModuloDTO> listaMod=(ArrayList<ModuloDTO>)cuenta.listarModulos();
         System.out.println(cuenta.getPassword());
         System.out.println(new GestionUsuario().listarRoles());
         System.out.println(new GestionUsuario().listarModulo());        
         System.out.println(new GestionUsuario().listarModuloConRFs());
+    }
+
+    @Override
+    public List<UsuarioDTO> listarUsuarios() {
+        return ControlGestionUsuarios.getInstance().listarUsuarios();
     }
 
     

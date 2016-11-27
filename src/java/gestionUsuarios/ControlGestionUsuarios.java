@@ -151,7 +151,7 @@ public class ControlGestionUsuarios {
         }
     }
     
-    public boolean registrarRol(String rol, String descripicion){
+    protected boolean registrarRol(String rol, String descripicion){
         Connection con = ConexionGUDAOs.obtenerConexion();
         try {
             RolDTO rolDTO=new RolDTO();
@@ -159,6 +159,57 @@ public class ControlGestionUsuarios {
             rolDTO.setDescripcion(descripicion);
             GeneralRolDAO rolDAO=new GeneralRolDAO(con);
             return rolDAO.insertarRol(rolDTO);
+            
+        } finally {
+            ConexionGUDAOs.cerrarConexion(con);
+        }
+    }
+    
+    protected boolean registrarRF(String nombreModulo, String RF, String nombreRF, String url){
+        Connection con = ConexionGUDAOs.obtenerConexion();
+        try {
+            RequerimientosFDTO rfDTO=new RequerimientosFDTO();
+            rfDTO.setId(RF);
+            rfDTO.setNombre(nombreRF);
+            rfDTO.setUrl(url);
+            GeneralRequerimientoFDAO rfDAO=new GeneralRequerimientoFDAO(con);
+            return rfDAO.insertarRF(rfDTO, nombreModulo);
+            
+        } finally {
+            ConexionGUDAOs.cerrarConexion(con);
+        }
+    }
+    protected void asignarPrivilegios(String rol, PrivilegioDTO privilegios) {
+        Connection con = ConexionGUDAOs.obtenerConexion();
+        try {
+            for (ModuloDTO mod : privilegios.getModulos()) {
+                for (RequerimientosFDTO rfs : mod.getRequerimientos()) {
+                    GeneralPrivilegioDAO pDAO=new GeneralPrivilegioDAO(con);
+                    pDAO.insertarPrivilegio(rol, rfs.getId(), mod.getNombre());
+                }
+            }
+            
+        } finally {
+            ConexionGUDAOs.cerrarConexion(con);
+        }
+    }
+    
+    protected List<RequerimientosFDTO> listarRF(String modulo) {
+        Connection con = ConexionGUDAOs.obtenerConexion();
+        try {
+            GeneralRequerimientoFDAO rfDAO=new GeneralRequerimientoFDAO(con);
+            return rfDAO.getRFs(modulo);
+            
+        } finally {
+            ConexionGUDAOs.cerrarConexion(con);
+        }
+    }
+    
+    protected List<UsuarioDTO> listarUsuarios() {
+        Connection con = ConexionGUDAOs.obtenerConexion();
+        try {
+            GeneralUsuarioDAO usuDAO=new GeneralUsuarioDAO(con);
+            return usuDAO.listarUsuarios();
             
         } finally {
             ConexionGUDAOs.cerrarConexion(con);
