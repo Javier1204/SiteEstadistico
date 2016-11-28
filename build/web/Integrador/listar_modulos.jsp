@@ -4,6 +4,7 @@
     Author     : javie
 --%>
 
+<%@page import="gestionUsuarios.DTOs.RolDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="gestionUsuarios.DTOs.ModuloDTO"%>
@@ -15,7 +16,8 @@
 
 <%
   IGestionUsuarios gestor = GestionUsuario.getInstance();
-  List<ModuloDTO> modulos = gestor.listarModulo();
+  ICuenta cuenta= (ICuenta) session.getAttribute("usuario.");
+  ArrayList<RolDTO> roles= cuenta.listarRoles();
 %>   
 
 <html>

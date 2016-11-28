@@ -55,7 +55,8 @@ and open the template in the editor.
    border-left: 3px solid #9d0609;
     box-shadow: 0px 2px 10px #d6d6d6;
    margin: 0 auto;
-    min-height: 500px;
+    height: 1000px;
+    overflow: scroll;
    width: 1200px;
 
 }
@@ -73,25 +74,10 @@ and open the template in the editor.
    margin-bottom:  130px;
 }
    
-   .contenidopopup{
-          background-color: rgba(236,240,241,0.7);
-          height: 100%;
-          width: 100%;
-       
-   }
+ 
 
 
-#contenidohome{
-    margin: 0 auto;
-    padding:20px;
-    background-color: #D7DADA;
-     box-shadow: 0px 2px 10px #d6d6d6;
-     width: 70%;
-     margin-bottom: 30px;
-     
-    
-    
-}
+
 
 #contenidopublicacioncreada{
     margin: 0 auto;
@@ -102,6 +88,27 @@ and open the template in the editor.
      text-align: justify;
      border-bottom: 1px #9d0609 solid;
 }
+
+#categorias{
+    height: 50px;
+    width: 1200px;
+    margin: 0 auto;
+   background-color:#B3B7B7;
+   border: 3px solid #9d0609;
+   
+     
+}
+
+#seleccion{
+    width: 200px;
+    
+    
+}
+
+
+
+
+
 
 #tablapublicacion{
     margin: 0 auto;

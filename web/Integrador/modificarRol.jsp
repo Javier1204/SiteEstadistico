@@ -1,23 +1,19 @@
 <%-- 
-    Document   : listar_modulos
-    Created on : 6/10/2016, 04:06:56 PM
+    Document   : modificarRol
+    Created on : 27/11/2016, 04:05:15 PM
     Author     : javie
 --%>
 
-<%@page import="gestionUsuarios.DTOs.RolDTO"%>
 <%@page import="java.util.List"%>
+<%@page import="gestionUsuarios.DTOs.RolDTO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="gestionUsuarios.DTOs.ModuloDTO"%>
-<%@page import="gestionUsuarios.IGestionUsuarios"%>
 <%@page import="gestionUsuarios.GestionUsuario"%>
-<%@page import="gestionUsuarios.ICuenta"%>
+<%@page import="gestionUsuarios.IGestionUsuarios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-
 <%
-  IGestionUsuarios gestor = GestionUsuario.getInstance();
-  ICuenta cuenta= (ICuenta) session.getAttribute("usuario.");
-  ArrayList<RolDTO> roles= cuenta.listarRoles();
+    IGestionUsuarios gestor = GestionUsuario.getInstance();
+    List<RolDTO> roles = gestor.listarRoles();
+    System.out.println(roles);
 %>   
 
 <html>
@@ -56,36 +52,35 @@
                 <div class="ufps-navbar-left">          
                 </div>
                 <div class="ufps-navbar-right">
-                  <div class="ufps-navbar-right">
-                    <div class="ufps-navbar-corporate">
-                        <a href="procesar/cerrarSesion.jsp" class="ufps-navbar-btn"> Cerrar sesion </a>
+                    <div class="ufps-navbar-right">
+                        <div class="ufps-navbar-corporate">
+                            <a href="procesar/cerrarSesion.jsp" class="ufps-navbar-btn"> Cerrar sesion </a>
+                        </div>
                     </div>
                 </div>
-                </div>
             </div>
         </div>
-        <div class="ufps-container ufps-fix-navbar-fixed">
-            <div class="ufps-col-mobile-12 ufps-col-tablet-3">
-                <h4>   <a href="#componentes">Componentes</a> </h4>
-                <% for(ModuloDTO mod : modulos){ %>
-                <ul>
-                    <li>
-                        <a href="<%= mod.getUrl() %>"><%= mod.getNombre()%></a>
-                    </li>
-                </ul>
-                <% } %>
-            </div>
-            <div class="ufps-col-mobile-12 ufps-col-tablet-9" id="componentes">
-                <% for(ModuloDTO mod : modulos){ %>
-                <section>
-                    <div id="titulo">
-                        <h2><%=mod.getNombre()%></h2>
-                        <p>
-                            <%=mod.getDescripcion()%>
-                        </p>
-                    </div>    
-                </section>
-                <% } %>
-            </div>
-        </div>
-<jsp:include page="../plantilla/footer.jsp"></jsp:include>
+        <!--Contenido-->
+        <div  class="ufps-container" id="contenido">
+            <h1 class="text-center" style="text-align: center">Listado de roles</h1>
+            <table class="ufps-table" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+
+                        <th>Rol</th>
+                        <th>DESCRIPCION</th>
+                        <th>Priviegio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (RolDTO dto : roles) {%>
+                    <tr>
+                        <td><center><%= dto.getRol()%></center></td>
+                        <td><center><%= dto.getDescripcion()%></center></td>
+                        <td>  Anything </td>
+                </tr>
+                <% }%>
+                </tbody>
+            </table>
+        </div>         
+        <jsp:include page="../plantilla/footer.jsp"></jsp:include>
