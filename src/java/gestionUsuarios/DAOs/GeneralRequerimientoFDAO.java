@@ -82,4 +82,22 @@ public class GeneralRequerimientoFDAO {
         }
         return false;
     }
+    public boolean modificarRF(String modulo, String rf, String nuevoNombre, String nuevaUrl){
+        try{
+            PreparedStatement ps=conn.prepareStatement("UPDATE general_requerimiento_funcional SET nombre=?, url=? WHERE modulo=? AND id=?");
+            ps.setString(1, nuevoNombre);
+            ps.setString(2, nuevaUrl);
+            ps.setString(3, modulo);
+            ps.setString(4, rf);
+            
+            int row=ps.executeUpdate();
+            if(row==1){
+                return true;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralRequerimientoFDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 }

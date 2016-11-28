@@ -70,12 +70,39 @@ public class GeneralRolDAO {
             ps.setString(1, rolDTO.getRol());
             ps.setString(2, rolDTO.getDescripcion());
             int row=ps.executeUpdate();
-            if(row==0)return true;
+            if(row==1)return true;
             
         } catch (SQLException ex) {
             Logger.getLogger(GeneralRolDAO.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             //cerrarConexion();
+        }
+        return false;
+    }
+    public boolean eliminarRol(String rol){
+        try{
+            //obtenerConexion();
+            PreparedStatement ps=conn.prepareStatement("DELETE FROM general_rol WHERE rol=?");
+            ps.setString(1, rol);
+            int row=ps.executeUpdate();
+            if(row==1)return true;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralRolDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    public boolean modificar(String rol, String nuevaDescripcion){
+        try{
+            //obtenerConexion();
+            PreparedStatement ps=conn.prepareStatement("UPDATE general_rol SET descripcion=? WHERE rol=?");
+            ps.setString(2, rol);
+            ps.setString(1, nuevaDescripcion);
+            int row=ps.executeUpdate();
+            if(row==1)return true;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralRolDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }

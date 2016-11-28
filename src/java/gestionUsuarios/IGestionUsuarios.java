@@ -45,6 +45,7 @@ public interface IGestionUsuarios {
      */
     public boolean eliminarModulo(String modulo);
     
+    public boolean modificarModulo(String modulo,String nuevaDescripcion, String url);
     /**
      * permite registrar requerimientos funcionales a un modulo
      * @param usuario esta función solo la pueden hacer los usuarios con roles administrador o coordinador
@@ -63,14 +64,16 @@ public interface IGestionUsuarios {
      * @param rf requerimiento funacional
      * @return 
      */
-    public boolean eliminarRF(String modulo, String rf);
+    public void eliminarRF(String modulo, String rf);
     /**
      * validar si el usuario esta en el sistema
      * @param rol rol del usuario que desea buscar
      * @param usuario ussername del usuario que desea buscar
      * @return true si existe ese usuario, false sino existe en el sistema
      */
-    public boolean validarUsuario(String rol, String usuario);
+    
+    public boolean modificarRF(String modulo, String rf, String nuevoDesString, String nuevaURL);
+    
     
     /**
      * permite registrar usuarios en la base de datos
@@ -106,23 +109,15 @@ public interface IGestionUsuarios {
      * ignora la peticion
      * @return todos los privilegios que fueron eliminados.
      */
-    public PrivilegioDTO quitarPrivilegios(String rol, PrivilegioDTO privilegios);
+    public void quitarPrivilegios(String rol, PrivilegioDTO privilegios);
     /**
      * Cambia la contraseña del usuario que esta loggueado
      * @param cuenta cuenta del usuario que la va a cambiar
      * @param nuevaContra nueva contraseña del usuario
      * @return la cuenta con la contraseña cambiada si ocurrio un error retorna null
      */
-    public ICuenta cambiarContrasena(ICuenta cuenta, String nuevaContra);
+    public boolean cambiarContrasena(String usuario, String nuevaContra);
     
-    /**
-     * El superadministador cambia la contraseña de cualquier usuario
-     * @param administrador cuenta del superadministrador
-     * @param usuario ussername 
-     * @param nuevaContra nuevaContraseña
-     * @return true si pudo registrar exitosamente, false sino, porque el usuario no existe
-     */
-    public boolean cambiarContrasena(String usuario, String viejaContrasena, String nuevaContra);
     
     /**
      * lista todos los roles que hay en el sistema
@@ -157,8 +152,34 @@ public interface IGestionUsuarios {
      */
     public boolean registrarRol(String rol, String descripcion);
     
+    /**
+     * elimina un rol
+     * @param rol
+     * @return 
+     */
     public boolean eliminarRol(String rol);
     
+    /**
+     * lista todas los usuarios del sistema
+     * @return 
+     */
     public List<UsuarioDTO> listarUsuarios();
     
+    /**
+     * quitarle el rol a un usuario
+     * @param usuario
+     * @param rol
+     * @return 
+     */
+    public boolean quitarRol(String usuario, String rol);
+    
+    /**
+     * modifica la descripcion de un rol
+     * @param rol
+     * @param nuevaDescripcion
+     * @return 
+     */
+    public boolean modificarRol(String rol, String nuevaDescripcion);
+    
+    public boolean eliminarUsuario(String usuario);
 }

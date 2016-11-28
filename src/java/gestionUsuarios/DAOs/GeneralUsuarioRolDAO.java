@@ -87,9 +87,47 @@ public class GeneralUsuarioRolDAO {
         }
         return false;
     }
-   
     
-    
+    public void eliminarPorRol(String rol){
+        try{
+            //obtenerConexion();
+            
+            PreparedStatement ps=conn.prepareStatement("DELETE FROM `general_usuario_rol` WHERE rol=?");
+            ps.setString(1, rol);
+            int row=ps.executeUpdate();
+            System.out.println(row);
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralUsuarioRolDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public boolean eliminar(String usuario, String rol){
+        try{
+            //obtenerConexion();
+            
+            PreparedStatement ps=conn.prepareStatement("DELETE FROM `general_usuario_rol` WHERE rol=? AND user=?");
+            ps.setString(1, rol);
+            ps.setString(2, usuario);
+            int row=ps.executeUpdate();
+            if(row==1){
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralUsuarioRolDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    public void eliminarPorUsuario(String usuario){
+        try{
+            //obtenerConexion();
+            
+            PreparedStatement ps=conn.prepareStatement("DELETE FROM `general_usuario_rol` WHERE user=?");
+            ps.setString(1, usuario);
+            int row=ps.executeUpdate();
+            System.out.println(row);
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralUsuarioRolDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public static void main(String[] args) {
         //GeneralUsuarioRolDAO gur=new GeneralUsuarioRolDAO();
         //System.out.println(gur.obtenerRoles("1151052").get(0).getDescripcion());

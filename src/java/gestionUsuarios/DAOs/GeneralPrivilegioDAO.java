@@ -88,6 +88,44 @@ public class GeneralPrivilegioDAO {
         }
         return false;
     }
+    
+    public void eliminarRF(String modulo, String rf){
+         try {
+            PreparedStatement ps = conn.prepareStatement("DELETE FROM general_privilegio WHERE rf=? AND modulo=?");
+            ps.setString(1, rf);
+            ps.setString(2, modulo);
+            int row=ps.executeUpdate();
+             System.out.println(row);
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralPrivilegioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+    }
+    public boolean eliminarPrivilegio(String rol, String modulo, String rf){
+        try {
+            PreparedStatement ps = conn.prepareStatement("DELETE FROM general_privilegio WHERE rf=? AND modulo=? AND rol=?");
+            ps.setString(1, rf);
+            ps.setString(2, modulo);
+            ps.setString(3, rol);
+            int row=ps.executeUpdate();
+            if(row==1)return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralPrivilegioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        return false;
+    }
+    public void eliminarPorRol(String rol){
+        try {
+            PreparedStatement ps = conn.prepareStatement("DELETE FROM general_privilegio WHERE rol=?");
+            ps.setString(1, rol);
+            int row=ps.executeUpdate();
+            System.out.println(row);
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralPrivilegioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+    }
     public static void main(String[] args) {
         //GeneralPrivilegioDAO p=new GeneralPrivilegioDAO();
         //System.out.println(p.getPrivilegioUsuario("1151234").getModulos().get(0).getNombre());

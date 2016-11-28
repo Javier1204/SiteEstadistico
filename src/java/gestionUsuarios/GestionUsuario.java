@@ -28,11 +28,6 @@ public class GestionUsuario implements IGestionUsuarios{
     }
 
 
-    @Override
-    public boolean validarUsuario(String rol, String usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     
     @Override
     public List<String> asignarRoles(ICuenta usuario, List<String> roles) {
@@ -46,8 +41,8 @@ public class GestionUsuario implements IGestionUsuarios{
     }
 
     @Override
-    public ICuenta cambiarContrasena(ICuenta cuenta, String nuevaContra) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean cambiarContrasena(String usuario, String nuevaContra) {
+        return ControlGestionUsuarios.getInstance().cambiarContrasena(usuario, nuevaContra);
     }
 
     
@@ -71,17 +66,17 @@ public class GestionUsuario implements IGestionUsuarios{
 
     @Override
     public boolean eliminarModulo(String modulo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ControlGestionUsuarios.getInstance().eliminarModulo(modulo);
     }
 
     @Override
     public boolean registrarRF(String nombreModulo, String RF, String nombreRF, String url) {
         return ControlGestionUsuarios.getInstance().registrarRF(nombreModulo, RF, nombreRF, url);
     }
-
+    
     @Override
-    public boolean eliminarRF(String modulo, String rf) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void eliminarRF(String modulo, String rf) {
+        ControlGestionUsuarios.getInstance().eliminarRF(modulo, rf);
     }
 
     @Override
@@ -95,14 +90,10 @@ public class GestionUsuario implements IGestionUsuarios{
     }
 
     @Override
-    public PrivilegioDTO quitarPrivilegios(String rol, PrivilegioDTO privilegios) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void quitarPrivilegios(String rol, PrivilegioDTO privilegios) {
+        ControlGestionUsuarios.getInstance().quitarPrivilegios(rol, privilegios);
     }
 
-    @Override
-    public boolean cambiarContrasena(String usuario, String viejaContrasena, String nuevaContra) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public List<RequerimientosFDTO> listarRF(String modulo) {
@@ -122,7 +113,7 @@ public class GestionUsuario implements IGestionUsuarios{
 
     @Override
     public boolean eliminarRol(String rol) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ControlGestionUsuarios.getInstance().eliminarRol(rol);
     }
 
     public static void main(String[] args) {
@@ -137,6 +128,31 @@ public class GestionUsuario implements IGestionUsuarios{
     @Override
     public List<UsuarioDTO> listarUsuarios() {
         return ControlGestionUsuarios.getInstance().listarUsuarios();
+    }
+
+    @Override
+    public boolean modificarModulo(String modulo, String nuevaDescripcion, String url) {
+        return ControlGestionUsuarios.getInstance().modificarModulo(modulo, nuevaDescripcion, url);
+    }
+
+    @Override
+    public boolean modificarRF(String modulo, String rf, String nuevoDesString, String nuevaURL) {
+        return ControlGestionUsuarios.getInstance().modificarRF(modulo, rf, nuevoDesString, nuevaURL);
+    }
+
+    @Override
+    public boolean quitarRol(String usuario, String rol) {
+        return ControlGestionUsuarios.getInstance().quitarRol(usuario, rol);
+    }
+
+    @Override
+    public boolean modificarRol(String rol, String nuevaDescripcion) {
+        return ControlGestionUsuarios.getInstance().modificarRol(rol, nuevaDescripcion);
+    }
+
+    @Override
+    public boolean eliminarUsuario(String usuario) {
+        return ControlGestionUsuarios.getInstance().eliminarUsuario(usuario);
     }
 
     

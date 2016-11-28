@@ -107,6 +107,30 @@ public class GeneralUsuarioDAO {
         }
         return null;
     }
+    public boolean eliminar(String usuario){
+        try{
+            PreparedStatement ps=conn.prepareStatement("DELETE FROM general_usuario WHERE user=?");
+            ps.setString(1, usuario);
+            int row=ps.executeUpdate();
+            if(row==1)return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralUsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+    public boolean modificar(String usuario, String pass){
+        try{
+            PreparedStatement ps=conn.prepareStatement("UPDATE general_usuario SET password=? WHERE user=?");
+            ps.setString(2, usuario);
+            ps.setString(1, pass);
+            int row=ps.executeUpdate();
+            if(row==1)return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralUsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
     public static void main(String[] args) {
         GeneralUsuarioDAO us=new GeneralUsuarioDAO(ConexionGUDAOs.obtenerConexion());
         System.out.println(us.listarUsuarios());

@@ -81,6 +81,34 @@ public class GeneralModuloDAO {
         }
         return false;        
     }
+    public boolean elminarModulo(String modulo){
+        try{
+            PreparedStatement ps=conn.prepareStatement("DELETE FROM general_modulo WHERE modulo=?");
+            ps.setString(1, modulo);
+            int row=ps.executeUpdate();
+            if(row==1){
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralModuloDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    public boolean modificarModulo(String modulo, String nuevaDescripcion, String url){
+        try{
+            PreparedStatement ps=conn.prepareStatement("UPDATE general_modulo SET descripcion=?, url=? WHERE modulo=?");
+            ps.setString(3, modulo);
+            ps.setString(2, url);
+            ps.setString(1, nuevaDescripcion);
+            int row=ps.executeUpdate();
+            if(row==1){
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralModuloDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
     public static void main(String[] args) {
         Connection con=ConexionGUDAOs.obtenerConexion();
         GeneralModuloDAO moduloDAO=new GeneralModuloDAO(con);
