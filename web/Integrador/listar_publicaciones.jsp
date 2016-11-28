@@ -5,6 +5,8 @@
 --%>
 
 
+<%@page import="Integrador.DTO.InformeDTO"%>
+<%@page import="Integrador.Servicio.SrvInforme"%>
 <%@page import="gestionUsuarios.DTOs.ModuloDTO"%>
 <%@page import="gestionUsuarios.GestionUsuario"%>
 <%@page import="gestionUsuarios.IGestionUsuarios"%>
@@ -16,7 +18,8 @@
 
   IGestionUsuarios gestor = GestionUsuario.getInstance();
   List<ModuloDTO> modulos = gestor.listarModulo();
-  
+  SrvInforme srv=SrvInforme.getInstance();
+  List<InformeDTO> lista=  srv.listarPublicaciones();
 
 %> 
 <jsp:include page="../plantilla/header.jsp"></jsp:include>
@@ -24,8 +27,9 @@
   <link href="css/smartpaginator.css" rel="stylesheet">
   <script src="js/smartpaginator.js"></script>
     
-
+  <input type="text" id="tamano" style="visibility:hidden"  value="<%= lista.size() %>"> 
   <script type="text/javascript">
+        
         $(document).ready(function () {
             
            
@@ -38,192 +42,65 @@
               
              
             });
-
-            $('#green').smartpaginator({ totalrecords: 13, recordsperpage: 5, datacontainer: 'mt', dataelement: 'tr', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'green' });
+            var val=$("#tamano").val();
+        
+            $('#green').smartpaginator({ totalrecords: val , recordsperpage: 5, datacontainer: 'mt', dataelement: 'tr', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'green' });
 
            
 
         });
     </script>
+      <div id="titulo"> <center><h2>Buscador</h2></center> </div>
     <div id="categorias">
-            <table>
-                <tr><td> <h3 style="width: 200px; text-align: center">Buscar por modulo:   </h3></td>
-                    <td><select id="seleccion" class="ufps-input ">
+      
+        <div style="margin-left: 10px;">
+            <form action="" method="post">
+            <table>  
+                <tr><td ><h4>Modulo:   </h4></td><td ><select id="seleccion" class="ufps-input ">
                             <option>No seleccion</option>
                               <% for(ModuloDTO mod : modulos){ %>
                               <option value="<%= mod.getNombre()%>"><%= mod.getNombre()%></option>
                                  <% } %>
                         </select></td></tr>
-
-            </table>
+             
+                        <tr><td><h4>Año: </h4></td><td><input style="width: 100px;" type="number" id="ano" class="ufps-input" required="" min="0"></td></tr>
+                       
+                         <tr><td><h4>Semestre: </h4></td><td><input  style="width: 100px;" type="number" id="semestre" class="ufps-input" min="1" max="2" required=""></td></tr>
+                     
+                         <tr><td colspan="2" style="text-align: center; width: 300px;"><input type="submit" value="Buscar" class="ufps-btn ufps-btn-light" ></td></tr>
+</table>
+                        </form>
+                        
+             </div>
         </div>
-    <div class="contenidopublicacion">
+      
+        <div id="titulo2"> <center><h2>Informes generales</h2></center> </div>
+         <div class="contenidopublicacion">
        
         <table id="mt" cellpadding="0" cellspacing="0" border="0">
            
-           
-             <tr><td>
+           <% for(InformeDTO  dto: lista){ %>
+             <tr><td style="width: 1200px">
             <div id="contenidopublicacioncreada">
 
-                <h2>titulo</h2> 
-                <p>Qué desperdicio de talento. Él eligió el dinero en vez del poder, un error que casi todos cometen. Dinero es la gran mansión en Sarasota que empieza a caerse a pedazos después de diez años. Poder es el viejo edificio de roca que resiste por siglos. No puedo respetar a alguien que no entienda la diferencia
+                <h2><%= dto.getNombre() %></h2> 
+                <p><%= dto.getDescripcion() %>
                     <br><br>
 
-                    <a href=""><img src="../public/img/integrador/descargar.png"  height="30px" width="30px" title="descargar publicacion" style="margin-right: 20px;"> Descargar informe</a>
+                    <a href="<%= dto.getUrl_informe() %>"><img src="../public/img/integrador/descargar.png"  height="30px" width="30px" title="descargar publicacion" style="margin-right: 20px;"> Descargar informe</a>
+                    <br><br>
+                    <label style="margin-right: 30px;"> Modulo: <%= dto.getModulo() %>  </label>      <label style="margin-right: 30px;"> semestre: <%= dto.getSemestre() %></label>         <label style="margin-right: 30px;">   año: <%= dto.getAno() %>  </label>            
 
                 </p>
             </div></td>
             </tr>
-             <tr><td>
-            <div id="contenidopublicacioncreada">
-
-                <h2>titulo</h2> 
-                <p>Qué desperdicio de talento. Él eligió el dinero en vez del poder, un error que casi todos cometen. Dinero es la gran mansión en Sarasota que empieza a caerse a pedazos después de diez años. Poder es el viejo edificio de roca que resiste por siglos. No puedo respetar a alguien que no entienda la diferencia
-                    <br><br>
-
-                    <a href=""><img src="../public/img/integrador/descargar.png"  height="30px" width="30px" title="descargar publicacion" style="margin-right: 20px;"> Descargar informe</a>
-
-                </p>
-            </div></td>
-            </tr>
-             <tr><td>
-            <div id="contenidopublicacioncreada">
-
-                <h2>titulo</h2> 
-                <p>Qué desperdicio de talento. Él eligió el dinero en vez del poder, un error que casi todos cometen. Dinero es la gran mansión en Sarasota que empieza a caerse a pedazos después de diez años. Poder es el viejo edificio de roca que resiste por siglos. No puedo respetar a alguien que no entienda la diferencia
-                    <br><br>
-
-                    <a href=""><img src="../public/img/integrador/descargar.png"  height="30px" width="30px" title="descargar publicacion" style="margin-right: 20px;"> Descargar informe</a>
-
-                </p>
-            </div></td>
-            </tr>
-             <tr><td>
-            <div id="contenidopublicacioncreada">
-
-                <h2>titulo</h2> 
-                <p>Qué desperdicio de talento. Él eligió el dinero en vez del poder, un error que casi todos cometen. Dinero es la gran mansión en Sarasota que empieza a caerse a pedazos después de diez años. Poder es el viejo edificio de roca que resiste por siglos. No puedo respetar a alguien que no entienda la diferencia
-                    <br><br>
-
-                    <a href=""><img src="../public/img/integrador/descargar.png"  height="30px" width="30px" title="descargar publicacion" style="margin-right: 20px;"> Descargar informe</a>
-
-                </p>
-            </div></td>
-            </tr>
-             <tr><td>
-            <div id="contenidopublicacioncreada">
-
-                <h2>titulo</h2> 
-                <p>Qué desperdicio de talento. Él eligió el dinero en vez del poder, un error que casi todos cometen. Dinero es la gran mansión en Sarasota que empieza a caerse a pedazos después de diez años. Poder es el viejo edificio de roca que resiste por siglos. No puedo respetar a alguien que no entienda la diferencia
-                    <br><br>
-
-                    <a href=""><img src="../public/img/integrador/descargar.png"  height="30px" width="30px" title="descargar publicacion" style="margin-right: 20px;"> Descargar informe</a>
-
-                </p>
-            </div></td>
-            </tr>
-             <tr><td>
-            <div id="contenidopublicacioncreada">
-
-                <h2>titulo</h2> 
-                <p>Qué desperdicio de talento. Él eligió el dinero en vez del poder, un error que casi todos cometen. Dinero es la gran mansión en Sarasota que empieza a caerse a pedazos después de diez años. Poder es el viejo edificio de roca que resiste por siglos. No puedo respetar a alguien que no entienda la diferencia
-                    <br><br>
-
-                    <a href=""><img src="../public/img/integrador/descargar.png"  height="30px" width="30px" title="descargar publicacion" style="margin-right: 20px;"> Descargar informe</a>
-
-                </p>
-            </div></td>
-            </tr>
-             <tr><td>
-            <div id="contenidopublicacioncreada">
-
-                <h2>titulo</h2> 
-                <p>Qué desperdicio de talento. Él eligió el dinero en vez del poder, un error que casi todos cometen. Dinero es la gran mansión en Sarasota que empieza a caerse a pedazos después de diez años. Poder es el viejo edificio de roca que resiste por siglos. No puedo respetar a alguien que no entienda la diferencia
-                    <br><br>
-
-                    <a href=""><img src="../public/img/integrador/descargar.png"  height="30px" width="30px" title="descargar publicacion" style="margin-right: 20px;"> Descargar informe</a>
-
-                </p>
-            </div></td>
-            </tr>
-             <tr><td>
-            <div id="contenidopublicacioncreada">
-
-                <h2>titulo</h2> 
-                <p>Qué desperdicio de talento. Él eligió el dinero en vez del poder, un error que casi todos cometen. Dinero es la gran mansión en Sarasota que empieza a caerse a pedazos después de diez años. Poder es el viejo edificio de roca que resiste por siglos. No puedo respetar a alguien que no entienda la diferencia
-                    <br><br>
-
-                    <a href=""><img src="../public/img/integrador/descargar.png"  height="30px" width="30px" title="descargar publicacion" style="margin-right: 20px;"> Descargar informe</a>
-
-                </p>
-            </div></td>
-            </tr>
-             <tr><td>
-            <div id="contenidopublicacioncreada">
-
-                <h2>titulo</h2> 
-                <p>Qué desperdicio de talento. Él eligió el dinero en vez del poder, un error que casi todos cometen. Dinero es la gran mansión en Sarasota que empieza a caerse a pedazos después de diez años. Poder es el viejo edificio de roca que resiste por siglos. No puedo respetar a alguien que no entienda la diferencia
-                    <br><br>
-
-                    <a href=""><img src="../public/img/integrador/descargar.png"  height="30px" width="30px" title="descargar publicacion" style="margin-right: 20px;"> Descargar informe</a>
-
-                </p>
-            </div></td>
-            </tr>
-             <tr><td>
-            <div id="contenidopublicacioncreada">
-
-                <h2>titulo</h2> 
-                <p>Qué desperdicio de talento. Él eligió el dinero en vez del poder, un error que casi todos cometen. Dinero es la gran mansión en Sarasota que empieza a caerse a pedazos después de diez años. Poder es el viejo edificio de roca que resiste por siglos. No puedo respetar a alguien que no entienda la diferencia
-                    <br><br>
-
-                    <a href=""><img src="../public/img/integrador/descargar.png"  height="30px" width="30px" title="descargar publicacion" style="margin-right: 20px;"> Descargar informe</a>
-
-                </p>
-            </div></td>
-            </tr>
-             <tr><td>
-            <div id="contenidopublicacioncreada">
-
-                <h2>titulo</h2> 
-                <p>Qué desperdicio de talento. Él eligió el dinero en vez del poder, un error que casi todos cometen. Dinero es la gran mansión en Sarasota que empieza a caerse a pedazos después de diez años. Poder es el viejo edificio de roca que resiste por siglos. No puedo respetar a alguien que no entienda la diferencia
-                    <br><br>
-
-                    <a href=""><img src="../public/img/integrador/descargar.png"  height="30px" width="30px" title="descargar publicacion" style="margin-right: 20px;"> Descargar informe</a>
-
-                </p>
-            </div></td>
-            </tr>
-             <tr><td>
-            <div id="contenidopublicacioncreada">
-
-                <h2>titulo</h2> 
-                <p>Qué desperdicio de talento. Él eligió el dinero en vez del poder, un error que casi todos cometen. Dinero es la gran mansión en Sarasota que empieza a caerse a pedazos después de diez años. Poder es el viejo edificio de roca que resiste por siglos. No puedo respetar a alguien que no entienda la diferencia
-                    <br><br>
-
-                    <a href=""><img src="../public/img/integrador/descargar.png"  height="30px" width="30px" title="descargar publicacion" style="margin-right: 20px;"> Descargar informe</a>
-
-                </p>
-            </div></td>
-            </tr>
-             <tr><td>
-            <div id="contenidopublicacioncreada">
-
-                <h2>titulo</h2> 
-                <p>Qué desperdicio de talento. Él eligió el dinero en vez del poder, un error que casi todos cometen. Dinero es la gran mansión en Sarasota que empieza a caerse a pedazos después de diez años. Poder es el viejo edificio de roca que resiste por siglos. No puedo respetar a alguien que no entienda la diferencia
-                    <br><br>
-
-                    <a href=""><img src="../public/img/integrador/descargar.png"  height="30px" width="30px" title="descargar publicacion" style="margin-right: 20px;"> Descargar informe</a>
-
-                </p>
-            </div></td>
-            </tr>
-         
+            <% } %>
+            
         </table>
       
       
     </div>
-      <div id="green" style="margin:0 auto;  width: 1200px; height: 60px;">
+      <div id="green" style="margin-left: 350px;  width: 900px; height: 60px;">
 
     </div>
 <jsp:include page="../plantilla/footer.jsp"></jsp:include>
