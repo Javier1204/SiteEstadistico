@@ -95,7 +95,7 @@ and open the template in the editor.
 #titulo{
      height: 50px;
     width: 300px;
-  margin-left: 10px;
+  margin-left: 30px;
    background-color:#B3B7B7;
    border: 3px solid #9d0609;
     border-radius: 4px;
@@ -115,7 +115,7 @@ and open the template in the editor.
     border-radius: 4px;
     -webki-border-radius:4px;
     -moz-border-radius: 4px;
- margin-left: 10px;
+ margin-left: 30px;
     box-shadow: 0px 2px 10px #d6d6d6;
    
      
