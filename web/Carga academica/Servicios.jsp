@@ -1,8 +1,5 @@
-<%-- 
-    Document   : Servicios
-    Created on : 15/10/2016, 08:36:02 AM
-    Author     : victor urbina 1150962
---%>
+
+<%--/**@author Seminario Integrador 3: Ing Pilar Rojas, Estud: Victor Urbina 1150962 & Jesus Rojas 1150833 20/10/2016*/--%>
 
 <!--Aqui coloco el header, OJO con include-->
 <jsp:include page="diseno.jsp"/>

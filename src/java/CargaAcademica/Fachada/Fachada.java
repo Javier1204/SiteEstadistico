@@ -1,24 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+/**@author Seminario Integrador 3: Ing Pilar Rojas, Estud: Victor Urbina 1150962 & Jesus Rojas 1150833 20/11/2016*/
+
 package CargaAcademica.Fachada;
 
-import CargaAcademica.DTO.*;
-import java.sql.Date;
-/**
- *
- * @author jesus
- */
+import CargaAcademica.Controlador.ControladorCargaAcademica;
+
 public class Fachada {
     
     
-    public boolean registrarInformacion(String codigo, String cedula, String nombres, String apellidos, byte estado, String nivel_estudio,
-                                        String categoria, String tipo_vinculacion, String correo_institucional, String correo_personal, 
-                                        String titulo_pregrado, String celular, byte anos_exp, Date fecha_nac, String direccion_resi){
-        
-        
-        return false;
+    public String habilitarSistema(String codigo,String ano, String periodo,String fechaCierre){
+        ControladorCargaAcademica c = new ControladorCargaAcademica();
+        return c.habilitarSistema(codigo,ano,periodo,fechaCierre);
+    }
+    
+    public String darProrroga(String codigo,String fechaCierre){
+        ControladorCargaAcademica c = new ControladorCargaAcademica();
+        return c.darProrroga(codigo,fechaCierre);
+    }
+    
+    public String actualizarInfoPersonal(String codigo,String cedula,String nombres,String apellidos,
+           String estado,String nivel_estudio,String categoria,String tipo_vinculacion,String correo_institucional,
+           String correo_personal,String titulo_pregrado,String celular,String anos_exp,String fecha_nac,String direccion_resi){
+        ControladorCargaAcademica c = new ControladorCargaAcademica();
+        return c.actualizarInfoPersonal(codigo,cedula,nombres,apellidos,estado,nivel_estudio,categoria,tipo_vinculacion,correo_institucional,correo_personal,titulo_pregrado,celular,anos_exp,fecha_nac,direccion_resi);
     }
 }
