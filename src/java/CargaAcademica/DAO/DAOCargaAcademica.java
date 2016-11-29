@@ -20,8 +20,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("root"); //ingreso el usuario
-            pool.setContrasena("");//ingreso la contraseña
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement(
@@ -63,8 +63,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("root"); //ingreso el usuario
-            pool.setContrasena("");//ingreso la contraseña
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement(
@@ -108,8 +108,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("root"); //ingreso el usuario
-            pool.setContrasena("");//ingreso la contraseña
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement(
@@ -155,8 +155,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("root"); //ingreso el usuario
-            pool.setContrasena("");//ingreso la contraseña
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement(
@@ -201,8 +201,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("root"); //ingreso el usuario
-            pool.setContrasena("");//ingreso la contraseña
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement(
@@ -247,8 +247,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("root"); //ingreso el usuario
-            pool.setContrasena("");//ingreso la contraseña
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement("SELECT d.codigo,d.nombres,d.apellidos,sum(c.horas_teo) \n" +
@@ -293,8 +293,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("root"); //ingreso el usuario
-            pool.setContrasena("");//ingreso la contraseña
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement("SELECT codigo,nombres,apellidos from general_docente where tipo_vinculacion='catedra'");//genero el sql. 
@@ -335,8 +335,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("root"); //ingreso el usuario
-            pool.setContrasena("");//ingreso la contraseña
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement("SELECT codigo,nombres,apellidos from general_docente where tipo_vinculacion='medio tiempo'");//genero el sql. 
@@ -377,8 +377,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("root"); //ingreso el usuario
-            pool.setContrasena("");//ingreso la contraseña
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement("SELECT codigo,nombres,apellidos from general_docente where tipo_vinculacion='tiempo completo'");//genero el sql. 
@@ -419,8 +419,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("root"); //ingreso el usuario
-            pool.setContrasena("");//ingreso la contraseña
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement(
@@ -465,8 +465,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("root"); //ingreso el usuario
-            pool.setContrasena("");//ingreso la contraseña
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement(
@@ -509,8 +509,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("root"); //ingreso el usuario
-            pool.setContrasena("");//ingreso la contraseña
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement(
@@ -553,8 +553,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("root"); //ingreso el usuario
-            pool.setContrasena("");//ingreso la contraseña
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement(
@@ -597,8 +597,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("root"); //ingreso el usuario
-            pool.setContrasena("");//ingreso la contraseña
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement("Select codigo,nombres,apellidos from general_docente order by apellidos");//genero el sql. 
@@ -640,8 +640,8 @@ public class DAOCargaAcademica {
         Connection con = null;
         PreparedStatement stm = null;
         try {
-            pool.setUsuario("root"); //ingreso el usuario
-            pool.setContrasena("");//ingreso la contraseña
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             String insql="";
@@ -705,8 +705,8 @@ public class DAOCargaAcademica {
         PreparedStatement stm = null;
        
         try {
-            pool.setUsuario("root"); //ingreso el usuario
-            pool.setContrasena("");//ingreso la contraseña
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             
@@ -787,8 +787,8 @@ public class DAOCargaAcademica {
         PreparedStatement stm = null;
         try {
             
-            pool.setUsuario("root"); //ingreso el usuario
-            pool.setContrasena("");//ingreso la contraseña
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement(
@@ -833,8 +833,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("root"); //ingreso el usuario
-            pool.setContrasena("");//ingreso la contraseña
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement(
