@@ -74,19 +74,19 @@ public class InformeDAO {
      * @param modulo
      * @return 
      */
-     public List<InformeDTO> listarPublicacionesModulo(String modulo) {
+     public List<InformeDTO> listarPublicacionesModulo(String modulo,int ano,int semestre) {
         ArrayList<InformeDTO> lista = new ArrayList();
         Pool pool = Conexion.getPool(); //llamo al objeto pool 
         Connection con = null;
         PreparedStatement stm = null;
         try {
-
+             String sql=this.construirSqlConsultarInformeModulos(modulo, ano, semestre);
             pool.setUsuario("ufps_76"); //ingreso el usuario
             pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
-            stm = con.prepareStatement("select i.id_informe, i.nombre, i.url_informe, i.modulo, i.descripcion, i.semestre, i.ano from  integrador_informe i where i.modulo = ? order by i.ano DESC, i.semestre DESC");//genero el sql. 
-            stm.setString(1, modulo);
+            stm = con.prepareStatement(sql);//genero el sql. 
+          
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
                 InformeDTO p = new InformeDTO();
@@ -101,6 +101,7 @@ public class InformeDAO {
                 lista.add(p);
 
             }
+            System.err.println(sql);
             stm.close();//cierro el preparedstatement
             rs.close(); //cierro el resultset
         } catch (SQLException ex) {
@@ -118,4 +119,26 @@ public class InformeDAO {
         return lista;
     }
 
+     /**
+      * este metodo construye la consulta para traerse los infomres segun su modulo año y semestre
+      * @param modulo
+      * @param ano
+      * @param semestre
+      * @return 
+      */
+     private String construirSqlConsultarInformeModulos(String modulo,int ano, int semestre){
+         String sqlbase="select i.id_informe, i.nombre, i.url_informe, i.modulo, i.descripcion, i.semestre, i.ano from  integrador_informe i where 1=1";
+         if(modulo!=null){
+         sqlbase +=" and i.modulo = '"+modulo+"'";
+         }
+         if(ano>-1 ){
+         sqlbase +=" and i.ano = "+ano;
+         }
+         if(semestre>0 && semestre<3){
+         sqlbase +=" and i.semestre = "+semestre; 
+         }
+         sqlbase +=" order by i.ano DESC, i.semestre DESC";
+         return sqlbase;
+     }
+     
 }

@@ -63,86 +63,40 @@ function ingresar() {
     }
 }
 
-//javascript carlos torres 19/11/2016
-
-/*
- * genera el pop-up para crear publicacion
- */
-function abrirVentana() {
-
-    $.ajax({
-        type: "GET",
-        url: "../GestorPublicaciones",
-        data: {
-            'medio': 'abrirVentanaCrearPublicacion'
-        },
-        cache: false,
-        success: function (data) {
-            var $dialog = $('<div id="ventana" syle="height=450px;"></div>')
-                    .html(data).dialog({
-                autoOpen: false,
-                modal: true,
-                height: 600,
-                width: 600,
-                title: "",
-                close: function (event, ui) {
-                    $(this).dialog('destroy').remove();
-                }
-            });
-
-            $dialog.dialog('open');
+//javascript carlos torres 29/11/2016
 
 
-        }
-    });
-
-}
-
-/**
- * este metodo cierra el pop-up
- * @returns {undefined}
- */
-function eliminarVentana() {
-    $("#ventana").dialog('destroy').remove();
-}
-
-
-/**
- * este metodo registra una publicacion en el sistema
- * @returns {undefined}
- */
-function registrarPublicacion() {
-
-    var titulo = $("#titulo").val();
-    var modulo = $("#modulo").val();
-    var informe = $("#informe").val();
-    var texto = $("#texto").val();
-
-    $.ajax({
+function consultarInformeModuloAñoSemestre(){
+    var modulo=$("#modulo").val();
+    var ano=$("#ano").val();
+    var semestre=$("#semestre").val();
+    
+    
+   
+     $.ajax({
         type: "POST",
-        url: "../GestorPublicaciones",
+        url: "procesar/procesarListarPublicaciones.jsp",
         data: {
-            'medio': 'registrarPublicacion',
-            'titulo': titulo,
-            'modulo': modulo,
-            'informe': informe,
-            'texto': texto
+            "modulo":modulo,
+            "ano":ano,
+            "semestre":semestre
         },
         cache: false,
         success: function (data) {
-
-            if (data) {
-                alert("registro exitoso");
-                eliminarVentana();
-            } else {
-                alert("Error en el registro");
-            }
-
+       
+           $("#contenidoPrincipal").empty();
+           $("#contenidoPrincipal").append(data);
 
         }
     });
-
+    
+    
 }
+
+
+
+
+
 
 function registrarUsuario() {
     var nombre_usuario = document.getElementById("nombre_usuario");
