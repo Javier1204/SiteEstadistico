@@ -5,8 +5,8 @@
 --%>
 
 <%@page import="java.util.ArrayList"%>
-<%@page import="internacionalizacion.Modelo.DTO.Pais"%>
-<%@page import="internacionalizacion.Facade.Facade"%>
+<%@page import="Internacionalizacion.Modelo.DTO.Pais"%>
+<%@page import="Internacionalizacion.Facade.Facade"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
@@ -104,7 +104,6 @@
                                         <option value="Comercial">Comercial</option>
                                         <option value="Comunicaciones">Comunicaciones</option>
                                         <option value="Construccion">Construccion</option>
-                                        <option value="Gubernamental"></option>
                                         <option value="Educacion">Educacion</option>
                                         <option value="Energetico">Energetico</option>
                                         <option value="Financiero">Financiero</option>

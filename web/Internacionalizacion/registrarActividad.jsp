@@ -1,17 +1,18 @@
 
 
 
-<%@page import="internacionalizacion.Facade.Facade"%>
-<%@page import="internacionalizacion.Modelo.DTO.Convenio"%>
+
+<%@page import="Internacionalizacion.Facade.Facade"%>
+<%@page import="Internacionalizacion.Modelo.DTO.Convenio"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="internacionalizacion.Controlador.ControladorConvenio"%>
+<%@page import="Internacionalizacion.Controlador.ControladorConvenio"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 
 <%
     Facade fachada = new Facade();
-
+    //Convenio con = new Convenio();
     if (request.getSession().getAttribute("respuesta_actividad") != null) {
 
 %>
@@ -61,11 +62,11 @@
         <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
         <script src="js/bootstrap.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script src="../../public/js/ufps.js" type="text/javascript"></script>
-        <script src="../../public/js/ufps.min.js" type="text/javascript"></script>
+        <script src="../public/js/ufps.js" type="text/javascript"></script>        
+        <script src="../public/js/ufps.min.js" type="text/javascript"></script>
         <script src="js/formactividad.js" type="text/javascript"></script>
-
         <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
+        
     </head>
     <body>
         <jsp:include page="../plantilla/header.jsp"></jsp:include>
@@ -101,12 +102,13 @@
 
                         <div class="form-group">
                             <br><label for="convenio">Seleccione convenio:</label>
-                            <select id="convenio" name="convenio" class="ufps-input" onchange="cambiarTipo()">
-
+                            <select id="convenio" name="convenio" class="ufps-input" onchange="cambiarTipo(this.value)">
+                                
                                 <%
                                     //ControladorConvenio c = new ControladorConvenio();
                                     ArrayList<Convenio> convenios = fachada.obtenerConvenios();
-
+                                    Convenio c = convenios.get(0);
+                                    //cambiarTipo(c.getId());
                                     for (Convenio con : convenios) {
 
 
@@ -124,14 +126,14 @@
                             <label for="nombre">Nombre actividad:</label>
                             <input type="text" class="ufps-input" id="nombre" name="nombre" required="true">
                         </div>
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <label for="duracion" title="Duración de la actividad en semanas, dias o meses.">Duración actividad: <span class="glyphicon glyphicon-question-sign"></span></label>
                             <input type="text" class="ufps-input" id="duracion" name="duracion" placeholder="duracion en dias, meses o años">
                         </div>
-
+                        -->
                         <div class="form-group col-md-5">
-                            <label for="creacion" title="Fecha en que se crea la actividad.">Fecha creación: <span class="glyphicon glyphicon-question-sign"></span></label>
-                            <input type="date" class="ufps-input" id="creacion" name="creacion" required="true">
+                            <label for="creacion" title="Fecha en que inicia la actividad.">Fecha inicio: <span class="glyphicon glyphicon-question-sign"></span></label>
+                            <input type="date" class="ufps-input" id="creacion" name="creacion" required="true" onchange="fijarvalormin(this.value)">
                         </div>
                         <div class="form-group col-md-5">
                             <label for="terminacion" title="Finalización de la actividad.">Fecha terminación: <span class="glyphicon glyphicon-question-sign"></span></label>

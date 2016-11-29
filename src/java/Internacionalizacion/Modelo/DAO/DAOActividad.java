@@ -21,10 +21,10 @@ import java.util.logging.Logger;
  */
 public class DAOActividad {
     
-    public boolean RegistrarActividad(Actividad a) {
+    public String RegistrarActividad(Actividad a) {
         Pool pool = Conexion.getPool();
         Connection con = null;
-        ResultSet rs = null;
+        
         try {
             pool.setUsuario("ufps_76");
             pool.setContrasena("ufps_29");
@@ -45,26 +45,30 @@ public class DAOActividad {
             stmt.setString(10, a.getLugar());
             stmt.setString(11, a.getDescripcion());
             
-            stmt.executeUpdate();
-           
+            int can = stmt.executeUpdate();
             stmt.close();
+            if(can == 1){
+                System.out.println("Registro!");
+                return "Se registro actividad!";
+            }else{
+                 System.out.println("No registro!");
+                return "No se registro actividad!";
+            }
             
-            System.out.println("Se registro la actividad!");
-            
-            rs.close();
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
-            return false;
+            
         } finally {
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(DAOActividad.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                if (con != null) {
+                    con.close(); // se cierra la conexion. este es un paso muy importante
                 }
+            } catch (SQLException ex) {
+                 System.out.println("asdasd no registrar");
+                System.err.println(ex);
             }
-        }
-       return true;
+        }   
+        return null;
     }
     
     public Actividad consultarActividad_By_IDConvenio(String convenio) {

@@ -35,7 +35,7 @@ public class DAOEntidad {
             pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
-            stm = con.prepareStatement("insert into oficina_entidad(id,nombre,representante,sector,tipo, telefono,id_pais,nit,direccion) values(null,'"+e.getNombre()+"','"+e.getRepresentante()+"','"+e.getSector()+",'"+e.getTipo()+"','"+e.getTelefono()+"','"+e.getPais()+"','"+e.getNit()+"','"+e.getDireccion()+"')");//genero el sql. 
+            stm = con.prepareStatement("insert into oficina_entidad(`nombre`,`representante`,`sector`,`tipo`,`telefono`,`id_pais`,`nit`,`direccion`) values('"+e.getNombre()+"','"+e.getRepresentante()+"','"+e.getSector()+"','"+e.getTipo()+"','"+e.getTelefono()+"','"+e.getPais()+"','"+e.getNit()+"','"+e.getDireccion()+"')");//genero el sql. 
                   
             
             int can = stm.executeUpdate();//ejecuto la consulta

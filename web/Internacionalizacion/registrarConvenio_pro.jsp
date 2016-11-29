@@ -5,13 +5,13 @@
 --%>
 
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.util.Date"%>
+<%@page import="java.sql.Date"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.util.GregorianCalendar"%>
-<%@page import="internacionalizacion.Modelo.DTO.Tipo_actividades"%>
+<%@page import="Internacionalizacion.Modelo.DTO.Tipo_actividades"%>
 <%@page import="java.util.ArrayList"%>
 
-<%@page import="internacionalizacion.Facade.Facade"%>
+<%@page import="Internacionalizacion.Facade.Facade"%>
 <%
     request.setCharacterEncoding("UTF-8");
     String nombre = request.getParameter("nombre");
@@ -19,17 +19,29 @@
     String radicado = request.getParameter("radicado");
     String tipo = request.getParameter("tipo_convenio");
     String fecharadicacion = request.getParameter("fecharadicacion");
-    String estado = request.getParameter("estado");
+    
+    String estado = "Aprobado";
     String fechainicio = request.getParameter("fechainicio");
+    String[] fecha1 = fechainicio.split("-");
     String fechaterminacion = request.getParameter("fechaterminacion");
-    int entidad = Integer.parseInt(request.getParameter("entidad"));
-
-    /*long diferenciaEn_ms = new Date(fechaterminacion).getTime() - new Date(fechainicio).getTime();
-    long prueba = diferenciaEn_ms / (1000 * 60 * 60 * 24);
-    int meses = (int) prueba / 30;
-    String vigencia = meses + "";
-*/
-    String vigencia = "";
+    String[] fecha2 = fechaterminacion.split("-");
+    
+    
+    Calendar calendar1 = new GregorianCalendar(Integer.parseInt(fecha1[0]), Integer.parseInt(fecha1[1]), Integer.parseInt(fecha1[2])); 
+    Date f1 = new Date(calendar1.getTimeInMillis());
+    Calendar calendar2 = new GregorianCalendar(Integer.parseInt(fecha2[0]), Integer.parseInt(fecha2[1]), Integer.parseInt(fecha2[2])); 
+    Date f2 = new Date(calendar2.getTimeInMillis());
+    
+    long diferencia = ( f2.getTime() - f1.getTime() ) / (1000 * 60 * 60 * 24);
+    
+    System.out.println(fecharadicacion);
+    
+    int entidad = Integer.parseInt(request.getParameter("entidad"));   
+    
+    int meses = (int) diferencia / 30;
+    System.out.println(meses);
+   
+    String vigencia = meses+"";
     boolean[] actividades = new boolean[6];
 
     if (request.getParameter(
@@ -88,13 +100,11 @@
 
     f.RegistrarTipo_Actividades(act);
 
-    request.getSession()
-            .setAttribute("respuesta_convenio", r);
+    request.getSession().setAttribute("respuesta_convenio", r);
 %>
 
 
 <%
-    response.sendRedirect(
-            "registrarConvenio.jsp");
+    response.sendRedirect("registrarConvenio.jsp");
 
 %>

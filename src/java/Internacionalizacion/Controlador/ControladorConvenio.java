@@ -44,9 +44,9 @@ public class ControladorConvenio {
         return dao.consultarConvenios();
     }
     
-    public Convenio consultarConvenio(String nombreconvenio){
+    public Convenio consultarConvenio(String radicado){
         DAOConvenio dao = new DAOConvenio();
-        return dao.consultarConvenio(nombreconvenio);
+        return dao.consultarConvenio(radicado);
     }
     
 }

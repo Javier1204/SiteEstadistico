@@ -15,7 +15,7 @@ import Internacionalizacion.Modelo.DTO.Actividad;
  */
 public class ControladorActividad {
  
-    public boolean RegistrarActividad(Actividad a){
+    public String RegistrarActividad(Actividad a){
         DAOActividad dao = new DAOActividad();
         return dao.RegistrarActividad(a);
     }

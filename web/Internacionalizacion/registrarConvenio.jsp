@@ -4,9 +4,9 @@
     Author     : HeinerV
 --%>
 
-<%@page import="internacionalizacion.Modelo.DTO.Entidad"%>
+<%@page import="Internacionalizacion.Modelo.DTO.Entidad"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="internacionalizacion.Facade.Facade"%>
+<%@page import="Internacionalizacion.Facade.Facade"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
@@ -56,7 +56,7 @@ request.getSession().setAttribute("respuesta_convenio", null);
         <script src="js/bootstrap.min.js"></script>
         <script src="../public/js/ufps.js" type="text/javascript"></script>
         <script src="../public/js/ufps.min.js" type="text/javascript"></script>
-
+        <script src="js/formconvenio.js" type="text/javascript"></script>
        
         <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
     </head>
@@ -158,7 +158,7 @@ request.getSession().setAttribute("respuesta_convenio", null);
                                         <button type="file" class="ufps-btn">Cargar acta</button>
                                     <br> <br></div>
                                 </div> </div>
-                            <br> <br><label for="tipo_convenio">Seleccione Lo que se puede hacer en el presente convenio</label>
+                            <br> <br><label for="tipo_convenio">Seleccione lo que se puede hacer en el presente convenio</label>
 
                             <br><div class="checkbox">
 
@@ -189,27 +189,27 @@ request.getSession().setAttribute("respuesta_convenio", null);
                                 </label>
                             </div>
 
-                            <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
+                            <div class="ufps-col-tablet-8 ufps-col-tablet-offset-2">
                                 
                                 <div class="form-group col-md-4">
                                     <br> <label for="fecharadicacion" title="Fecha en que se radica el convenio.">Fecha radicación: <span class="glyphicon glyphicon-question-sign"></span></label>
-                                    <input type="date" class="ufps-input" id="fecharadicacion" name="fecharadicacion">
+                                    <input type="date" class="ufps-input" id="fecharadicacion" name="fecharadicacion" onchange="fijarfechainicio_inicio(this.value)">
                                 </div>
                                 
                                 <div class="form-group col-md-4">
                                     <br> <label for="fechainicio" title="Fecha en que se inicia el convenio.">Fecha inicio: <span class="glyphicon glyphicon-question-sign"></span></label>
-                                    <input type="date" class="ufps-input" id="fechainicio" name="fechainicio">
+                                    <input type="date" class="ufps-input" id="fechainicio" name="fechainicio" onchange="fijarfechainicio_terminacion(this.value)">
                                 </div>
 
 
                                 <div class="form-group col-md-4 pull-right">
                                     <br><label for="fechaterminacion" title="Fecha en que se termina el convenio ">Fecha terminacion <span class="glyphicon glyphicon-question-sign"></span></label>
-                                    <input type="date" class="ufps-input" id="creacion" name="fechaterminacion">
+                                    <input type="date" class="ufps-input" id="fechaterminacion" name="fechaterminacion" onchange="fijarfechalimite_inicio(this.value)">
                                 </div></div>
 
 
 
-                            <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
+                            <!--<div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
                                 <div class="form-group">
 
                                     <label for="estado">Estado</label>
@@ -220,6 +220,7 @@ request.getSession().setAttribute("respuesta_convenio", null);
                                     </select>
                                 </div> 
                             </div>
+                            -->
 
                             
 

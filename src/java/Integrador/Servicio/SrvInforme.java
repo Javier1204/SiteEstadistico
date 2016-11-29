@@ -40,8 +40,8 @@ public class SrvInforme {
      * @param modulo
      * @return 
      */
-    public List<InformeDTO> listarPublicacionesModulo(String modulo){
-    return this.daoInforme.listarPublicacionesModulo(modulo);
+    public List<InformeDTO> listarPublicacionesModulo(String modulo,int ano,int semestre){
+    return this.daoInforme.listarPublicacionesModulo(modulo,ano,semestre);
     }
     
 }

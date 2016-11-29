@@ -26,6 +26,7 @@
 <script src="js/jquery-1.4.4.min.js"></script>
   <link href="css/smartpaginator.css" rel="stylesheet">
   <script src="js/smartpaginator.js"></script>
+  <script src="js/ajax.js"></script>
     
   <input type="text" id="tamano" style="visibility:hidden"  value="<%= lista.size() %>"> 
   <script type="text/javascript">
@@ -54,9 +55,9 @@
     <div id="categorias">
       
         <div style="margin-left: 10px;">
-            <form action="" method="post">
+            <form  id="consultar" method="post" action="javascript:consultarInformeModuloAñoSemestre()" >
             <table>  
-                <tr><td ><h4>Modulo:   </h4></td><td ><select id="seleccion" class="ufps-input ">
+                <tr><td ><h4>Modulo:   </h4></td><td ><select id="modulo" class="ufps-input ">
                             <option>No seleccion</option>
                               <% for(ModuloDTO mod : modulos){ %>
                               <option value="<%= mod.getNombre()%>"><%= mod.getNombre()%></option>
@@ -75,8 +76,8 @@
         </div>
       
         <div id="titulo2"> <center><h2>Informes generales</h2></center> </div>
-         <div class="contenidopublicacion">
-       
+         <div  class="contenidopublicacion">
+             <div id="contenidoPrincipal">
         <table id="mt" cellpadding="0" cellspacing="0" border="0">
            
            <% for(InformeDTO  dto: lista){ %>
@@ -97,7 +98,7 @@
             <% } %>
             
         </table>
-      
+      </div>
       
     </div>
       <div id="green" style="margin-left: 350px;  width: 900px; height: 60px;">

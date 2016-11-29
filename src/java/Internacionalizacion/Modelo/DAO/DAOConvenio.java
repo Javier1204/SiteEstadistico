@@ -135,7 +135,7 @@ public class DAOConvenio {
         return convenios;
     }
     
-    public Convenio consultarConvenio(String nombreconvenio) {
+    public Convenio consultarConvenio(String radicado) {
      //ejemplo para usar el pool de conexiones. 
         Pool pool = Conexion.getPool(); //llamo al objeto pool 
         Connection con = null;
@@ -152,8 +152,8 @@ public class DAOConvenio {
             pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
-            stm = con.prepareStatement("Select * from `general_convenio` where nombre=?");//genero el sql. 
-            stm.setString(1, nombreconvenio);
+            stm = con.prepareStatement("Select * from `general_convenio` where id=?");//genero el sql. 
+            stm.setString(1, radicado);
             ResultSet resultado = stm.executeQuery();//ejecuto la consulta
             
             while(resultado.next()){
@@ -161,9 +161,9 @@ public class DAOConvenio {
                 String id = resultado.getString(1);
                 String nombre = resultado.getString(2);
                 String descripcion = resultado.getString(3);
-                String inicio = resultado.getString(4);
-                String terminacion = resultado.getString(5);
-                String fecharadicacion = resultado.getString(6);
+                String fecharadicacion = resultado.getString(4);
+                String inicio = resultado.getString(5);
+                String terminacion = resultado.getString(6);                
                 String vigencia = resultado.getString(7);
                 String estado = resultado.getString(8);
                 String tipo_convenio = resultado.getString(9);

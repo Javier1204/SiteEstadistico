@@ -48,9 +48,17 @@ function consultarconvenios()
     });
 }
 
+function fijarvalormin(valor) {
+
+    document.getElementById('terminacion').min = valor;
+}
+
 function mostrarpasantia() {
 
     var actividad = document.getElementById('tipoactividad').value;
+    document.getElementById('hora').disabled=false;
+    if(document.getElementById('tipoactividad').value!=="Social")
+            document.getElementById('hora').disabled=true;
 
     if (actividad === 'Pasantia') {
         if (document.getElementById('panelpasantia').style.display === 'none')
@@ -84,48 +92,56 @@ function mostrarpasantia() {
  });
  });
  */
-function cambiarTipo() {
+function cambiarTipo(convenio) {
     //var convenio = document.getElementById('convenio').value;
     //var elementos = document.getElementById('tipoactividad').value;
     //$("#convenio").change(function () {
-   console.log("hola");
+    $('#tipoactividad').empty();
+    console.log("hola");
     var i = 0;
-    var convenio = $("#convenio").val();
+    //var convenio = $("#convenio").val();
     $.ajax({
         url: "procesar_tipo_actividades.jsp",
         type: "post",
+        
         data: {
             convenio: convenio
         }
     }).done(function (rta) {
+//para fijar fechas min y max de los input date
+//document.getElementById('creacion').min = obtener la fecha minima del procesar_tipo_actividades.
+//document.getElementById('terminacion').max = obtener la fecha maxima del procesar_tipo_actividades.
+//document.getElementById('tipoactividad').value;
 
         //json = eval('(' + rta + ')');
         var parsed = JSON.parse(rta);
         var arr = [];
-
-        for (var x in parsed) {
-
-            arr.push(parsed[x]);
-
-            $('#tipoactividad').append("<option value='" + arr[i] + "'>" + arr[i] + "</option>");
-            i++;
+        var i = parsed.length;
+        for (var x=0;x<i-2;x++) {
+        //for(var x in parsed){
+            //arr.push(parsed[x]);
+            
+            
+            $('#tipoactividad').append("<option value='" + parsed[x] + "'>" + parsed[x] + "</option>");
+            
         }
-
+        document.getElementById('creacion').min = parsed[i-2];
+        document.getElementById('terminacion').max = parsed[i-1];
     });
     /*$.getJSON("procesar_tipo_actividades.jsp", function (resultado) {
-        // aqui resultado sera directamente el boolean
-        var parsed = JSON.parse(resultado);
-        var arr = [];
-
-        for (var x in parsed) {
-
-            arr.push(parsed[x]);
-
-           
-            
-            console.log("eso"+arr[0]);
-        };
-    });*/
+     // aqui resultado sera directamente el boolean
+     var parsed = JSON.parse(resultado);
+     var arr = [];
+     
+     for (var x in parsed) {
+     
+     arr.push(parsed[x]);
+     
+     
+     
+     console.log("eso"+arr[0]);
+     };
+     });*/
 }
 /*
  var i = 0;

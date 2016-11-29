@@ -7,7 +7,7 @@ esta clase es temporal
 --%>
 
 
-<%@page import="internacionalizacion.Facade.Facade"%>
+<%@page import="Internacionalizacion.Facade.Facade"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
@@ -25,10 +25,7 @@ String nit=request.getParameter("nit");
 Facade f = new Facade();
 String r = f.registrarEntidad(nombre,representante,sector,ambito,tipo,telefono,direccion,pais,nit);
 request.getSession().setAttribute("respuesta_entidad", r);
-%>
 
-    
-<%
 response.sendRedirect("registrarEntidad.jsp");
 
 %>

@@ -5,8 +5,8 @@
 --%>
 
 <%@page import="java.util.ArrayList"%>
-<%@page import="internacionalizacion.Modelo.DTO.Convenio"%>
-<%@page import="internacionalizacion.Facade.Facade"%>
+<%@page import="Internacionalizacion.Modelo.DTO.Convenio"%>
+<%@page import="Internacionalizacion.Facade.Facade"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

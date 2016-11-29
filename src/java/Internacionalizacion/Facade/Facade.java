@@ -29,7 +29,7 @@ public class Facade {
     
     //METODOS PARA EL MANEJO DE LAS ACTIVIDADES.
     
-    public boolean RegistrarActividad(Actividad a){
+    public String RegistrarActividad(Actividad a){
         ControladorActividad c = new ControladorActividad();
         return c.RegistrarActividad(a);
     }
@@ -76,9 +76,9 @@ public class Facade {
         return c.obtenerConvenios();
     }
     
-    public Convenio consultarConvenio(String nombreconvenio){
+    public Convenio consultarConvenio(String radicado){
         ControladorConvenio c = new ControladorConvenio();
-        return c.consultarConvenio(nombreconvenio);
+        return c.consultarConvenio(radicado);
     }
     
     //METODOS PARA EL MANEJO DE LOS PAISES.

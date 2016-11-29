@@ -117,7 +117,7 @@ public class DAOTipo_actividades {
                    actividades.add("Practica");
                
             }
-            
+           
             
             //System.out.println(actividades);
             stm.close();//cierro el preparedstatement
