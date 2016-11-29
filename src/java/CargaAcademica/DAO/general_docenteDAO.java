@@ -28,8 +28,8 @@ public class general_docenteDAO {
          general_docenteDTO dto = null;
          
         try {
-            pool.setUsuario("ufps_76");
-            pool.setUsuario("ufps_29");
+            pool.setUsuario("root");
+            pool.setUsuario("");
             pool.inicializarDataSource();
             con = pool.getDataSource().getConnection();
             PreparedStatement stmt = con.prepareStatement("SELECT * FROM general_docente WHERE codigo='?' ");

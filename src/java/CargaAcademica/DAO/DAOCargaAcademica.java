@@ -11,6 +11,233 @@ import java.sql.SQLException;
 /**@author Seminario Integrador 3: Ing Pilar Rojas, Estud: Victor Urbina 1150962 & Jesus Rojas 1150833 20/11/2016*/
 
 public class DAOCargaAcademica {
+    
+    public String consultarOtrasDeDocente(String codigo){
+        
+        Pool pool = Conexion.getPool(); //llamo al objeto pool 
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet resultado=null;
+        String total="";
+        try {
+            pool.setUsuario("root"); //ingreso el usuario
+            pool.setContrasena("");//ingreso la contraseña
+            pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
+            con = pool.getDataSource().getConnection();  //genero la conexion
+            stm = con.prepareStatement(
+                    "SELECT i.id,i.nombre,i.horas_semana from carga_otras_actividades i where i.id_carga= (select c.id from general_docente d join carga_carga_academica c where d.codigo=c.codig_doc and d.codigo="+codigo+")");//genero el sql. 
+            resultado= stm.executeQuery();//ejecuto la consulta
+           
+            while(resultado.next()){
+                total+=resultado.getString(1);
+                total+="-"+resultado.getString(2);
+                total+="-"+resultado.getString(3);
+                total+=",";
+            }
+            stm.close();//cierro el preparedstatement
+        } catch (SQLException ex) {
+            System.err.println(ex);
+             System.out.println("no  registrar");
+            //en el caso de que se encunetren en una consulta real se recomienta usar
+            //    con.rollback();
+        } finally {
+            try {
+                if (con != null) {
+                    con.close(); // se cierra la conexion. este es un paso muy importante
+                }
+            } catch (SQLException ex) {
+                 System.out.println("asdasd no registrar");
+                System.err.println(ex);
+            }
+        } 
+       
+        if(total==""){total="No hay-Actividades-Otras,";}
+        return total;
+    }
+    
+    public String consultarAdministracionDeDocente(String codigo){
+        
+        Pool pool = Conexion.getPool(); //llamo al objeto pool 
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet resultado=null;
+        String total="";
+        try {
+            pool.setUsuario("root"); //ingreso el usuario
+            pool.setContrasena("");//ingreso la contraseña
+            pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
+            con = pool.getDataSource().getConnection();  //genero la conexion
+            stm = con.prepareStatement(
+                    "SELECT i.id,i.cargo,i.horas_semana,i.otra_actividad,i.hora_semana from carga_act_administrativas i where i.id_carga= (select c.id from general_docente d join carga_carga_academica c where d.codigo=c.codig_doc and d.codigo="+codigo+")");//genero el sql. 
+            resultado= stm.executeQuery();//ejecuto la consulta
+           
+            while(resultado.next()){
+                total+=resultado.getString(1);
+                total+="-"+resultado.getString(2);
+                total+="-"+resultado.getString(3);
+                total+="-"+resultado.getString(4);
+                total+="-"+resultado.getString(5);
+                total+=",";
+            }
+            stm.close();//cierro el preparedstatement
+        } catch (SQLException ex) {
+            System.err.println(ex);
+             System.out.println("no  registrar");
+            //en el caso de que se encunetren en una consulta real se recomienta usar
+            //    con.rollback();
+        } finally {
+            try {
+                if (con != null) {
+                    con.close(); // se cierra la conexion. este es un paso muy importante
+                }
+            } catch (SQLException ex) {
+                 System.out.println("asdasd no registrar");
+                System.err.println(ex);
+            }
+        } 
+       
+        if(total==""){total="No-hay-Actividades-Administración-Docente,";}
+        return total;
+    }    
+    
+    public String consultarExtensionDeDocente(String codigo){
+        
+        Pool pool = Conexion.getPool(); //llamo al objeto pool 
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet resultado=null;
+        String total="";
+        try {
+            pool.setUsuario("root"); //ingreso el usuario
+            pool.setContrasena("");//ingreso la contraseña
+            pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
+            con = pool.getDataSource().getConnection();  //genero la conexion
+            stm = con.prepareStatement(
+                    "SELECT i.id,i.nombre,i.responsabilidad,i.unidad,i.programa,i.horas_semana,i.descripcion from carga_extension i where i.id_carga= (select c.id from general_docente d join carga_carga_academica c where d.codigo=c.codig_doc and d.codigo="+codigo+")");//genero el sql. 
+            resultado= stm.executeQuery();//ejecuto la consulta
+           
+            while(resultado.next()){
+                total+=resultado.getString(1);
+                total+="-"+resultado.getString(2);
+                total+="-"+resultado.getString(3);
+                total+="-"+resultado.getString(4);
+                total+="-"+resultado.getString(5);
+                total+="-"+resultado.getString(6);
+                 total+="-"+resultado.getString(7);
+                total+=",";
+            }
+            stm.close();//cierro el preparedstatement
+        } catch (SQLException ex) {
+            System.err.println(ex);
+             System.out.println("no  registrar");
+            //en el caso de que se encunetren en una consulta real se recomienta usar
+            //    con.rollback();
+        } finally {
+            try {
+                if (con != null) {
+                    con.close(); // se cierra la conexion. este es un paso muy importante
+                }
+            } catch (SQLException ex) {
+                 System.out.println("asdasd no registrar");
+                System.err.println(ex);
+            }
+        } 
+       
+        if(total==""){total="No-hay-Actividades-Extensión-de-Docente-Seleccionado,";}
+        return total;
+    }   
+    
+       public String consultarInvestigacionDeDocente(String codigo){
+        
+        Pool pool = Conexion.getPool(); //llamo al objeto pool 
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet resultado=null;
+        String total="";
+        try {
+            pool.setUsuario("root"); //ingreso el usuario
+            pool.setContrasena("");//ingreso la contraseña
+            pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
+            con = pool.getDataSource().getConnection();  //genero la conexion
+            stm = con.prepareStatement(
+                    "SELECT i.cod_acta,i.nombre,i.responsabilidad,i.unidad_investigacion,i.institucion,i.horas_semana from carga_investigacion i where i.id_carga=( select c.id from general_docente d join carga_carga_academica c where d.codigo=c.codig_doc and d.codigo="+codigo+")");//genero el sql. 
+            resultado= stm.executeQuery();//ejecuto la consulta
+           
+            while(resultado.next()){
+                total+=resultado.getString(1);
+                total+="-"+resultado.getString(2);
+                total+="-"+resultado.getString(3);
+                total+="-"+resultado.getString(4);
+                total+="-"+resultado.getString(5);
+                total+="-"+resultado.getString(6);
+                total+=",";
+            }
+            stm.close();//cierro el preparedstatement
+        } catch (SQLException ex) {
+            System.err.println(ex);
+             System.out.println("no  registrar");
+            //en el caso de que se encunetren en una consulta real se recomienta usar
+            //    con.rollback();
+        } finally {
+            try {
+                if (con != null) {
+                    con.close(); // se cierra la conexion. este es un paso muy importante
+                }
+            } catch (SQLException ex) {
+                 System.out.println("asdasd no registrar");
+                System.err.println(ex);
+            }
+        } 
+       
+        if(total==""){total="No-hay-Actividades-Investigacion-de-Docente,";}
+        return total;
+    }
+       
+       public String consultarDocenciaDeDocente(String codigo){
+        
+        Pool pool = Conexion.getPool(); //llamo al objeto pool 
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet resultado=null;
+        String total="";
+        try {
+            pool.setUsuario("root"); //ingreso el usuario
+            pool.setContrasena("");//ingreso la contraseña
+            pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
+            con = pool.getDataSource().getConnection();  //genero la conexion
+            stm = con.prepareStatement(
+                    "SELECT g.cod_asignatura,g.grupo,a.nombre,a.creditos,g.num_estu,a.nivel from carga_grupo g join general_asignatura a where g.id_carga=(select c.id from general_docente d join carga_carga_academica c where d.codigo=c.codig_doc and d.codigo="+codigo+") and g.cod_asignatura=a.codigo");//genero el sql. 
+            resultado= stm.executeQuery();//ejecuto la consulta
+           
+            while(resultado.next()){
+                total+=resultado.getString(1);
+                total+="-"+resultado.getString(2);
+                total+="-"+resultado.getString(3);
+                total+="-"+resultado.getString(4);
+                total+="-"+resultado.getString(5);
+                total+="-"+resultado.getString(6);
+                total+=",";
+            }
+            stm.close();//cierro el preparedstatement
+        } catch (SQLException ex) {
+            System.err.println(ex);
+             System.out.println("no  registrar");
+            //en el caso de que se encunetren en una consulta real se recomienta usar
+            //    con.rollback();
+        } finally {
+            try {
+                if (con != null) {
+                    con.close(); // se cierra la conexion. este es un paso muy importante
+                }
+            } catch (SQLException ex) {
+                 System.out.println("asdasd no registrar");
+                System.err.println(ex);
+            }
+        } 
+       
+        if(total==""){total="No-hay-Actividades-Docencia-de-Docente,";}
+        return total;
+    }
 
        public String consultarDocentesHorasDocencia(){
         
@@ -20,8 +247,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("ufps_76"); //ingreso el usuario
-            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.setUsuario("root"); //ingreso el usuario
+            pool.setContrasena("");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement("SELECT d.codigo,d.nombres,d.apellidos,sum(c.horas_teo) \n" +
@@ -66,8 +293,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("ufps_76"); //ingreso el usuario
-            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.setUsuario("root"); //ingreso el usuario
+            pool.setContrasena("");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement("SELECT codigo,nombres,apellidos from general_docente where tipo_vinculacion='catedra'");//genero el sql. 
@@ -108,8 +335,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("ufps_76"); //ingreso el usuario
-            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.setUsuario("root"); //ingreso el usuario
+            pool.setContrasena("");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement("SELECT codigo,nombres,apellidos from general_docente where tipo_vinculacion='medio tiempo'");//genero el sql. 
@@ -150,8 +377,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("ufps_76"); //ingreso el usuario
-            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.setUsuario("root"); //ingreso el usuario
+            pool.setContrasena("");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement("SELECT codigo,nombres,apellidos from general_docente where tipo_vinculacion='tiempo completo'");//genero el sql. 
@@ -192,8 +419,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("ufps_76"); //ingreso el usuario
-            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.setUsuario("root"); //ingreso el usuario
+            pool.setContrasena("");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement(
@@ -238,8 +465,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("ufps_76"); //ingreso el usuario
-            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.setUsuario("root"); //ingreso el usuario
+            pool.setContrasena("");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement(
@@ -282,8 +509,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("ufps_76"); //ingreso el usuario
-            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.setUsuario("root"); //ingreso el usuario
+            pool.setContrasena("");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement(
@@ -326,8 +553,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("ufps_76"); //ingreso el usuario
-            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.setUsuario("root"); //ingreso el usuario
+            pool.setContrasena("");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement(
@@ -370,8 +597,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("ufps_76"); //ingreso el usuario
-            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.setUsuario("root"); //ingreso el usuario
+            pool.setContrasena("");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement("Select codigo,nombres,apellidos from general_docente order by apellidos");//genero el sql. 
@@ -413,8 +640,8 @@ public class DAOCargaAcademica {
         Connection con = null;
         PreparedStatement stm = null;
         try {
-            pool.setUsuario("ufps_76"); //ingreso el usuario
-            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.setUsuario("root"); //ingreso el usuario
+            pool.setContrasena("");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             String insql="";
@@ -478,8 +705,8 @@ public class DAOCargaAcademica {
         PreparedStatement stm = null;
        
         try {
-            pool.setUsuario("ufps_76"); //ingreso el usuario
-            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.setUsuario("root"); //ingreso el usuario
+            pool.setContrasena("");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             
@@ -560,8 +787,8 @@ public class DAOCargaAcademica {
         PreparedStatement stm = null;
         try {
             
-            pool.setUsuario("ufps_76"); //ingreso el usuario
-            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.setUsuario("root"); //ingreso el usuario
+            pool.setContrasena("");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement(
@@ -606,8 +833,8 @@ public class DAOCargaAcademica {
         ResultSet resultado=null;
         String total="";
         try {
-            pool.setUsuario("ufps_76"); //ingreso el usuario
-            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.setUsuario("root"); //ingreso el usuario
+            pool.setContrasena("");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement(
@@ -645,7 +872,7 @@ public class DAOCargaAcademica {
             }
         } 
        
-        if(total==""){total="x/x/x/x/x/x/x/x/x/x,";}
+        if(total==""){total="0/x/x/x/x/x/0/0/x/x,";}
         return total;
     }
 }
