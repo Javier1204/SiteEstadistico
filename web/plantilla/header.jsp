@@ -4,6 +4,7 @@
     Author     : javie
 --%>
 
+<%@page import="gestionUsuarios.ICuenta"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -51,7 +52,13 @@
                 </div>
                 <div class="ufps-navbar-right">
                     <div class="ufps-navbar-corporate">
-                        <a href="" class="ufps-navbar-btn"> Administrador </a>
+                        <% if(session.getAttribute("usuario")==null){ %>
+                            <a href="../Integrador/login.jsp" class="ufps-navbar-btn"> Iniciar sesión </a>
+                        <% }else{ 
+                            ICuenta cuenta= (ICuenta) session.getAttribute("usuario");
+                        %>
+                            <a href="" class="ufps-navbar-btn"> <%= cuenta.getUser()%></a>
+                        <% } %>
                     </div>
                 </div>
 

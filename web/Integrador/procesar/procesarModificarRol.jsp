@@ -8,6 +8,7 @@
 <%@page import="gestionUsuarios.IGestionUsuarios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
+  request.setCharacterEncoding("UTF-8");
   String rol= request.getParameter("rol");
   String desc = request.getParameter("descripcion");
   boolean exito=false;

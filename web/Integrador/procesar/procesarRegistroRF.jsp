@@ -8,6 +8,7 @@
 <%@page import="gestionUsuarios.IGestionUsuarios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
+  request.setCharacterEncoding("UTF-8");
   String id= request.getParameter("id");
   String nombre = request.getParameter("nombre");
   String modulo = request.getParameter("modulo");

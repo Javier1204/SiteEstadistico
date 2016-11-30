@@ -13,6 +13,8 @@
 <%@page import="gestionUsuarios.IGestionUsuarios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
+  request.setCharacterEncoding("UTF-8");
+  System.out.println("Entra");
   String user= request.getParameter("nombre_usuario");
   String pass = request.getParameter("password");
   String rol = request.getParameter("roles");

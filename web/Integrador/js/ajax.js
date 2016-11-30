@@ -117,7 +117,6 @@ function validarNumero(e){
 function registrarUsuario() {
     var nombre_usuario = document.getElementById("nombre_usuario");
     var password = document.getElementById("password");
-    var modulos = document.getElementById("modulos");
     var roles = document.getElementById("registro");
     var rol = "";
     for (var i = 0; i < roles.elements.length; i++) {
@@ -128,7 +127,7 @@ function registrarUsuario() {
     }
     alert(rol);
     ajax = nuevoAjax();
-    parametros = "nombre_usuario=" + nombre_usuario.value + "&password=" + password.value + "&roles=" + rol + "&modulo=" + modulos.value;
+    parametros = "nombre_usuario=" + nombre_usuario.value + "&password=" + password.value + "&roles=" + rol;
     url = "procesar/procesarRegUsuario.jsp";
     ajax.open("POST", url, true);
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
