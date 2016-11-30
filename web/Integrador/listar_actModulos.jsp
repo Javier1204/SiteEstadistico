@@ -11,6 +11,7 @@
 <%@page import="gestionUsuarios.IGestionUsuarios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
+    
     IGestionUsuarios gestor = GestionUsuario.getInstance();
     List<ModuloDTO> modulos = gestor.listarModulo();
 %>   

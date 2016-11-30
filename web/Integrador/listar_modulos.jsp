@@ -22,6 +22,7 @@
 <jsp:include page="../plantilla/header.jsp"></jsp:include>
 <script src="../public/js/ufps.js"></script>
         <div class="ufps-container ufps-fix-navbar-fixed">
+            <br>
             <div class="ufps-col-mobile-12 ufps-col-tablet-3">
                 <h4>   <a href="#componentes">Componentes</a> </h4>
                 <% for(ModuloDTO mod : modulos){ %>

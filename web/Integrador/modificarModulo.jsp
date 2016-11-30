@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:include page="../plantilla/header.jsp"></jsp:include>
 <%
+    request.setCharacterEncoding("UTF-8");
   String nombre= request.getParameter("nombre");
   String descripcion= request.getParameter("descripcion");
   String url= request.getParameter("url");
