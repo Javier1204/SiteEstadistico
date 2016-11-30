@@ -29,6 +29,7 @@ public class DAOConvenio {
         Pool pool = Conexion.getPool(); //llamo al objeto pool 
         Connection con = null;
         PreparedStatement stm = null;
+        System.out.println("llegue a registrar en dao convenio");
         try {
             /**
              * 02/11/2016 actualmente se utilizan el usuario ufps_76 pero a
@@ -44,7 +45,7 @@ public class DAOConvenio {
             System.out.println(c.getNombre());
             int can = stm.executeUpdate();//ejecuto la consulta
             stm.close();//cierro el preparedstatement
-            
+            System.out.println("termine de registrar en dao convenio");
             if(can == 1){
                 System.out.println(" registrar");
                 return "Se registro convenio";
@@ -119,7 +120,7 @@ public class DAOConvenio {
             
         } catch (SQLException ex) {
             System.err.println(ex);
-             System.out.println("no  registrar");
+             System.out.println("no  consulto nada");
             //en el caso de que se encunetren en una consulta real se recomienta usar
             //    con.rollback();
         } finally {

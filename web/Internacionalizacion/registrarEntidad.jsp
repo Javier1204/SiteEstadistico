@@ -121,11 +121,13 @@
 
                             <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
                                 <div class="form-group">
-                                    <label for="tipo">Seleccione tipo entidad</label>
+                                    <label for="tipo">Seleccione Ambito</label>
                                     <select id="tipo" name="tipo" class="ufps-input-line " >
                                         <option value="Publico">Publico</option>
                                         <option value="Privado">Privado</option>
-                                        <option value="Mixto">Mixto</option>                                         
+                                        <option value="Mixto">Mixto</option>     
+                                        <option value="ONG">Mixto</option>
+                                        <option value="Fundacion">Mixto</option>   
 
                                     </select>
                                 </div> 

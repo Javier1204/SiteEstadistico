@@ -48,45 +48,45 @@
             "movilidad") != null) {
 
         actividades[0] = true;
-        //System.out.print(actividades[0]);
+       System.out.print(actividades[0]);
     }
 
     if (request.getParameter(
             "pasantia") != null) {
         actividades[1] = true;
-        //System.out.print(actividades[1]);
+        System.out.print(actividades[1]);
     }
 
     if (request.getParameter(
             "extension") != null) {
         actividades[2] = true;
-        //System.out.print(actividades[2]);
+        System.out.print(actividades[2]);
     }
 
     if (request.getParameter(
             "investigacion") != null) {
         actividades[3] = true;
-        //System.out.print(actividades[3]);
+        System.out.print(actividades[3]);
     }
 
     if (request.getParameter(
             "social") != null) {
         actividades[4] = true;
-        //System.out.print(actividades[4]);
+        System.out.print(actividades[4]);
     }
 
     if (request.getParameter(
             "practica") != null) {
         actividades[5] = true;
-        //System.out.print(actividades[5]);
+       System.out.print(actividades[5]);
     }
 
     Facade f = new Facade();
 
     String r = f.registrarConvenio(radicado, nombre, descripcion, fecharadicacion, fechainicio, fechaterminacion, vigencia, estado, tipo, entidad);
     Tipo_actividades act = new Tipo_actividades();
-    String id = f.consultarConvenio(nombre).getId();
-
+    String id = f.consultarConvenio(radicado).getId();
+System.out.println(r+" va la otra mrd");
     System.out.println(
             "El id del convenio es------------------" + id);
     act.setIdconvenio(id);
@@ -99,7 +99,7 @@
     act.setPractica(actividades[5]);
 
     f.RegistrarTipo_Actividades(act);
-
+System.out.println(r+" termino de registrar  la otra mrd");
     request.getSession().setAttribute("respuesta_convenio", r);
 %>
 
