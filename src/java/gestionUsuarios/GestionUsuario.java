@@ -166,22 +166,22 @@ public class GestionUsuario implements IGestionUsuarios{
 
     @Override
     public boolean actualizarPrivilegios(String rol, PrivilegioDTO privilegio) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ControlGestionUsuarios.getInstance().actualizarPrivilegios(rol, privilegio);
     }
 
     @Override
     public boolean actualizarRoles(String usuario, List<String> roles) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ControlGestionUsuarios.getInstance().actualizarRoles(usuario, roles);
     }
-
+    
     @Override
     public List<RolDTO> cargarRolesUsuario(String usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ControlGestionUsuarios.getInstance().cargarRolesUsuario(usuario);
     }
 
     @Override
-    public List<PrivilegioDTO> cargarPrivilegio(String rol) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public PrivilegioDTO cargarPrivilegio(String rol) {
+        return ControlGestionUsuarios.getInstance().cargarPrivilegio(rol);
     }
 
 }

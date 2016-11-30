@@ -121,6 +121,8 @@ public class GeneralUsuarioRolDAO {
         }
         return false;
     }
+    
+    
     public void eliminarPorUsuario(String usuario){
         try{
             //obtenerConexion();

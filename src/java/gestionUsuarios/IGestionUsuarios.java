@@ -189,5 +189,5 @@ public interface IGestionUsuarios {
     
     public List<RolDTO> cargarRolesUsuario(String usuario);
     
-    public List<PrivilegioDTO> cargarPrivilegio(String rol);
+    public PrivilegioDTO cargarPrivilegio(String rol);
 }
