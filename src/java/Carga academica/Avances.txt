@@ -1,0 +1,35 @@
+--Se tiene listo:
+
+* todas las vistas
+
+** el director puede:
+- habilitar el sistema para uno/varios o todos los docentes
+- dar prorroga a uno/varios o todos los docentes
+~ consultar docentes:
+- todos
+- docencia
+- investigacion
+- extension
+- administracion
+- total horas docencia de c/u
+- tiempo completo
+- medio tiempo
+- catedra
+
+-- Falta:
+
+* generar:
+- los pdf
+- archivos en Excel
+
+* registrar:
+- actividades de docencia
+- actividades de docencia
+- actividades de investigacion
+- actividades de extension
+
+* actualizar la informacion personal de un docente
+
+* ingresar:
+- habilitar los servicios segun usuario que ingresa
+- funcinalidades de vistas de los 2 usuarios
