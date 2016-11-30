@@ -71,7 +71,7 @@ public class GeneralRequerimientoFDAO {
             ps.setString(2, rfDTO.getNombre());
             ps.setString(3, modulo);
             ps.setString(4, rfDTO.getUrl());
-            
+            System.out.println(modulo);
             int row=ps.executeUpdate();
             if(row==1){
                 return true;

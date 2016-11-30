@@ -28,7 +28,7 @@
   <script src="js/smartpaginator.js"></script>
   <script src="js/ajax.js"></script>
    
-      <div id="titulo"> <center><h2>Buscador</h2></center> </div>
+      <div id="titulo"> <center><h2>BUSCADOR</h2></center> </div>
     <div id="categorias">
       
         <div style="margin-left: 10px;">
@@ -52,7 +52,7 @@
              </div>
         </div>
       
-        <div id="titulo2"> <center><h2>Informes generales</h2></center> </div>
+        <div id="titulo2"> <center><h2>INFORMES GENERALES</h2></center> </div>
          <div  class="contenidopublicacion">
              <div id="contenidoPrincipal">
                  <input type="text" id="tamano" style="visibility:hidden"  value="<%= lista.size() %>"> 
@@ -101,7 +101,7 @@
       </div>
       
     </div>
-      <div id="green" style="margin-left: 350px;  width: 900px; height: 60px;">
+      <div id="green" style="margin-left: 380px;  width: 900px; height: 60px;">
 
     </div>
 <jsp:include page="../plantilla/footer.jsp"></jsp:include>
