@@ -58,6 +58,7 @@
                             ICuenta cuenta= (ICuenta) session.getAttribute("usuario");
                         %>
                             <a href="" class="ufps-navbar-btn"> <%= cuenta.getUser()%></a>
+                            <a href="../Integrador/procesar/cerrarSesion.jsp" class="ufps-navbar-btn"> Cerrar sesión</a>
                         <% } %>
                     </div>
                 </div>

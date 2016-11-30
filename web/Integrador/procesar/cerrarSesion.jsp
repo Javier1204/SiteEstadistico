@@ -8,6 +8,5 @@
 <!DOCTYPE html>
 <%
    session.setAttribute("usuario",null);
-   response.sendRedirect("../listar_publicaciones.jsp");
-    
+   response.sendRedirect("../login.jsp");
 %>
