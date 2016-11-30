@@ -52,9 +52,9 @@ and open the template in the editor.
     border-radius: 4px;
     -webki-border-radius:4px;
     -moz-border-radius: 4px;
-   border-left: 3px solid #9d0609;
+   border-left: 0.5px solid #9d0609;
     box-shadow: 0px 2px 10px #d6d6d6;
-    margin-left  : 350px;
+    margin-left  : 380px;
     height: 1000px;
     overflow: scroll;
    width: 900px;
@@ -64,14 +64,15 @@ and open the template in the editor.
 #titulo2{
      height: 50px;
     width: 900px;
-  margin-left: 350px;
-   background-color:#B3B7B7;
-   border: 3px solid #9d0609;
+  margin-left: 380px;
+   background-color: white;
+   border: 0.5px solid #9d0609;
     border-radius: 4px;
    -webki-border-radius:4px;
    -moz-border-radius: 4px;
      box-shadow: 0px 2px 10px #d6d6d6;
      margin-top: -300px;
+     color:#9d0609;
 
 }
 
@@ -95,14 +96,14 @@ and open the template in the editor.
 #titulo{
      height: 50px;
     width: 300px;
-  margin-left: 30px;
-   background-color:#B3B7B7;
-   border: 3px solid #9d0609;
+  margin-left: 40px;
+   background-color: white;
+   border: 0.5px solid #9d0609;
     border-radius: 4px;
    -webki-border-radius:4px;
    -moz-border-radius: 4px;
      box-shadow: 0px 2px 10px #d6d6d6;
-
+    color:#9d0609;
 }
 
 
@@ -111,11 +112,11 @@ and open the template in the editor.
     width: 300px;
  
    background-color: rgba(236,240,241,0.7);;
-    border-left: 3px solid #9d0609;
+    border-left: 0.5px solid #9d0609;
     border-radius: 4px;
     -webki-border-radius:4px;
     -moz-border-radius: 4px;
- margin-left: 30px;
+ margin-left: 40px;
     box-shadow: 0px 2px 10px #d6d6d6;
    
      
