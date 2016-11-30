@@ -4,6 +4,9 @@
     Author     : Diego Leal
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.GregorianCalendar"%>
+<%@page import="java.util.Calendar"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -21,82 +24,102 @@
         <link rel="stylesheet" href="diseno/css/bootstrap.css"/>
         <!--Mis estilos: Diego Leal-->
         <link rel="stylesheet" href="diseno/css/toastr.css"/>
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+        <link href="diseno/css/estilos.css" rel="stylesheet">
 
     </head>
     <body>
 
-        <header>
-            <center> <img id="banner" src="public/img/Banner-superior.png" alt="imagen" height="100px" width="100%" ></img></center>
-        </header>
-        <div class="ufps-navbar ufps-navbar-light" id="menuPrincipal">
-            <div class="ufps-container">
-                <div class="ufps-navbar-brand">
-                    <div class="ufps-btn-menu" onclick="toggleMenu('menuPrincipal')">
-                        <div class="ufps-btn-menu-bar"></div>
-                        <div class="ufps-btn-menu-bar"></div>
-                        <div class="ufps-btn-menu-bar"></div>
-                    </div>
-                    Site Estadístico
-                </div>
-                <div class="ufps-navbar-left">
+        <jsp:include page="../plantilla/header.jsp"></jsp:include>
 
-                    <a href="" class="ufps-navbar-btn">Inicio</a>
-                    <a href="" class="ufps-navbar-btn">Registrar asesoria</a>
-                    <a href="" class="ufps-navbar-btn">Consultar asesoria</a>
+            <div class="barraIzq">
+                <div class="ref">
+                    <a href="index.jsp">
+                        Registrar Asesoria
+                    </a>
                 </div>
-                <div class="ufps-navbar-right">
-                    <div class="ufps-navbar-corporate">
-                        <a href="" class="ufps-navbar-btn"> Administrador </a>
-                    </div>
+                <div class="ref">
+                    <a href="#">
+                        Consultar horario
+                    </a>
+                </div>
+                <div class="ref">
+                    <a href="#">
+                        Administrador
+                    </a>
                 </div>
             </div>
-        </div>
+            <div class="ufps-container">
 
-        <div class="ufps-container">
-            <div class="ufps-col-desktop-12 ufps-col-netbook-12 ufps-col-tablet-12 ufps-col-mobile-12">
-                <div class="ufps-col-desktop-4 ufps-col-desktop-offset-2 ufps-col-netbook-5 ufps-col-netbook-offset-1 ufps-col-tablet-6 ufps-col-mobile-12">
+                <div class="ufps-col-desktop-10 ufps-col-desktop-push-1 ufps-col-netbook-10 ufps-col-tablet-10 ufps-col-mobile-10">
+                    <div class="ufps-col-desktop-5 ufps-col-netbook-5 ufps-col-tablet-6 ufps-col-mobile-12">
                     <jsp:useBean id="controlador" class="asesorias.Controller.ControladorAsesorias" scope="session"></jsp:useBean>
                     <%
-                        
+
                         //Capturar el codigo del docente
-                        String rta = controlador.consultarMateriasDocentes("1150833");
+                        String rta = controlador.consultarMateriasDocentes("6");
                         System.out.println("CONSULTA:: " + rta + "::");
-                        String v1[] = rta.split(":");
+
                         //codigoAsinatura, grupo, nombre
                         /*String v1[] = new String[4];
-                        v1[0] = "115111 - Programación orientda a objetos - A";
-                        v1[1] = "115112 - Programación orientda a objetos - B";
-                        v1[2] = "115113 - Estructura de datos - B";
-                        v1[3] = "115114 - Analisis de algoritmos - C";*/
+                         v1[0] = "115111 - Programación orientda a objetos - A";
+                         v1[1] = "115112 - Programación orientda a objetos - B";
+                         v1[2] = "115113 - Estructura de datos - B";
+                         v1[3] = "115114 - Analisis de algoritmos - C";*/
                     %>
 
 
                     <label>Materia</label>
                     <select class="form-control" style="width: auto;" id="materia" onchange="cargarEstudiantes()">
                         <option>Seleccione la materia</option>
-                        <%
-                            for (int i = 0; i < v1.length; i++) {
-                                String v2[] = v1[i].split(";");
-                                String m = v2[0] + " - " + v2[1] + " - " + v2[2];
+                        <%   if (!rta.isEmpty()) {
+                                System.out.println("Es vacia");
+                                String v1[] = rta.split(":");
+                                if (v1.length > 0) {
+                                    for (int i = 0; i < v1.length; i++) {
+                                        String v2[] = v1[i].split(";");
+                                        String m = v2[0] + " - " + v2[1] + " - " + v2[2];
                         %>
                         <option><%=m%></option>
                         <%
+                                    }
+                                }
                             }
                         %>
                     </select>
                 </div>
-                <div class="ufps-col-desktop-4 ufps-col-desktop-offset-2 ufps-col-netbook-5 ufps-col-netbook-offset-1 ufps-col-tablet-6 ufps-col-mobile-12">
+                <div class="ufps-col-desktop-5 ufps-col-netbook-5 ufps-col-tablet-6 ufps-col-mobile-12">
                     <label>Código Estudiante</label>
                     <select class="form-control" style="width: auto;" id="estudiantesMateria">
                         <option>Seleccione el estudiante</option>
+                        <option>115111 - Diego leal</option>
                     </select>
                 </div>
+                <div class="ufps-col-desktop-2 ufps-col-netbook-2">
+                    <input type="checkbox" id="chFecha" checked data-toggle="toggle" data-on="Asignar fecha<br>automática" data-off="Asignar fecha<br>manual" onchange="cargarFecha()">
+                </div>
             </div>
-            <div class="ufps-col-desktop-12 ufps-col-netbook-12 ufps-col-tablet-12 ufps-col-mobile-12">
-                <div class="ufps-col-desktop-10 ufps-col-desktop-push-2" >
+            <div class="ufps-col-desktop-11 ufps-col-desktop-push-1 ufps-col-netbook-12 ufps-col-tablet-12 ufps-col-mobile-12">
+                <div class="ufps-col-desktop-8 ufps-col-netbook-8 ufps-col-tablet-12 ufps-col-mobile-12">
                     <label>Tema tratado</label>
                     <input type="text" class="ufps-input-line" id="temaTratado" placeholder="Tema tratado en la asesoria"
                            style="width: 70%;"/>
+
+                </div>
+                <div class="ufps-col-desktop-3" style="margin-top: 10px; display: none;" id="fechaAseso">
+                    <%
+                        Calendar c1 = GregorianCalendar.getInstance();
+                        System.out.println("Fecha actual: " + c1.getTime().toLocaleString());
+
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                        System.out.println("Fecha Formateada: " + sdf.format(c1.getTime()));
+                        String f2 = sdf.format(c1.getTime());
+                        c1.add(Calendar.DATE, -8);
+                        System.out.println("Fecha Formateada: " + sdf.format(c1.getTime()));
+                        String f1 = sdf.format(c1.getTime());
+
+                    %>
+                    <input type="date" class="form-control" id="fechaAsesoria" min="<%=f1%>" max="<%=f2%>" step="1"/>
                 </div>
             </div>
             <div class="ufps-col-desktop-12 ufps-col-netbook-12 ufps-col-tablet-12 ufps-col-mobile-12">
@@ -125,11 +148,37 @@
                         <td align="center"><strong>Hora</strong></td>
                     </tr>
                 </thead>
-                <%
-                    //Consultar las asesorias de la semana
-                %>
-                <tbody id="asesoriasRegistradas">
 
+                <tbody id="asesoriasRegistradas">
+                    <%//Consultar las asesorias de la semana
+                        //enviar el codiggo del docente
+                        String codDoc = "6";
+                        String asesorias = controlador.consultarAsesoriasAnteriores(codDoc);
+                        System.out.println("rrta::: " + asesorias);
+                        if (!asesorias.isEmpty()) {
+                            System.out.println("Es vacia las asesorias");
+                            String v1[] = asesorias.split("$");
+                            if (v1.length > 0) {
+                                for (int i = 0; i < v1.length; i++) {
+                                    //fecha, cod_est, doc_docente, cod_materia, grupo, tema, hora
+                                    String v2[] = v1[i].split(";");
+                                    String nombreEstudiante = controlador.consultarNombreEst(v2[1]);
+                                    String nombreAsignatura = controlador.consultarNombreMat(v2[3]);
+                    %>
+                    <tr>
+                        <td align="center"><%=v2[3]%></td>
+                        <td align="center"><%=nombreAsignatura%></td>
+                        <td align="center"><%=v2[4]%></td>
+                        <td align="center"><%=nombreEstudiante%></td>
+                        <td align="center"><%=v2[1]%></td>
+                        <td align="center"><%=v2[0]%></td>
+                        <td align="center"><%=v2[6]%></td>
+                    </tr>
+                    <%
+                                }
+                            }
+                        }
+                    %>
                 </tbody>
             </table>
         </div>
@@ -146,7 +195,9 @@
         <script src="../public/js/ufps.js"></script>
         <!--bootstrap-->
         <script src="diseno/js/tether.min.js" type="text/javascript"></script>
+        <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
         <script src="diseno/js/bootstrap.js" type="text/javascript"></script>
+        <script src="diseno/js/blockUI.js" type="text/javascript"></script>
         <script src="diseno/js/scripts.js" type="text/javascript"></script>
         <script src="diseno/js/toastr.js" type="text/javascript"></script>
     </body>

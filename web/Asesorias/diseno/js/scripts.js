@@ -16,6 +16,7 @@ function cargarEstudiantes() {
                 var info = xhttp.responseText;
                 //nombre;apellido;codigo:
                 if (info.indexOf('no') > -1) {
+                    $.unblockUI();
                     toastr.options = {
                         "closeButton": false,
                         "debug": false,
@@ -34,12 +35,6 @@ function cargarEstudiantes() {
                         "hideMethod": "fadeOut"
                     };
                     toastr["info"]("La materia seleccionada no tiene estudiantes", "Atención!");
-                    var estudiantes = "<option>Seleccione el estudiante</option>" +
-                     "<option>1150696 - Diego Leal</option>" +
-                     "<option>1150696 - Diego Leal</option>" +
-                     "<option>1150696 - Diego Leal</option>" +
-                     "<option>1150696 - Diego Leal</option>";
-                     document.getElementById('estudiantesMateria').innerHTML = estudiantes;
                 } else {
                     var msg = "";
                     msg = "<option>Seleccione el estudiante</option>";
@@ -48,12 +43,23 @@ function cargarEstudiantes() {
                         var v2 = v1[i].split(";");
                         msg += "<option>" + v2[2] + " - " + v2[0] + " " + v2[1] + "</option>";
                     }
+                    $.unblockUI();
                     document.getElementById('estudiantesMateria').innerHTML = msg;
                 }
             }
         }
     };
-
+    $.blockUI({
+        message: 'Cargando estudiantes',
+        css: {
+            border: 'none',
+            padding: '15px',
+            backgroundColor: '#000',
+            '-webkit-border-radius': '10px',
+            '-moz-border-radius': '10px',
+            opacity: .5,
+            color: '#fff'
+        }});
     var url = "jsp/consultaEstudiantesMateria.jsp?codigoMateria=" + codigoMateria + "&grupo=" + grupo;
     xhttp.open("post", url, true);
     xhttp.send();
@@ -63,9 +69,11 @@ function registrarAsesoria() {
     var materia = document.getElementById('materia').value;
     var estudiante = document.getElementById('estudiantesMateria').value;
     var tema = document.getElementById('temaTratado').value;
+    alert(materia + " --- " + estudiante + " --- " + tema);
 
-    if (materia == "Seleccione la materia" || estudiante == "Seleccione la materia"
+    if (materia == "Seleccione la materia" || estudiante == "Seleccione el estudiante"
             || tema.length == 0) {
+        $.unblockUI();
         toastr.options = {
             "closeButton": false,
             "debug": false,
@@ -85,23 +93,78 @@ function registrarAsesoria() {
         };
         toastr["error"]("Debe selecciona la materia, el estudiante y digitar el tema tratado.", "Error!");
     } else {
-        alert("exito");
+        var marcado = $("#chFecha").prop("checked") ? true : false;
+        var fecha = "";
+        if (marcado == false) {
+            alert("fecha manual");
+            fecha = document.getElementById('fechaAsesoria').value;
+        } else {
+            fecha = "auto";
+        }
+
         var xhttp = new XMLHttpRequest();
 
         xhttp.onreadystatechange = function () {
             if (xhttp.readyState == 4 && xhttp.status == 200) {
                 if (xhttp.responseText.indexOf('error') > -1) {
-                    alert("error");
+                    $.unblockUI();
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": false,
+                        "positionClass": "toast-bottom-right",
+                        "preventDuplicates": true,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    };
+                    toastr["error"]("Ocurrió un error al momento de registrar la asesoria, intentlo de nuevo.", "Error!");
+                    window.location.reload();
                 } else {
                     var info = xhttp.responseText;
-
+                    $.unblockUI();
                     document.getElementById('asesoriasRegistradas').innerHTML += info;
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": false,
+                        "positionClass": "toast-bottom-right",
+                        "preventDuplicates": true,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    };
+                    toastr["success"]("Asesoria registrada.", "Exito!");
                 }
             }
         };
-
+        $.blockUI({
+            message: 'Registrando asesoria',
+            css: {
+                border: 'none',
+                padding: '15px',
+                backgroundColor: '#000',
+                '-webkit-border-radius': '10px',
+                '-moz-border-radius': '10px',
+                opacity: .5,
+                color: '#fff'
+            }});
         var url = "jsp/registraAsesoria.jsp?materia=" + materia + "&estudiante=" + estudiante
-                + "&tema=" + tema;
+                + "&tema=" + tema + "&fecha=" + fecha;
         xhttp.open("post", url, true);
         xhttp.send();
     }
@@ -134,23 +197,23 @@ function buscarHorario() {
     //alert(tipoConsulta + "   :: " + consultaPor);
     if (tipoConsulta == undefined || consultaPor == undefined) {
         toastr.options = {
-                "closeButton": false,
-                "debug": false,
-                "newestOnTop": false,
-                "progressBar": false,
-                "positionClass": "toast-bottom-right",
-                "preventDuplicates": true,
-                "onclick": null,
-                "showDuration": "300",
-                "hideDuration": "1000",
-                "timeOut": "5000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            };
-            toastr["error"]("Debe seleccionar los filtros par ala búsqueda.", "Error!");
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-bottom-right",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        toastr["error"]("Debe seleccionar los filtros par ala búsqueda.", "Error!");
     } else {
         var entrada = document.getElementById('entradaBusqueda').value;
 
@@ -182,32 +245,59 @@ function buscarHorario() {
                         alert("error");
                     } else {
                         var info = xhttp.responseText;
-                        toastr.options = {
-                            "closeButton": false,
-                            "debug": false,
-                            "newestOnTop": false,
-                            "progressBar": false,
-                            "positionClass": "toast-bottom-right",
-                            "preventDuplicates": true,
-                            "onclick": null,
-                            "showDuration": "300",
-                            "hideDuration": "1000",
-                            "timeOut": "5000",
-                            "extendedTimeOut": "1000",
-                            "showEasing": "swing",
-                            "hideEasing": "linear",
-                            "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
-                        };
-                        toastr["info"]("El docente o materia a buscar no tiene horario de asesoria registrado.", "Alerta!");
+                        $.unblockUI();
+                        if (info.indexOf('vacio') > -1) {
+                            toastr.options = {
+                                "closeButton": false,
+                                "debug": false,
+                                "newestOnTop": false,
+                                "progressBar": false,
+                                "positionClass": "toast-bottom-right",
+                                "preventDuplicates": true,
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "5000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            };
+                            toastr["info"]("El docente o materia a buscar no tiene horario de asesoria registrado.", "Alerta!");
+                        } else {
+                            document.getElementById('horarios').innerHTML = info;
+                        }
                     }
                 }
             };
+
+            $.blockUI({
+                message: 'Consultando horario, Por favor espere',
+                css: {
+                    border: 'none',
+                    padding: '15px',
+                    backgroundColor: '#000',
+                    '-webkit-border-radius': '10px',
+                    '-moz-border-radius': '10px',
+                    opacity: .5,
+                    color: '#fff'
+                }});
 
             var url = "jsp/consultarHorario.jsp?tipoConsulta=" + tipoConsulta + "&consultaPor=" + consultaPor
                     + "&grupo=" + grupo + "&entrada=" + entrada;
             xhttp.open("post", url, true);
             xhttp.send();
         }
+    }
+}
+
+function cargarFecha() {
+    var marcado = $("#chFecha").prop("checked") ? true : false;
+
+    if (marcado == false) {
+        document.getElementById('fechaAseso').style.display = "block";
+    } else {
+        document.getElementById('fechaAseso').style.display = "none";
     }
 }
