@@ -17,9 +17,9 @@ public class Pool {
      private DataSource dataSource;
  private  String driver = "org.gjt.mm.mysql.Driver";//es el driver varia segun la base de datos que usemos
 
- private  String url = "jdbc:mysql://localhost/ufps_76";
- private  String contrasena = "";
- private  String usuario = "";
+ private  String url = "jdbc:mysql://sandbox2.ufps.edu.co/ufps_76";
+ private  String contrasena = "ufps_29";
+ private  String usuario = "ufps_76";
     
  
 public void setUsuario(String usuario){
