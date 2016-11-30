@@ -182,4 +182,12 @@ public interface IGestionUsuarios {
     public boolean modificarRol(String rol, String nuevaDescripcion);
     
     public boolean eliminarUsuario(String usuario);
+    
+    public boolean actualizarRoles(String usuario, List<String> roles);
+    
+    public boolean actualizarPrivilegios(String rol, PrivilegioDTO privilegio);
+    
+    public List<RolDTO> cargarRolesUsuario(String usuario);
+    
+    public List<PrivilegioDTO> cargarPrivilegio(String rol);
 }

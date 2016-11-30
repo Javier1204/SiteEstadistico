@@ -71,7 +71,7 @@ public class GeneralUsuarioRolDAO {
     public boolean insertar(String user, String rol){
         try{
             //obtenerConexion();
-            
+            System.out.println("llega: "+user+" "+rol);
             PreparedStatement ps=conn.prepareStatement("INSERT INTO general_usuario_rol (user, rol) VALUES (?, ?)");
             ps.setString(1, user);
             ps.setString(2, rol);
@@ -86,6 +86,11 @@ public class GeneralUsuarioRolDAO {
             
         }
         return false;
+    }
+    public static void main(String[] args) {
+        GeneralUsuarioRolDAO gur=new GeneralUsuarioRolDAO(ConexionGUDAOs.obtenerConexion());
+        System.out.println(gur.insertar("admin3", "Coordinador Intenacionalización"));
+        System.out.println("");
     }
     
     public void eliminarPorRol(String rol){
@@ -128,9 +133,6 @@ public class GeneralUsuarioRolDAO {
             Logger.getLogger(GeneralUsuarioRolDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public static void main(String[] args) {
-        //GeneralUsuarioRolDAO gur=new GeneralUsuarioRolDAO();
-        //System.out.println(gur.obtenerRoles("1151052").get(0).getDescripcion());
-    }
+    
 
 }

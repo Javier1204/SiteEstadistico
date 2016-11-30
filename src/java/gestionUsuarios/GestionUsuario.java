@@ -116,14 +116,7 @@ public class GestionUsuario implements IGestionUsuarios{
         return ControlGestionUsuarios.getInstance().eliminarRol(rol);
     }
 
-    public static void main(String[] args) {
-        ICuenta cuenta=new GestionUsuario().loggearUsuario("admin", "admin");
-        ArrayList<ModuloDTO> listaMod=(ArrayList<ModuloDTO>)cuenta.listarModulos();
-        System.out.println(cuenta.getPassword());
-        System.out.println(new GestionUsuario().listarRoles());
-        System.out.println(new GestionUsuario().listarModulo());        
-        System.out.println(new GestionUsuario().listarModuloConRFs());
-    }
+    
 
     @Override
     public List<UsuarioDTO> listarUsuarios() {
@@ -156,6 +149,39 @@ public class GestionUsuario implements IGestionUsuarios{
     }
 
     
-    
+    public static void main(String[] args) {
+        ICuenta cuenta=new GestionUsuario().loggearUsuario("admin", "admin");
+        ArrayList<ModuloDTO> listaMod=(ArrayList<ModuloDTO>)cuenta.listarModulos();
+        //System.out.println(cuenta.getPassword());
+        //System.out.println(new GestionUsuario().listarRoles());
+        ArrayList<ModuloDTO> modulos=(ArrayList<ModuloDTO>) new GestionUsuario().listarModulo();
+        for (ModuloDTO modulo : modulos) {
+            System.out.println("modulo: "+modulo.getNombre());
+        }
+        System.out.println();        
+        System.out.println(new GestionUsuario().listarModuloConRFs());
+    }
+
+   
+
+    @Override
+    public boolean actualizarPrivilegios(String rol, PrivilegioDTO privilegio) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean actualizarRoles(String usuario, List<String> roles) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<RolDTO> cargarRolesUsuario(String usuario) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<PrivilegioDTO> cargarPrivilegio(String rol) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }
