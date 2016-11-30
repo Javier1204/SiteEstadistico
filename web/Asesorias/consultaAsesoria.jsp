@@ -40,8 +40,8 @@
                 <div class="ufps-navbar-left">
 
                     <a href=""< class="ufps-navbar-btn">Inicio</a>
-                    <a href="" class="ufps-navbar-btn">Registrar asesoria</a>
-                    <a href="" class="ufps-navbar-btn">Consultar asesoria</a>       
+                    <a href="index.jsp" class="ufps-navbar-btn">Registrar asesoria</a>
+                    <a href="consultaAsesoria.jsp" class="ufps-navbar-btn">Consultar asesoria</a>       
                 </div>
                 <div class="ufps-navbar-right">
                     <div class="ufps-navbar-corporate">
@@ -103,20 +103,9 @@
                             <td align="center"><strong>Nombre</strong></td>
                             <td align="center"><strong>Día</strong></td>
                             <td align="center"><strong>Hora asesoria</strong></td>
-
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td align="center">Nombre del docente o materia</td>
-                            <td align="center">MARTES</td>
-                            <td align="center">02:00 p.m  -  04:00 p.m</td>
-                        </tr>
-                        <tr>
-                            <td align="center">Nombre del docente o materia</td>
-                            <td align="center">JUEVES</td>
-                            <td align="center">10:00 a.m  -  12:00 p.m</td>
-                        </tr>
+                    <tbody id="horarios">
                     </tbody>
                 </table>
             </div>
@@ -128,6 +117,7 @@
 
         <!--bootstrap-->
         <script src="diseno/js/bootstrap.js" type="text/javascript"></script>
+        <script src="diseno/js/blockUI.js" type="text/javascript"></script>
         <script src="diseno/js/scripts.js" type="text/javascript"></script>
         <script src="diseno/js/toastr.js" type="text/javascript"></script>
     </body>

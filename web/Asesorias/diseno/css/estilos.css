@@ -5,3 +5,26 @@
 .separacion{
     border-bottom: 1px solid #d61117;
 }
+
+.barraIzq{
+    position: fixed;
+    width: 13%;
+    margin-left: 10px;
+    height: 100px;
+    border-right: 1px solid #d61117;
+    border-bottom: 1px solid #d61117;
+    border-radius: 5px;
+    -webkit-box-shadow: 6px 7px 3px -4px rgba(89,83,89,1);
+    -moz-box-shadow: 6px 7px 3px -4px rgba(89,83,89,1);
+    box-shadow: 6px 7px 3px -4px rgba(89,83,89,1);
+    text-align: center;
+}
+
+.ref{
+    padding: 5px;
+}
+
+.ref a{
+    text-decoration: none;
+    color: #000;
+}
