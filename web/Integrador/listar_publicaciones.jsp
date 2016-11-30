@@ -27,9 +27,36 @@
   <link href="css/smartpaginator.css" rel="stylesheet">
   <script src="js/smartpaginator.js"></script>
   <script src="js/ajax.js"></script>
-    
-  <input type="text" id="tamano" style="visibility:hidden"  value="<%= lista.size() %>"> 
-  <script type="text/javascript">
+   
+      <div id="titulo"> <center><h2>Buscador</h2></center> </div>
+    <div id="categorias">
+      
+        <div style="margin-left: 10px;">
+            <form  id="consultar" method="post" action="javascript:consultarInformeModuloAñoSemestre()" >
+            <table>  
+                <tr><td ><h4>Modulo:   </h4></td><td ><select id="modulo" class="ufps-input ">
+                            <option>No seleccion</option>
+                              <% for(ModuloDTO mod : modulos){ %>
+                              <option value="<%= mod.getNombre()%>"><%= mod.getNombre()%></option>
+                                 <% } %>
+                        </select></td></tr>
+             
+                        <tr><td><h4>Año: </h4></td><td><input style="width: 100px;" type="text" onkeypress="return validarNumero(event);"  id="ano" class="ufps-input" maxlength="4"  ></td></tr>
+                       
+                         <tr><td><h4>Semestre: </h4></td><td><input onkeypress="return validarNumero(event);"  style="width: 100px;" type="text" id="semestre" class="ufps-input" maxlength="2" ></td></tr>
+                     
+                         <tr><td colspan="2" style="text-align: center; width: 300px;"><input type="submit" value="Buscar" class="ufps-btn ufps-btn-light" ></td></tr>
+</table>
+                        </form>
+                        
+             </div>
+        </div>
+      
+        <div id="titulo2"> <center><h2>Informes generales</h2></center> </div>
+         <div  class="contenidopublicacion">
+             <div id="contenidoPrincipal">
+                 <input type="text" id="tamano" style="visibility:hidden"  value="<%= lista.size() %>"> 
+                  <script type="text/javascript">
         
         $(document).ready(function () {
             
@@ -51,33 +78,6 @@
 
         });
     </script>
-      <div id="titulo"> <center><h2>Buscador</h2></center> </div>
-    <div id="categorias">
-      
-        <div style="margin-left: 10px;">
-            <form  id="consultar" method="post" action="javascript:consultarInformeModuloAñoSemestre()" >
-            <table>  
-                <tr><td ><h4>Modulo:   </h4></td><td ><select id="modulo" class="ufps-input ">
-                            <option>No seleccion</option>
-                              <% for(ModuloDTO mod : modulos){ %>
-                              <option value="<%= mod.getNombre()%>"><%= mod.getNombre()%></option>
-                                 <% } %>
-                        </select></td></tr>
-             
-                        <tr><td><h4>Año: </h4></td><td><input style="width: 100px;" type="number" id="ano" class="ufps-input" required="" min="0"></td></tr>
-                       
-                         <tr><td><h4>Semestre: </h4></td><td><input  style="width: 100px;" type="number" id="semestre" class="ufps-input" min="1" max="2" required=""></td></tr>
-                     
-                         <tr><td colspan="2" style="text-align: center; width: 300px;"><input type="submit" value="Buscar" class="ufps-btn ufps-btn-light" ></td></tr>
-</table>
-                        </form>
-                        
-             </div>
-        </div>
-      
-        <div id="titulo2"> <center><h2>Informes generales</h2></center> </div>
-         <div  class="contenidopublicacion">
-             <div id="contenidoPrincipal">
         <table id="mt" cellpadding="0" cellspacing="0" border="0">
            
            <% for(InformeDTO  dto: lista){ %>

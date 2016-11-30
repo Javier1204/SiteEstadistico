@@ -11,16 +11,40 @@
 <%
     
     
-   
     
-String modulo=request.getParameter("modulo");
-int ano=Integer.parseInt(request.getParameter("ano"));
-int semestre=Integer.parseInt(request.getParameter("semestre"));
+String modulo=(request.getParameter("modulo").equals("No seleccion"))?"":request.getParameter("modulo");
+int ano=(!request.getParameter("ano").isEmpty())?Integer.parseInt(request.getParameter("ano")):-1;
+
+int semestre=(!request.getParameter("semestre").isEmpty())?Integer.parseInt(request.getParameter("semestre")):-1;
 
 SrvInforme srv=SrvInforme.getInstance();
  List<InformeDTO> lista=  srv.listarPublicacionesModulo(modulo,ano,semestre);
 
 %>
+
+   <input type="text" id="tamano" style="visibility:hidden"  value="<%= lista.size() %>"> 
+                  <script type="text/javascript">
+        
+        $(document).ready(function () {
+            
+           
+            $('#green-contents').css('display', 'none');
+          
+            $('ul li').click(function () {
+              
+                $('#green-contents').css('display', 'none');
+          
+              
+             
+            });
+            var val=$("#tamano").val();
+        
+            $('#green').smartpaginator({ totalrecords: val , recordsperpage: 5, datacontainer: 'mt', dataelement: 'tr', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'green' });
+
+           
+
+        });
+    </script>
 
 
   <table id="mt" cellpadding="0" cellspacing="0" border="0">

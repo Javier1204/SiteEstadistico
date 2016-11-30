@@ -70,8 +70,15 @@ function consultarInformeModuloAñoSemestre(){
     var modulo=$("#modulo").val();
     var ano=$("#ano").val();
     var semestre=$("#semestre").val();
-    
-    
+  
+  
+   
+   if(semestre<1 && semestre>2){
+        alert("El semestre no puede ser un valor menor a 1 y mayor 2");
+        return;
+       
+   }
+   
    
      $.ajax({
         type: "POST",
@@ -90,6 +97,15 @@ function consultarInformeModuloAñoSemestre(){
         }
     });
     
+    
+}
+
+function validarNumero(e){
+    var keynum = window.event ? window.event.keyCode : e.which;
+	if ((keynum == 8)) {
+		return true;
+	}
+	return /\d/.test(String.fromCharCode(keynum));
     
 }
 

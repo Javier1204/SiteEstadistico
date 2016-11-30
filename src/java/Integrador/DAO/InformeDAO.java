@@ -128,7 +128,7 @@ public class InformeDAO {
       */
      private String construirSqlConsultarInformeModulos(String modulo,int ano, int semestre){
          String sqlbase="select i.id_informe, i.nombre, i.url_informe, i.modulo, i.descripcion, i.semestre, i.ano from  integrador_informe i where 1=1";
-         if(modulo!=null){
+         if(!modulo.isEmpty()){
          sqlbase +=" and i.modulo = '"+modulo+"'";
          }
          if(ano>-1 ){
