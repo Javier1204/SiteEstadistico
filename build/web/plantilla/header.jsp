@@ -4,6 +4,8 @@
     Author     : javie
 --%>
 
+<%@page import="gestionUsuarios.DTOs.ModuloDTO"%>
+<%@page import="java.util.List"%>
 <%@page import="gestionUsuarios.ICuenta"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -26,6 +28,19 @@
         <![endif]-->
         <title>JSP Page</title>
     </head>
+    <%
+        ICuenta cuenta = null;
+        boolean b = false;
+        List<ModuloDTO> modulos = null;
+        if (session.getAttribute("usuario") == null) {
+            b = true;
+
+        } else {
+            cuenta = (ICuenta) session.getAttribute("usuario");
+            modulos = cuenta.listarModulos();
+        }
+
+    %>
     <body>
         <header>
             <center> <img id="banner" src="../public/img/Banner-superior.png" alt="imagen" height="100px" width="100%" ></img></center>
@@ -41,28 +56,34 @@
                     Site Estadístico
                 </div>
                 <div class="ufps-navbar-left">
-
-                    <a href="" class="ufps-navbar-btn">Home</a>
+                    <% if (modulos != null) { %>
                     <div class="ufps-dropdown" id="dropdown4">
-                        <button onclick="openDropdown('dropdown4')" class="ufps-dropdown-btn">Componentes</button>
+                        <button onclick="openDropdown('dropdown4')" class="ufps-dropdown-btn">Modulos</button>
                         <div class="ufps-dropdown-content">
-                         
+                            <%for (ModuloDTO mod : modulos) {
+                            %>
+                            <a href="<%=mod.getUrl()%>"> <%= mod.getNombre()%></a>
+                            <%
+                                }
+                            %>
                         </div>
-</div>            
+                    </div>    
+                    <%
+                        }
+                    %>
                 </div>
                 <div class="ufps-navbar-right">
                     <div class="ufps-navbar-corporate">
-                        <% if(session.getAttribute("usuario")==null){ %>
-                            <a href="../Integrador/login.jsp" class="ufps-navbar-btn"> Iniciar sesión </a>
-                        <% }else{ 
-                            ICuenta cuenta= (ICuenta) session.getAttribute("usuario");
+                        <% if (b) { %>
+                        <a href="../Integrador/login.jsp" class="ufps-navbar-btn"> Iniciar sesión </a>
+                        <% } else {
+
                         %>
-                            <a href="" class="ufps-navbar-btn"> <%= cuenta.getUser()%></a>
-                            <a href="../Integrador/procesar/cerrarSesion.jsp" class="ufps-navbar-btn"> Cerrar sesión</a>
-                        <% } %>
+                        <a href="" class="ufps-navbar-btn"> <%= cuenta.getUser()%></a>
+                        <a href="../Integrador/procesar/cerrarSesion.jsp" class="ufps-navbar-btn"> Cerrar sesión</a>
+                        <% }%>
                     </div>
                 </div>
 
             </div>
         </div>
-    
