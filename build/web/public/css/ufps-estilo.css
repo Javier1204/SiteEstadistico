@@ -54,30 +54,30 @@ and open the template in the editor.
     -moz-border-radius: 4px;
    border-left: 3px solid #9d0609;
     box-shadow: 0px 2px 10px #d6d6d6;
-   margin: 0 auto;
+    margin-left  : 350px;
     height: 1000px;
     overflow: scroll;
-   width: 1200px;
+   width: 900px;
 
 }
 
-.contenidopublicacionhome{
-      background-color: rgba(236,240,241,0.7);
+#titulo2{
+     height: 50px;
+    width: 900px;
+  margin-left: 350px;
+   background-color:#B3B7B7;
+   border: 3px solid #9d0609;
     border-radius: 4px;
-    -webki-border-radius:4px;
-    -moz-border-radius: 4px;
-   border-left: 3px solid #9d0609;
-    box-shadow: 0px 2px 10px #d6d6d6;
-   margin: 0 auto;
-   padding: 15px;
-   width: 1200px;
-   margin-bottom:  130px;
+   -webki-border-radius:4px;
+   -moz-border-radius: 4px;
+     box-shadow: 0px 2px 10px #d6d6d6;
+     margin-top: -300px;
+
 }
+
+
+
    
- 
-
-
-
 
 #contenidopublicacioncreada{
     margin: 0 auto;
@@ -89,45 +89,45 @@ and open the template in the editor.
      border-bottom: 1px #9d0609 solid;
 }
 
-#categorias{
-    height: 50px;
-    width: 1200px;
-    margin: 0 auto;
+
+
+
+#titulo{
+     height: 50px;
+    width: 300px;
+  margin-left: 30px;
    background-color:#B3B7B7;
    border: 3px solid #9d0609;
+    border-radius: 4px;
+   -webki-border-radius:4px;
+   -moz-border-radius: 4px;
+     box-shadow: 0px 2px 10px #d6d6d6;
+
+}
+
+
+#categorias{
+    height: 250px;
+    width: 300px;
+ 
+   background-color: rgba(236,240,241,0.7);;
+    border-left: 3px solid #9d0609;
+    border-radius: 4px;
+    -webki-border-radius:4px;
+    -moz-border-radius: 4px;
+ margin-left: 30px;
+    box-shadow: 0px 2px 10px #d6d6d6;
    
      
 }
 
-#seleccion{
-    width: 200px;
+#modulo{
+    width: 150px;
     
     
 }
 
 
 
-
-
-
-#tablapublicacion{
-    margin: 0 auto;
-     width: 80%;
-     margin-top: 15px;
-}
-
-#tablapublicacion tr{
-      height: 50px;
-     text-align: left;
-      padding: 15px;
-       border-bottom: 1px solid black;
-}
-
-#tablapublicacion th{
-     height: 50px;
-     text-align: center;
-      padding: 15px;
-       border-bottom: 1px solid black;
-}
 
 

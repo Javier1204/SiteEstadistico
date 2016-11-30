@@ -1,6 +1,6 @@
 <%-- 
-    Document   : procesarRegistroRF
-    Created on : 26/11/2016, 01:34:05 PM
+    Document   : eliminarRF
+    Created on : 29/11/2016, 05:00:15 PM
     Author     : javie
 --%>
 
@@ -14,13 +14,8 @@
   String url = request.getParameter("url");
   String descripcion = request.getParameter("desc");
   boolean exito=false;
-  String mensaje="";
   IGestionUsuarios gestor = GestionUsuario.getInstance();
-  exito = gestor.registrarRF(modulo, id, nombre, url);
-  if(exito){
-      mensaje= "1";
-  }else{
-      mensaje="2";
-  }
+  gestor.eliminarRF(modulo, id);
+  System.out.println(exito);
+  response.sendRedirect("../listarRF.jsp");
 %>
-<%= mensaje %>

@@ -16,8 +16,8 @@
 
 <%
   IGestionUsuarios gestor = GestionUsuario.getInstance();
-  ICuenta cuenta= (ICuenta) session.getAttribute("usuario.");
-  ArrayList<RolDTO> roles= cuenta.listarRoles();
+  ICuenta cuenta= (ICuenta) session.getAttribute("usuario");
+  List<ModuloDTO> modulos = cuenta.listarModulos();
 %>   
 
 <html>

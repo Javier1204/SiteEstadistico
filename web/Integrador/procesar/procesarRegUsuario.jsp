@@ -16,9 +16,7 @@
   String user= request.getParameter("nombre_usuario");
   String pass = request.getParameter("password");
   String rol = request.getParameter("roles");
-  String modulo = request.getParameter("modulo");
   String[] roles= rol.split("\n");
-  System.out.println(user + "-"+ pass+"-"+rol+"-"+modulo);
   List<String> lista= Arrays.asList(roles);
   boolean exito=false;
   String mensaje="";

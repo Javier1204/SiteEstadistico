@@ -1,6 +1,6 @@
 <%-- 
-    Document   : procesarRegistroRF
-    Created on : 26/11/2016, 01:34:05 PM
+    Document   : procesarModificarRF
+    Created on : 28/11/2016, 11:23:29 AM
     Author     : javie
 --%>
 
@@ -16,7 +16,8 @@
   boolean exito=false;
   String mensaje="";
   IGestionUsuarios gestor = GestionUsuario.getInstance();
-  exito = gestor.registrarRF(modulo, id, nombre, url);
+  exito = gestor.modificarRF(modulo, id, nombre, url);
+  System.out.println(exito);
   if(exito){
       mensaje= "1";
   }else{

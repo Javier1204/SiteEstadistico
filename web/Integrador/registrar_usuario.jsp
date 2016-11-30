@@ -39,14 +39,7 @@
                     <td> <input style="width: 40px;" type="checkbox" title="<%=roles.get(i).getDescripcion()%>" name="checkRol" id="<%=roles.get(i).getRol()%>" value="<%=roles.get(i).getRol()%>"/> <%=roles.get(i).getRol() %> </td>
                 </tr> 
                 <% } %>
-            </table>
-            <label>Módulo </label>
-            <select name="modulos" id="modulos" class="ufps-input ufps-black">
-                <option value=""> Seleccionar value</option>
-                <% for(ModuloDTO modulo : modulos){ %>
-                <option value=""> <%= modulo.getNombre() %></option>
-                <% } %>
-            </select>
+            </table>            
             <input type="submit" class="ufps-btn acomodarBtn" value="Registrar" >
         </form>
     </div>
