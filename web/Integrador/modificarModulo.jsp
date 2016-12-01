@@ -16,8 +16,9 @@
 <script src="js/ajax.js"></script>   
     <div class="ufps-container ufps-fix-navbar-fixed">
         <center> <h1>Actualizar Módulo</h1></center>
-        <center><label id="divError"></label></center>
+        
         <form method="post" action="javascript:modificarModulo()" name="registro" class="form" id="registro">
+            
             <div>
                 <label >Nombre módulo</label><br>
                 <input type="text" name="nombre_mod" readonly="true" id="nombre_mod" value="<%=nombre%>" class="ufps-input ufps-black" />
@@ -31,6 +32,7 @@
                 <input type="text" name="url" id="url" value="<%=url%>" class="ufps-input ufps-black" />
             </div> 
             <input type="submit" class="ufps-btn acomodarBtn" value="Modificar">
+            <center><div id="divError"></div></center>
         </form>
     </div>
 <jsp:include page="../plantilla/footer.jsp"></jsp:include>

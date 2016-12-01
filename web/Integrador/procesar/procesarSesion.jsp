@@ -22,7 +22,8 @@
         session.setMaxInactiveInterval(1 * 60 * 60);
         mensaje = "1";
     } else {
+
         mensaje = "Datos incorrectos";
     }
 %>
-<%= mensaje%>
+<%=mensaje%>

@@ -37,8 +37,8 @@
                         <td><center><%= dto.getId()%></center></td>
                 <td><center><%= dto.getNombre() %></center></td>
                 <td><center><%= dto.getUrl() %></center></td>
-                <td><center><a href="modificarRF.jsp?modulo=<%=mod.getNombre()%>&id=<%=dto.getId()%>&nombre=<%=dto.getNombre()%>&url=<%=dto.getUrl()%>">Modificar</a></center> </td>
-                <td><center><a href="procesar/eliminarRF.jsp?modulo=<%=mod.getNombre()%>&id=<%=dto.getId()%>&nombre=<%=dto.getNombre()%>&url=<%=dto.getUrl()%>">Eliminar</a></center> </td>
+                <td><center><a class="ufps-btn ufps-btn-light" href="modificarRF.jsp?modulo=<%=mod.getNombre()%>&id=<%=dto.getId()%>&nombre=<%=dto.getNombre()%>&url=<%=dto.getUrl()%>">Modificar</a></center> </td>
+                <td><center><a class="ufps-btn" href="procesar/eliminarRF.jsp?modulo=<%=mod.getNombre()%>&id=<%=dto.getId()%>&nombre=<%=dto.getNombre()%>&url=<%=dto.getUrl()%>">Eliminar</a></center> </td>
                 </tr>
         <% }%>
         </tbody>

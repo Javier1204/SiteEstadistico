@@ -43,7 +43,8 @@ function ingresar() {
             if (ajax.status == 200) {
                 var rta = ajax.responseText;
                 if (rta.indexOf("1") < 0) {
-                    document.getElementById("divError").innerHTML = ajax.responseText;
+                    //document.getElementById("divError").innerHTML = ajax.responseText;
+                    openModal("modal-login");
                 }
                 else {
                     if (rta.indexOf("1") >= 0) {
@@ -213,9 +214,8 @@ function registrarRF() {
     var modulo = document.getElementById("selectMod");
     var nombre = document.getElementById("nombre");
     var dir = document.getElementById("url");
-    var descripcion = document.getElementById("descripcion");
     ajax = nuevoAjax();
-    parametros = "id=" + id.value + "&modulo=" + modulo.value + "&nombre=" + nombre.value + "&url=" + dir.value + "&descripcion=" + descripcion.value;
+    parametros = "id=" + id.value + "&modulo=" + modulo.value + "&nombre=" + nombre.value + "&url=" + dir.value;
     url = "procesar/procesarRegistroRF.jsp";
     ajax.open("POST", url, true);
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -226,11 +226,11 @@ function registrarRF() {
             if (ajax.status == 200) {
                 var rta = ajax.responseText;
                 if (rta.indexOf("1") >= 0) {
-                    document.getElementById("divError").innerHTML = "Registro exitoso";
+                    document.getElementById("divError").innerHTML = rta;
                     document.getElementById("registro").reset;
                 }
                 else if (rta.indexOf("2") >= 0) {
-                    document.getElementById("divError").innerHTML = "Falló registro";
+                    document.getElementById("divError").innerHTML = rta;
                 }
             }
         }
@@ -380,11 +380,11 @@ function modificarModulo(){
             if (ajax.status == 200) {
                 var rta = ajax.responseText;
                 if (rta.indexOf("1") >= 0) {
-                    document.getElementById("divError").innerHTML = "Modificación exitosa";
+                    document.getElementById("divError").innerHTML = rta;
                     document.getElementById("registro").reset;
                 }
                 else if (rta.indexOf("2") >= 0) {
-                    document.getElementById("divError").innerHTML = "Falló modificación";
+                    document.getElementById("divError").innerHTML = rta;
                 }
             }
         }

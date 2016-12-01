@@ -33,8 +33,8 @@
                     <tr>
                         <td><center><%= dto.getRol()%></center></td>
                         <td><center><%= dto.getDescripcion()%></center></td>
-                        <td><a href="modificarRol.jsp?rol=<%=dto.getRol() %>&descripcion=<%=dto.getDescripcion()%>">Modificar</a> </td>
-                        <td><a href="procesar/eliminarRol.jsp?rol=<%=dto.getRol() %>&descripcion=<%=dto.getDescripcion()%>">Eliminar</a> </td>
+                        <td><a class="ufps-btn ufps-btn-light" href="modificarRol.jsp?rol=<%=dto.getRol() %>&descripcion=<%=dto.getDescripcion()%>">Modificar</a> </td>
+                        <td><a class="ufps-btn" href="procesar/eliminarRol.jsp?rol=<%=dto.getRol() %>&descripcion=<%=dto.getDescripcion()%>">Eliminar</a> </td>
                     </tr>
                 <% }%>
                 </tbody>

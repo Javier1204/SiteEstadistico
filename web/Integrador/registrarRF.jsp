@@ -16,7 +16,7 @@
 <script src="js/ajax.js"></script> 
     <div class="ufps-container ufps-fix-navbar-fixed">
         <center> <h1>Registrar requerimiento funcional</h1></center>
-        <center><label id="divError"></label></center>
+        
         <form method="post" action="javascript:registrarRF()" name="registro" class="form" id="registro">
             <div>
                 <label >Modulo</label><br>
@@ -29,22 +29,18 @@
             </div>
             <div>
                 <label >Id</label><br>
-                <input type="text" onchange="#" name="id" id="id" class="ufps-input ufps-black" />
+                <input type="text" onchange="#" name="id" id="id" class="ufps-input ufps-black" required />
             </div>
             <div>
                 <label >Nombre</label><br>
-                <input type="text" name="nombre" id="nombre" class="ufps-input ufps-black" />
+                <input type="text" name="nombre" id="nombre" class="ufps-input ufps-black" required/>
             </div>
             <div>
                 <label >Url</label><br>
-                <input type="text" name="url" id="url" class="ufps-input ufps-black" />
+                <input type="text" name="url" id="url" class="ufps-input ufps-black" required/>
             </div>
-            <div>
-                <label >Descripcion</label><br>
-                <textarea style="height: 80px;" name="descripcion" id="descripcion" placeholder="Descripción" class="ufps-input ufps-black" > </textarea>
-            </div>  
-            
             <input type="submit" class="ufps-btn acomodarBtn" value="Registrar">
+            <center><div id="divError"></div></center>
         </form>
     </div>
 <jsp:include page="../plantilla/footer.jsp"></jsp:include>

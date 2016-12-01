@@ -14,13 +14,26 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
+
+<script type="text/javascript">
+history.forward();
+</script>
+<jsp:include page="../plantilla/header.jsp"></jsp:include>
 <%
   IGestionUsuarios gestor = GestionUsuario.getInstance();
-  ICuenta cuenta= (ICuenta) session.getAttribute("usuario");
+  ICuenta cuenta=null;
+  if(session.getAttribute("usuario")==null){
+      System.out.print("entro");
+      response.sendRedirect("login.jsp");
+      return;
+  }else{
+        cuenta= (ICuenta) session.getAttribute("usuario");
+  }
   List<ModuloDTO> modulos = cuenta.listarModulos();
+  
 %>   
-<jsp:include page="../plantilla/header.jsp"></jsp:include>
 <script src="../public/js/ufps.js"></script>
+        
         <div class="ufps-container ufps-fix-navbar-fixed">
             <br>
             <div class="ufps-col-mobile-12 ufps-col-tablet-3">
