@@ -87,11 +87,6 @@ public class GeneralUsuarioRolDAO {
         }
         return false;
     }
-    public static void main(String[] args) {
-        GeneralUsuarioRolDAO gur=new GeneralUsuarioRolDAO(ConexionGUDAOs.obtenerConexion());
-        System.out.println(gur.insertar("admin3", "Coordinador Intenacionalización"));
-        System.out.println("");
-    }
     
     public void eliminarPorRol(String rol){
         try{
@@ -139,12 +134,24 @@ public class GeneralUsuarioRolDAO {
     public void crearUsuariosAutomaticos(){
         try{
             ArrayList<String> codigosDocentes=new ArrayList<String>();
-            PreparedStatement ps=conn.prepareStatement("DELETE FROM `general_usuario_rol` WHERE user=?");
-           
-            int row=ps.executeUpdate();
-            System.out.println(row);
+            PreparedStatement ps=conn.prepareStatement("SELECT codigo FROM `general_docente` WHERE 1");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                codigosDocentes.add(rs.getString(1));
+            }
+            for (String codigosDocente : codigosDocentes) {
+                GeneralUsuarioDAO gudao=new GeneralUsuarioDAO(conn);
+                gudao.insertar(codigosDocente, "12345");
+                this.insertar(codigosDocente, "Docente");
+            }
         } catch (SQLException ex) {
             Logger.getLogger(GeneralUsuarioRolDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public static void main(String[] args) {
+        GeneralUsuarioRolDAO gur=new GeneralUsuarioRolDAO(ConexionGUDAOs.obtenerConexion());
+        gur.crearUsuariosAutomaticos();
+    }
+    
 }
