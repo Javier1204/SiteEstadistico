@@ -136,5 +136,15 @@ public class GeneralUsuarioRolDAO {
         }
     }
     
-
+    public void crearUsuariosAutomaticos(){
+        try{
+            ArrayList<String> codigosDocentes=new ArrayList<String>();
+            PreparedStatement ps=conn.prepareStatement("DELETE FROM `general_usuario_rol` WHERE user=?");
+           
+            int row=ps.executeUpdate();
+            System.out.println(row);
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralUsuarioRolDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
