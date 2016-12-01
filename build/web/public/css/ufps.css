@@ -85,6 +85,10 @@ abbr[title] {
   border-bottom: 1px dotted;
 }
 
+.disUl{
+    list-style: none;
+}
+
 b,
 strong {
   font-weight: bold;
@@ -638,7 +642,6 @@ textarea {
 .ufps-col-mobile-pull-3 {
   right: 25%;
 }
-
 .ufps-col-mobile-pull-2 {
   right: 16.66666667%;
 }
