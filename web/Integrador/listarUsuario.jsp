@@ -18,7 +18,7 @@
 <jsp:include page="../plantilla/header.jsp"></jsp:include>
         <!--Contenido-->
         <div  class="ufps-container" id="contenido">
-            <h1 class="text-center" style="text-align: center">Listado de roles</h1>
+            <h1 class="text-center" style="text-align: center">Listado de usuarios</h1>
             <table class="ufps-table" cellspacing="0" width="100%">
                 <thead>
                     <tr>

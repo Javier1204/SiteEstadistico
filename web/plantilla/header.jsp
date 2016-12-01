@@ -18,6 +18,8 @@
         <title>Departamento de sistemas e Informática UFPS</title>
         <link href="../public/css/ufps.min.css" rel="stylesheet" type="text/css"/>
         <link href="../public/css/ufps-estilo.css" rel="stylesheet">
+        <link href="../public/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="../public/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
         <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
         <script src="../public/js/ufps.js"></script>
