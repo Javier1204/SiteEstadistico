@@ -81,7 +81,7 @@
                         <% } else {
 
                         %>
-                        <a href="" class="ufps-navbar-btn"> <%= cuenta.getUser()%></a>
+                        <a href="" class="ufps-navbar-btn"> <%= cuenta.getNombre()%></a>
                         <a href="../Integrador/procesar/cerrarSesion.jsp" class="ufps-navbar-btn"> Cerrar sesión</a>
                         <% }%>
                     </div>
