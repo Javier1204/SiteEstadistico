@@ -228,7 +228,6 @@ public class ControlGestionUsuarios {
 
     protected boolean eliminarModulo(String modulo) {
         Connection con = ConexionGUDAOs.obtenerConexion();
-        System.out.println("modulo: "+modulo);
         try {
             
             ArrayList<RequerimientosFDTO> listaRFs = (ArrayList<RequerimientosFDTO>) this.listarRF(modulo, con);
