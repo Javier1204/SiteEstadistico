@@ -37,8 +37,10 @@
                 <tr><td ><h4>Modulo:   </h4></td><td ><select id="modulo" class="ufps-input ">
                             <option>No seleccion</option>
                               <% for(ModuloDTO mod : modulos){ %>
+                              <% if(!mod.getNombre().equals("Integrador")){ %>
                               <option value="<%= mod.getNombre()%>"><%= mod.getNombre()%></option>
-                                 <% } %>
+                              <% } %>  
+                              <% } %>
                         </select></td></tr>
              
                         <tr><td><h4>Año: </h4></td><td><input style="width: 100px;" type="text" onkeypress="return validarNumero(event);"  id="ano" class="ufps-input" maxlength="4"  ></td></tr>
