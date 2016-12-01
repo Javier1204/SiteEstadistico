@@ -4,6 +4,7 @@
     Author     : JAVIER
 --%>
 
+
 <%@page import="Internacionalizacion.Modelo.DAO.DAOEstadistico"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -53,7 +54,8 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         
-    <%DAOEstadistico e = new DAOEstadistico();
+    <%
+        DAOEstadistico e = new DAOEstadistico();
     
     
     int cantidad = e.consultarCantidadConvenios();
