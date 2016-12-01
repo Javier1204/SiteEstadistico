@@ -81,7 +81,7 @@
         data.addColumn('string', 'Topping');
         data.addColumn('number', 'Slices');
         data.addRows([
-          ['Convenios', cantidad]
+          ['Convenios', 5]
           
         ]);
 
@@ -95,12 +95,208 @@
         chart.draw(data, options);
       }
     </script>
+    
+    <script type="text/javascript">
+    
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Movilidad', 1],
+          ['Extension', 2],
+          ['Practica', 0],
+          ['Social', 0],
+          ['Pasantia', 1],
+          ['Investigacion', 0]
+          
+          
+        ]);
+
+        // Set chart options
+        var options = {'title':'Cantidad de actividades por Tipo',
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div1'));
+        chart.draw(data, options);
+      }
+    </script>
+    
+    <script type="text/javascript">
+    
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Aprobado', 4],
+          ['Terminado', 1]
+          
+          
+          
+        ]);
+
+        // Set chart options
+        var options = {'title':'Convenios por estado',
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div2'));
+        chart.draw(data, options);
+      }
+    </script>
+    
+    <script type="text/javascript">
+    
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Privado', 2],
+          ['Publico', 4]
+          
+          
+          
+        ]);
+
+        // Set chart options
+        var options = {'title':'Entidades por tipo',
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div3'));
+        chart.draw(data, options);
+      }
+    </script>
+    
+    <script type="text/javascript">
+    
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['2016', 4],
+          ['2015', 1]
+        
+        ]);
+
+        // Set chart options
+        var options = {'title':'Convenios radicados por año',
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div4'));
+        chart.draw(data, options);
+      }
+    </script>
+    
+    <script type="text/javascript">
+    
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Agropecuario', 1],
+          ['Educacion', 3],
+          ['Servicios', 1],
+          ['Financiero', 1]
+        
+        ]);
+
+        // Set chart options
+        var options = {'title':'Entidades por sector',
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div5'));
+        chart.draw(data, options);
+      }
+    </script>
   </head>
 
   
     <!--Div that will hold the pie chart-->
-    <div id="chart_div"></div>
-  
+    <div class="row">
+    <div id="chart_div" class="col-md-5"></div>
+    <div id="chart_div1" class="col-md-5"></div>
+    </div>
+    <div class="row">
+    <div id="chart_div2" class="col-md-5"></div>
+    <div id="chart_div3" class="col-md-5"></div>
+    </div>
+    <div class="row">
+    <div id="chart_div4" class="col-md-5"></div>
+    <div id="chart_div5" class="col-md-5"></div>
+    </div>
     
     
     

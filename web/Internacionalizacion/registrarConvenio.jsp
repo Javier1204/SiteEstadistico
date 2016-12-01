@@ -112,7 +112,7 @@
                             <input <a href="registrarEntidad.jsp" type="button" class="ufps-btn-accordion" value="Registrar Entidades"><br><br>
                             <input type="button" id ="actividades" class="ufps-btn-accordion" value="Consultar actividades"><br><br>
                             <input type="button" id="convenios" class="ufps-btn-accordion" value="Consultar convenios" onclick="consultarconvenios()"><br><br>
-                            <input type="button" id="estadisticas" class="ufps-btn-accordion" value="Modulo estadistico"><br><br>
+                            <a href="informe.jsp"><input type="button" class="ufps-btn" value="Modulo estadistico"> </a> 
                             <input type="button" class="ufps-btn" value="Cerrar Sesión">
                            
 
