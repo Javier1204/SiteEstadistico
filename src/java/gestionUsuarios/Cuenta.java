@@ -159,5 +159,7 @@ public class Cuenta implements ICuenta{
 
 
     
-    
+    public String getNombre(){
+        return this.usser.getNombre();
+    }
 }

@@ -97,5 +97,5 @@ public interface ICuenta {
      * @param roles 
      */
     public void construirCuenta(UsuarioDTO user, List<RolDTO> roles);
-    
+    public String getNombre();
 }

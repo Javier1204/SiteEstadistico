@@ -72,6 +72,7 @@ public class ControlGestionUsuarios {
         Cuenta cuenta = new Cuenta();
         GeneralUsuarioDAO us = new GeneralUsuarioDAO(con);
         UsuarioDTO u = us.getUsuario(user);
+        us.cargarNombre(u);
         ArrayList<RolDTO> roles = (ArrayList<RolDTO>) new GeneralUsuarioRolDAO(con).obtenerRoles(user);
         for (RolDTO role : roles) {
             GeneralPrivilegioDAO pdao = new GeneralPrivilegioDAO(con);

@@ -10,7 +10,7 @@ package gestionUsuarios.DTOs;
  * @author Lenovo
  */
 public class UsuarioDTO {
-    private String ussername, password;
+    private String ussername, password, nombre;
     
     public String getUssername() {
         return ussername;
@@ -26,6 +26,14 @@ public class UsuarioDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
     

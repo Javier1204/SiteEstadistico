@@ -150,16 +150,18 @@ public class GestionUsuario implements IGestionUsuarios{
 
     
     public static void main(String[] args) {
-        ICuenta cuenta=new GestionUsuario().loggearUsuario("admin", "admin");
-        ArrayList<ModuloDTO> listaMod=(ArrayList<ModuloDTO>)cuenta.listarModulos();
+        ICuenta cuenta=new GestionUsuario().loggearUsuario("23", "12345");
+        System.out.println(cuenta.getNombre());
+        
+        //ArrayList<ModuloDTO> listaMod=(ArrayList<ModuloDTO>)cuenta.listarModulos();
         //System.out.println(cuenta.getPassword());
         //System.out.println(new GestionUsuario().listarRoles());
-        ArrayList<ModuloDTO> modulos=(ArrayList<ModuloDTO>) new GestionUsuario().listarModulo();
-        for (ModuloDTO modulo : modulos) {
-            System.out.println("modulo: "+modulo.getNombre());
-        }
-        System.out.println();        
-        System.out.println(new GestionUsuario().listarModuloConRFs());
+        //ArrayList<ModuloDTO> modulos=(ArrayList<ModuloDTO>) new GestionUsuario().listarModulo();
+        //for (ModuloDTO modulo : modulos) {
+        //    System.out.println("modulo: "+modulo.getNombre());
+        //}
+        //System.out.println();        
+        //System.out.println(new GestionUsuario().listarModuloConRFs());
     }
 
    
