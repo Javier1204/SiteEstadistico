@@ -13,7 +13,7 @@
   String nombre = request.getParameter("nombre");
   String modulo = request.getParameter("modulo");
   String url = request.getParameter("url");
-  String descripcion = request.getParameter("desc");
+  System.out.println("nombre: "+nombre+" url: "+url);
   boolean exito=false;
   String mensaje="";
   IGestionUsuarios gestor = GestionUsuario.getInstance();

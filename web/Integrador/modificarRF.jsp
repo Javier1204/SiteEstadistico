@@ -19,26 +19,24 @@
         <form method="post" action="javascript:modificarRF()" name="registro" class="form" id="registro">
             <div>
                 <label >Modulo</label><br>
-                <input type="text" value="<%=modulo%>" readonly="true" name="modulo" id="modulo" class="ufps-input ufps-black" />
+                <select id="selectMod" name="selectMod" class="ufps-input">
+                    <option value="<%=modulo%>"><%=modulo%></option>
+                </select>
             </div>
             <div>
                 <label >Id</label><br>
-                <input type="text" value="<%=id%>" readonly="true" name="id" id="id" class="ufps-input ufps-black" />
+                <input type="text" value="<%=id %>" name="id" id="id" class="ufps-input ufps-black" />
             </div>
             <div>
                 <label >Nombre</label><br>
-                <input type="text" value="<%=nombre%>" name="nombre" id="nombre" class="ufps-input ufps-black" />
+                <input type="text" name="nombre"value="<%=nombre %>" id="nombre" class="ufps-input ufps-black" />
             </div>
             <div>
                 <label >Url</label><br>
                 <input type="text" name="url" value="<%=url%>" id="url" class="ufps-input ufps-black" />
             </div>
-            <div>
-                <label >Descripcion</label><br>
-                <textarea style="height: 80px;" name="descripcion" id="descripcion" placeholder="Descripción" class="ufps-input ufps-black" > </textarea>
-            </div>  
-            
-            <input type="submit" class="ufps-btn acomodarBtn" value="Modificar">
+                
+            <input type="submit" class="ufps-btn acomodarBtn" value="Registrar">
         </form>
     </div>
 <jsp:include page="../plantilla/footer.jsp"></jsp:include>

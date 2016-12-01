@@ -15,7 +15,7 @@
 <script src="js/ajax.js"></script>   
 <script src="js/ajax.js"></script>   
     <div class="ufps-container ufps-fix-navbar-fixed">
-        <center> <h1>Registrar Módulo</h1></center>
+        <center> <h1>Actualizar Módulo</h1></center>
         <center><label id="divError"></label></center>
         <form method="post" action="javascript:modificarModulo()" name="registro" class="form" id="registro">
             <div>

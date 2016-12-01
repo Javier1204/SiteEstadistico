@@ -15,7 +15,7 @@
   String mensaje="";
   IGestionUsuarios gestor = GestionUsuario.getInstance();
   boolean first = gestor.cambiarContrasena(user, pass);
-  if(exito){
+  if(first){
       mensaje= "1";
   }else{
       mensaje="2";

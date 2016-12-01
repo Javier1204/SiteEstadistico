@@ -338,7 +338,7 @@ function actualizarRoles() {
         }
     }
     ajax = nuevoAjax();
-    parametros = "nombre_usuario=" + nombre_usuario.value+ "&roles="+ roles;
+    parametros = "nombre_usuario=" + nombre_usuario.value + "&roles=" + rol;
     url = "procesar/asignarRoles.jsp";
     ajax.open("POST", url, true);
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -356,10 +356,133 @@ function actualizarRoles() {
                     document.getElementById("divError").innerHTML = "Resultado fallido";
                 }
             }
+            else
+            {
+                document.getElementById("divError").value = "Verificando Usuario...";
+            }
+        }
+    }
+}
+
+function modificarModulo(){
+    var nombre_mod = document.getElementById("nombre_mod");
+    var descripcion = document.getElementById("descripcion");
+    var dir = document.getElementById("url");
+    ajax = nuevoAjax();
+    parametros = "nombre_mod=" + nombre_mod.value + "&descripcion=" + descripcion.value + "&url=" + dir.value;
+    url = "procesar/procesarActModulo.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                if (rta.indexOf("1") >= 0) {
+                    document.getElementById("divError").innerHTML = "Modificación exitosa";
+                    document.getElementById("registro").reset;
+                }
+                else if (rta.indexOf("2") >= 0) {
+                    document.getElementById("divError").innerHTML = "Falló modificación";
+                }
+            }
+        }
         else
         {
             document.getElementById("divError").value = "Verificando Usuario...";
         }
     }
 }
+
+function modificarUsuario(){
+    var nombre_usuario = document.getElementById("nombre_usuario");
+    var password = document.getElementById("password");
+    ajax = nuevoAjax();
+    parametros = "nombre_usuario=" + nombre_usuario.value + "&password=" + password.value;
+    url = "procesar/procesarModUsuario.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                if (rta.indexOf("1") >= 0) {
+                    document.getElementById("divError").innerHTML = "Modificación exitosa";
+                }
+                else if (rta.indexOf("2") >= 0) {
+                    document.getElementById("divError").innerHTML = "Falló modificación";
+                }
+            }
+        }
+        else
+        {
+            document.getElementById("divError").value = "Verificando Usuario...";
+        }
+    }
+}
+
+function modificarRol(){
+    var rol = document.getElementById("rol");
+    var descripcion = document.getElementById("descripcion");
+    //Falta hacer método que recorrar los checks, falta pestañas
+    ajax = nuevoAjax();
+    parametros = "rol=" + rol.value + "&descripcion=" + descripcion.value;
+    url = "procesar/procesarModificarRol.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                if (rta.indexOf("1") >= 0) {
+                    document.getElementById("divError").innerHTML = "Modificación exitosa";
+                    document.getElementById("registro").reset;
+                }
+                else if (rta.indexOf("2") >= 0) {
+                    document.getElementById("divError").innerHTML = "Falló modificación";
+                }
+            }
+        }
+        else
+        {
+            document.getElementById("divError").value = "Verificando Usuario...";
+        }
+    }
+}
+
+function modificarRF(){
+    var id = document.getElementById("id");
+    var modulo = document.getElementById("selectMod");
+    var nombre = document.getElementById("nombre");
+    var dir = document.getElementById("url");
+    ajax = nuevoAjax();
+    parametros = "id=" + id.value + "&modulo=" + modulo.value + "&nombre=" + nombre.value + "&url=" + dir.value;
+    url = "procesar/procesarModificarRF.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                if (rta.indexOf("1") >= 0) {
+                    document.getElementById("divError").innerHTML = "Registro exitoso";
+                    document.getElementById("registro").reset;
+                }
+                else if (rta.indexOf("2") >= 0) {
+                    document.getElementById("divError").innerHTML = "Falló registro";
+                }
+            }
+        }
+        else
+        {
+            document.getElementById("divError").value = "Verificando Usuario...";
+        }
+    }
 }
