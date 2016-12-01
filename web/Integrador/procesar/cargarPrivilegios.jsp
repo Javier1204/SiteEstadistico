@@ -4,6 +4,8 @@
     Author     : javie
 --%>
 
+<%@page import="gestionUsuarios.DTOs.ModuloDTO"%>
+<%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="gestionUsuarios.DTOs.PrivilegioDTO"%>
 <%@page import="gestionUsuarios.GestionUsuario"%>
@@ -12,10 +14,22 @@
 <%
   request.setCharacterEncoding("UTF-8");
   System.out.println("Entra");
-  String user= request.getParameter("nombre_usuario");
+  String rol= request.getParameter("rol");
   String mensaje="";
+  boolean exito=false;
   IGestionUsuarios gestor = GestionUsuario.getInstance();
-  ArrayList<PrivilegioDTO> piv = new ArrayList<PrivilegioDTO>();
-  
+  PrivilegioDTO dto = gestor.cargarPrivilegio(rol);
+  List<ModuloDTO> modulos = dto.getModulos();
+  if (!modulos.isEmpty()) {
+        exito = true;
+    } else {
+        mensaje = "2";
+    }
+    if (exito) {
 %>
+    
+    
+
+<% }else{ %>
 <%= mensaje %>
+<% } %>

@@ -274,9 +274,9 @@ function registrarRol() {
 }
 
 function buscarPrivilegios() {
-    var nombre_usuario = document.getElementById("nombre_usuario");
+    var rol = document.getElementById("selectMod");
     ajax = nuevoAjax();
-    parametros = "nombre_usuario=" + nombre_usuario.value;
+    parametros = "rol=" + rol.value;
     url = "procesar/cargarPrivilegios.jsp";
     ajax.open("POST", url, true);
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');

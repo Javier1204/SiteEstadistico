@@ -36,12 +36,10 @@
             <div class="ufps-col-mobile-12 ufps-col-tablet-9" id="componentes">
                 <% for(ModuloDTO mod : modulos){ %>
                 <section>
-                    <div id="titulo">
                         <h2><%=mod.getNombre()%></h2>
                         <p>
                             <%=mod.getDescripcion()%>
                         </p>
-                    </div>    
                 </section>
                 <% } %>
             </div>
