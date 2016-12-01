@@ -66,52 +66,48 @@ function ingresar() {
 //javascript carlos torres 29/11/2016
 
 
-function consultarInformeModuloAñoSemestre(){
-    var modulo=$("#modulo").val();
-    var ano=$("#ano").val();
-    var semestre=$("#semestre").val();
-  
-  
-   
-   if(semestre<1 && semestre>2){
+function consultarInformeModuloAñoSemestre() {
+    var modulo = $("#modulo").val();
+    var ano = $("#ano").val();
+    var semestre = $("#semestre").val();
+
+
+
+    if (semestre < 1 && semestre > 2) {
         alert("El semestre no puede ser un valor menor a 1 y mayor 2");
         return;
-       
-   }
-   
-   
-     $.ajax({
+
+    }
+
+
+    $.ajax({
         type: "POST",
         url: "procesar/procesarListarPublicaciones.jsp",
         data: {
-            "modulo":modulo,
-            "ano":ano,
-            "semestre":semestre
+            "modulo": modulo,
+            "ano": ano,
+            "semestre": semestre
         },
         cache: false,
         success: function (data) {
-       
-           $("#contenidoPrincipal").empty();
-           $("#contenidoPrincipal").append(data);
+
+            $("#contenidoPrincipal").empty();
+            $("#contenidoPrincipal").append(data);
 
         }
     });
-    
-    
+
+
 }
 
-function validarNumero(e){
+function validarNumero(e) {
     var keynum = window.event ? window.event.keyCode : e.which;
-	if ((keynum == 8)) {
-		return true;
-	}
-	return /\d/.test(String.fromCharCode(keynum));
-    
+    if ((keynum == 8)) {
+        return true;
+    }
+    return /\d/.test(String.fromCharCode(keynum));
+
 }
-
-
-
-
 
 
 function registrarUsuario() {
@@ -125,7 +121,6 @@ function registrarUsuario() {
             rol = rol.concat(val, '\n')
         }
     }
-    alert(rol);
     ajax = nuevoAjax();
     parametros = "nombre_usuario=" + nombre_usuario.value + "&password=" + password.value + "&roles=" + rol;
     url = "procesar/procesarRegUsuario.jsp";
@@ -216,11 +211,11 @@ function validarId() {
 function registrarRF() {
     var id = document.getElementById("id");
     var modulo = document.getElementById("selectMod");
-    var nombre= document.getElementById("nombre");
-    var dir= document.getElementById("url");
-    var descripcion= document.getElementById("descripcion");
+    var nombre = document.getElementById("nombre");
+    var dir = document.getElementById("url");
+    var descripcion = document.getElementById("descripcion");
     ajax = nuevoAjax();
-    parametros = "id=" + id.value + "&modulo=" + modulo.value+ "&nombre="+ nombre.value+"&url="+dir.value+ "&descripcion="+descripcion.value;
+    parametros = "id=" + id.value + "&modulo=" + modulo.value + "&nombre=" + nombre.value + "&url=" + dir.value + "&descripcion=" + descripcion.value;
     url = "procesar/procesarRegistroRF.jsp";
     ajax.open("POST", url, true);
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -245,14 +240,14 @@ function registrarRF() {
         }
     }
 }
-    
-function registrarRol(){
+
+function registrarRol() {
     var rol = document.getElementById("rol");
     var descripcion = document.getElementById("descripcion");
-    var req= document.getElementById("registro");
+    var req = document.getElementById("registro");
     //Falta hacer método que recorrar los checks, falta pestañas
     ajax = nuevoAjax();
-    parametros = "rol="+rol.value +"&descripcion="+descripcion.value + "&reqs="+req;
+    parametros = "rol=" + rol.value + "&descripcion=" + descripcion.value + "&reqs=" + req;
     url = "procesar/procesarRegistroRol.jsp";
     ajax.open("POST", url, true);
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -276,4 +271,95 @@ function registrarRol(){
             document.getElementById("divError").value = "Verificando Usuario...";
         }
     }
+}
+
+function buscarPrivilegios() {
+    var nombre_usuario = document.getElementById("nombre_usuario");
+    ajax = nuevoAjax();
+    parametros = "nombre_usuario=" + nombre_usuario.value;
+    url = "procesar/cargarPrivilegios.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("campo").innerHTML = rta;
+            }
+            if (rta.indexOf("2") >= 0) {
+                document.getElementById("campo").innerHTML = "Usuario no existente";
+            }
+        }
+        else
+        {
+            document.getElementById("divError").value = "Verificando Usuario...";
+        }
+    }
+
+}
+
+function buscarRoles() {
+    alert("E");
+    var nombre_usuario = document.getElementById("nombre_usuario");
+    ajax = nuevoAjax();
+    parametros = "nombre_usuario=" + nombre_usuario.value;
+    url = "procesar/cargarRoles.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("campo").innerHTML = rta;
+            }
+            if (rta.indexOf("2") >= 0) {
+                document.getElementById("campo").innerHTML = "Usuario no existente";
+            }
+        }
+        else
+        {
+            document.getElementById("divError").value = "Verificando Usuario...";
+        }
+    }
+}
+
+function actualizarRoles() {
+    var nombre_usuario = document.getElementById("nombre_usuario");
+    var roles = document.getElementById("registro");
+    var rol = "";
+    for (var i = 0; i < roles.elements.length; i++) {
+        if ((roles[i].type === 'checkbox') && (roles[i].checked === true)) {
+            var val = roles[i].value;
+            rol = rol.concat(val, '\n')
+        }
+    }
+    ajax = nuevoAjax();
+    parametros = "nombre_usuario=" + nombre_usuario.value+ "&roles="+ roles;
+    url = "procesar/asignarRoles.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                if (rta.indexOf("1") >= 0) {
+                    document.getElementById("divError").innerHTML = "Resultado exitoso";
+                    document.getElementById("registro").reset;
+                }
+                else if (rta.indexOf("2") >= 0) {
+                    document.getElementById("divError").innerHTML = "Resultado fallido";
+                }
+            }
+        else
+        {
+            document.getElementById("divError").value = "Verificando Usuario...";
+        }
+    }
+}
 }
