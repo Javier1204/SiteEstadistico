@@ -63,7 +63,8 @@
 
         <label>El módulo <%= mod.getNombre()%> no tiene RFs </label>
         <% }%>
-        <button onclick="javascript:cargarNoRF('<%=mod.getNombre()%>')" class="ufps-btn-green" >Agregar</button>
+        <input type="submit" onclick="javascript:cargarNoRF('<%=mod.getNombre()%>')" class="ufps-btn ufps-btn-green acomodarBtn" value="Asignar nuevo requerimiento">  
+        
 
     </div>
 

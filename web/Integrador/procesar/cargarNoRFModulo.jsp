@@ -74,12 +74,13 @@
             <h2><%=modulo%></h2>
         </div>
         <div class="ufps-modal-body">
+            <p class="ufps-text-center">Requerimientos funcionales no asignados al rol <%=rol%></p>
             <form>
-                <table id="table" class="ufps-table-inserted ufps-text-left">
+                <table id="table" class="ufps-table ufps-table-inserted ufps-text-left">
                     <thead>
-                    <th>seleccion</th>
-                    <th>Id</th>
-                    <th>Nombre</th>
+                    <th>SELECCÓN</th>
+                    <th>ID</th>
+                    <th>NOMBRE</th>
                     </thead>
                     <%
                         int i = 0;
@@ -87,7 +88,7 @@
                     %>
                     <tr>
                         <td>
-                            <input  style="width: 40px;" type="text" title="<%=rfDTO.getId()%>" name="checkRol" id="<%=rfDTO.getId()%>" value="<%=rfDTO.getId()%>"/> 
+                            <input  style="width: 40px;" type="checkbox" title="<%=rfDTO.getId()%>" name="checkRol" id="<%=rfDTO.getId()%>" value="<%=rfDTO.getId()%>"/> 
                         </td>
                         <td>
                             <%=rfDTO.getId()%>        
@@ -101,7 +102,7 @@
                     %>
                 </table>
             </form>
-            <button onclick="" type="submit" class="ufps-btn-green acomodarBtn" >Asignar</button>
+            <button onclick=""  class="ufps-btn ufps-btn-green acomodarBtn" >Asignar</button>
         </div>
         <div class="ufps-modal-footer">
             <h3>Asingnación Requerimientos funcionales</h3>

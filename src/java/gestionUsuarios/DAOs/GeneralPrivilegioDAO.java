@@ -128,9 +128,17 @@ public class GeneralPrivilegioDAO {
     }
     public ModuloDTO cargarNoRFModulo(String modulo, String rol){
         try {
-            PreparedStatement ps = conn.prepareStatement("SELECT rf, modulo FROM general_privilegio WHERE modulo=? AND rol<>?");
+            PreparedStatement ps = conn.prepareStatement(
+                    "SELECT R.modulo, R.id FROM   general_requerimiento_funcional R "
+                            + "WHERE "
+                            + "R.modulo=? AND "
+                            + "R.id NOT IN (SELECT P.rf FROM general_privilegio P "
+                            + "WHERE "
+                            + "P.modulo=? AND "
+                            + "P.rol=?)");
             ps.setString(1, modulo);
-            ps.setString(2, rol);
+            ps.setString(2, modulo);
+            ps.setString(3, rol);
             ModuloDTO mod=new ModuloDTO();
             mod.setNombre(modulo);
             ResultSet rs=ps.executeQuery();
@@ -146,7 +154,7 @@ public class GeneralPrivilegioDAO {
         return null;
     }
     public static void main(String[] args) {
-        //GeneralPrivilegioDAO p=new GeneralPrivilegioDAO();
-        //System.out.println(p.getPrivilegioUsuario("1151234").getModulos().get(0).getNombre());
+        GeneralPrivilegioDAO p=new GeneralPrivilegioDAO(ConexionGUDAOs.obtenerConexion());
+        System.out.println(p.cargarNoRFModulo("Carga Academica", "Administrador").getRequerimientos().get(0).getId());
     }
 }
