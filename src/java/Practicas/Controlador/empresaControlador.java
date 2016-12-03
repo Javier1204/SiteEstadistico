@@ -6,6 +6,7 @@
 package Practicas.Controlador;
 import Practicas.DAO.empresaDAO;
 import Practicas.DTO.empresaDTO;
+import java.sql.SQLException;
 import java.util.ArrayList;
 /**
  *
@@ -15,15 +16,29 @@ public class empresaControlador {
     
         
     
-    public ArrayList<empresaDTO> consultarEmpresas(){
+    public ArrayList<empresaDTO> consultar_Empresas(){
         
         empresaDAO dao = new empresaDAO();
         return dao.consultarEmpresa();
     }
-    public String registrarEmpresa( empresaDTO p) {
+    public String registrarEmpresas( empresaDTO p) throws SQLException {
                                     
         empresaDAO ent = new empresaDAO();
         return ent.registrarEmpresa(p);
     }
     
+    public String editarEmpresas( empresaDTO p) throws SQLException {
+                                    
+        empresaDAO ent = new empresaDAO();
+        return ent.editarEmpresa(p);
+    }
+    
+    public String eliminarEmpresa(String nit) throws SQLException{
+        empresaDAO ent= new empresaDAO();
+        return ent.eliminarEmpresa(nit);
+    }
+    public empresaDTO buscarEmpresa(String nit) {
+       empresaDAO dao = new empresaDAO();
+       return dao.buscarEmpresa(nit);
+    }
 }

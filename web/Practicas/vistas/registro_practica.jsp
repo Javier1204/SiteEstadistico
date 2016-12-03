@@ -3,11 +3,16 @@
     Created on : 30/10/2016, 05:19:56 PM
     Author     : Administrador
 --%>
+<%@page import="java.util.List"%>
+<%@page import="Practicas.DTO.perfilDTO"%>
 <%@page import="Practicas.DTO.estudianteDTO"%>
 <%@page import="Practicas.DTO.tutor_empresaDTO"%>
 <%@page import="Practicas.DTO.convenioDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Practicas.Facade.Facade"%>
+
+
+
 <%
     Facade fachada = new Facade();
 if(request.getSession().getAttribute("respuesta_registro_practica")!=null){
@@ -20,9 +25,21 @@ if(request.getSession().getAttribute("respuesta_registro_practica")!=null){
 request.getSession().setAttribute("respuesta_registro_practica", null);
 %>
 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
     <head>
+        <script type="text/javascript" lib="/jquery-1.9.1.jar"></script>  
+        <script type="text/javascript">
+                    function combo()
+                    {
+                    $("#f_opc").val("1");
+                    $.post("comboD.jsp"),$("#data").serialize(),function(data){$("#id_tutor").html(data);})
+                    alert("cambiar a select dependiente");
+                    System.out.println("paso por aqui");
+                    }
+</script>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,10 +70,11 @@ request.getSession().setAttribute("respuesta_registro_practica", null);
  
                  </div>
                  <div class="ufps-navbar-left nav"><li><a href="index.jsp" class="  ufps-navbar-btn  " >INICIO</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="perfil.jsp" class="  ufps-navbar-btn  " >PERFILES DE PRACTICA</a></li></div>
                  <div class="ufps-navbar-left nav"><li><a href="estudiantes.jsp" class="  ufps-navbar-btn  " >ESTUDIANTES</a></li></div>
-                 <div class="ufps-navbar-left nav"><li><a href="mostrar_convenio.jsp" class="  ufps-navbar-btn  " >CONVENIOS</a></li></div>
                  <div class="ufps-navbar-left nav"><li><a href="mostrar_empresa.jsp" class="  ufps-navbar-btn  " >EMPRESAS</a></li></div>
-                 <div class="ufps-navbar-left nav"><li><a href="perfil.jsp" class="  ufps-navbar-btn  " >PERFILES</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="mostrar_convenio.jsp" class="  ufps-navbar-btn  " >CONVENIOS</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="mostrar_practica.jsp" class="  ufps-navbar-btn  " >PRACTICAS</a></li></div>
                  <div class="ufps-navbar-left nav"><li><a href="" class="  ufps-navbar-btn  " >CONSULTAS E INFORMES</a></li></div>
                  
              </div>
@@ -65,64 +83,67 @@ request.getSession().setAttribute("respuesta_registro_practica", null);
                 
         </div>
         
-        <div class="ufps-pull-right">
-            <div class="thumbnail">
-                <img src="concierge_bell.png">
-                <button class="ufps-badge-gray" data-badge="6">Notificaciones</button>
-            </div>
-        </div>
-    
+        
+       
         <center><h2>REGISTRAR PRACTICAS</h2></center>
         
         <div class="ufps-container" id="contenido">
+            
+            <form action="registro_practica_p.jsp" method="POST"> 
            <fieldset>
             <h2>Información basica</h2>
             Solo los espacios señalados con asterisco(*) son necesarios para registrar la práctica. 
             El resto de los campos puede ser agregados más adelante. 
              <br> <br> <br>
              
+             
+             
                 <div class="ufps-col-tablet-5 ufps-col-offset-7">
-                    <label for="año"><b>Año*:</b> <span class="glyphicon glyphicon-question-sign"></span></label>
-                    <input type="text" class="ufps-input" id="año">
+                    <label for="ano_practica">Año*:</label>
+                    <input name="ano_practica" type="text" class="ufps-input-line" id="linea1" required="" >
                 </div>
               <div class="ufps-col-tablet-5 ufps-col-offset-7">
-                  <label for="semestre"><b>Semestre*: </b></label>
-                  <input type="text" class="ufps-input" id="semestre" >                              
+                  <label for="semestre_practica">Semestre*:</label>
+                  <input name="semestre_practica" type="number" min="1" max="2" class="ufps-input-line" id="linea1" required="" placeholder="semestre">                              
               </div>  
               <br>
               <div class="ufps-col-tablet-5 ufps-col-offset-7">
-                <label for="estado"><b>Estado*</b></label> 
-                <select id="valor" name="estado" class="ufps-input " >
-                    <option value="1">No asignada</option>
-                    <option value="2">Asignada</option>
-                    <option value="3">Cancelada</option>
-                    <option value="4">Finalizada</option>
+                <label for="estado">Estado*</label> 
+                <select id="estado" name="estado" class="ufps-input " required=""  >
+                    <option value="No asignada">No asignada</option>
+                    <option value="Asignada">Asignada</option>
+                    <option value="Cancelada">Cancelada</option>
+                    <option value="Finalizada">Finalizada</option>
                 </select>
                 </div>
               <br>
               <div class="ufps-col-tablet-5 ufps-col-offset-7">
-                <label for="perfil"><b>Perfil*</b></label> 
-                <select id="valor" name="perfil" class="ufps-input " >
-                    <option value="1">Capacitación</option>
-                    <option value="2">Mantenimiento Hardware</option>
-                    <option value="3">Mantenimiento Redes</option>
-                    <option value="4">Desarrollo Software</option>
-                    <option value="5">Desarrollo Web</option>
+                <label for="id_perfil">Perfil*</label> 
+                <select id="id_perfil" name="id_perfil" class="ufps-input "  required="">
+                                        
+                                        <%
+                                            List<perfilDTO> perfiles = fachada.listarPerfil();
+                                            for(perfilDTO e: perfiles){
+                                        %>
+                                        <option value="<%=e.getIdperfil()%>"><%=e.getNombre()%></option>
+                                        
+                                        <%}
+                                        %>
                 </select>
               </div>
-              <BR>
               
-           </fieldset>
-            <br>
-            <fieldset>
-             
-                <h2>Relaciones</h2>
-                
+                <BR>
+                <BR>
+                <BR>
+                <BR>
+                <BR>
              
                   <div class="ufps-col-tablet-5 ufps-col-offset-7">
                                 <div class="form-group" >
-                                    <label for="idconvenio" >Seleccione el convenio asociado a la Practica*</label>
-                                    <select id="idconvenio" name="idconvenio" class="ufps-input-line ">
+                                    <input type="hidden" name="i_opc" id="i_opc">
+                                     <BR>
+                                    <label for="id_convenio" >Seleccione el convenio asociado a la Practica*</label>
+                                    <select id="id_convenio" name="id_convenio" class="ufps-input-line " onchange="combo()" >
                                         
                                         <%
                                             ArrayList<convenioDTO> convenios = fachada.obtenerConvenios();
@@ -132,7 +153,8 @@ request.getSession().setAttribute("respuesta_registro_practica", null);
                                         
                                         <%}
                                         %>
-                  
+                                        
+                                    
              
                           </select>
 
@@ -148,8 +170,9 @@ request.getSession().setAttribute("respuesta_registro_practica", null);
              
              <div class="ufps-col-tablet-5 ufps-col-offset-7">
                                 <div class="form-group" >
-                                    <label for="idtutor" >Seleccione el Tutor asociado a la Empresa*</label>
-                                    <select id="idtutor" name="idtutor" class="ufps-input-line ">
+                                     <BR>
+                                    <label for="id_tutor" >Seleccione el Tutor asociado a la Empresa*</label>
+                                    <select id="id_tutor" name="id_tutor" class="ufps-input-line " >
                                         
                                         <%
                                             ArrayList<tutor_empresaDTO> tutores = fachada.obtenerTutores();
@@ -174,21 +197,23 @@ request.getSession().setAttribute("respuesta_registro_practica", null);
                              
                                   
                 <div class="ufps-col-tablet-5 ufps-col-offset-7">
-                 <label for="docente"><b>Tutor docente: </b></label>
-                  <input type="button" class="ufps-btn" id="idocente" value="Buscar Docente">   
+                 
+                    <label for="id_docente">Codigo del Docente de Practica*:</label>
+                  <input name="id_docente" type="text" class="ufps-input-line" id="linea1" required="" >   
                 </div>
-              <br>
-              <BR>
+                <br>
+                <BR>
                 <br>
                 <br>
              
                 <div class="ufps-col-tablet-5 ufps-col-offset-7">
                                 <div class="form-group" >
-                                    <label for="idestudiante" >Seleccione estudiante ascociado a la Empresa*</label>
-                                    <select id="idestudiante" name="idestudiante" class="ufps-input-line ">
+                                     <BR>
+                                    <label for="id_estudiante" >Seleccione estudiante ascociado a la Empresa*</label>
+                                    <select id="id_estudiante" name="id_estudiante" class="ufps-input-line " >
                                         
                                         <%
-                                            ArrayList<estudianteDTO> estudiantes = fachada.obtenerEstudiante();
+                                            ArrayList<estudianteDTO> estudiantes = fachada.obtenerEstudiantes();
                                             for(estudianteDTO e: estudiantes){
                                         %>
                                         <option value="<%=e.getCodigoEstudiante()%>"><%=e.getNombresEstudiante()%></option>
@@ -201,10 +226,16 @@ request.getSession().setAttribute("respuesta_registro_practica", null);
 
                      </div> </div>
                                         
-                  
+            <center><div class="ufps-col-tablet-12 ">  
+                <div class="form-group">
+                    <div class="caption">
+                        <button type="submit" class="ufps-btn" id="btnAgregar">Registrar Practica</button>
+                    </div>
+                </div> 
+            </div></center>      
                 
             </fieldset>
-            
+       </form>  
             <BR>
             <fieldset>
                 <h2> Documentos adjuntos</h2>
@@ -243,11 +274,7 @@ request.getSession().setAttribute("respuesta_registro_practica", null);
                 </div>
                <br><br><br>
             </center>    
-            <center><div class="ufps-col-tablet-12 ">  
-                <div class="form-group">
-                    <button type="submit" class="ufps-btn">Finalizar Registro</button>
-                </div> 
-            </div></center>
+            
             </fieldset>
         </div>
         <BR><BR>

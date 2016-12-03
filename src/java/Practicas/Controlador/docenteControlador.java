@@ -14,9 +14,9 @@ import Practicas.DTO.docenteDTO;
  */
 public class docenteControlador {
     
-    public docenteDTO buscarDocente(int cod){
+    public docenteDTO buscar_Docente(int cod){
         docenteDAO dao= new docenteDAO();
-        return dao.buscarDocente(cod);
+        return dao.buscar_Docente(cod);
 
     }
     

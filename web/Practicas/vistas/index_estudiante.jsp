@@ -39,10 +39,10 @@
                          <div class="ufps-btn-menu-bar"> </div>
  
                      </div>
-                     
+         </div>             
                       <div class="ufps-navbar-left nav"><li><a href="registro_estudiante.jsp" class="  ufps-navbar-btn  " >Registro </a></li> </div>
  
-                 </div>
+                
              </div>
         </div>
         
@@ -58,7 +58,7 @@
             
             <div class="col-xs-12 col-md-4">
                 <div class="ufps-img-thumbnail">
-                    <img src="../estilos/img/editar.png" alt="imagen de evento" >
+                    <img src="../img/editar.png" alt="imagen de evento" >
                     <div class="caption">
                         <p><a href="editar_perfil_estudiante.jsp" class="btn ufps-btn" role="button">Editar perfil</a></p>
                     </div>
@@ -67,7 +67,7 @@
 
              <div class="col-xs-12 col-md-4">
                 <div class="ufps-img-thumbnail">
-                    <img src="../estilos/img/enviar.png" alt="imagen de evento">
+                    <img src="../img/enviar.png" alt="imagen de evento">
                     <div class="caption">
                         <p><a href="informes.jsp" class="btn ufps-btn" role="button">Enviar Informes</a></p>
                     </div>
@@ -81,7 +81,7 @@
     </body>
     <BR><BR><BR>
     <footer>
-         <div class="ufps-container ufps-footer-light">
+         <div class="ufps-container ufps-footer">
             <center><h5 class="text-center">Universidad Francisco de Paula Santander</h5>
                 <h6 class="text-center">Programa Ingeniería de Sistemas<br>
                 Desarrollador por estudiantes de Seminario Integrador III</h6>

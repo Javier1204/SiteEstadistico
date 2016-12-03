@@ -46,9 +46,9 @@ public class tutorDAO {
             
             if(a == 1){
                 System.out.println(" registrar");
-                rta= "Registro";
+                rta= "Se ha registrado el tutor satisfactoriamente";
             }else{
-                 System.out.println("no registrar");
+                 System.out.println("no es posible registrarlo");
                 rta = "No registro";
             }
             

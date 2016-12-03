@@ -41,14 +41,12 @@
                      </div>
  
                  </div>
-                 <div class="ufps-navbar-left nav"><li><a href="index.jsp" class="  ufps-navbar-btn  " >Inicio </a></li> </div>
-                 
-                 <div class="ufps-navbar-left nav">
- 
+                 <div class="ufps-navbar-left nav"><li><a href="index.jsp" class="  ufps-navbar-btn  " >INICIO</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="perfil.jsp" class="  ufps-navbar-btn  " >PERFILES DE PRACTICA</a></li></div>
                  <div class="ufps-navbar-left nav"><li><a href="estudiantes.jsp" class="  ufps-navbar-btn  " >ESTUDIANTES</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="mostrar_empresa.jsp" class="  ufps-navbar-btn  " >EMPRESAS</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="mostrar_convenio.jsp" class="  ufps-navbar-btn  " >CONVENIOS</a></li></div>
                  <div class="ufps-navbar-left nav"><li><a href="registro_practica.jsp" class="  ufps-navbar-btn  " >PRACTICAS</a></li></div>
-                 <div class="ufps-navbar-left nav"><li><a href="mostrar_convenio" class="  ufps-navbar-btn  " >CONVENIOS</a></li></div>
-                 <div class="ufps-navbar-left nav"><li><a href="mostrar_empresa" class="  ufps-navbar-btn  " >EMPRESAS</a></li></div>
                  <div class="ufps-navbar-left nav"><li><a href="" class="  ufps-navbar-btn  " >CONSULTAS E INFORMES</a></li></div>
                      
                  </div>
@@ -59,9 +57,9 @@
       <%
           Facade f = new Facade();
           
-          int codigo = 1150833;
+          int codigo = 13;
           docenteDTO ed = new docenteDTO();
-          ed = f.buscarDocente(codigo);
+          ed = f.buscar_Docente(codigo);
           System.out.println("Estudiante consultado. " + ed.toString());
          
       %>
@@ -69,6 +67,7 @@
         
       <div  class="ufps-container" id="contenido">
           
+          <form action="index.jsp" method ="POST">
           <center><strong><h1>DATOS BASICOS DOCENTE</h1></strong></center>    
         <br>        
           <fieldset>
@@ -96,7 +95,7 @@
               
               <div class="form-group">
                   <label for="codigo"><b>Codigo:</b></label>
-                  <input type="text" class="ufps-input" id="codigo" value="<%=ed.getCodigo()%>" >
+                  <input type="text" class="ufps-input" id="codigo" value="<%=ed.get_Codigo() %>" >
                </div>
               
              
@@ -170,7 +169,7 @@
         
        <center><div class="ufps-col-tablet-12 ">  
             <div class="form-group">
-                <button type="submit" class="ufps-btn">Editar Informacion</button>
+                <button type="submit" class="ufps-btn">Volver</button>
             </div> 
        </div></center>
     

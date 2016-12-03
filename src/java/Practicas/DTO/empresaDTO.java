@@ -20,6 +20,15 @@ public class empresaDTO {
     String tipoAmbito;
     String direccion;
     String telefono;
+    int pais;
+
+    public int getPais() {
+        return pais;
+    }
+
+    public void setPais(int pais) {
+        this.pais = pais;
+    }
     //No le falta el constructor?
     public String getDireccion() {
         return direccion;
@@ -40,7 +49,7 @@ public class empresaDTO {
     public empresaDTO() {
     }
 //aqui esta... donde lo llama?
-    public empresaDTO( String NIT, String sectorEmpresa, String nombreEmpresa, String tipoAmbito, String telefono, String direccion) {
+    public empresaDTO( String NIT, String sectorEmpresa, String nombreEmpresa, String tipoAmbito, String telefono, String direccion, int pais) {
         
         this.NIT=NIT;
         this.sectorEmpresa = sectorEmpresa;
@@ -48,6 +57,7 @@ public class empresaDTO {
         this.tipoAmbito = tipoAmbito;
         this.direccion=direccion;
         this.telefono=telefono;
+        this.pais=pais;
     }
 
     

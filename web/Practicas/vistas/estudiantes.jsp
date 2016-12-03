@@ -53,29 +53,23 @@ request.getSession().setAttribute("respuesta_estudiantes", null);
  
                  </div>
                  <div class="ufps-navbar-left nav"><li><a href="index.jsp" class="  ufps-navbar-btn  " >INICIO</a></li></div>
-                 <div class="ufps-navbar-left nav"><li><a href="perfil.jsp" class="  ufps-navbar-btn  " >PERFIL DE PRACTICAS</a></li></div>
-                 <div class="ufps-navbar-left nav"><li><a href="registro_practica.jsp" class="  ufps-navbar-btn  " >PRACTICAS</a></li></div>
-                 <div class="ufps-navbar-left nav"><li><a href="mostrar_convenio.jsp" class="  ufps-navbar-btn  " >CONVENIOS</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="perfil.jsp" class="  ufps-navbar-btn  " >PERFILES DE PRACTICA</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="estudiantes.jsp" class="  ufps-navbar-btn  " >ESTUDIANTES</a></li></div>
                  <div class="ufps-navbar-left nav"><li><a href="mostrar_empresa.jsp" class="  ufps-navbar-btn  " >EMPRESAS</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="mostrar_convenio.jsp" class="  ufps-navbar-btn  " >CONVENIOS</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="mostrar_practica.jsp" class="  ufps-navbar-btn  " >PRACTICAS</a></li></div>
                  <div class="ufps-navbar-left nav"><li><a href="" class="  ufps-navbar-btn  " >CONSULTAS E INFORMES</a></li></div>
-                 
              </div>
                 
                  
                 
         </div>
-        
-        <div class="ufps-pull-right">
-            <div class="thumbnail">
-                <img src="concierge_bell.png">
-                <button class="ufps-badge-gray" data-badge="6">Notificaciones</button>
-            </div>
-        </div>
+
     
         <center><h2>LISTADO DE ESTUDIANTES DE PRACTICAS</h2></center>
         
         <% 
-            ArrayList <estudianteDTO> lista= f.obtenerEstudiante();           
+            ArrayList <estudianteDTO> lista= f.obtenerEstudiantes();           
         %>
 
         
@@ -92,6 +86,7 @@ request.getSession().setAttribute("respuesta_estudiantes", null);
                     <td>Apellidos</td>
                     <td>Semestre</td>
                     
+                    
                 </tr>
            <%
                     for(estudianteDTO p: lista){
@@ -103,10 +98,7 @@ request.getSession().setAttribute("respuesta_estudiantes", null);
                 <td> <%= p.getApellidosEstudiante() %> </td>
                 <td> <%= p.getSemestre() %> </td>
                 <td>
-                    <div class="form-group">
-                    <button type="submit" class="ufps-btn-light"><b>Eliminar</b></button> 
-                     
-                    </div>  
+                    
                 </td> 
                 </tr>
                 <%

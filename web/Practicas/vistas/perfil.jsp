@@ -50,10 +50,11 @@ request.getSession().setAttribute("respuesta_perfil", null);
  
                  </div>
                  <div class="ufps-navbar-left nav"><li><a href="index.jsp" class="  ufps-navbar-btn  " >INICIO</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="perfil.jsp" class="  ufps-navbar-btn  " >PERFILES DE PRACTICA</a></li></div>
                  <div class="ufps-navbar-left nav"><li><a href="estudiantes.jsp" class="  ufps-navbar-btn  " >ESTUDIANTES</a></li></div>
-                 <div class="ufps-navbar-left nav"><li><a href="registro_practica.jsp" class="  ufps-navbar-btn  " >PRACTICAS</a></li></div>
-                 <div class="ufps-navbar-left nav"><li><a href="mostrar_convenio.jsp" class="  ufps-navbar-btn  " >CONVENIOS</a></li></div>
                  <div class="ufps-navbar-left nav"><li><a href="mostrar_empresa.jsp" class="  ufps-navbar-btn  " >EMPRESAS</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="mostrar_convenio.jsp" class="  ufps-navbar-btn  " >CONVENIOS</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="mostrar_practica.jsp" class="  ufps-navbar-btn  " >PRACTICAS</a></li></div>
                  <div class="ufps-navbar-left nav"><li><a href="" class="  ufps-navbar-btn  " >CONSULTAS E INFORMES</a></li></div>
                  
              </div>
@@ -83,7 +84,7 @@ request.getSession().setAttribute("respuesta_perfil", null);
              <br>
               <div class="ufps-col-tablet-5 ufps-col-tablet-offset-0">
                   <label for="nombrePerfil"><b>Nombre del perfil: </b></label>
-                   <input type="text" class="ufps-input" id="nombrePerfil" name="nombrePerfil">                              
+                   <input type="text" class="ufps-input" id="nombrePerfil" name="nombrePerfil" required="">                              
               </div>
               
               <div class="ufps-col-tablet-9 ufps-col-offset-0">  
@@ -114,8 +115,9 @@ request.getSession().setAttribute("respuesta_perfil", null);
                 <td> <%= p.getNombre() %> </td>
                 <td>
                     <div class="form-group">
-                    <button type="submit" class="ufps-btn-light"><b>Eliminar</b></button> 
-                    <button type="submit" class="ufps-btn-light"> <b>Editar</b> </button> 
+                    <div class="caption">
+                        <p><a href="eliminar_perfil_p.jsp?id=<%= p.getIdperfil()%>" class="btn ufps-badge  " role="button">Eliminar</a></p>
+                                        </div>  
                     </div>  
                 </td> 
                 </tr>

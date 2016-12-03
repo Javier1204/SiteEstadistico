@@ -3,6 +3,9 @@
     Created on : 6/11/2016, 10:08:33 PM
     Author     : Usuario
 --%>
+<%@page import="Practicas.DTO.empresaDTO"%>
+<%@page import="Practicas.DTO.tutor_empresaDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="Practicas.Facade.Facade"%>
 <%
     Facade f = new Facade();
@@ -52,12 +55,12 @@ request.getSession().setAttribute("respuesta_registro_Tutor", null);
                  <div class="ufps-navbar-left nav">
  
                  <div class="ufps-navbar-left nav"><li><a href="index.jsp" class="  ufps-navbar-btn  " >INICIO</a></li></div>
-                 <div class="ufps-navbar-left nav"><li><a href="estudiantes.jsp" class="  ufps-navbar-btn  " >ESTUDIANTES</a></li></div>
-                 <div class="ufps-navbar-left nav"><li><a href="registro_practica.jsp" class="  ufps-navbar-btn  " >PRACTICAS</a></li></div>
-                 <div class="ufps-navbar-left nav"><li><a href="mostrar_convenio.jsp" class="  ufps-navbar-btn  " >CONVENIOS</a></li></div>
                  <div class="ufps-navbar-left nav"><li><a href="perfil.jsp" class="  ufps-navbar-btn  " >PERFILES DE PRACTICA</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="estudiantes.jsp" class="  ufps-navbar-btn  " >ESTUDIANTES</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="mostrar_empresa.jsp" class="  ufps-navbar-btn  " >EMPRESAS</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="mostrar_convenio.jsp" class="  ufps-navbar-btn  " >CONVENIOS</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="mostrar_practica.jsp" class="  ufps-navbar-btn  " >PRACTICAS</a></li></div>
                  <div class="ufps-navbar-left nav"><li><a href="" class="  ufps-navbar-btn  " >CONSULTAS E INFORMES</a></li></div>
-                 
                  </div>
                  
  
@@ -73,12 +76,12 @@ request.getSession().setAttribute("respuesta_registro_Tutor", null);
               <br>
               <div class="ufps-col-tablet-5 ufps-col-tablet-offset-1">
                                      <label for="nombres">Nombre Completo:</label>
-                                     <input name="nombres" type="text" class="ufps-input-line" id="linea1" >                              
+                                     <input name="nombres" type="text" class="ufps-input-line" id="linea1" required="" >                              
                 
               </div>
               <div class="ufps-col-tablet-5 ufps-col-tablet-offset-1"> 
                               <label for="telefono">Telefono:</label>
-                                    <input name="telefono" type="text" class="ufps-input-line" id="linea1" >
+                                    <input name="telefono" type="text" class="ufps-input-line" id="linea1" required="" >
                                      
                                 
               </div
@@ -87,7 +90,7 @@ request.getSession().setAttribute("respuesta_registro_Tutor", null);
                                  <div class="form-group">
  
                                      <label for="cargo">Cargo:</label>
-                                     <input name="cargo" type="text" class="ufps-input-line" id="linea2" >
+                                     <input name="cargo" type="text" class="ufps-input-line" id="linea2" required="">
                                  </div>  
                
                 <BR>
@@ -98,7 +101,7 @@ request.getSession().setAttribute("respuesta_registro_Tutor", null);
                                  <div class="form-group">
  
                                      <label for="email">Email:</label>
-                                     <input name="email" type="text" class="ufps-input-line" id="linea3" >
+                                     <input name="email" type="text" class="ufps-input-line" id="linea3" required="">
                                  </div> 
                   <BR> 
       
@@ -106,7 +109,25 @@ request.getSession().setAttribute("respuesta_registro_Tutor", null);
              
               <br>
               
-               
+               <div class="ufps-col-tablet-5 ufps-col-tablet-offset-1">
+<BR>
+                      <div class="form-group" >
+                                    <label for="entidad" >Seleccione la Entidad asociada al Convenio</label>
+                                    <select id="entidad" name="entidad" class="ufps-input-line " required="">
+                                        
+                                        <%
+                                            ArrayList<empresaDTO> entidades = f.obtenerEmpresas();
+                                            for(empresaDTO e: entidades){
+                                        %>
+                                        <option value="<%=e.getIdempresa()%>"><%=e.getNombreEmpresa()%></option>
+                                        
+                                        <%}
+                                        %>
+                                    </select>
+<BR>
+<BR>
+                                </div> </div>          
+        
                                   
              
           
@@ -116,8 +137,10 @@ request.getSession().setAttribute("respuesta_registro_Tutor", null);
        <center><div class="group ">  
             <div class="btn-group btn-group-justified">
                 <button type="submit" class="ufps-btn">Registrar Tutor</button>
-                <button type="submit" class="ufps-btn"  onclick="location='registro_practica.jsp'">Volver</button>
-                
+                 
+                <div class="caption">
+                        <p><a href="registro_practica.jsp" class="btn ufps-btn" role="button">Volver</a></p>
+                    </div>
             </div>
                 
        </div></center>

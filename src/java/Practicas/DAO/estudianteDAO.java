@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import Practicas.DTO.estudianteDTO;
 import java.util.ArrayList;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -89,8 +90,7 @@ public class estudianteDAO implements EstudianteInterface{
         
     }
 
-    @Override
-    public ArrayList<estudianteDTO> listarEstudiante() {
+    public ArrayList<estudianteDTO> listar_Estudiante() {
      Pool pool = Conexion.getPool(); //llamo al objeto pool 
         Connection con = null;
         PreparedStatement stm = null;
@@ -115,8 +115,8 @@ public class estudianteDAO implements EstudianteInterface{
                 String codigo = resultado.getString(1);
                 String documento_id = resultado.getString(2);
                 String nombres = resultado.getString(3);
-                String apellidos = resultado.getString(5);
-                int semestre = resultado.getInt(6);
+                String apellidos = resultado.getString(4);
+                int semestre = resultado.getInt(5);
                                
                 e.setCodigoEstudiante(codigo);
                 e.setCedula(documento_id);
@@ -153,6 +153,31 @@ public class estudianteDAO implements EstudianteInterface{
         return estudiantes;
     
 }          
+
+    @Override
+    public List<estudianteDTO> listarEstudiante() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
+    
+    public void subirArhivo(List items, byte opc) throws Exception{
+        String nombre= "";
+        switch(opc){
+            case 1: nombre="cedula";
+            break;
+            case 2: nombre="horario";
+            break;
+            case 3: nombre= "hv";
+            break;
+            case 4: nombre="afiliacion"; 
+            break;
+        }
+        
+        
+    }
  
+    public String pedirDireccion(HttpServletRequest request){
+        
+        return request.getRealPath("../documentos/Estudiantes");
+    }
 }

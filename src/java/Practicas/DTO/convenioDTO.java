@@ -13,7 +13,7 @@ import java.sql.Date;
  */
 public class convenioDTO {
  
-    int idconvenio;
+    String idconvenio;
     String nombreConvenio;
     String fechainicio;
     String fechafin;
@@ -21,15 +21,12 @@ public class convenioDTO {
     String descripcion; 
     String vigencia;
     String estado;
+    String fecha_radicacion;
+    empresaDTO empresa;
+    String tipoConvenio;
 
-    public convenioDTO() {
-    }
-
-//    public convenioDTO(String nombreConvenio,String descripcion, String fechainicio, String fechafin,String vigencia,String estado, int idempresa) {
-//        
-//    }
-
-    public convenioDTO(String nombreConvenio, String descripcion, String fechainicio, String fechafin, String vigencia, String estado, int idempresa) {
+    public convenioDTO(String id, String nombreConvenio, String descripcion, String fecha_radicacion, String fechainicio, String fechafin, String vigencia, String estado, int idempresa, String tipoConvenio) {
+        this.idconvenio=idconvenio;
         this.nombreConvenio = nombreConvenio;
         this.fechainicio = fechainicio;
         this.fechafin = fechafin;
@@ -37,15 +34,35 @@ public class convenioDTO {
         this.descripcion = descripcion;
         this.vigencia = vigencia;
         this.estado = estado;
+        this.fecha_radicacion=fecha_radicacion;
+        this.tipoConvenio=tipoConvenio;
     }
-    
 
-    public int getIdconvenio() {
+    public String getTipoConvenio() {
+        return tipoConvenio;
+    }
+
+    public void setTipoConvenio(String tipoConvenio) {
+        this.tipoConvenio = tipoConvenio;
+    }
+
+    public String getFecha_radicacion() {
+        return fecha_radicacion;
+    }
+
+    public void setFecha_radicacion(String fecha_radicacion) {
+        this.fecha_radicacion = fecha_radicacion;
+    }
+        public convenioDTO() {
+    }
+
+    
+    public String getIdconvenio() {
         return idconvenio;
     }
     
 
-    public void setIdconvenio(int idconvenio) {
+    public void setIdconvenio(String idconvenio) {
         this.idconvenio = idconvenio;
     }
 
@@ -105,8 +122,19 @@ public class convenioDTO {
         this.estado = estado;
     }
 
-
+    @Override
+    public String toString() {
+        return "convenioDTO{" + "idconvenio=" + idconvenio + ", nombreConvenio=" + nombreConvenio + ", fechainicio=" + fechainicio + ", fechafin=" + fechafin + ", idempresa=" + idempresa + ", descripcion=" + descripcion + ", vigencia=" + vigencia + ", estado=" + estado + ", fecha_radicacion=" + fecha_radicacion + '}';
+    }
+ 
+ public void setEmpresa(int id_empresa, String nombreEmpresa){
+     
+     empresa=new empresaDTO();
+     empresa.setIdempresa(idempresa);
+     empresa.setNombreEmpresa(nombreEmpresa);
+ }
     
-    
-    
+    public empresaDTO getEmpresa(){
+     return empresa;
+ }
 }

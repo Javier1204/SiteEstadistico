@@ -18,9 +18,9 @@ import java.util.List;
  */
 public class estudianteControlador {
  
-    public ArrayList<estudianteDTO> obtenerEstudiantes(){
+    public ArrayList<estudianteDTO> obtener_Estudiantes(){
         estudianteDAO dao = new estudianteDAO();
-        return dao.listarEstudiante();
+        return dao.listar_Estudiante();
     }
     
     

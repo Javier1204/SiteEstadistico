@@ -53,11 +53,11 @@ request.getSession().setAttribute("respuesta_mostrar_convenio", null);
  
                  </div>
                  <div class="ufps-navbar-left nav"><li><a href="index.jsp" class="  ufps-navbar-btn  " >INICIO</a></li></div>
-                 <div class="ufps-navbar-left nav"><li><a href="estudiantes.jsp" class="  ufps-navbar-btn  " >ESTUDIANTES</a></li></div>
-                 <div class="ufps-navbar-left nav"><li><a href="registro_practica.jsp" class="  ufps-navbar-btn  " >PRACTICAS</a></li></div>
-                 <div class="ufps-navbar-left nav"><li><a href="mostrar_convenio.jsp" class="  ufps-navbar-btn  " >CONVENIOS</a></li></div>
-                 <div class="ufps-navbar-left nav"><li><a href="mostrar_empresa.jsp" class="  ufps-navbar-btn  " >EMPRESAS</a></li></div>
                  <div class="ufps-navbar-left nav"><li><a href="perfil.jsp" class="  ufps-navbar-btn  " >PERFILES DE PRACTICA</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="estudiantes.jsp" class="  ufps-navbar-btn  " >ESTUDIANTES</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="mostrar_empresa.jsp" class="  ufps-navbar-btn  " >EMPRESAS</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="mostrar_convenio.jsp" class="  ufps-navbar-btn  " >CONVENIOS</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="mostrar_practica.jsp" class="  ufps-navbar-btn  " >PRACTICAS</a></li></div>
                  <div class="ufps-navbar-left nav"><li><a href="" class="  ufps-navbar-btn  " >CONSULTAS E INFORMES</a></li></div>
                  
              </div>
@@ -88,9 +88,9 @@ request.getSession().setAttribute("respuesta_mostrar_convenio", null);
              <br>
                             
               <div class="ufps-col-tablet-9 ufps-col-offset-0">  
-                <div class="form-group">
-                    <button type="submit" class="ufps-btn">REGISTRAR CONVENIO</button>
-                </div> 
+                 <div class="caption">
+                        <p><a href="registro_convenio.jsp" class="btn ufps-btn" role="button">REGISTRAR CONVENIO</a></p>
+                    </div> 
               </div>
             </fieldset>
         </div>
@@ -102,6 +102,7 @@ request.getSession().setAttribute("respuesta_mostrar_convenio", null);
                  <table class="ufps-table">
                 <tr class="ufps-table-inserted tr"> 
                     <td>Nombre</td>
+                    <td>Numero de Convenio</td>
                     <td>Fecha de inicio</td>
                     <td>Fecha de terminacion</td>
                     <td>Estado</td>
@@ -113,15 +114,16 @@ request.getSession().setAttribute("respuesta_mostrar_convenio", null);
                 %>
                 <tr>
                 <td> <%= p.getNombreConvenio() %> </td>
+                <td> <%= p.getIdconvenio() %> </td>
                 <td> <%= p.getFechainicio() %> </td>
                 <td> <%= p.getFechafin() %> </td>
                 <td> <%= p.getEstado() %> </td>
-                <td> <%= p.getIdempresa() %> </td>
+                <td> <%= p.getEmpresa().getNombreEmpresa() %> </td>
                 <td>
                     <div class="form-group">
-                    <button type="submit" class="ufps-btn-light"><b>Eliminar</b></button> 
-                    <button type="submit" class="ufps-btn-light"> <b>Editar</b> </button> 
-                    </div>  
+                    <div class="caption">
+                        <p><a href="Editar_convenio.jsp?id=<%= p.getIdconvenio() %>"class="btn- ufps-badge" role="button">Editar</a></p>
+                        </div>  
                 </td> 
                 </tr>
                 <%
