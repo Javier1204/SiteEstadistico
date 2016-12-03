@@ -21,13 +21,16 @@
 <div class="ufps-container ">
     <h1>Asignar privilegios</h1>
     <div class=" ufps-container" >
-             
+
         <label id="divError" class="ufps-col-pc-8"></label>
         <div class="ufps-row" >
 
             <form method="post" action="javascript:actualizarPrivilegios()" name="registro"  class="f-integrador" id="registro">
                 <div>
-                    <label >Rol</label><br>
+                    <div class="ufps-tooltip">
+                        <label >Rol</label><br>
+                        <span class="ufps-tooltip-content-top">nombre hola</span>
+                    </div>
                     <select id="selectMod" name="selectMod" class="ufps-input" onchange="javascript:buscarPrivilegios()">
                         <option value=""> Seleccione opción</option>
                         <% for (RolDTO dto : roles) {%>
@@ -39,9 +42,10 @@
                     <%
                         IGestionUsuarios gestor = GestionUsuario.getInstance();
                         List<ModuloDTO> modulos = gestor.listarModulo();
-                        
+
                     %>
-                    <% for (ModuloDTO mod : modulos) {int i = 0;%>
+                    <% for (ModuloDTO mod : modulos) {
+                            int i = 0;%>
                     <div class="ufps-accordion" style="text-align: center">
                         <button class="ufps-btn-accordion"><h4 class="text-center">Requerimientos funcionales <%= mod.getNombre()%></h4></button>
                         <div class="ufps-accordion-panel">
@@ -72,10 +76,11 @@
                     </div>
                     <%
                         }%>
-                        
+                    <input type="submit" class="ufps-btn acomodarBtn" value="Asignar">     
                 </div>
-                <input type="submit" class="ufps-btn acomodarBtn" value="Asignar">
+
             </form>
+            <div id="modal"></div>
         </div> 
     </div>
 

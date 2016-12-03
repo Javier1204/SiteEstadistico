@@ -49,9 +49,11 @@
             <tr>
                 <% }
                     i++;%>
-                <td> <input style="width: 40px;" type="checkbox" title="<%=d.getId()%>" name="checkRol" id="<%=d.getId()%>" value="<%=d.getId()%>"/> <%=d.getId()%> </td>
-                    <% if (i == 3) {
-                            i = 0;%>
+                <td> 
+                    <input  style="width: 40px;" type="checkbox" title="<%=d.getId()%>" name="checkRol" id="<%=d.getId()%>"/><%=d.getId()%>
+                </td>
+                <% if (i == 3) {
+                        i = 0;%>
             </tr> 
             <% }
                 }%>
@@ -61,8 +63,12 @@
 
         <label>El módulo <%= mod.getNombre()%> no tiene RFs </label>
         <% }%>
+        <button onclick="javascript:cargarNoRF('<%=mod.getNombre()%>')" class="ufps-btn-green" >Agregar</button>
+
     </div>
+
 </div>
+
 <%
     }%>
 

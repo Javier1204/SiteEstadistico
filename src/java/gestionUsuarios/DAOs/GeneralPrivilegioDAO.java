@@ -126,6 +126,25 @@ public class GeneralPrivilegioDAO {
             
         }
     }
+    public ModuloDTO cargarNoRFModulo(String modulo, String rol){
+        try {
+            PreparedStatement ps = conn.prepareStatement("SELECT rf, modulo FROM general_privilegio WHERE modulo=? AND rol<>?");
+            ps.setString(1, modulo);
+            ps.setString(2, rol);
+            ModuloDTO mod=new ModuloDTO();
+            mod.setNombre(modulo);
+            ResultSet rs=ps.executeQuery();
+            GeneralRequerimientoFDAO rfDAO=new GeneralRequerimientoFDAO(conn);
+            while(rs.next()){
+                mod.getRequerimientos().add(rfDAO.getRF(rs.getString(1), rs.getString(2)));
+            }
+            return mod;
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralPrivilegioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        return null;
+    }
     public static void main(String[] args) {
         //GeneralPrivilegioDAO p=new GeneralPrivilegioDAO();
         //System.out.println(p.getPrivilegioUsuario("1151234").getModulos().get(0).getNombre());

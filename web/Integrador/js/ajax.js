@@ -45,8 +45,7 @@ function ingresar() {
                 if (rta.indexOf("1") < 0) {
                     //document.getElementById("divError").innerHTML = ajax.responseText;
                     openModal("modal-login");
-                }
-                else {
+                } else {
                     if (rta.indexOf("1") >= 0) {
                         login.action = "listar_modulos.jsp";
                         login.submit();
@@ -56,8 +55,7 @@ function ingresar() {
                     }
                 }
             }
-        }
-        else
+        } else
         {
             document.getElementById("divError").value = "Verificando Usuario...";
         }
@@ -135,13 +133,11 @@ function registrarUsuario() {
                 var rta = ajax.responseText;
                 if (rta.indexOf("1") >= 0) {
                     document.getElementById("divError").innerHTML = "Registro exitoso";
-                }
-                else if (rta.indexOf("2") >= 0) {
+                } else if (rta.indexOf("2") >= 0) {
                     document.getElementById("divError").innerHTML = "Falló registro";
                 }
             }
-        }
-        else
+        } else
         {
             document.getElementById("divError").value = "Verificando Usuario...";
         }
@@ -166,13 +162,11 @@ function registrarModulo() {
                 if (rta.indexOf("1") >= 0) {
                     document.getElementById("divError").innerHTML = "Registro exitoso";
                     document.getElementById("registro").reset;
-                }
-                else if (rta.indexOf("2") >= 0) {
+                } else if (rta.indexOf("2") >= 0) {
                     document.getElementById("divError").innerHTML = "Falló registro";
                 }
             }
-        }
-        else
+        } else
         {
             document.getElementById("divError").value = "Verificando Usuario...";
         }
@@ -196,13 +190,11 @@ function validarId() {
                 if (rta.indexOf("1") >= 0) {
                     document.getElementById("id").innerHTML = "style='border-color: red;'";
                     document.getElementById("registro").reset;
-                }
-                else if (rta.indexOf("2") >= 0) {
+                } else if (rta.indexOf("2") >= 0) {
                     document.getElementById("divError").innerHTML = "Falló registro";
                 }
             }
-        }
-        else
+        } else
         {
             document.getElementById("divError").value = "Verificando Usuario...";
         }
@@ -228,13 +220,11 @@ function registrarRF() {
                 if (rta.indexOf("1") >= 0) {
                     document.getElementById("divError").innerHTML = rta;
                     document.getElementById("registro").reset;
-                }
-                else if (rta.indexOf("2") >= 0) {
+                } else if (rta.indexOf("2") >= 0) {
                     document.getElementById("divError").innerHTML = rta;
                 }
             }
-        }
-        else
+        } else
         {
             document.getElementById("divError").value = "Verificando Usuario...";
         }
@@ -260,13 +250,11 @@ function registrarRol() {
                 if (rta.indexOf("1") >= 0) {
                     document.getElementById("divError").innerHTML = "Registro exitoso";
                     document.getElementById("registro").reset;
-                }
-                else if (rta.indexOf("2") >= 0) {
+                } else if (rta.indexOf("2") >= 0) {
                     document.getElementById("divError").innerHTML = "Falló registro";
                 }
             }
-        }
-        else
+        } else
         {
             document.getElementById("divError").value = "Verificando Usuario...";
         }
@@ -287,12 +275,13 @@ function buscarPrivilegios() {
             if (ajax.status == 200) {
                 var rta = ajax.responseText;
                 document.getElementById("campo").innerHTML = rta;
+                toggleAccordion();
+                onload();
             }
 //            if (rta.indexOf("2") >= 0) {
 //                document.getElementById("campo").innerHTML = "Usuario no existente";
 //            }
-        }
-        else
+        } else
         {
             document.getElementById("divError").value = "Verificando Usuario...";
         }
@@ -319,8 +308,7 @@ function buscarRoles() {
             if (rta.indexOf("2") >= 0) {
                 document.getElementById("campo").innerHTML = "Usuario no existente";
             }
-        }
-        else
+        } else
         {
             document.getElementById("divError").value = "Verificando Usuario...";
         }
@@ -351,12 +339,10 @@ function actualizarRoles() {
                 if (rta.indexOf("1") >= 0) {
                     document.getElementById("divError").innerHTML = "Resultado exitoso";
                     document.getElementById("registro").reset;
-                }
-                else if (rta.indexOf("2") >= 0) {
+                } else if (rta.indexOf("2") >= 0) {
                     document.getElementById("divError").innerHTML = "Resultado fallido";
                 }
-            }
-            else
+            } else
             {
                 document.getElementById("divError").value = "Verificando Usuario...";
             }
@@ -364,7 +350,7 @@ function actualizarRoles() {
     }
 }
 
-function modificarModulo(){
+function modificarModulo() {
     var nombre_mod = document.getElementById("nombre_mod");
     var descripcion = document.getElementById("descripcion");
     var dir = document.getElementById("url");
@@ -382,20 +368,18 @@ function modificarModulo(){
                 if (rta.indexOf("1") >= 0) {
                     document.getElementById("divError").innerHTML = rta;
                     document.getElementById("registro").reset;
-                }
-                else if (rta.indexOf("2") >= 0) {
+                } else if (rta.indexOf("2") >= 0) {
                     document.getElementById("divError").innerHTML = rta;
                 }
             }
-        }
-        else
+        } else
         {
             document.getElementById("divError").value = "Verificando Usuario...";
         }
     }
 }
 
-function modificarUsuario(){
+function modificarUsuario() {
     var nombre_usuario = document.getElementById("nombre_usuario");
     var password = document.getElementById("password");
     ajax = nuevoAjax();
@@ -411,20 +395,18 @@ function modificarUsuario(){
                 var rta = ajax.responseText;
                 if (rta.indexOf("1") >= 0) {
                     document.getElementById("divError").innerHTML = "Modificación exitosa";
-                }
-                else if (rta.indexOf("2") >= 0) {
+                } else if (rta.indexOf("2") >= 0) {
                     document.getElementById("divError").innerHTML = "Falló modificación";
                 }
             }
-        }
-        else
+        } else
         {
             document.getElementById("divError").value = "Verificando Usuario...";
         }
     }
 }
 
-function modificarRol(){
+function modificarRol() {
     var rol = document.getElementById("rol");
     var descripcion = document.getElementById("descripcion");
     //Falta hacer método que recorrar los checks, falta pestañas
@@ -442,20 +424,18 @@ function modificarRol(){
                 if (rta.indexOf("1") >= 0) {
                     document.getElementById("divError").innerHTML = "Modificación exitosa";
                     document.getElementById("registro").reset;
-                }
-                else if (rta.indexOf("2") >= 0) {
+                } else if (rta.indexOf("2") >= 0) {
                     document.getElementById("divError").innerHTML = "Falló modificación";
                 }
             }
-        }
-        else
+        } else
         {
             document.getElementById("divError").value = "Verificando Usuario...";
         }
     }
 }
 
-function modificarRF(){
+function modificarRF() {
     var id = document.getElementById("id");
     var modulo = document.getElementById("selectMod");
     var nombre = document.getElementById("nombre");
@@ -474,15 +454,36 @@ function modificarRF(){
                 if (rta.indexOf("1") >= 0) {
                     document.getElementById("divError").innerHTML = "Registro exitoso";
                     document.getElementById("registro").reset;
-                }
-                else if (rta.indexOf("2") >= 0) {
+                } else if (rta.indexOf("2") >= 0) {
                     document.getElementById("divError").innerHTML = "Falló registro";
                 }
             }
-        }
-        else
+        } else
         {
             document.getElementById("divError").value = "Verificando Usuario...";
         }
     }
+    
 }
+function cargarNoRF(modulo) {
+        ajax = nuevoAjax();
+        var rol = document.getElementById("selectMod");
+        parametros = "modulo=" + modulo + "&rol=" + rol.value ;
+        url = "procesar/cargarNoRFModulo.jsp";
+        ajax.open("POST", url, true);
+        ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        ajax.send(parametros);
+
+        ajax.onreadystatechange = function () {
+            if (ajax.readyState == 4) {
+                if (ajax.status == 200) {
+                    var rta = ajax.responseText;
+                    document.getElementById("modal").innerHTML = rta;   
+                    openModal("modal-mod-rf");
+                }
+            } else
+            {
+                document.getElementById("modal").value = "Verificando Usuario...";
+            }
+        }
+    }

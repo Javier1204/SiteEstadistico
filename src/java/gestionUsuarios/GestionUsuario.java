@@ -192,4 +192,9 @@ public class GestionUsuario implements IGestionUsuarios{
         return ControlGestionUsuarios.getInstance().listarRolesPrivilegios();
     }
 
+    @Override
+    public ModuloDTO cargarNotRFModulo(String modulo, String rol) {
+        return ControlGestionUsuarios.getInstance().cargarNotRFModulo(modulo, rol);
+    }
+
 }
