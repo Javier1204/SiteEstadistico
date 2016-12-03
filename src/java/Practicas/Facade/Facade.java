@@ -8,6 +8,10 @@ package Practicas.Facade;
 import Practicas.Controlador.*;
 import java.util.ArrayList;
 import Practicas.DTO.*;
+import internacionalizacion.Controlador.ControladorTipo_actividades;
+import internacionalizacion.Modelo.DTO.Tipo_actividades;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -26,20 +30,31 @@ public class Facade {
         return c.id_perfil_maximo();
     } 
     
+    public ArrayList<empresaDTO> obtenerEmpresas(){
+        empresaControlador c = new empresaControlador();
+        return c.consultar_Empresas();
+    }
+    
      public String registrarEmpresa( empresaDTO e) throws Exception{
          empresaControlador s=new empresaControlador();
          System.out.println("FACADE:: " + e.toString());//corralo
-         return s.registrarEmpresa(e);               
+         return s.registrarEmpresas(e);               
+    }
+     public String editarEmpresa( empresaDTO e) throws Exception{
+         empresaControlador s=new empresaControlador();
+         System.out.println("FACADE: ALGUNa vaina: " + e.toString());//corralo
+         return s.editarEmpresas(e);               
     }
     
-    public ArrayList<empresaDTO> obtenerEmpresa(){
-        empresaControlador c = new empresaControlador();
-        return c.consultarEmpresas();
+     public String editarPractica( practicaDTO e) throws Exception{
+         practicaControlador s=new practicaControlador();
+         System.out.println("FACADE: ALGUNa vaina: " + e.toString());//corralo
+         return s.editarPractica(e);               
     }
     
-    public ArrayList<estudianteDTO> obtenerEstudiante(){
+    public ArrayList<estudianteDTO> obtenerEstudiantes(){
         estudianteControlador c = new estudianteControlador();
-        return c.obtenerEstudiantes();
+        return c.obtener_Estudiantes();
     }
     public List<perfilDTO> listarPerfil(){
         perfilControlador c= new perfilControlador();
@@ -51,10 +66,14 @@ public class Facade {
         return c.buscarEstudiante(codigo);
     }
     
+    public practicaDTO buscarPractica(int id){
+        practicaControlador c= new practicaControlador();
+        return c.buscarPractica(id);
+    }
     
-    public docenteDTO buscarDocente(int codigo){
+    public docenteDTO buscar_Docente(int codigo){
         docenteControlador c= new docenteControlador();
-        return c.buscarDocente(codigo);
+        return c.buscar_Docente(codigo);
     }
     
     public String registrarConvenio(convenioDTO e) throws Exception{
@@ -67,6 +86,23 @@ public class Facade {
     public ArrayList<convenioDTO> obtenerConvenios(){
         convenioControlador c = new convenioControlador();
         return c.obtenerConvenios();
+    }
+    
+   public ArrayList<String> obtenerAnios(){
+        practicaControlador c = new practicaControlador();
+        return c.obtenerAnios();
+    }
+    
+    public ArrayList<practicaDTO> obtenerPracticas(){
+        practicaControlador c = new practicaControlador();
+        return c.obtenerPracticas();
+    }
+    
+   
+   
+    public ArrayList<practicaDTO> obtenerPracticas_anio(String semestre,String anio){
+        practicaControlador c = new practicaControlador();
+        return c.obtenerPracticas_anio(semestre,anio);
     }
     
     public convenioDTO consultarConvenio(String nombreconvenio){
@@ -93,9 +129,74 @@ public class Facade {
         estudianteControlador c= new estudianteControlador();
         return c.listarPerfilesEstudiante(cod);
     }
+    public boolean RegistrarTipo_Actividades(Tipo_actividades act){
+        ControladorTipo_actividades c = new ControladorTipo_actividades();
+        return c.registrarTipo_actividades(act);
+    }
     
     public perfilDTO buscarPerfil(int id){
         perfilControlador c= new perfilControlador();
         return c.buscarPerfil(id);
     }
+    
+      public String RegistrarPractica(practicaDTO p){
+       
+        practicaControlador c = new practicaControlador();
+        System.out.println("FACADE:: " + p.toString());
+        return c.RegistrarPractica(p);
+    }
+      public String eliminarEmpresa(String nit) throws SQLException{
+          empresaControlador c=new empresaControlador();
+          System.out.println("FACADE::" +nit+"");
+          return c.eliminarEmpresa(nit);
+      }
+      
+      public String eliminarPractica(int id) throws SQLException{
+          practicaControlador c=new practicaControlador();
+          System.out.println("FACADE::" +id+"");
+          return c.eliminarPractica(id);
+      }
+      
+      
+      public empresaDTO buscarEmpresa(String nit){
+        empresaControlador c= new empresaControlador();
+        return c.buscarEmpresa(nit);
+    }
+        public convenioDTO buscarConvenio(String id){
+        convenioControlador c= new convenioControlador();
+        return c.buscarConvenio(id);
+    }
+     public String editarConvenio( convenioDTO e) throws Exception{
+         convenioControlador s=new convenioControlador();
+         System.out.println("FACADE: ALGUNa vaina: " + e.toString());//corralo
+         return s.editarConvenio(e);               
+    }
+        public String eliminarConvenio(String id) throws SQLException{
+          convenioControlador c=new convenioControlador();
+          System.out.println("FACADE::" +id+"");
+          return c.eliminarConvenio(id);
+      }
+        
+        public String eliminarPerfil(int id) throws SQLException{
+          perfilControlador c=new perfilControlador();
+          System.out.println("FACADE::" +id+"");
+          return c.eliminarPerfil(id);
+      }
+        
+        public ArrayList fechas_practicas(){
+            practicaControlador a = new practicaControlador();
+            return a.fechas_practicas();
+        }
+        
+        public String generarEstadisticas(int añop, int semestrep) throws IOException{
+            practicaControlador p = new practicaControlador();
+            return p.generarEstadisticas(añop, semestrep);
+        }
+        
+         public boolean generarInformes(int añop, int semestrep){
+            practicaControlador p = new practicaControlador();
+            return p.generarInformes(añop, semestrep);
+        }
+        
+        
 }

@@ -8,6 +8,7 @@ package Practicas.Controlador;
 
 import Practicas.DAO.convenioDAO;
 import Practicas.DTO.convenioDTO;
+import java.sql.SQLException;
 import java.util.ArrayList;
 /**
  *
@@ -32,4 +33,19 @@ public class convenioControlador {
         return dao.consultarConvenio(nombreconvenio);
     }
     
+    public convenioDTO buscarConvenio(String id) {
+       convenioDAO dao = new convenioDAO();
+       return dao.buscarConvenio(id);
+    }
+    
+      public String editarConvenio( convenioDTO p) throws SQLException {
+                                    
+        convenioDAO ent = new convenioDAO();
+        return ent.editarConvenio(p);
+    }
+       
+      public String eliminarConvenio(String id) throws SQLException{
+        convenioDAO ent= new convenioDAO();
+        return ent.eliminarConvenio(id);
+    }
 }

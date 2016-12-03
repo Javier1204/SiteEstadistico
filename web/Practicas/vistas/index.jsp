@@ -23,6 +23,20 @@
         <script src="../estilos/js/ufps.js"></script>
         <script src="../estilos/js/bootstrap.js"></script>
         <script src="../estilos/js/bootstrap.min.js"></script>
+                <script src="js/bootstrap.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+         <link href="img/favicon.ico" rel="shortcut icon"/>
+        <!--Metaetiqueta para el uso del conjunto de caracteres adecuado-->
+        <meta charset="utf-8">
+        <!--Metaetiqueta para corregir compatibilidad con navegador Microsft-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!--Metaetiqueta para la correcta visualizaciÃ³n en dispositivos moviles-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--AÃ±ada primero el estilo de la libreria (ufps.css o ufps.min.css) y luego sus estilos propios-->
+        <link href="../../public/css/ufps.css" rel="stylesheet" type="text/css"/>
+        <link href="css/ufps.css" rel="stylesheet" type="text/css"/>
+        <link href="css/styles.css" rel="stylesheet" type="text/css"/>
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         
@@ -57,64 +71,70 @@
             <center>
                 <h1>Modulo de practicas </h1>
                 <h2>- Site Estadistico - </h2>
-                <h3>Universidad Francisco de Paula Santander</h3>
             </center>
             <BR>
         <div class="row">
             
+            
             <div class="col-xs-12 col-md-4">
                 <div class="ufps-img-thumbnail">
-                    <img src="../estilos/img/convenios.jpeg" alt="imagen de evento" >
+                    <img src="../img/perfiles.jpeg" alt="imagen de evento">
                     <div class="caption">
-                        <p><a href="mostrar_convenio.jsp" class="btn ufps-btn" role="button">Convenios</a></p>
+                        <p><a href="perfil.jsp" class="btn ufps-btn" role="button">Perfiles de practica</a></p>
                     </div>
                 </div>
              </div>
-
-             <div class="col-xs-12 col-md-4">
+            
+            <div class="col-xs-12 col-md-4">
                 <div class="ufps-img-thumbnail">
-                    <img src="../estilos/img/empresa.jpeg" alt="imagen de evento">
+                    <img src="../img/empresa.jpeg" alt="imagen de evento">
                     <div class="caption">
                         <p><a href="mostrar_empresa.jsp" class="btn ufps-btn" role="button">Empresas</a></p>
                     </div>
                 </div>
              </div>
 
+            
+            
+            
+            <div class="col-xs-12 col-md-4">
+                <div class="ufps-img-thumbnail">
+                    <img src="../img/convenios.jpeg" alt="imagen de evento" >
+                    <div class="caption">
+                        <p><a href="mostrar_convenio.jsp" class="btn ufps-btn" role="button">Convenios</a></p>
+                    </div>
+                </div>
+             </div>
+
+             
              <div class="col-xs-12 col-md-4">
                 <div class="ufps-img-thumbnail">
-                    <img src="../estilos/img/estudiantes.jpeg" alt="imagen de evento" >
+                    <img src="../img/estudiantes.jpeg" alt="imagen de evento" >
                     <div class="caption">
                         <p><a href="estudiantes.jsp" class="btn ufps-btn" role="button">Estudiantes</a></p>
                     </div>
                 </div>
              </div>   
-            
+         
             <div class="col-xs-12 col-md-4">
                 <div class="ufps-img-thumbnail">
-                    <img src="../estilos/img/practicas.jpeg" alt="imagen de evento" >
+                    <img src="../img/practicas.jpeg" alt="imagen de evento" >
                     <div class="caption">
-                        <p><a href="registro_practica.jsp" class="btn ufps-btn" role="button">Practicas</a></p>
+                        <p><a href="mostrar_practica.jsp" class="btn ufps-btn" role="button">Practicas</a></p>
                     </div>
                 </div>
              </div>
 
              <div class="col-xs-12 col-md-4">
                 <div class="ufps-img-thumbnail">
-                    <img src="../estilos/img/informes.jpeg" alt="imagen de evento">
+                    <img src="../img/informes.jpeg" alt="imagen de evento">
                     <div class="caption">
-                        <p><a href="#" class="btn ufps-btn" role="button">Informes</a></p>
+                        <p><a href="generar_estadisticas.jsp" class="btn ufps-btn" role="button">Estadisticas</a></p>
                     </div>
                 </div>
              </div>
 
-             <div class="col-xs-12 col-md-4">
-                <div class="ufps-img-thumbnail">
-                    <img src="../estilos/img/perfiles.jpeg" alt="imagen de evento">
-                    <div class="caption">
-                        <p><a href="perfil.jsp" class="btn ufps-btn" role="button">Perfiles de practica</a></p>
-                    </div>
-                </div>
-             </div>  
+               
             
         </div>
             </fieldset>
@@ -122,13 +142,14 @@
         
     </body>
     <BR><BR><BR>
-    <footer>
-         <div class="ufps-container ufps-footer-light">
+    <%--<footer>
+         <div class="ufps-container ufps-footer-light" WIDTH=80, HEIGTH=100>
             <center><h5 class="text-center">Universidad Francisco de Paula Santander</h5>
                 <h6 class="text-center">Programa Ingeniería de Sistemas<br>
                 Desarrollador por estudiantes de Seminario Integrador III</h6>
                 <h5> 2016</h5>
              </center>
         </div> 
-    </footer>
+    </footer>--%>
+    
 </html>

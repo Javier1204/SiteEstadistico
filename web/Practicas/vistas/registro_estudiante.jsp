@@ -24,7 +24,7 @@
     </head>
     <body>
         
-        <header>
+          <header>
             <center> <img id="banner" src="../estilos/img/Banner-superior.png" alt="imagen" height="100px" width="100%" ></img></center>
         </header>
        
@@ -42,7 +42,7 @@
                  </div>
                  <div class="ufps-navbar-left nav">
  
-                     <li><a href="../index.jsp" class="  ufps-navbar-btn  " >Home </a></li>
+                     <li><a href="index_estudiante.jsp" class="  ufps-navbar-btn  " >Inicio </a></li>
                      
                  </div>
  
@@ -54,7 +54,7 @@
           Facade f = new Facade();
           //AQUI OBTIENE LA SESION DEL ESTUDIANTE
           //escriba el codigo de un estudiante q tenga en la base de datos
-          int codigo = 1151111;
+          int codigo = 1150716;
           estudianteDTO ed = new estudianteDTO();
           ed = f.buscarEstudiante(codigo);
           System.out.println("Estudiante consultado. " + ed.toString());
@@ -79,24 +79,6 @@
                   <input type="text" class="ufps-input" id="apellidosEst" value="<%=ed.getApellidosEstudiante()%>">            
               </div
               <br>
-               <div class="form-group">
-                  <label for="direccionEst"><b>Direccion:</b></label>
-                  <input type="text" class="ufps-input" id="direccionEst">
-               </div>  
-                <div class="form-group col-md-6">
-                    <label for="nacimiento" title="FechaNacimiento"><b>Fecha Nacimiento:</b><span class="glyphicon glyphicon-question-sign"></span></label>
-                    <input type="date" class="ufps-input" id="nacimiento">
-                </div>
-                <div class="form-group">
-                    <label for="telefonoEst"><b>Telefono:</b></label>
-                    <input name="telefono" type="text" class="ufps-input" id="telefonoEst" >
-                </div>
-            
-                <div class="form-group">
-                    <label for="emailEst"><b>Email:</b></label>
-                    <input type="text" class="ufps-input" id="emailEst" >
-                </div>  
-     
               <br>
           </fieldset>
          </form>    
@@ -104,109 +86,49 @@
       </div>
         
         <%
-            List <perfil_estudianteDTO> lista2= f.listarPerfilesEstudiante(codigo);
             List <perfilDTO> lista = f.listarPerfil();
-            //int tam = lista.size();
-            //int [] valores= new int[tam];
-            //int ind=1;
-            //for(int x=0; x<tam; x++){
-              //  valores[x] = ind;
-               // ind++;
-           // }
         %>
-       <div class="ufps-container" id="contenido"> 
+        <div  class="ufps-container" id="contenido">
         <form method="POST" action="agregar_perfil.jsp"> 
            <fieldset>
                <h2>    Perfiles de practica</h2>
                
-               A continuacion deberá seleccionar cada perfil y asignarle un valor numero del combo de opciones. Tenga en cuenta que 1 representa lo que menos le interesa. 
-               Por favor, repetir hasta que el sistema le indique. 
-               <br>
-               
-              <div class="ufps-col-tablet-5 ufps-col-tablet-offset-0">
-                                 <div class="form-group">
-                                     <br><label for="perfiles">Seleccione Perfil</label> <br><br>
-                                     <div class="ufps-col-tablet-6 ufps-col-tablet-offset-1">
-                                         <select id="comboPerfiles" name="comboPerfiles" id="comboPerfiles" class="ufps-input " >
-                                             <% for(perfilDTO p: lista){
-                                             %>
-                                             <option value="<%=p.getIdperfil() %>"> <%= p.getNombre() %> </option>
-                                             <%
-                                                 }
-                                             %>
-                                    </select></div>
-                                 </div>  
-              </div>
-              
-                <%
-                %>                    
-               <div class="ufps-col-tablet-5 ufps-col-tablet-offset-1">
-                                 <div class="form-group">
-                                     <br><label for="valor_perfil">Asigne valor</label> <br><br>
-                                                                         
-                                            <input type="text" class="ufps-input" id="comboValor" >
-                                        </div>  
-                                         <%-- <select id="comboValor" name="comboValor" id="comboValor" class="ufps-input " >
-                                             <%// for(int i=0; i<tam; i++){
-                                                 
-                                            // %>
-                                             <option value="<%=valores[i] %>"> <%=valores[i]%> </option>
-                                          //   <% 
-                                        //         System.out.println(valores[i]);
-                                      //       }
-                                    //         %>
-                                    </select></div>
-                                         --%>
-                                         </div>
-                                 
-              
-            <BR>   
-            <input type="hidden" class="ufps-input" id="codigoEst" value="<%=codigo %>" name="codigoEst"> 
-          
-            <center> <div class="ufps-col-tablet-12">  
-                <div class="form-group">
-                    <button type="submit" class="ufps-btn" id="btnAgregarPerfil">Aceptar</button>
-                </div> 
-            </div></center>
+               En cada perfil debe asignarle un valor del 1 al 5 (siendo 1: No me interesa y 5:Me interesa mucho)
+               <br><br>
+                <div class="ufps-col-desktop-12 ufps-col-netbook-12 ufps-col-tablet-12 ufps-col-mobile-12">
+                    <div class="form-group">
+                        <table class="ufps-table">
+                            <thead><tr> 
+                                <td align="center">Id. Perfil</td>
+                                <td align="center">Nombre</td>
+                                <td align="center">Valor</td>
+                            </tr></thead>
+                            <tbody>
+                        <%  int n=0;
+                            for(perfilDTO p: lista){  
+                                n++;%>   
+                            <tr>
+                                <td align="center"> <%= p.getIdperfil()%> </td>
+                                <td align="center"> <%= p.getNombre() %> </td>
+                                <td align="center">  <input type="text" class="ufps-input" id="Valor<%=n%>"> </td>
+                            </tr>
+                        <% } %>
+                            </tbody>
+                        </table>
+                    </div> 
+                </div><br><br>       
+                        
+                  <input type="hidden" class="ufps-input" id="codigoEst" value="<%=codigo %>" name="codigoEst"> 
+                  
+                        <center><div class="ufps-col-tablet-12 ">  
+                            <div class="form-group">
+                                <button type="submit" class="ufps-btn" id="btnGuardarPerfiles">Guardar</button>
+                            </div></div></center>
+                        
               
                 <br><br>
                
-            </fieldset></form></div>  
-        <fieldset>
-        <table class="ufps-table">
-            <tr class="ufps-table-inserted tr"> 
-            <td>Id de Perfil</td>
-            <td>Nombre de Perfil</td>
-            <td>Valor</td>
-            <td>Opcion</td>
-           </tr>
-           
-           <% for (perfil_estudianteDTO est: lista2){
-               perfilDTO pd= f.buscarPerfil(est.getIdperfil());
-           
-           %>
-           <tr>
-            <td><%= est.getIdperfil() %></td>
-            <td><%= pd.getNombre() %></td>
-            <td> <%= est.getValor() %> </td>
-            <td>
-                <div class="form-group">
-                   <button type="submit" class="ufps-btn-light" id="btnEliminarPerfil">Eliminar</button> 
-                </div>  
-            </td> 
-           </tr>
-           
-           
-           <%               
-                   } 
-           %>
-        </table>
-               
-               <br>
-               
-           </fieldset>
-          
-       </div>
+           </fieldset></form></div>  
       
         <BR>
          <div class="ufps-container" id="contenido"> 
@@ -217,49 +139,46 @@
             Aqui deberá cargar los documentos solicitados
             <br> <br>
             <center>
+              
+            
              <div class="form-group">
+                 <form enctype="multipart/form-data" action="subir_archivo.jsp" method="POST"> 
                   <label for="cedula"><b>Escaneo de la cédula (pdf)</b></label>
-                 <form enctype="multipart/form-data" action="uploader.php" method="POST">
-                    <input name="uploadedfile" type="file" />
-                    <input type="submit" value="Subir archivo" />
-                 </form> 
+                  <input name="uploadedfile" type="file" /> 
+                  <input type="submit" class="ufps-btn" name="cedula" value="Subir Archivo">
+                 </form>
              </div>
                     
                <br>
                 <div class="form-group">
+                    <form enctype="multipart/form-data" action="subir_archivo.jsp" method="POST"> 
                     <label for="horario"><b>Horario(imagen)</b></label>
-                    <form enctype="multipart/form-data" action="uploader.php" method="POST">
-                        <input name="uploadedfile" type="file" />
-                        <input type="submit" value="Subir archivo" />
-                    </form> 
+                    <input name="uploadedfile" type="file" />
+                    <input type="submit" class="ufps-btn" name="horario" value="Subir Archivo">
+                    </form>
                 </div>
               <br>
                 <div class="form-group">
+                    <form enctype="multipart/form-data" action="subir_archivo.jsp" method="POST"> 
                     <label for="hv"><b>Hoja de vida(Documento) </b></label>
-                    <form enctype="multipart/form-data" action="uploader.php" method="POST">
-                        <input name="uploadedfile" type="file" />
-                        <input type="submit" value="Subir archivo" />
-                    </form> 
+                    <input name="uploadedfile" type="file" />
+                    <input type="submit" class="ufps-btn" name="hv" value="Subir Archivo">
+                    </form>
                 </div>
               <br>
+              
                 <div class="form-group">
+                    <form enctype="multipart/form-data" action="subir_archivo.jsp" method="POST"> 
                     <label for="afiliacion"><b>Afiliacion a ARS/EPS (imagen)</b></label>
-                    <form enctype="multipart/form-data" action="uploader.php" method="POST">
-                        <input name="uploadedfile" type="file" />
-                        <input type="submit" value="Subir archivo" />
-                    </form> 
+                        <input name="uploadedfile" type="file">
+                        <input type="submit" class="ufps-btn" name="afiliacion" value="Subir Archivo">
+                    </form>    
                 </div>
               <br>
-              En el caso de tener una empresa, adjuntar la carta solicitante
-                <div class="form-group">
-                    <label for="afiliacion"><b>Carta solicitante(Documento)</b></label>
-                    <form enctype="multipart/form-data" action="uploader.php" method="POST">
-                        <input name="uploadedfile" type="file" />
-                        <input type="submit" value="Subir archivo" />
-                    </form> 
-                </div>
+
                <br><br>  
-               
+            </form>   
+            </center>
                <form method="POST">    
                <center><div class="ufps-col-tablet-12 ">  
                 <div class="form-group">
@@ -271,6 +190,7 @@
         </div>     
         
         <BR>
+        
         
     </body>
     <BR><BR><BR>

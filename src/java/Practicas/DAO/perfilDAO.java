@@ -66,10 +66,52 @@ public class perfilDAO implements PerfilInterface{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+ public String eliminar_Perfil(int id) throws SQLException {
+        //ejemplo para usar el pool de conexiones. 
+        Pool pool = Conexion.getPool(); //llamo al objeto pool 
+        Connection con = null;
+        PreparedStatement pst = null;
+        String rta = "No conecto";
+        
 
-    public boolean eliminarPerfil(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            /**
+             * 02/11/2016 actualmente se utilizan el usuario ufps_76 pero a
+             * futuro cuando se cambien los permisos esto se modificara
+             *
+             */
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
+            con = pool.getDataSource().getConnection();  //genero la conexion
+            
+            String sql = "DELETE FROM practicas_perfil WHERE id_perfil="+id+";";
+            System.out.println(sql);
+            pst = con.prepareStatement(sql);
+
+            int a = pst.executeUpdate();
+            con.close();
+            
+              
+            
+
+            if (a == 1) {
+                System.out.println(" registrar");
+                rta = "Se ha actualizado la empresa";
+            } else {
+                System.out.println("no registrar");
+                rta = "No es posible actualizarla";
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(perfilDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            con.close();
+        }
+        return rta;
     }
+
+    
 
   
     public List<perfilDTO> listarPerfiles() {
@@ -154,6 +196,11 @@ public class perfilDAO implements PerfilInterface{
             Logger.getLogger(perfilDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return mx;
+    }
+
+    @Override
+    public boolean eliminarPerfil(Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
    

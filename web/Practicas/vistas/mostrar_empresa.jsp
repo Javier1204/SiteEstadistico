@@ -54,10 +54,11 @@ request.getSession().setAttribute("respuesta_mostrar_empresa", null);
  
                  </div>
                  <div class="ufps-navbar-left nav"><li><a href="index.jsp" class="  ufps-navbar-btn  " >INICIO</a></li></div>
-                 <div class="ufps-navbar-left nav"><li><a href="estudiantes.jsp" class="  ufps-navbar-btn  " >ESTUDIANTES</a></li></div>
-                 <div class="ufps-navbar-left nav"><li><a href="registro_practica.jsp" class="  ufps-navbar-btn  " >PRACTICAS</a></li></div>
-                 <div class="ufps-navbar-left nav"><li><a href="mostrar_convenio.jsp" class="  ufps-navbar-btn  " >CONVENIOS</a></li></div>
                  <div class="ufps-navbar-left nav"><li><a href="perfil.jsp" class="  ufps-navbar-btn  " >PERFILES DE PRACTICA</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="estudiantes.jsp" class="  ufps-navbar-btn  " >ESTUDIANTES</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="mostrar_empresa.jsp" class="  ufps-navbar-btn  " >EMPRESAS</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="mostrar_convenio.jsp" class="  ufps-navbar-btn  " >CONVENIOS</a></li></div>
+                 <div class="ufps-navbar-left nav"><li><a href="mostrar_practica.jsp" class="  ufps-navbar-btn  " >PRACTICAS</a></li></div>
                  <div class="ufps-navbar-left nav"><li><a href="" class="  ufps-navbar-btn  " >CONSULTAS E INFORMES</a></li></div>
                  
              </div>
@@ -76,7 +77,7 @@ request.getSession().setAttribute("respuesta_mostrar_empresa", null);
         <center><h2>LISTADO DE EMPRESAS</h2></center>
         
         <% 
-            List <empresaDTO> lista= f.obtenerEmpresa();           
+            List <empresaDTO> lista= f.obtenerEmpresas();           
         %>
         <div class="ufps-container" id="contenido">
             <fieldset>
@@ -85,9 +86,9 @@ request.getSession().setAttribute("respuesta_mostrar_empresa", null);
              <br>
                             
               <div class="ufps-col-tablet-9 ufps-col-offset-0">  
-                <div class="form-group">
-                    <button type="submit" class="ufps-btn">REGISTRAR EMPRESA</button>
-                </div> 
+                 <div class="caption">
+                        <p><a href="registro_empresas.jsp" class="btn ufps-btn" role="button">REGISTRAR EMPRESA</a></p>
+                    </div>
               </div>
             </fieldset>
         </div>
@@ -119,9 +120,11 @@ request.getSession().setAttribute("respuesta_mostrar_empresa", null);
                 <td> <%= p.getTipoAmbito() %> </td>
                 <td>
                     <div class="form-group">
-                    <button type="submit" class="ufps-btn-light"><b>Eliminar</b></button> 
-                    <button type="submit" class="ufps-btn-light"> <b>Editar</b> </button> 
-                    </div>  
+                    <div class="caption">
+                    <p><a href="eliminar_empresa_p.jsp?nit=<%= p.getNIT() %>" class="btn ufps-badge  " role="button">Eliminar</a></p>
+                    <p><a href="editar_empresa.jsp?nit=<%= p.getNIT() %>" class="btn- ufps-badge" role="button">Editar</a></p>
+                    </div>
+                    </div>
                 </td> 
                 </tr>
                 <%

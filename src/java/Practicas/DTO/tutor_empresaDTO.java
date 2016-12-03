@@ -16,15 +16,25 @@ public class tutor_empresaDTO {
     String telefono;
     String cargo;
     String email;
+    int id_empresa;
 
+    public int getId_empresa() {
+        return id_empresa;
+    }
+
+    public void setId_empresa(int id_empresa) {
+        this.id_empresa = id_empresa;
+    }
+    
     public tutor_empresaDTO() {
     }
 
-    public tutor_empresaDTO(String nombreTutor, String telefono, String cargo, String email) {
+    public tutor_empresaDTO(String nombreTutor, String telefono, String cargo, String email, int id_empresa) {
         this.nombreTutor = nombreTutor;
         this.telefono = telefono;
         this.cargo = cargo;
         this.email = email;
+        this.id_empresa=id_empresa;
     }
 
     public int getIdtutor() {
@@ -66,10 +76,12 @@ public class tutor_empresaDTO {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-   @Override
+
+    @Override
     public String toString() {
-        return "tutor_empresaDTO{" + "idtutor=" + idtutor + ", nombreTutor=" + nombreTutor + ", telefono=" + telefono + ", cargo=" + cargo + ", email=" + email + '}';
-    } 
+        return "tutor_empresaDTO{" + "idtutor=" + idtutor + ", nombreTutor=" + nombreTutor + ", telefono=" + telefono + ", cargo=" + cargo + ", email=" + email + ", id_empresa=" + id_empresa + '}';
+    }
+    
+   
     
 }

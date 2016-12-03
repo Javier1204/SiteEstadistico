@@ -11,30 +11,31 @@ package Practicas.DTO;
  */
 public class practicaDTO {
     int idpractica;
-    int añopractica;
-    String semestre;
+    String año_practica;
+    String semestre_practica;
     String urlCartaSolicitud;
-    int idconvenio;
+    String id_convenio;
     String urlCartaCumplido;
     String urlCartaAceptacion;
     String estado;
-    int idEmpresa;
-    String idestudiante;
-    int idperfil;
+    String id_estudiante;
+    String id_docente;
+    int id_perfil;
+    int id_tutor;
     String urlConvenio;
+    convenioDTO convenio;
+    estudianteDTO estudiante;
+    perfilDTO perfil;
 
-    public practicaDTO(int añopractica, String semestre, int idconvenio, String estado, int idperfil) {
-        this.añopractica = añopractica;
-        this.semestre = semestre;
-        this.idconvenio = idconvenio;
-        this.estado = estado;
-        this.idperfil = idperfil;
+    public practicaDTO(String año_practica) {
+        this.año_practica = año_practica;
     }
-
-    public practicaDTO() {
-    }
-
     
+    @Override
+    public String toString() {
+        return "practicaDTO{" + "idpractica=" + idpractica + ", a\u00f1o_practica=" + año_practica + ", semestre_practica=" + semestre_practica + ", id_convenio=" + id_convenio + ", urlCartaCumplido=" + urlCartaCumplido + ", estado=" + estado + ", id_estudiante=" + id_estudiante + ", id_docente=" + id_docente + ", id_perfil=" + id_perfil + ", id_tutor=" + id_tutor + '}';
+    }
+
     public int getIdpractica() {
         return idpractica;
     }
@@ -43,20 +44,20 @@ public class practicaDTO {
         this.idpractica = idpractica;
     }
 
-    public int getAñopractica() {
-        return añopractica;
+    public String getAño_practica() {
+        return año_practica;
     }
 
-    public void setAñopractica(int añopractica) {
-        this.añopractica = añopractica;
+    public void setAño_practica(String año_practica) {
+        this.año_practica = año_practica;
     }
 
-    public String getSemestre() {
-        return semestre;
+    public String getSemestre_practica() {
+        return semestre_practica;
     }
 
-    public void setSemestre(String semestre) {
-        this.semestre = semestre;
+    public void setSemestre_practica(String semestre_practica) {
+        this.semestre_practica = semestre_practica;
     }
 
     public String getUrlCartaSolicitud() {
@@ -67,12 +68,12 @@ public class practicaDTO {
         this.urlCartaSolicitud = urlCartaSolicitud;
     }
 
-    public int getIdconvenio() {
-        return idconvenio;
+    public String getId_convenio() {
+        return id_convenio;
     }
 
-    public void setIdconvenio(int idconvenio) {
-        this.idconvenio = idconvenio;
+    public void setId_convenio(String id_convenio) {
+        this.id_convenio = id_convenio;
     }
 
     public String getUrlCartaCumplido() {
@@ -99,28 +100,37 @@ public class practicaDTO {
         this.estado = estado;
     }
 
-    public int getIdEmpresa() {
-        return idEmpresa;
+    
+    public String getId_estudiante() {
+        return id_estudiante;
     }
 
-    public void setIdEmpresa(int idEmpresa) {
-        this.idEmpresa = idEmpresa;
+    public void setId_estudiante(String id_estudiante) {
+        this.id_estudiante = id_estudiante;
     }
 
-    public String getIdestudiante() {
-        return idestudiante;
+    public String getId_docente() {
+        return id_docente;
     }
 
-    public void setIdestudiante(String idestudiante) {
-        this.idestudiante = idestudiante;
+    public void setId_docente(String id_docente) {
+        this.id_docente = id_docente;
     }
 
-    public int getIdperfil() {
-        return idperfil;
+    public int getId_perfil() {
+        return id_perfil;
     }
 
-    public void setIdperfil(int idperfil) {
-        this.idperfil = idperfil;
+    public void setId_perfil(int id_perfil) {
+        this.id_perfil = id_perfil;
+    }
+
+    public int getId_tutor() {
+        return id_tutor;
+    }
+
+    public void setId_tutor(int id_tutor) {
+        this.id_tutor = id_tutor;
     }
 
     public String getUrlConvenio() {
@@ -130,6 +140,61 @@ public class practicaDTO {
     public void setUrlConvenio(String urlConvenio) {
         this.urlConvenio = urlConvenio;
     }
+    public practicaDTO( int idpractica, String año_practica, String semestre_practica, String id_convenio, String estado,  String id_docente,String id_estudiante,  int id_perfil, int id_tutor) {
+        this.idpractica=idpractica;
+        this.año_practica = año_practica;
+        this.semestre_practica = semestre_practica;
+        this.id_convenio = id_convenio;
+        this.estado = estado;
+        this.id_estudiante = id_estudiante;
+        this.id_docente = id_docente;
+        this.id_perfil = id_perfil;
+        this.id_tutor = id_tutor;
+    }
+
+    public practicaDTO( String año_practica, String semestre_practica, String id_convenio, String estado,  String id_docente,String id_estudiante,  int id_perfil, int id_tutor) {
+        
+        this.año_practica = año_practica;
+        this.semestre_practica = semestre_practica;
+        this.id_convenio = id_convenio;
+        this.estado = estado;
+        this.id_estudiante = id_estudiante;
+        this.id_docente = id_docente;
+        this.id_perfil = id_perfil;
+        this.id_tutor = id_tutor;
+    }
+    public void setEmpresa(String idconvenio, int id_empresa,String nombre_empresa){
+     
+     convenio=new convenioDTO();
+     convenio.setEmpresa(id_empresa, nombre_empresa);
+     
+    }
     
+    public convenioDTO getEmpresa(){
+     return convenio;
+ }
+    public void setEstudiante(String codigoEstudiante, String nombreEstudiante){
+     
+     estudiante=new estudianteDTO();
+     estudiante.setCodigoEstudiante(codigoEstudiante);
+     estudiante.setNombresEstudiante(nombreEstudiante);
+ }
+    
+    public estudianteDTO getEstudiante(){
+     return estudiante;
+ }
+    public void setPerfil(int id_perfil, String nombrePerfil){
+     
+     perfil=new perfilDTO();
+     perfil.setIdperfil(id_perfil);
+     perfil.setNombre(nombrePerfil);
+ }
+    
+    public perfilDTO getPerfil(){
+     return perfil;
+ }
+
+    public practicaDTO() {
+    }
     
 }

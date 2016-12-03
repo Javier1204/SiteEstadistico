@@ -42,11 +42,11 @@ public class docenteDTO {
     }
 
     
-    public String getCodigo() {
+    public String get_Codigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void set_Codigo(String codigo) {
         this.codigo = codigo;
     }
 

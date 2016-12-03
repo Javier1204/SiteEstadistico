@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 public class docenteDAO {
     
     
-    public docenteDTO buscarDocente(int codigo) {
+    public docenteDTO buscar_Docente(int codigo) {
         docenteDTO x= new docenteDTO();
         
         Connection conn;
@@ -61,7 +61,7 @@ public class docenteDAO {
 
              **/
             while(rs.next()){
-                x.setCodigo(rs.getString("codigo"));
+                x.set_Codigo(rs.getString("codigo"));
                 x.setCedulaDocente(rs.getString("cedula"));
                 x.setNombreDocente(rs.getString("nombres"));
                 x.setApellidosDocente(rs.getString("apellidos"));
@@ -74,7 +74,8 @@ public class docenteDAO {
                 x.setAñosExperiencia(rs.getByte("anos_exp"));
                 x.setFechaNacimiento(rs.getDate("fecha_nac"));
                 x.setDireccion(rs.getString("direccion_resi"));
-                
+            
+                System.out.println(x.toString());
             }
             conn.close();
             //lleveme al jsp

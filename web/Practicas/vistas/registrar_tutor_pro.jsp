@@ -14,6 +14,7 @@ String nombreTutor=request.getParameter("nombres");
 String telefono=request.getParameter("telefono");
 String cargo=request.getParameter("cargo");
 String email=request.getParameter("email");
+int entidad=Integer.parseInt(request.getParameter("entidad"));
 Facade f = new Facade();
 tutor_empresaDTO p= new tutor_empresaDTO();
 
@@ -21,6 +22,7 @@ p.setNombreTutor(nombreTutor);
 p.setTelefono(telefono);
 p.setCargo(cargo);
 p.setEmail(email);
+p.setId_empresa(entidad);
 String r = f.registrarTutor(p);//corralo
 request.getSession().setAttribute("respuesta_tutor_pro", r);
 %>

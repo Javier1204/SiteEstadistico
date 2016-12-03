@@ -7,6 +7,7 @@ package Practicas.Controlador;
 
 import Practicas.DAO.perfilDAO;
 import Practicas.DTO.perfilDTO;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -33,5 +34,9 @@ public class perfilControlador {
     public perfilDTO buscarPerfil(int id) {
        perfilDAO dao = new perfilDAO();
        return dao.buscarPerfil(id);
+    }
+      public String eliminarPerfil(int id) throws SQLException{
+        perfilDAO ent= new perfilDAO();
+        return ent.eliminar_Perfil(id);
     }
 }
