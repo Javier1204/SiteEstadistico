@@ -126,6 +126,11 @@ public interface IGestionUsuarios {
     public List<RolDTO>  listarRoles();
     
     /**
+     * Lista los rols junto con sus privilegios
+     * @return 
+     */
+    public List<RolDTO>  listarRolesPrivilegios();
+    /**
      * lista todos los modulos que hay en el sistema, junto con sus requermientos funcionales
      * @return 
      */

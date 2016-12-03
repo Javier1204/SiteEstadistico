@@ -51,7 +51,7 @@ function ingresar() {
                         login.action = "listar_modulos.jsp";
                         login.submit();
                     } else if (rta.indexOf("2") >= 0) {
-                        login.action = "listar_modulos.jsp";
+                        login.action = "index.jsp";
                         login.submit();
                     }
                 }
@@ -288,9 +288,9 @@ function buscarPrivilegios() {
                 var rta = ajax.responseText;
                 document.getElementById("campo").innerHTML = rta;
             }
-            if (rta.indexOf("2") >= 0) {
-                document.getElementById("campo").innerHTML = "Usuario no existente";
-            }
+//            if (rta.indexOf("2") >= 0) {
+//                document.getElementById("campo").innerHTML = "Usuario no existente";
+//            }
         }
         else
         {

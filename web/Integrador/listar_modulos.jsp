@@ -31,6 +31,9 @@ history.forward();
   }
   List<ModuloDTO> modulos = cuenta.listarModulos();
   
+
+    
+    
 %>   
 <script src="../public/js/ufps.js"></script>
         

@@ -14,11 +14,11 @@
     String password = request.getParameter("password");
     System.out.println("llega");
     IGestionUsuarios gestor = GestionUsuario.getInstance();
-    ICuenta exito = gestor.loggearUsuario(user, password);
+    ICuenta cuenta = gestor.loggearUsuario(user, password);
     String mensaje = "";
-    if (exito!=null) {
+    if (cuenta!=null) {
         System.out.println("Entro");
-        session.setAttribute("usuario", exito);
+        session.setAttribute("usuario", cuenta);
         session.setMaxInactiveInterval(1 * 60 * 60);
         mensaje = "1";
     } else {

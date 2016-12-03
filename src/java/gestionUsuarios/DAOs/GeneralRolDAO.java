@@ -107,7 +107,10 @@ public class GeneralRolDAO {
         return false;
     }
     public static void main(String[] args) {
-        //GeneralRolDAO rol=new GeneralRolDAO();
+        GeneralRolDAO rol=new GeneralRolDAO(ConexionGUDAOs.obtenerConexion());
+        for (RolDTO rolDTO : rol.listarRoles()) {
+            System.out.println(rolDTO.getRol());
+        }
         //System.out.println(rol.listarRoles().get(0).getRol());
     }
 }

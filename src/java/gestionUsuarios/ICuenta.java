@@ -18,7 +18,16 @@ import java.util.List;
  * @author Lenovo
  */
 public interface ICuenta {
+    
+    /**
+     * Devulve el username, que en este caso es el codigo del profesor o estudiante
+     * @return 
+     */
     public String getUser();
+    /**
+     * retorna la contraseña de la cuenta no encriptada
+     * @return 
+     */
     public String getPassword();
     /**
      * metodo para saber si el usuario puede controlar un modulo, es independiente del rol
@@ -69,6 +78,11 @@ public interface ICuenta {
      * @return 
      */
     public PrivilegioDTO getPrivilegioDTO(String rol);
+    
+    /**
+     * Lista los roles del usuario
+     * @return 
+     */
     public ArrayList<RolDTO> listarRoles();
 
     /**
@@ -97,5 +111,10 @@ public interface ICuenta {
      * @param roles 
      */
     public void construirCuenta(UsuarioDTO user, List<RolDTO> roles);
+    
+    /**
+     * retorna el nombre del profesor o estudiante
+     * @return 
+     */
     public String getNombre();
 }

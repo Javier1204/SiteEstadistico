@@ -150,8 +150,9 @@ public class GestionUsuario implements IGestionUsuarios{
 
     
     public static void main(String[] args) {
-        ICuenta cuenta=new GestionUsuario().loggearUsuario("23", "12345");
-        System.out.println(cuenta.getNombre());
+        //ICuenta cuenta=new GestionUsuario().loggearUsuario("23", "12345");
+        PrivilegioDTO p=new GestionUsuario().cargarPrivilegio("Administrador");
+        System.out.println("");
         
         //ArrayList<ModuloDTO> listaMod=(ArrayList<ModuloDTO>)cuenta.listarModulos();
         //System.out.println(cuenta.getPassword());
@@ -184,6 +185,11 @@ public class GestionUsuario implements IGestionUsuarios{
     @Override
     public PrivilegioDTO cargarPrivilegio(String rol) {
         return ControlGestionUsuarios.getInstance().cargarPrivilegio(rol);
+    }
+
+    @Override
+    public List<RolDTO> listarRolesPrivilegios() {
+        return ControlGestionUsuarios.getInstance().listarRolesPrivilegios();
     }
 
 }

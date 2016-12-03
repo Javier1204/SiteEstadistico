@@ -86,7 +86,12 @@ public class ControlGestionUsuarios {
     protected List<ModuloDTO> listarModulos() {
         Connection con = ConexionGUDAOs.obtenerConexion();
         try {
-            return new GeneralModuloDAO(con).listaModulos();
+            List<ModuloDTO> mods=new GeneralModuloDAO(con).listaModulos();
+            GeneralRequerimientoFDAO rfDAO=new GeneralRequerimientoFDAO(con);
+            for (ModuloDTO mod : mods) {
+                mod.setRequerimientos((ArrayList<RequerimientosFDTO>) rfDAO.getRFs(mod.getNombre()));
+            }
+            return mods;
         } finally {
             ConexionGUDAOs.cerrarConexion(con);
         }
@@ -394,6 +399,21 @@ public class ControlGestionUsuarios {
                 }
             }
             return true;
+        } finally {
+            ConexionGUDAOs.cerrarConexion(con);
+        }
+    }
+    
+    protected List<RolDTO> listarRolesPrivilegios() {
+        Connection con = ConexionGUDAOs.obtenerConexion();
+        try {
+            GeneralRolDAO roldao = new GeneralRolDAO(con);
+            GeneralPrivilegioDAO privilrgioDAO= new GeneralPrivilegioDAO(con);
+            List<RolDTO> roles= roldao.listarRoles();
+            for (RolDTO rol : roles) {
+                rol.setPrivilegio(privilrgioDAO.getPrivilegioUsuarioPorRol(rol.getRol()));
+            }
+            return roles;
         } finally {
             ConexionGUDAOs.cerrarConexion(con);
         }
