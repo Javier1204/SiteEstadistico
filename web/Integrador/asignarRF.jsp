@@ -25,7 +25,7 @@
         <label id="divError" class="ufps-col-pc-8"></label>
         <div class="ufps-row" >
 
-            <form method="post" action="javascript:actualizarPrivilegios()" name="registro"  class="f-integrador" id="registro">
+            <div class="f-integrador" id="registro"><!-- method="POST" action="javascrip:actualzarPrivilegio()"--> 
                 <div>
                     <div class="ufps-tooltip">
                         <label >Rol</label><br>
@@ -38,48 +38,12 @@
                         <% } %>
                     </select>
                 </div>
+                    <!--<center><img src='img/load.gif' > </center>-->
                 <div id="campo">
-                    <%
-                        IGestionUsuarios gestor = GestionUsuario.getInstance();
-                        List<ModuloDTO> modulos = gestor.listarModulo();
-
-                    %>
-                    <% for (ModuloDTO mod : modulos) {
-                            int i = 0;%>
-                    <div class="ufps-accordion" style="text-align: center">
-                        <button class="ufps-btn-accordion"><h4 class="text-center">Requerimientos funcionales <%= mod.getNombre()%></h4></button>
-                        <div class="ufps-accordion-panel">
-                            <% List<RequerimientosFDTO> reqs = mod.getRequerimientos();
-                                if (!reqs.isEmpty()) {
-                            %>
-
-                            <table id="table" class="ufps-table ufps-text-left">
-                                <% for (RequerimientosFDTO d : reqs) {
-                                        if (i == 0) {
-                                %>
-                                <tr>
-                                    <% }
-                                        i++;%>
-                                    <td> <input style="width: 40px;" type="checkbox" title="<%=d.getId()%>" name="checkRol" id="<%=d.getId()%>" value="<%=d.getId()%>"/> <%=d.getId()%> </td>
-                                        <% if (i == 3) {
-                                                i = 0;%>
-                                </tr> 
-                                <% }
-                                    }%>
-                            </table> 
-
-                            <% } else {%>
-
-                            <label>El módulo <%= mod.getNombre()%> no tiene RFs </label>
-                            <% }%>
-                        </div>
-                    </div>
-                    <%
-                        }%>
-                    <input type="submit" class="ufps-btn acomodarBtn" value="Asignar">     
+                      
                 </div>
 
-            </form>
+            </div>
             <div id="modal"></div>
         </div> 
     </div>

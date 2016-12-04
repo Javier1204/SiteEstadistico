@@ -12,10 +12,15 @@ var posD = 1;
  lo que se puede copiar tal como esta aqui */
 function nuevoAjax()
 {
-    var xmlhttp = false;
+    var connection = false;
     try {
         // Creacion del objeto AJAX para navegadores no IE Ejemplo:Mozilla, Safari 
-        xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+        if (window.XMLHttpRequest) {
+            connection = new XMLHttpRequest();
+        } else if (window.ActiveXObject) {
+            connection = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        //xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
     } catch (e) {
         try {
             // Creacion del objet AJAX para IE
@@ -25,7 +30,7 @@ function nuevoAjax()
                 xmlhttp = new XMLHttpRequest();
         }
     }
-    return xmlhttp;
+    return connection;
 }
 
 function ingresar() {
@@ -269,21 +274,21 @@ function buscarPrivilegios() {
     ajax.open("POST", url, true);
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     ajax.send(parametros);
-
+    document.getElementById("campo").innerHTML = "<img src='img/load.gif' > ";
     ajax.onreadystatechange = function () {
+        console.log(ajax.readyState);
         if (ajax.readyState == 4) {
             if (ajax.status == 200) {
                 var rta = ajax.responseText;
                 document.getElementById("campo").innerHTML = rta;
                 toggleAccordion();
-                onload();
             }
 //            if (rta.indexOf("2") >= 0) {
 //                document.getElementById("campo").innerHTML = "Usuario no existente";
 //            }
-        } else
-        {
-            document.getElementById("divError").value = "Verificando Usuario...";
+        } else {
+            //alert("entro");
+            document.getElementById("campo").value = "<img src='../img/load.gif' height='42' width='42'> ";
         }
     }
 
@@ -463,27 +468,90 @@ function modificarRF() {
             document.getElementById("divError").value = "Verificando Usuario...";
         }
     }
-    
+
 }
 function cargarNoRF(modulo) {
-        ajax = nuevoAjax();
-        var rol = document.getElementById("selectMod");
-        parametros = "modulo=" + modulo + "&rol=" + rol.value ;
-        url = "procesar/cargarNoRFModulo.jsp";
-        ajax.open("POST", url, true);
-        ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        ajax.send(parametros);
+    ajax = nuevoAjax();
+    var rol = document.getElementById("selectMod");
+    parametros = "modulo=" + modulo + "&rol=" + rol.value;
+    url = "procesar/cargarNoRFModulo.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
 
-        ajax.onreadystatechange = function () {
-            if (ajax.readyState == 4) {
-                if (ajax.status == 200) {
-                    var rta = ajax.responseText;
-                    document.getElementById("modal").innerHTML = rta;   
-                    openModal("modal-mod-rf");
-                }
-            } else
-            {
-                document.getElementById("modal").value = "Verificando Usuario...";
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("modal").innerHTML = rta;
+                openModal("modal-mod-rf");
             }
+        } else
+        {
+            document.getElementById("modal").value = "<img src='../img/load.gif'/ height='42' width='42'> ";
         }
     }
+}
+function asignarPrivilegios(modulo, rol){
+    ajax = nuevoAjax();
+    var checkboxes = document.getElementById("formP").checkP;
+    var rfs="";
+    var cont=0;
+    for (var i = 0; i < checkboxes.length; i++) {
+        if(checkboxes[i].checked){
+            rfs+=checkboxes[i].id+"-";
+            cont++;
+        }
+    }
+    
+    parametros = "rfs=" + rfs + "&rol=" + rol+"&modulo=" + modulo;
+    url = "procesar/procesarAsignarPrivilegio.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+    document.getElementById("rAsignacion").innerHTML = "<center><img src='img/load.gif'  ></center> ";
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("rAsignacion").innerHTML = rta;
+                buscarPrivilegios();
+                //openModal("modal-mod-rf");
+            }
+        } else
+        {
+            document.getElementById("rAsignacion").value = "<img src='../img/load.gif'/ height='42' width='42'> ";
+        }
+    }
+}
+function eliminarPrivilegios(modulo, rol){
+    ajax = nuevoAjax();
+    
+    var checkboxes = document.getElementsByName("check"+modulo);
+    var rfs="";
+    for (var i = 0; i < checkboxes.length; i++) {
+        if(checkboxes[i].checked){
+            rfs+=checkboxes[i].id+"-";
+            //cont++;
+        }
+    }
+    parametros = "rfs=" + rfs + "&rol=" + rol+"&modulo=" + modulo;
+    url = "procesar/procesarEliminarPrivilegio.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+    document.getElementById("campo").innerHTML = "<center><img src='img/load.gif'  ></center> ";
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("rAsignacion").innerHTML = rta;
+                buscarPrivilegios();
+                //openModal("modal-mod-rf");
+            }
+        } else
+        {
+            document.getElementById("rAsignacion").value = "<img src='../img/load.gif'/ height='42' width='42'> ";
+        }
+    }
+}

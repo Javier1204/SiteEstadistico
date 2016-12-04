@@ -15,6 +15,10 @@ import java.util.List;
 public class PrivilegioDTO {
     private ArrayList<ModuloDTO> modulos;
 
+    public PrivilegioDTO() {
+        modulos=new ArrayList<ModuloDTO>();
+    }
+
     public ArrayList<ModuloDTO> getModulos() {
         return modulos;
     }

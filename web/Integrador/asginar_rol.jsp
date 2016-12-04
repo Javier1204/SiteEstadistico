@@ -18,7 +18,7 @@
 <div class="ufps-container ufps-fix-navbar-fixed">
         <center> <h1>Asignar Roles</h1></center>
         <center><label id="divError"></label></center>
-        <form method="post" action="javascript:actualizarRoles()" name="registro" class="form" id="registro">
+        <div method="post" action="javascript:actualizarPrivilegios()" name="registro" class="form" id="registro">
             <div>
                 <label >Nombre usuario</label><br>
                 <input type="text" required name="nombre_usuario" id="nombre_usuario" placeholder="Nombre de usuario" class="ufps-input ufps-black" />

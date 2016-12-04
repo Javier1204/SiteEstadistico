@@ -75,7 +75,7 @@
         </div>
         <div class="ufps-modal-body">
             <p class="ufps-text-center">Requerimientos funcionales no asignados al rol <%=rol%></p>
-            <form>
+            <form id="formP">
                 <table id="table" class="ufps-table ufps-table-inserted ufps-text-left">
                     <thead>
                     <th>SELECCÓN</th>
@@ -88,7 +88,7 @@
                     %>
                     <tr>
                         <td>
-                            <input  style="width: 40px;" type="checkbox" title="<%=rfDTO.getId()%>" name="checkRol" id="<%=rfDTO.getId()%>" value="<%=rfDTO.getId()%>"/> 
+                            <input  style="width: 40px;" type="checkbox" title="<%=rfDTO.getId()%>" name="checkP" id="<%=rfDTO.getId()%>" value="<%=rfDTO.getId()%>"/> 
                         </td>
                         <td>
                             <%=rfDTO.getId()%>        
@@ -102,8 +102,9 @@
                     %>
                 </table>
             </form>
-            <button onclick=""  class="ufps-btn ufps-btn-green acomodarBtn" >Asignar</button>
+                <button onclick="javascript:asignarPrivilegios('<%=modulo%>','<%=rol%>')"  class="ufps-btn ufps-btn-green acomodarBtn" >Asignar requerimientos seleccionados</button>
         </div>
+        <div id="rAsignacion"></div>
         <div class="ufps-modal-footer">
             <h3>Asingnación Requerimientos funcionales</h3>
         </div>

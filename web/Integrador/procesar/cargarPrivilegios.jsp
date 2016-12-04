@@ -15,6 +15,7 @@
 <%@page import="gestionUsuarios.IGestionUsuarios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
+
     request.setCharacterEncoding("UTF-8");
     System.out.println("Entra");
     String rol = request.getParameter("rol");
@@ -42,29 +43,44 @@
             if (!reqs.isEmpty()) {
         %>
 
-        <table id="table" class="ufps-table ufps-text-left">
-            <% for (RequerimientosFDTO d : reqs) {
-                    if (i == 0) {
-            %>
-            <tr>
-                <% }
-                    i++;%>
-                <td> 
-                    <input  style="width: 40px;" type="checkbox" title="<%=d.getId()%>" name="checkRol" id="<%=d.getId()%>"/><%=d.getId()%>
-                </td>
-                <% if (i == 3) {
-                        i = 0;%>
-            </tr> 
-            <% }
-                }%>
-        </table> 
+        <div id="formPE<%=mod.getNombre()%>">
+            <table id="table" class="ufps-table ufps-table-inserted ufps-text-left">
+                <thead>
+                <th>SELECCÓN</th>
+                <th>ID</th>
+                <th>NOMBRE</th>
+                </thead>
+                <%
+                    //int i = 0;
+                    for (RequerimientosFDTO rfDTO : reqs) {
+                %>
+                <tr>
+                    <td>
+                        <input  style="width: 40px;" type="checkbox" title="<%=rfDTO.getId()%>" name="check<%=mod.getNombre()%>" id="<%=rfDTO.getId()%>" value="<%=rfDTO.getId()%>"/> 
+                    </td>
+                    <td>
+                        <%=rfDTO.getId()%>        
+                    </td>
+                    <td>
+                        <%=rfDTO.getNombre()%>
+                    </td>
+                </tr>
+                <%
+                    }
+                %>
+            </table>
+            <div class="ufps-btn-group">
+                <button onclick="javascript:cargarNoRF('<%=mod.getNombre()%>')" class="ufps-btn ufps-btn-green acomodarBtn" >Asignar nuevo</button>  
+                <button onclick="javascript:eliminarPrivilegios('<%=mod.getNombre()%>', '<%=rol%>')" class="ufps-btn acomodarBtn" >Eliminar Seleccionados</button>  
+            </div>
+        </div> 
 
         <% } else {%>
 
         <label>El módulo <%= mod.getNombre()%> no tiene RFs </label>
         <% }%>
-        <input type="submit" onclick="javascript:cargarNoRF('<%=mod.getNombre()%>')" class="ufps-btn ufps-btn-green acomodarBtn" value="Asignar nuevo requerimiento">  
-        
+
+
 
     </div>
 
