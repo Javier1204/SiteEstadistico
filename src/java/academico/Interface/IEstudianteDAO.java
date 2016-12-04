@@ -13,8 +13,9 @@ import java.util.ArrayList;
  *
  * @author Mauricio
  */
-public interface IProyectoDAO {
+public interface IEstudianteDAO {
     
-    public ArrayList<ProyectoDTO> obtenerProyectos(int cod_grupo) throws SQLException;
-    public boolean modificarProyecto(int proyecto_id, ProyectoDTO new_dto) throws SQLException;
+    public ArrayList<ProyectoDTO> listarProyectos(String cod_estudiante) throws SQLException;
+    public int obtenerCodigoEquipo(String cod_estudiante, int proyecto) throws SQLException;
+    public boolean subirEntregable(int cod_equipo, int cod_entregable, String url) throws SQLException;
 }

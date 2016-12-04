@@ -15,8 +15,18 @@ import java.util.ArrayList;
  */
 public class EquipoControler {
     
-    public int[] registrarEquipos(ArrayList<String> equipos) throws SQLException{
+    public int[] registrarEquipos(ArrayList<String> data, String[] team_names, int cod_grupo) throws SQLException{
         EquipoDAO dao = new EquipoDAO();
-        return dao.registrarEquipo(equipos);
+        return dao.registrarEquipo(data, team_names, cod_grupo);
+    }
+    
+    public int[] registrarEquipoModificable(ArrayList<String> names, String[][] data, int number, int cod_grupo) throws SQLException{
+        EquipoDAO dao = new EquipoDAO();
+        return dao.registrarEquipoModificable(names, data, number, cod_grupo);
+    }
+    
+    public boolean asignarEstudianteAEquipo(String[][] data) throws SQLException {
+        EquipoDAO dao = new EquipoDAO();
+        return dao.asignarEstudianteAEquipo(data);
     }
 }

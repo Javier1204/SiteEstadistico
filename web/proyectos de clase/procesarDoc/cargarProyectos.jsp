@@ -20,7 +20,7 @@ System.out.println("godkc "+cod_grp);
         <tr>
             <th data-field="codigo">Codigo</th>
             <th  data-field="nombre">Nombre</th>
-            <th  data-field="nom_equipo">Nombre equipo </th>
+            <th  data-field="nom_equipo">Nombre proyecto</th>
             <th  data-field="ver_proyecto">Ver proyecto</th>
 
         </tr>

@@ -9,13 +9,15 @@ import academico.DTO.EstudianteDTO;
 import academico.DTO.GrupoDTO;
 import academico.Facade.Facade;
 import general.conexion.Conexion;
-import general.conexion.Pool;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import academico.Interface.IUtilDAO;
+import general.conexion.Pool;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,11 +33,11 @@ public class UtilDAO implements IUtilDAO {
         ArrayList<EstudianteDTO> estudiantes = null;
         EstudianteDTO dto = null;
         try {
-            estudiantes = new ArrayList();
             pool.setUsuario("ufps_76");
             pool.setContrasena("ufps_29");
             pool.inicializarDataSource();
             con = pool.getDataSource().getConnection();
+            estudiantes = new ArrayList();
             stmt = con.prepareStatement("SELECT general_estudiante.codigo, general_estudiante.nombres, general_estudiante.apellidos\n"
                     + "FROM academico_estudiantexgrupo, general_estudiante\n"
                     + "WHERE academico_estudiantexgrupo.id_grupo =?\n"
@@ -64,16 +66,16 @@ public class UtilDAO implements IUtilDAO {
     @Override
     public ArrayList<GrupoDTO> asignaturasDoc(String codig_doc) throws SQLException {
         Pool pool = Conexion.getPool();
-        Connection conn = null;
+        Connection con = null;
         ArrayList<GrupoDTO> data = new ArrayList();
         try {
             pool.setUsuario("ufps_76");
             pool.setContrasena("ufps_29");
             pool.inicializarDataSource();
-            conn = pool.getDataSource().getConnection();
-            PreparedStatement stmt = conn.prepareStatement("SELECT general_asignatura.nombre, general_asignatura.codigo, "
-                    + "carga_grupo.id_grupo FROM general_asignatura, carga_grupo, carga_carga_academica "
-                    + "WHERE carga_carga_academica.codig_doc = ? AND carga_grupo.id_carga = carga_carga_academica.id");
+            con = pool.getDataSource().getConnection();
+            PreparedStatement stmt = con.prepareStatement("SELECT ga.nombre, ga.codigo, cg.id_grupo "
+                    + "FROM general_asignatura ga, carga_grupo cg, carga_carga_academica cca "
+                    + "WHERE cca.codig_doc = ? AND cca.id = cg.id_carga AND cg.cod_asignatura = ga.codigo");
             stmt.setString(1, codig_doc);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -88,8 +90,8 @@ public class UtilDAO implements IUtilDAO {
         } catch (Exception ex) {
             System.err.println(ex);
         } finally {
-            if (conn != null) {
-                conn.close();
+            if (con != null) {
+                con.close();
             }
         }
         return data;

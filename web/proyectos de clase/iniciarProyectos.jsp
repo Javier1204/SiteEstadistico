@@ -4,15 +4,28 @@
     Author     : tuto2
 --%>
 
+<%@page import="gestionUsuarios.ICuenta"%>
 <%@page import="academico.DTO.GrupoDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="academico.Facade.Facade"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<jsp:include page="../plantilla/docente/header.jsp"/>
-<script type="text/javascript" src="js/cambioForm.js"></script>
+<jsp:include page="../plantilla/header.jsp"/>
+<script type="text/javascript" src="jsDoc/cambioForm.js"></script>
 <body>
+<% ICuenta cuenta = null;
+    if (session.getAttribute("usuario") != null) {
+        cuenta = (ICuenta) session.getAttribute("usuario");
+        if (cuenta.containRol("Estudiante")) {
+            response.sendRedirect("inicioEst.jsp");
+        } else if (!cuenta.containRol("Docente")) {
+            response.sendRedirect("../index.jsp");
+        }
+    }else{
+       response.sendRedirect("../index.jsp");
+    }
 
+%>
 
     <%Facade fachada = new Facade();
     %>
@@ -24,16 +37,15 @@
 
                 <h1 align="center">Iniciar proyectos</h1>
 
-                <% ArrayList<GrupoDTO> lista = fachada.asignaturasDoc("1150833");
-
+                <% ArrayList<GrupoDTO> lista = fachada.asignaturasDoc(cuenta.getUser());   
+                    System.out.println(lista.size());
                 %>
-                <div class="ufps-col-mobile-12 ufps-col-tablet-12 ufps-col-netbook-4">
+                <div class="ufps-col-mobile-12 ufps-col-tablet-12 ufps-col-netbook-3">
                     <div class="form-group">
                         <label for="grupos">Seleccione grupo:</label>
                         <select id="grupos" name="" class="ufps-input" onchange="javascript:cambio2()">
                             <option value="">--Seleccione una opcion--</option>
                             <%for (GrupoDTO dto : lista) {
-
                             %>
                             <option value="<%=dto.getCod_grupo()%>"><%=dto.getCod_asign() + " - " + dto.getNombre()%></option>
                             <%}
@@ -41,20 +53,34 @@
                         </select>
                     </div>
                 </div>
-                <div class="ufps-col-mobile-12 ufps-col-tablet-12 ufps-col-netbook-4">
+                <div class="ufps-col-mobile-12 ufps-col-tablet-12 ufps-col-netbook-3">
                     <div class="form-group">
-                        <label for="num_equipos">Numero de equipos de trabajo</label>
-                        <input type="number" class="ufps-input" id="num_equipos" onchange="javascript:cambio()">
+                        <label for="num_equipos">Numero de proyectos de trabajo</label>
+                        <input type="number" min="1"class="ufps-input" id="num_equipos" onchange="javascript:cambio()">
                     </div>
 
                 </div>
-                <div class="ufps-col-mobile-12 ufps-col-tablet-12 ufps-col-netbook-4">
+                <div class="ufps-col-mobile-12 ufps-col-tablet-12 ufps-col-netbook-3">
                     <div class="form-group">
                         <label for="num_equipos">Fecha maxima subir entregables</label>
                         <input type="date" class="ufps-input" id="num_equipos" >
                     </div>
+                </div>
+                <div class="ufps-col-mobile-12 ufps-col-tablet-12 ufps-col-netbook-3"id="mod">
+                    <div class="form-group">
+                        <fieldset>
+                            <input type="checkbox" id="check" name="check" value="1" /> ¿Desea modificar informacion preyectos? <br />
+                        </fieldset>
+                    </div>
+                </div>
+                        <div class="ufps-col-mobile-12 ufps-col-tablet-12 ufps-col-netbook-3" id="cant" hidden="true">
+                    <div class="form-group">
+                        <label for="num_equipos3">Numero de Equipos de trabajo</label>
+                        <input type="number" min="1"class="ufps-input" id="num_equipos3" onchange="javascript:cambio3()">
+                    </div>
 
                 </div>
+                        <input hidden="true" type="number" class="ufps-input" id="num_equipos4"name="num_equipos4">
                 <br></br>
                 <div class="form-group">
                     <button type="submit" class="ufps-btn">Crear</button>
