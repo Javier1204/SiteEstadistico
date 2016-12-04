@@ -5,7 +5,7 @@
  */
 package academico.Interface;
 
-import academico.DTO.ProyectoDTO;
+import academico.DTO.ClasificacionEntregableDTO;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -13,8 +13,9 @@ import java.util.ArrayList;
  *
  * @author Mauricio
  */
-public interface IProyectoDAO {
+public interface IEntregableDAO {
     
-    public ArrayList<ProyectoDTO> obtenerProyectos(int cod_grupo) throws SQLException;
-    public boolean modificarProyecto(int proyecto_id, ProyectoDTO new_dto) throws SQLException;
+    public boolean crearEntregable(int id_proyecto, int id_tipo, String titulo, String fecha) throws SQLException;
+    public ArrayList<ClasificacionEntregableDTO> listarClasificacion() throws SQLException;
+    
 }

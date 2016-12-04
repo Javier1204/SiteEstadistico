@@ -20,4 +20,9 @@ public class ProyectoControler {
         ProyectoDAO dao = new ProyectoDAO();
         return dao.obtenerProyectos(id_grp);
     }
+    
+    public boolean modificarProyecto(int proyecto_id, ProyectoDTO new_dto) throws SQLException {
+        ProyectoDAO dao = new ProyectoDAO();
+        return dao.modificarProyecto(proyecto_id, new_dto);
+    }
 }

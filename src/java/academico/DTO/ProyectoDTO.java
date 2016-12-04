@@ -12,7 +12,8 @@ package academico.DTO;
 public class ProyectoDTO {
     
     private int proyecto_id, max_integrantes, semillero;
-    private String proyecto_name, keywords, desc;
+    private String proyecto_name, keywords, desc, equipo_encargado;
+    private boolean modificable;
 
     public ProyectoDTO() {
     }
@@ -64,6 +65,21 @@ public class ProyectoDTO {
     public void setDesc(String desc) {
         this.desc = desc;
     }
-    
+
+    public boolean isModificable() {
+        return modificable;
+    }
+
+    public void setModificable(boolean modificable) {
+        this.modificable = modificable;
+    }
+
+    public String getEquipo_encargado() {
+        return equipo_encargado;
+    }
+
+    public void setEquipo_encargado(String equipo_encargado) {
+        this.equipo_encargado = equipo_encargado;
+    }
     
 }
