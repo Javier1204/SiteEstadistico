@@ -24,6 +24,7 @@
     IGestionUsuarios gestor = GestionUsuario.getInstance();
     PrivilegioDTO dto = gestor.cargarPrivilegio(rol);
     List<ModuloDTO> modulos = dto.getModulos();
+    List<ModuloDTO> notModulos = gestor.cargarNoModuloRol(rol);
     if (!modulos.isEmpty()) {
         exito = true;
     } else {
@@ -85,11 +86,30 @@
     </div>
 
 </div>
-
 <%
-    }%>
+
+%>
+<div>
+
+</div>
+<%    }%>
 
 
 <% } else {%>
-<%= mensaje%>
+<p class="text-center">El rol <%=rol%> no tiene asignado ningun requerimiento funcional</p>
 <% }%>
+<center>
+    <div class="ufps-dropdown" id="dropdown4">
+        <button onclick="openDropdown('dropdown4')" class="ufps-dropdown-btn ufps-dropdown-light">Asignar Requerimiento de otro módulo</button>
+        <div class="ufps-dropdown-content">
+            <%
+                for (ModuloDTO nMod : notModulos) {
+
+            %>
+            <a style="cursor:pointer;" onclick="javascript:cargarNoRF('<%=nMod.getNombre()%>')"><%=nMod.getNombre()%></a>
+            <%
+                }
+            %>
+        </div>
+    </div> 
+</center>

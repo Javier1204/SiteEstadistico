@@ -47,6 +47,7 @@
     }
     if (rfs.isEmpty()) {
 %>
+
 <div id="modal-mod-rf" class="ufps-modal" style="display: none;">
     <div class="ufps-modal-content">
         <div class="ufps-modal-header ufps-modal-header-red">
@@ -55,7 +56,7 @@
         </div>
         <div class="ufps-modal-body">
             <p>Requerimientos funcionales no asignados a <%=rol%></p>
-            <p>Si no se necesitan, pueden omitirse elementos del modal (header, footer ol body)</p>
+            <p>No existen requerimientos funcionales en este modulo que pueda asignar.</p>
         </div>
         <div class="ufps-modal-footer">
             <h3>Asingnación Requerimientos funcionales</h3>

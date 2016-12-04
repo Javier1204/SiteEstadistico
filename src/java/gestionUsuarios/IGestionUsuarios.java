@@ -197,4 +197,6 @@ public interface IGestionUsuarios {
     public PrivilegioDTO cargarPrivilegio(String rol);
     
     public ModuloDTO cargarNotRFModulo(String modulo, String rol);
+    
+    public List<ModuloDTO> cargarNoModuloRol(String rol);
 }

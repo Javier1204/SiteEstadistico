@@ -418,11 +418,19 @@ public class ControlGestionUsuarios {
             ConexionGUDAOs.cerrarConexion(con);
         }
     }
-    public ModuloDTO cargarNotRFModulo(String modulo, String rol) {
+    protected ModuloDTO cargarNotRFModulo(String modulo, String rol) {
         Connection con = ConexionGUDAOs.obtenerConexion();
         try {
             GeneralPrivilegioDAO privilegioDAO=new GeneralPrivilegioDAO(con);
             return privilegioDAO.cargarNoRFModulo(modulo, rol);
+        } finally {
+            ConexionGUDAOs.cerrarConexion(con);
+        }
+    }
+    protected List<ModuloDTO> cargarNoModuloRol(String rol) {
+        Connection con = ConexionGUDAOs.obtenerConexion();
+        try {
+            return new GeneralModuloDAO(con).listarModulosNoRol(rol);
         } finally {
             ConexionGUDAOs.cerrarConexion(con);
         }

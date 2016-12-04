@@ -109,11 +109,34 @@ public class GeneralModuloDAO {
         }
         return false;
     }
+    public List<ModuloDTO> listarModulosNoRol(String rol){
+        try{
+            //obtenerConexion();
+            PreparedStatement ps=conn.prepareStatement("SELECT M.modulo, M.descripcion, M.url FROM general_modulo M WHERE M.modulo NOT IN (SELECT P.modulo FROM general_privilegio P WHERE P.rol=?)");
+            ps.setString(1, rol);
+            ResultSet rs=ps.executeQuery();
+            ArrayList<ModuloDTO> lista=new ArrayList<>();
+            while(rs.next()){
+                ModuloDTO modDTO=new ModuloDTO();
+                modDTO.setNombre(rs.getString(1));
+                modDTO.setDescripcion(rs.getString(2));
+                modDTO.setUrl(rs.getString(3));
+                lista.add(modDTO);
+            }
+            return lista;
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralModuloDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }finally{
+            //cerrarConexion();
+        }
+    }
     public static void main(String[] args) {
         Connection con=ConexionGUDAOs.obtenerConexion();
         GeneralModuloDAO moduloDAO=new GeneralModuloDAO(con);
         //System.out.println(moduloDAO.getModulo("integrador").getDescripcion());
-        System.out.println(moduloDAO.listaModulos().get(0).getNombre());
+        //System.out.println(moduloDAO.listaModulos().get(0).getNombre());
+        System.out.println(moduloDAO.listarModulosNoRol("Administrador").get(0).getNombre());
         ConexionGUDAOs.cerrarConexion(con);
     }
 }
