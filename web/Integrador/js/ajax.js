@@ -295,7 +295,7 @@ function buscarPrivilegios() {
 }
 
 function buscarRoles() {
-    alert("E");
+    //alert("hola");
     var nombre_usuario = document.getElementById("nombre_usuario");
     ajax = nuevoAjax();
     parametros = "nombre_usuario=" + nombre_usuario.value;
@@ -303,7 +303,7 @@ function buscarRoles() {
     ajax.open("POST", url, true);
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     ajax.send(parametros);
-
+    document.getElementById("campo").innerHTML = "<img src='img/load.gif' > ";
     ajax.onreadystatechange = function () {
         if (ajax.readyState == 4) {
             if (ajax.status == 200) {

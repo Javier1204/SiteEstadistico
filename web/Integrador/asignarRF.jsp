@@ -22,14 +22,13 @@
     <h1>Asignar privilegios</h1>
     <div class=" ufps-container" >
 
-        <label id="divError" class="ufps-col-pc-8"></label>
+        
         <div class="ufps-row" >
 
             <div class="f-integrador" id="registro"><!-- method="POST" action="javascrip:actualzarPrivilegio()"--> 
                 <div>
                     <div class="ufps-tooltip">
                         <label >Rol</label><br>
-                        <span class="ufps-tooltip-content-top">nombre hola</span>
                     </div>
                     <select id="selectMod" name="selectMod" class="ufps-input" onchange="javascript:buscarPrivilegios()">
                         <option value=""> Seleccione opción</option>
