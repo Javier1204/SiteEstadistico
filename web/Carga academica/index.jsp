@@ -4,8 +4,19 @@
 <!--Aqui coloco el header, OJO con include-->
 <jsp:include page="diseno.jsp"/>
 <jsp:include page="../plantilla/header.jsp"/>
+<%@page import="gestionUsuarios.ICuenta"%>
+<%
+   ICuenta cuenta=(ICuenta) session.getAttribute("usuario");
+    if (cuenta == null) {
+        response.sendRedirect("../index.jsp");
+    }
+   else if(cuenta.containRol("Docente") || cuenta.containRol("Director del Programa") ){
+    %>
+        
+ 
 
-<h1 align="center">App Web Carga Académica Docentes: Menú Principal</h1>
+
+<h1 align="center">Modulo Carga Académica Docentes: Menú Principal</h1>
 
 <div class="ufps-container">
     <div class="ufps-row">
@@ -70,9 +81,17 @@
         </div>
         
     </div>
+ <%  }
+    else{
+      response.sendRedirect("../index.jsp");
+    }
+%>     
     <br>
+     <!--TODO ESTO DEL DIRECTOR-->
+     <%   if(cuenta.containRol("Docente")){ %> 
+     
       <div class="ufps-row">
-        
+         <!--consultas director-->
         <div class="ufps-col-mobile-6 ufps-col-tablet-6 ufps-col-netbook-2">
            
                 <img src="../public/img/carga/administrar.png" alt="logo7">
@@ -81,7 +100,7 @@
                 <p>Administrar App</p>
                 </div>
         </div>
-        
+        <!--consultas director-->
         <div class="ufps-col-mobile-6 ufps-col-tablet-6 ufps-col-netbook-2">
             
                 <img src="../public/img/carga/observaciones.png" alt="logo8">
@@ -91,7 +110,7 @@
                 </div>
             
         </div>
-        
+        <!--consultas director-->
         <div class="ufps-col-mobile-6 ufps-col-tablet-6 ufps-col-netbook-2">
             
                 <img src="../public/img/carga/consultar.png" alt="logo9">
@@ -102,7 +121,9 @@
             
         </div> 
     </div>
+    <% }  %> 
+     
 </div>
-           
+        
 <!--Aqui coloco el footer, OJO con include-->
 <jsp:include page="../plantilla/footer.jsp"/>  

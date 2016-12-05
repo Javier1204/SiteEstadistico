@@ -795,7 +795,7 @@ public class DAOCargaAcademica {
             "UPDATE general_docente SET cedula='"+cedula+"', nombres='"+nombres+"',apellidos='"+apellidos+"',estado="+estado+",nivel_estudio='"+nivel_estudio+
             "',categoria='"+categoria+"',tipo_vinculacion='"+tipo_vinculacion+"',correo_institucional='"+correo_institucional+"',correo_personal='"+correo_personal+
             "',titulo_pregrado='"+titulo_pregrado+"',celular='"+celular+"',anos_exp="+anos_exp+",fecha_nac='"+fecha_nac+"',direccion_resi='"+direccion_resi+
-            "' WHERE codigo='"+codigo+"'");//genero el sql. 
+            "' WHERE codigo='23'1");//genero el sql. 
                  
             int can = stm.executeUpdate();//ejecuto la consulta
             stm.close();//cierro el preparedstatement

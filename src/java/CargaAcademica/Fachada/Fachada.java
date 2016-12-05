@@ -5,11 +5,16 @@ package CargaAcademica.Fachada;
 
 import CargaAcademica.Controlador.ControladorCargaAcademica;
 import CargaAcademica.Controlador.controladorActAdministrativas;
+import CargaAcademica.Controlador.controladorDocencia;
 import CargaAcademica.Controlador.controladorExtension;
 import CargaAcademica.Controlador.controladorInvestigacion;
 import CargaAcademica.DTO.carga_ActAdministrativasDTO;
 import CargaAcademica.DTO.carga_extensionDTO;
+import CargaAcademica.DTO.carga_grupoDTO;
 import CargaAcademica.DTO.carga_investigacionDTO;
+import CargaAcademica.DTO.general_asignaturaDTO;
+import CargaAcademica.DTO.observacionesDTO;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Fachada {
@@ -31,8 +36,8 @@ public class Fachada {
         ControladorCargaAcademica c = new ControladorCargaAcademica();
         return c.actualizarInfoPersonal(codigo,cedula,nombres,apellidos,estado,nivel_estudio,categoria,tipo_vinculacion,correo_institucional,correo_personal,titulo_pregrado,celular,anos_exp,fecha_nac,direccion_resi);
     }
-	
-	 /**
+    
+     /**
      * 
      * @param dto
      * @return 
@@ -77,5 +82,22 @@ public class Fachada {
     public ArrayList<carga_investigacionDTO> obtenerInvestigaciones(){
         controladorInvestigacion c=new controladorInvestigacion();
         return c.obtenerInvestigaciones();
+    }
+    
+    public String registrarDocencia(carga_grupoDTO dto){
+        controladorDocencia c=new controladorDocencia();
+        return c.regitrarDocencia(dto);
+    }
+    
+    public ArrayList<general_asignaturaDTO> obtenerAsignaturas(){
+        controladorDocencia c=new controladorDocencia();
+        return c.obtenerAsignaturas();
+        
+    }
+    
+    public String registrarObservacion(observacionesDTO dto){
+        controladorDocencia c=new controladorDocencia();
+        return c.registrarObservacion(dto);
+    
     }
 }
