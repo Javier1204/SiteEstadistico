@@ -55,7 +55,7 @@
                         <div class="ufps-btn-menu-bar"></div>
                         <div class="ufps-btn-menu-bar"></div>
                     </div>
-                    Site Estadístico
+                    <a href="../Integrador/listar_modulos.jsp">Site Estadístico</a>
                 </div>
                 <div class="ufps-navbar-left">
                     <% if (modulos != null) { %>
@@ -65,7 +65,6 @@
                             <%for (ModuloDTO mod : modulos) {
                             %>
                             <a href="<%=mod.getUrl()%>"> <%= mod.getNombre()%></a>
-                             <a href="#" onclick="ModuloPrimerSemestre();"> Primer Semestre </a>
                             <%
                                 }
                             %>
@@ -82,7 +81,7 @@
                         <% } else {
 
                         %>
-                        <a href="" class="ufps-navbar-btn"> <%= cuenta.getNombre()%></a>
+                        <a href="../Integrador/listar_modulos.jsp" class="ufps-navbar-btn"> <%= cuenta.getNombre()%></a>
                         <a href="../Integrador/procesar/cerrarSesion.jsp" class="ufps-navbar-btn"> Cerrar sesión</a>
                         <% }%>
                     </div>

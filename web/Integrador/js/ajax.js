@@ -42,13 +42,13 @@ function ingresar() {
     ajax.open("POST", url, true);
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     ajax.send(parametros);
-
+    document.getElementById("divLoad").innerHTML = "<center><img src='img/load.gif' height='200' width='275'></center> ";
     ajax.onreadystatechange = function () {
         if (ajax.readyState == 4) {
             if (ajax.status == 200) {
                 var rta = ajax.responseText;
                 if (rta.indexOf("1") < 0) {
-                    //document.getElementById("divError").innerHTML = ajax.responseText;
+                    document.getElementById("divLoad").innerHTML = "";
                     openModal("modal-login");
                 } else {
                     if (rta.indexOf("1") >= 0) {
@@ -62,7 +62,7 @@ function ingresar() {
             }
         } else
         {
-            document.getElementById("divError").value = "Verificando Usuario...";
+            document.getElementById("divLoad").value = "Verificando Usuario...";
         }
     }
 }
@@ -562,7 +562,7 @@ function cargarNoRolUsuario() {
     ajax.open("POST", url, true);
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     ajax.send(parametros);
-    document.getElementById("modal").innerHTML = "<center><img src='img/load.gif'/ height='200' width='275'></center> ";
+    document.getElementById("modal").innerHTML = "<center><img src='img/load.gif' height='200' width='275'></center> ";
     ajax.onreadystatechange = function () {
         if (ajax.readyState == 4) {
             if (ajax.status == 200) {
