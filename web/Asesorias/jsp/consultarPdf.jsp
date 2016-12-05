@@ -14,8 +14,8 @@
 <jsp:useBean id="facade" class="asesorias.Controller.ControladorAsesorias" scope="session"></jsp:useBean>
 <%
     String codDoc = "6";
-    String periodo = "2";
-    String año = "2016";
+    String periodo = request.getParameter("periodo").toString();
+    String año = request.getParameter("ano").toString();
     //Consultar cantidad de asesorias por docente
     //cantidad Asesorias, nombre, apellido, codigo docente
     String cantAsesoriasDocente = facade.consultarCantAsesoriasDocente(codDoc, periodo, año);
@@ -34,21 +34,43 @@
     documento.open();
     Paragraph salto = new Paragraph(new Phrase(Chunk.NEWLINE));
     documento.add(salto);
-    
-    
+
     Image img = Image.getInstance("./logoHorizontal.png");
-     float scaler = ((documento.getPageSize().getWidth() - documento.leftMargin()
-     - documento.rightMargin() - 0) / img.getWidth()) * 20;
-     img.scalePercent(scaler);
-    documento.add(img);
+    float scaler = ((documento.getPageSize().getWidth() - documento.leftMargin()
+            - documento.rightMargin() - 0) / img.getWidth()) * 60;
+    img.scalePercent(scaler);
+    //documento.add(img);
     img.setAlignment(Element.ALIGN_CENTER);
+    
+    Image img2 = Image.getInstance("./logo.png");
+    float scaler2 = ((documento.getPageSize().getWidth() - documento.leftMargin()
+            - documento.rightMargin() - 0) / img.getWidth()) * 120;
+    img2.scalePercent(scaler2);
+    //documento.add(img);
+    img2.setAlignment(Element.ALIGN_CENTER);
+    
+    
+    PdfPTable tablaImagen = new PdfPTable(4);
+
+    PdfPCell img1Tabla = new PdfPCell(img);
+    img1Tabla.setColspan(3);
+    img1Tabla.setHorizontalAlignment(Element.ALIGN_CENTER);
+    img1Tabla.setBorderColor(BaseColor.WHITE);
+    tablaImagen.addCell(img1Tabla);
+    
+    PdfPCell img2Tabla = new PdfPCell(img2);
+    img2Tabla.setColspan(3);
+    img2Tabla.setHorizontalAlignment(Element.ALIGN_CENTER);
+    img2Tabla.setBorderColor(BaseColor.WHITE);
+    tablaImagen.addCell(img2Tabla);
+    
+    documento.add(tablaImagen);
+    
+    
     //img.scaleAbsoluteWidth(22);
     //img.scaleAbsoluteHeight(10);
 
-     
-     
-     
-     /*PdfPTable tablaEncabezado = new PdfPTable(4);
+    /*PdfPTable tablaEncabezado = new PdfPTable(4);
      
      PdfPCell celdaImg = new PdfPCell(img);
      celdaImg.setRowspan(2);
@@ -72,15 +94,12 @@
      tablaEncabezado.addCell(dir);
      documento.add(tablaEncabezado);
      */
-     documento.add(salto);
-     
-     
-     
+    documento.add(salto);
 
-    PdfPTable tablaCantAsesoriasDocente = new PdfPTable(3);
+    PdfPTable tablaCantAsesoriasDocente = new PdfPTable(4);
 
     PdfPCell tituloTabla1 = new PdfPCell(new Paragraph("CANTIDAD DE ASESORIAS REALIZADAS POR DOCENTES", FontFactory.getFont("arial", 14, Font.BOLD)));
-    tituloTabla1.setColspan(3);
+    tituloTabla1.setColspan(4);
     tituloTabla1.setHorizontalAlignment(Element.ALIGN_CENTER);
     tituloTabla1.setBorderColor(BaseColor.BLACK);
     tablaCantAsesoriasDocente.addCell(tituloTabla1);
@@ -90,6 +109,12 @@
     nombreDocente.setHorizontalAlignment(Element.ALIGN_CENTER);
     nombreDocente.setBorderColor(BaseColor.BLACK);
     tablaCantAsesoriasDocente.addCell(nombreDocente);
+
+    PdfPCell tipoVinculacionDoc = new PdfPCell(new Paragraph("Tipo de vinculacion docente", FontFactory.getFont("arial", 12, Font.BOLD)));
+    tipoVinculacionDoc.setColspan(1);
+    tipoVinculacionDoc.setHorizontalAlignment(Element.ALIGN_CENTER);
+    tipoVinculacionDoc.setBorderColor(BaseColor.BLACK);
+    tablaCantAsesoriasDocente.addCell(tipoVinculacionDoc);
 
     PdfPCell cantAsesorias = new PdfPCell(new Paragraph("Cantidad de asesorias", FontFactory.getFont("arial", 12, Font.BOLD)));
     cantAsesorias.setColspan(1);
@@ -107,6 +132,12 @@
             nombreDocenteValor.setHorizontalAlignment(Element.ALIGN_CENTER);
             nombreDocenteValor.setBorderColor(BaseColor.BLACK);
             tablaCantAsesoriasDocente.addCell(nombreDocenteValor);
+
+            PdfPCell tipoVinculacionDocValor = new PdfPCell(new Paragraph("" + v2[4], FontFactory.getFont("arial", 12)));
+            tipoVinculacionDocValor.setColspan(1);
+            tipoVinculacionDocValor.setHorizontalAlignment(Element.ALIGN_CENTER);
+            tipoVinculacionDocValor.setBorderColor(BaseColor.BLACK);
+            tablaCantAsesoriasDocente.addCell(tipoVinculacionDocValor);
 
             PdfPCell cantAsesoriasValor = new PdfPCell(new Paragraph("" + v2[0], FontFactory.getFont("arial", 12)));
             cantAsesoriasValor.setColspan(1);
@@ -214,10 +245,11 @@
     documento.add(tablaCantAsesoEstMat);
 
     documento.add(salto);
-    
+
     //consultar cantidad de horas de asesorias por docente
     //String horasAsesoriasDocente = facade.consultarHorasAsesoriasDocente();
-    
     documento.close();
+    
+    out.print(rutaAlter + "/informe.pdf");
 
 %>

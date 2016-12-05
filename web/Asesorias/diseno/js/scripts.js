@@ -2,8 +2,8 @@ function cargarEstudiantes() {
     var materia = document.getElementById('materia').value;
     var v = materia.split(" - ");
     var codigoMateria = v[0];
-    var nombreMateria = v[1];
-    var grupo = v[2];
+    var nombreMateria = v[2];
+    var grupo = v[1];
     //alert("materia " + nombreMateria + " grupo:: " + grupo + " codigo:: " + codigoMateria);
 
     var xhttp = new XMLHttpRequest();
@@ -14,6 +14,7 @@ function cargarEstudiantes() {
                 alert("error");
             } else {
                 var info = xhttp.responseText;
+
                 //nombre;apellido;codigo:
                 if (info.indexOf('no') > -1) {
                     $.unblockUI();
@@ -37,11 +38,14 @@ function cargarEstudiantes() {
                     toastr["info"]("La materia seleccionada no tiene estudiantes", "Atención!");
                 } else {
                     var msg = "";
+
                     msg = "<option>Seleccione el estudiante</option>";
                     var v1 = info.split(":");
-                    for (var i = 0; i < v1.length; i++) {
-                        var v2 = v1[i].split(";");
-                        msg += "<option>" + v2[2] + " - " + v2[0] + " " + v2[1] + "</option>";
+                    for (var i = 0; i < v1.length - 1; i++) {
+                        if (v1[i] != undefined) {
+                            var v2 = v1[i].split(";");
+                            msg += "<option>" + v2[2] + " - " + v2[0] + " " + v2[1] + "</option>";
+                        }
                     }
                     $.unblockUI();
                     document.getElementById('estudiantesMateria').innerHTML = msg;
@@ -69,7 +73,6 @@ function registrarAsesoria() {
     var materia = document.getElementById('materia').value;
     var estudiante = document.getElementById('estudiantesMateria').value;
     var tema = document.getElementById('temaTratado').value;
-    alert(materia + " --- " + estudiante + " --- " + tema);
 
     if (materia == "Seleccione la materia" || estudiante == "Seleccione el estudiante"
             || tema.length == 0) {
@@ -300,4 +303,38 @@ function cargarFecha() {
     } else {
         document.getElementById('fechaAseso').style.display = "none";
     }
+}
+
+function generarInforme() {
+    var periodo = document.getElementById("periodoInforme").value;
+    var ano = document.getElementById("anoInforme").value;
+
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+            if (xhttp.responseText.indexOf('error') > -1) {
+                alert("error");
+            } else {
+                var info = xhttp.responseText;
+                $.unblockUI();
+                alert(info);
+                // window.open(info);
+            }
+        }
+    };
+    $.blockUI({
+        message: 'Generando informe',
+        css: {
+            border: 'none',
+            padding: '15px',
+            backgroundColor: '#000',
+            '-webkit-border-radius': '10px',
+            '-moz-border-radius': '10px',
+            opacity: .5,
+            color: '#fff'
+        }});
+    var url = "jsp/consultarPdf.jsp?periodo=" + periodo + "&ano=" + ano;
+    xhttp.open("post", url, true);
+    xhttp.send();
 }

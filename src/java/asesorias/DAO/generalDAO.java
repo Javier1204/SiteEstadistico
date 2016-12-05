@@ -114,7 +114,7 @@ public class generalDAO {
             con = pool.getDataSource().getConnection();  //genero la conexion
 
             stm = con.prepareStatement("SELECT nombres, apellidos, codigo FROM general_estudiante "
-                    + "WHERE codigo IN (SELECT id_grupo FROM academico_estudiantexgrupo "
+                    + "WHERE codigo IN (SELECT codigo_estudiante FROM academico_estudiantexgrupo "
                     + "WHERE id_grupo = (SELECT id_grupo FROM carga_grupo "
                     + "WHERE cod_asignatura = ? AND grupo = ?));");
             stm.setString(1, codMateria);
@@ -191,7 +191,7 @@ public class generalDAO {
                     resul += rs.getString("g.nombres");
                     resul += ";";
                     resul += rs.getString("g.apellidos");
-                    resul += "$";
+                    resul += "#";
                 }
             } else {
                 resul = "vacio";
@@ -256,7 +256,7 @@ public class generalDAO {
                     resul += rs.getString("a.hora_fin");
                     resul += ";";
                     resul += rs.getString("m.nombre");
-                    resul += "$";
+                    resul += "#";
                 }
             } else {
                 resul = "vacio";
@@ -370,7 +370,7 @@ public class generalDAO {
                     resul += rs.getString("g.nombres");
                     resul += ";";
                     resul += rs.getString("g.apellidos");
-                    resul += "$";
+                    resul += "#";
                 }
             } else {
                 resul = "vacio";
@@ -430,7 +430,7 @@ public class generalDAO {
                     resul += rs.getString("c.hora_fin");
                     resul += ";";
                     resul += rs.getString("g.nombre");
-                    resul += "$";
+                    resul += "#";
                 }
             } else {
                 resul = "vacio";
@@ -477,7 +477,7 @@ public class generalDAO {
 
             stm = con.prepareStatement("SELECT fecha, cod_est, cod_docente, cod_m, c.grupo, tema, hora "
                     + "FROM asesoria_formatoasesoria a, carga_grupo c "
-                    + "WHERE fecha BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL -8 DAY) "
+                    + "WHERE (fecha BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL -8 DAY) OR fecha = CURDATE()) "
                     + "AND a.grupo = c.id_grupo AND cod_docente = ?;");
             stm.setString(1, codDoc);
 
@@ -497,7 +497,7 @@ public class generalDAO {
                     resul += rs.getString("tema");
                     resul += ";";
                     resul += rs.getString("hora");
-                    resul += "$";
+                    resul += "#";
                 }
             } else {
                 resul = "vacio";
@@ -593,7 +593,7 @@ public class generalDAO {
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
 
-            stm = con.prepareStatement("SELECT nombre FROM general_materia WHERE codigo = ?");
+            stm = con.prepareStatement("SELECT nombre FROM general_asignatura WHERE codigo = ?");
             stm.setString(1, codMat);
 
             ResultSet rs = stm.executeQuery();
@@ -643,7 +643,7 @@ public class generalDAO {
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
 
-            stm = con.prepareStatement("SELECT COUNT(a.cod_docente), d.nombres, d.apellidos, a.cod_docente "
+            stm = con.prepareStatement("SELECT COUNT(a.cod_docente), d.nombres, d.apellidos, a.cod_docente, d.tipo_vinculacion "
                     + "FROM general_docente d, asesoria_formatoasesoria a "
                     + "WHERE a.cod_docente = d.codigo GROUP BY a.cod_docente ORDER BY COUNT(cod_m) ");
 
@@ -657,6 +657,8 @@ public class generalDAO {
                     resul += rs.getString("d.apellidos");
                     resul += ";";
                     resul += rs.getString("a.cod_docente");
+                    resul += ";";
+                    resul += rs.getString("d.tipo_vinculacion");
                     resul += ":";
                 }
             } else {
@@ -699,11 +701,12 @@ public class generalDAO {
             pool.setUsuario("ufps_76"); //ingreso el usuario
             pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
-            con = pool.getDataSource().getConnection();  //genero la conexion
+            con = pool.getDataSource().getConnection();//genero la conexion
 
             stm = con.prepareStatement("SELECT COUNT(cod_m), a.cod_m, ga.nombre, cg.grupo "
                     + "FROM asesoria_formatoasesoria a, general_asignatura ga, carga_grupo cg "
-                    + "WHERE a.cod_m = ga.codigo AND a.grupo = cg.id_grupo AND cg.cod_asignatura = ga.codigo"
+                    + "WHERE a.cod_m = ga.codigo AND a.grupo = cg.id_grupo AND cg.cod_asignatura = ga.codigo "
+                    + "GROUP BY a.cod_m, ga.nombre, cg.grupo"
                     + " ORDER BY COUNT(cod_m)");
 
             ResultSet rs = stm.executeQuery();
@@ -824,8 +827,127 @@ public class generalDAO {
             ResultSet rs = stm.executeQuery();
             if (rs != null) {
                 while (rs.next()) {
-                    
+
                     resul += ":";
+                }
+            } else {
+                resul = "vacio";
+            }
+
+            stm.close();//cierro el preparedstatement
+            rs.close(); //cierro el resultset
+        } catch (SQLException ex) {
+            try {
+                System.err.println(ex);
+                //en el caso de que se encunetren en una consulta real se recomienta usar
+                con.rollback();
+            } catch (SQLException ex1) {
+                Logger.getLogger(generalDAO.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        } finally {
+            try {
+                if (con != null) {
+                    con.close(); // se cierra la conexion. este es un paso muy importante
+                }
+            } catch (SQLException ex) {
+                System.err.println(ex);
+            }
+        }
+        return resul;
+    }
+
+    public String consultarNombreDocente(String codDoc) {
+        //ejemplo para usar el pool de conexiones. 
+        Pool pool = Conexion.getPool(); //llamo al objeto pool 
+        Connection con = null;
+        PreparedStatement stm = null;
+        String resul = "";
+        try {
+            /**
+             * 28/10/2016 actualmente se utilizan el usuario ufps_76 pero a
+             * futuro cuando se cambien los permisos esto se modificara
+             */
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
+            con = pool.getDataSource().getConnection();  //genero la conexion
+
+            stm = con.prepareStatement("SELECT nombres, apellidos FROM general_docente WHERE codigo = ?");
+            stm.setString(1, codDoc);
+
+            ResultSet rs = stm.executeQuery();
+            if (rs != null) {
+                while (rs.next()) {
+                    resul += rs.getString("nombres");
+                    resul += " ";
+                    resul += rs.getString("apellidos");
+                }
+            } else {
+                resul = "vacio";
+            }
+
+            stm.close();//cierro el preparedstatement
+            rs.close(); //cierro el resultset
+        } catch (SQLException ex) {
+            try {
+                System.err.println(ex);
+                //en el caso de que se encunetren en una consulta real se recomienta usar
+                con.rollback();
+            } catch (SQLException ex1) {
+                Logger.getLogger(generalDAO.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        } finally {
+            try {
+                if (con != null) {
+                    con.close(); // se cierra la conexion. este es un paso muy importante
+                }
+            } catch (SQLException ex) {
+                System.err.println(ex);
+            }
+        }
+        return resul;
+    }
+
+    public String consultarAsesoriasDoc(String codDoc) {
+        //ejemplo para usar el pool de conexiones. 
+        Pool pool = Conexion.getPool(); //llamo al objeto pool 
+        Connection con = null;
+        PreparedStatement stm = null;
+        String resul = "";
+        try {
+            /**
+             * 28/10/2016 actualmente se utilizan el usuario ufps_76 pero a
+             * futuro cuando se cambien los permisos esto se modificara
+             */
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
+            con = pool.getDataSource().getConnection();  //genero la conexion
+
+            stm = con.prepareStatement("SELECT a.cod_m, ga.nombre, cg.grupo, ge.nombres, ge.apellidos, a.tema, a.fecha, a.hora "
+                    + "FROM asesoria_formatoasesoria a, general_asignatura ga, carga_grupo cg, general_estudiante ge "
+                    + "WHERE a.cod_docente = ? AND ga.codigo = a.cod_m AND cg.id_grupo = a.grupo AND ge.codigo = a.cod_est");
+            stm.setString(1, codDoc);
+
+            ResultSet rs = stm.executeQuery();
+            if (rs != null) {
+                while (rs.next()) {
+                    resul += rs.getString("a.cod_m");
+                    resul += ";";
+                    resul += rs.getString("ga.nombre");
+                    resul += ";";
+                    resul += rs.getString("cg.grupo");
+                    resul += ";";
+                    resul += rs.getString("ge.nombres");
+                    resul += ";";
+                    resul += rs.getString("ge.apellidos");
+                    resul += ";";
+                    resul += rs.getString("a.tema");
+                    resul += ";";
+                    resul += rs.getString("a.fecha");
+                    resul += ";";
+                    resul += rs.getString("a.hora");
+                    resul += "#";
                 }
             } else {
                 resul = "vacio";

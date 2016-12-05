@@ -100,11 +100,13 @@ public class asesoriaDao {
             stm = con.prepareStatement("SELECT id_grupo FROM carga_grupo WHERE grupo = ? AND cod_asignatura = ?;");
             stm.setString(1, asesoria.getGrupo());
             stm.setString(2, asesoria.getCod_m());
+            
             System.out.println("grupo:: " + asesoria.getGrupo() + " codigo materia: " + asesoria.getCod_m());
             ResultSet rs = stm.executeQuery();
             if (rs != null) {
                 while (rs.next()) {
                     resul += rs.getString("id_grupo");
+                    System.out.println("ESTA ES LA RESPUESTA::: " +  resul);
                 }
             } else {
                 resul = "vacio";

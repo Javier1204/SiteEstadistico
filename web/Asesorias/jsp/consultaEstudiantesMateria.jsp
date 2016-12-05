@@ -13,13 +13,11 @@
     System.out.println("codigoMateria:: " + codigoMateria + " grupo:: " + grupo);
     ControladorAsesorias controlador = new ControladorAsesorias();
     String rta = controlador.consultarEstudiantes(codigoMateria, grupo);
+    System.out.println("Esta es la rta de la consulta de estudiantes:: " + rta);
     if(rta.isEmpty()){
         System.out.println("RTA:: " + rta);
         out.print("no");
     }else{
         out.print(rta);
     }
-        
-    
-    
 %>

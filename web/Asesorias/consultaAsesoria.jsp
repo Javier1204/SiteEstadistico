@@ -20,34 +20,27 @@
         <!--Bootstrap-->
         <link rel="stylesheet" href="diseno/css/bootstrap.css"/>
         <link rel="stylesheet" href="diseno/css/toastr.css">
+        <link rel="stylesheet" href="diseno/css/estilos.css"/>
 
     </head>
     <body>
-        <header>
-            <center> <img id="banner" src="../public/img/Banner-superior.png" alt="imagen" height="100px" width="100%" ></img></center>
-        </header>
+        <jsp:include page="../plantilla/header.jsp"></jsp:include> 
 
-        <div class="ufps-navbar ufps-navbar-light" id="menuPrincipal">
-            <div class="ufps-container">
-                <div class="ufps-navbar-brand">
-                    <div class="ufps-btn-menu" onclick="toggleMenu('menuPrincipal')">
-                        <div class="ufps-btn-menu-bar"></div>
-                        <div class="ufps-btn-menu-bar"></div>
-                        <div class="ufps-btn-menu-bar"></div>
-                    </div>
-                    Site Estadístico
-                </div>
-                <div class="ufps-navbar-left">
-
-                    <a href=""< class="ufps-navbar-btn">Inicio</a>
-                    <a href="index.jsp" class="ufps-navbar-btn">Registrar asesoria</a>
-                    <a href="consultaAsesoria.jsp" class="ufps-navbar-btn">Consultar asesoria</a>       
-                </div>
-                <div class="ufps-navbar-right">
-                    <div class="ufps-navbar-corporate">
-                            
-                    </div>
-                </div>
+        <div class="barraIzq">
+            <div class="ref">
+                <a href="index.jsp">
+                    Registrar Asesoria
+                </a>
+            </div>
+            <div class="ref">
+                <a href="consultaAsesoria.jsp">
+                    Consultar horario
+                </a>
+            </div>
+            <div class="ref">
+                <a href="administrador.jsp">
+                    Administrador
+                </a>
             </div>
         </div>
 
@@ -87,7 +80,7 @@
 
                 </div>
             </div>
-            <div class="ufps-col-desktop-12 ufps-col-netbook-12 ufps-col-tablet-12 ufps-col-mobile-12 separacion">
+            <div class="ufps-col-desktop-12 ufps-col-netbook-12 ufps-col-tablet-12 ufps-col-mobile-12">
                 <div class="ufps-col-desktop-2 ufps-col-desktop-offset-5 ufps-col-netbook-4 ufps-col-netbook-offset-4 ufps-col-tablet-6 ufps-col-tablet-offset-3 ufps-col-mobile-8 ufps-col-mobile-offset-3">
                     <button type="submit" class="ufps-btn" onclick="buscarHorario()">Consultar</button>
                 </div>

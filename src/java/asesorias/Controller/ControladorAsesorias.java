@@ -100,4 +100,14 @@ public class ControladorAsesorias {
         generalDAO gd = new generalDAO();
         return gd.consultarHorasAsesoriasDocente();
     }
+    
+    public String consultarNombreDocente(String codDoc){
+        generalDAO gd = new generalDAO();
+        return gd.consultarNombreDocente(codDoc);
+    }
+    
+    public String consultarAsesoriasDoc(String codDoc){
+        generalDAO gd = new generalDAO();
+        return gd.consultarAsesoriasDoc(codDoc);
+    }
 }
