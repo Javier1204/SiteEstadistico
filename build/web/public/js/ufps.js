@@ -200,7 +200,38 @@ function toggleMenu(id) {
   }
 
 }
+//MODULO ESTUDIANTES PRIMER SEMESTRE
 
+
+function ajax(url, datos, rta) {
+    var ajax = $.post(url, datos, function(respuesta) {
+        $(rta).html(respuesta);
+    });
+    return ajax;
+}
+function ajaxsync(url, datos, rta) {
+    var ajax = $.ajax({
+  url: url,
+  data: datos
+//  async:   false
+}).done(function(respuesta) {
+  $(rta).html(respuesta);
+});
+    return ajax;
+}
+
+function ModuloPrimerSemestre() {
+  
+ var url = "../EstudiantesdeprimerSemestre/index.jsp";
+    var datos = {};
+    var rta = "#mostrarcontenido";
+    ajax(url, datos, rta);
+    
+//    window.locationf="../EstudiantesdeprimerSemestre/index.jsp";
+    
+    
+    
+}
 /**
  * Métodos que se ejecutan al inicializarse el documento html.
  */

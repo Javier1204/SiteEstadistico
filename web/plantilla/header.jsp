@@ -65,6 +65,7 @@
                             <%for (ModuloDTO mod : modulos) {
                             %>
                             <a href="<%=mod.getUrl()%>"> <%= mod.getNombre()%></a>
+                             <a href="#" onclick="ModuloPrimerSemestre();"> Primer Semestre </a>
                             <%
                                 }
                             %>
