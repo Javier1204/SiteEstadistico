@@ -1,17 +1,19 @@
 <%-- 
     Document   : index
-    Created on : 14/10/2016, 03:01:08 PM
-    Author     : javie
+    Author     : wilson
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Actividades de formacion</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+       <%
+         response.sendRedirect("vistas/index.jsp");
+       %>
+
     </body>
 </html>
