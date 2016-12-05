@@ -303,15 +303,12 @@ function buscarRoles() {
     ajax.open("POST", url, true);
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     ajax.send(parametros);
-    document.getElementById("campo").innerHTML = "<img src='img/load.gif' > ";
+    document.getElementById("campo").innerHTML = "<center><img src='img/load.gif' ></center> ";
     ajax.onreadystatechange = function () {
         if (ajax.readyState == 4) {
             if (ajax.status == 200) {
                 var rta = ajax.responseText;
                 document.getElementById("campo").innerHTML = rta;
-            }
-            if (rta.indexOf("2") >= 0) {
-                document.getElementById("campo").innerHTML = "Usuario no existente";
             }
         } else
         {
@@ -552,6 +549,94 @@ function eliminarPrivilegios(modulo, rol){
         } else
         {
             document.getElementById("rAsignacion").value = "<img src='../img/load.gif'/ height='42' width='42'> ";
+        }
+    }
+}
+
+function cargarNoRolUsuario() {
+    console.log("entro cargarNoRolUsuario");
+    ajax = nuevoAjax();
+    var usuario = document.getElementById("nombre_usuario");
+    parametros = "usuario=" + usuario.value;
+    url = "procesar/cargarNotRolUsuario.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+    document.getElementById("modal").innerHTML = "<center><img src='img/load.gif'/ height='200' width='275'></center> ";
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("modal").innerHTML = rta;
+                openModal("modal-mod-rol");
+            }
+        } else
+        {
+            document.getElementById("modal").value = "<img src='img/load.gif'/ height='42' width='42'> ";
+        }
+    }
+}
+
+function asignarRoles(usuario){
+    ajax = nuevoAjax();
+    var checkboxes = document.getElementsByName("checkRolA");
+    var roles="";
+    var cont=0;
+    for (var i = 0; i < checkboxes.length; i++) {
+        if(checkboxes[i].checked){
+            roles+=checkboxes[i].id+"-";
+            cont++;
+        }
+    }
+    
+    parametros = "roles=" + roles + "&usuario=" + usuario;
+    url = "procesar/asignarRoles.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+    document.getElementById("asignarRolesR").innerHTML = "<center><img src='img/load.gif'/></center> ";
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("asignarRolesR").innerHTML = rta;
+                buscarRoles();
+            }
+        } else
+        {
+            document.getElementById("asignarRolesR").value = "<img src='../img/load.gif'/ height='42' width='42'> ";
+        }
+    }
+}
+
+function quitaRoles(usuario){
+    ajax = nuevoAjax();
+    var checkboxes = document.getElementsByName("checkRolE");
+    var roles="";
+    var cont=0;
+    for (var i = 0; i < checkboxes.length; i++) {
+        if(checkboxes[i].checked){
+            roles+=checkboxes[i].id+"-";
+            cont++;
+        }
+    }
+    
+    parametros = "roles=" + roles + "&usuario=" + usuario;
+    url = "procesar/procesarQuitarRoles.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+    document.getElementById("campo").innerHTML = "<center><img src='img/load.gif'/></center> ";
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("campo").innerHTML = rta;
+                buscarRoles();
+            }
+        } else
+        {
+            document.getElementById("campo").value = "<img src='../img/load.gif'/ height='42' width='42'> ";
         }
     }
 }

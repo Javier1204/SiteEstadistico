@@ -17,7 +17,6 @@
 <%@page import="gestionUsuarios.IGestionUsuarios"%>
 <%
     request.setCharacterEncoding("UTF-8");
-    System.out.println("Entra");
     String modulo = request.getParameter("modulo");
     String rol = request.getParameter("rol");
     IGestionUsuarios gestor = GestionUsuario.getInstance();

@@ -30,7 +30,7 @@ public class GestionUsuario implements IGestionUsuarios{
 
     
     @Override
-    public List<String> asignarRoles(ICuenta usuario, List<String> roles) {
+    public List<String> asignarRoles(String usuario, List<String> roles) {
         return ControlGestionUsuarios.getInstance().asignarRoles(usuario, roles);
     }
 
@@ -134,8 +134,8 @@ public class GestionUsuario implements IGestionUsuarios{
     }
 
     @Override
-    public boolean quitarRol(String usuario, String rol) {
-        return ControlGestionUsuarios.getInstance().quitarRol(usuario, rol);
+    public void quitarRoles(String usuario, List<String> roles) {
+        ControlGestionUsuarios.getInstance().quitarRoles(usuario, roles);
     }
 
     @Override
@@ -201,5 +201,16 @@ public class GestionUsuario implements IGestionUsuarios{
     public List<ModuloDTO> cargarNoModuloRol(String rol) {
         return ControlGestionUsuarios.getInstance().cargarNoModuloRol(rol);
     }
+
+    @Override
+    public List<RolDTO> cargarNotRolUsuario(String usuario) {
+        return ControlGestionUsuarios.getInstance().cargarNotRolUsuario(usuario);
+    }
+
+    @Override
+    public UsuarioDTO obtenerUsuario(String usuario) {
+        return ControlGestionUsuarios.getInstance().obtenerUsuario(usuario);
+    }
+    
 
 }

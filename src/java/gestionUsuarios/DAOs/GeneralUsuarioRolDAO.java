@@ -51,6 +51,7 @@ public class GeneralUsuarioRolDAO {
         try{
             //obtenerConexion();
             ArrayList<RolDTO> lista =new ArrayList<RolDTO>();
+            System.out.println(user);
             PreparedStatement ps=conn.prepareStatement("SELECT rol FROM general_usuario_rol WHERE user=?");
             ps.setString(1, user);
             ResultSet rs=ps.executeQuery();
@@ -59,6 +60,7 @@ public class GeneralUsuarioRolDAO {
                 GeneralRolDAO rDAO=new GeneralRolDAO(conn);
                 rol=rDAO.getRol(rs.getString(1));
                 lista.add(rol);
+                System.out.println("ROL: "+rs.getString(1));
             }
             return lista;
         } catch (SQLException ex) {
@@ -100,7 +102,7 @@ public class GeneralUsuarioRolDAO {
             Logger.getLogger(GeneralUsuarioRolDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public boolean eliminar(String usuario, String rol){
+    public void eliminar(String usuario, String rol){
         try{
             //obtenerConexion();
             
@@ -109,12 +111,13 @@ public class GeneralUsuarioRolDAO {
             ps.setString(2, usuario);
             int row=ps.executeUpdate();
             if(row==1){
-                return true;
+                System.out.println("se ha elminado el rol: "+rol+" del usuario"+usuario);
+            }else{
+                System.out.println("NO se ha elminado el rol: "+rol+" del usuario"+usuario);
             }
         } catch (SQLException ex) {
             Logger.getLogger(GeneralUsuarioRolDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return false;
     }
     
     
@@ -148,7 +151,6 @@ public class GeneralUsuarioRolDAO {
             Logger.getLogger(GeneralUsuarioRolDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
     public static void main(String[] args) {
         GeneralUsuarioRolDAO gur=new GeneralUsuarioRolDAO(ConexionGUDAOs.obtenerConexion());
         gur.crearUsuariosAutomaticos();

@@ -123,13 +123,13 @@ public class ControlGestionUsuarios {
 
     }
 
-    protected List<String> asignarRoles(ICuenta usuario, List<String> roles) {
+    protected List<String> asignarRoles(String usuario, List<String> roles) {
         Connection con = ConexionGUDAOs.obtenerConexion();
         ArrayList<String> noAgregados = new ArrayList<String>();
         try {
             GeneralUsuarioRolDAO urDAO = new GeneralUsuarioRolDAO(con);
             for (String role : roles) {
-                if (!urDAO.insertar(usuario.getUser(), role)) {
+                if (!urDAO.insertar(usuario, role)) {
                     noAgregados.add(role);
                 }
             }
@@ -314,11 +314,13 @@ public class ControlGestionUsuarios {
         }
     }
 
-    protected boolean quitarRol(String usuario, String rol) {
+    protected void quitarRoles(String usuario, List<String> roles) {
         Connection con = ConexionGUDAOs.obtenerConexion();
         try {
             GeneralUsuarioRolDAO urDAO = new GeneralUsuarioRolDAO(con);
-            return urDAO.eliminar(usuario, rol);
+            for (String rol: roles) {
+                urDAO.eliminar(usuario, rol);
+            }            
         } finally {
             ConexionGUDAOs.cerrarConexion(con);
         }
@@ -431,6 +433,25 @@ public class ControlGestionUsuarios {
         Connection con = ConexionGUDAOs.obtenerConexion();
         try {
             return new GeneralModuloDAO(con).listarModulosNoRol(rol);
+        } finally {
+            ConexionGUDAOs.cerrarConexion(con);
+        }
+    }
+    protected List<RolDTO> cargarNotRolUsuario(String usuario) {
+        Connection con = ConexionGUDAOs.obtenerConexion();
+        try {
+            return new GeneralRolDAO(con).cargarNotRolUsuario(usuario);
+        } finally {
+            ConexionGUDAOs.cerrarConexion(con);
+        }
+    }
+    
+    protected UsuarioDTO obtenerUsuario(String usuario) {
+        Connection con = ConexionGUDAOs.obtenerConexion();
+        try {
+            UsuarioDTO userDTO= new GeneralUsuarioDAO(con).getUsuario(usuario);
+            new GeneralUsuarioDAO(con).cargarNombre(userDTO);
+            return userDTO;
         } finally {
             ConexionGUDAOs.cerrarConexion(con);
         }

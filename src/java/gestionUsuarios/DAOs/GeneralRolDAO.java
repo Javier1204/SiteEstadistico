@@ -106,6 +106,28 @@ public class GeneralRolDAO {
         }
         return false;
     }
+    
+    public List<RolDTO> cargarNotRolUsuario(String usuario){
+        try{
+            //obtenerConexion();
+            PreparedStatement ps=conn.prepareStatement("SELECT R.rol, R.descripcion FROM general_rol R WHERE R.rol NOT IN (SELECT UR.rol FROM general_usuario_rol UR WHERE user=?)");
+            ps.setString(1, usuario);
+            ResultSet rs=ps.executeQuery();
+            ArrayList<RolDTO> lista=new ArrayList<>();
+            while(rs.next()){
+                RolDTO r=new RolDTO();
+                r.setRol(rs.getString(1));
+                r.setDescripcion(rs.getString(2));
+                lista.add(r);
+            }
+            return lista;
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralRolDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            //cerrarConexion();
+        }
+        return null;
+    }
     public static void main(String[] args) {
         GeneralRolDAO rol=new GeneralRolDAO(ConexionGUDAOs.obtenerConexion());
         for (RolDTO rolDTO : rol.listarRoles()) {

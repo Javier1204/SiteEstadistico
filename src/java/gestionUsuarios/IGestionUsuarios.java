@@ -90,7 +90,7 @@ public interface IGestionUsuarios {
      * @param roles roles que quiere asignar
      * @return lista de los roles que no pudo agregar
      */
-    public List<String> asignarRoles(ICuenta usuario, List<String> roles);
+    public List<String> asignarRoles(String usuario, List<String> roles);
     
     
     /**
@@ -176,7 +176,7 @@ public interface IGestionUsuarios {
      * @param rol
      * @return 
      */
-    public boolean quitarRol(String usuario, String rol);
+    public void quitarRoles(String usuario, List<String> rol);
     
     /**
      * modifica la descripcion de un rol
@@ -199,4 +199,8 @@ public interface IGestionUsuarios {
     public ModuloDTO cargarNotRFModulo(String modulo, String rol);
     
     public List<ModuloDTO> cargarNoModuloRol(String rol);
+    
+    public List<RolDTO> cargarNotRolUsuario(String usuario);
+    
+    public UsuarioDTO obtenerUsuario(String usuario);
 }
