@@ -11,6 +11,8 @@
         response.sendRedirect("../index.jsp");
     }
    else if(cuenta.containRol("Docente") || cuenta.containRol("Director del Programa") ){
+       
+       System.out.println("CODIGO ES: "+cuenta.getUser());
     %>
         
  
@@ -88,7 +90,7 @@
 %>     
     <br>
      <!--TODO ESTO DEL DIRECTOR-->
-     <%   if(cuenta.containRol("Docente")){ %> 
+     <%   if(cuenta.containRol("Director del Programa")){ %> 
      
       <div class="ufps-row">
          <!--consultas director-->
