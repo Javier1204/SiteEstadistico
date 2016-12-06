@@ -19,29 +19,32 @@
     String radicado = request.getParameter("radicado");
     String tipo = request.getParameter("tipo_convenio");
     String fecharadicacion = request.getParameter("fecharadicacion");
-    
+    String vigencia = request.getParameter("vigencia");
     String estado = "Aprobado";
     String fechainicio = request.getParameter("fechainicio");
     String[] fecha1 = fechainicio.split("-");
-    String fechaterminacion = request.getParameter("fechaterminacion");
-    String[] fecha2 = fechaterminacion.split("-");
-    
+    //String fechaterminacion = request.getParameter("fechaterminacion");
+    //String[] fecha2 = fechaterminacion.split("-");
+    System.out.println(fechainicio);
     
     Calendar calendar1 = new GregorianCalendar(Integer.parseInt(fecha1[0]), Integer.parseInt(fecha1[1]), Integer.parseInt(fecha1[2])); 
-    Date f1 = new Date(calendar1.getTimeInMillis());
-    Calendar calendar2 = new GregorianCalendar(Integer.parseInt(fecha2[0]), Integer.parseInt(fecha2[1]), Integer.parseInt(fecha2[2])); 
-    Date f2 = new Date(calendar2.getTimeInMillis());
+    //Date f1 = new Date(calendar1.getTimeInMillis());
+    //Calendar calendar2 = new GregorianCalendar(Integer.parseInt(fecha2[0]), Integer.parseInt(fecha2[1]), Integer.parseInt(fecha2[2])); 
+    //Date f2 = new Date(calendar2.getTimeInMillis());
     
-    long diferencia = ( f2.getTime() - f1.getTime() ) / (1000 * 60 * 60 * 24);
+    //long dias = ( f2.getTime() - f1.getTime() ) / (1000 * 60 * 60 * 24);
     
-    System.out.println(fecharadicacion);
+    calendar1.add(Calendar.MONTH, Integer.parseInt(vigencia));//para pasarle por meses
+    //calendar1.add(Calendar.DAY_OF_YEAR, (int)(Integer.parseInt(vigencia)*30));//calcula la cantidad de dias de los meses
+    //System.out.println(fecharadicacion);
+    String fechaterminacion = calendar1.get(Calendar.YEAR)+"-"+calendar1.get(Calendar.MONTH)+"-"+calendar1.get(Calendar.DATE);     
     
     int entidad = Integer.parseInt(request.getParameter("entidad"));   
     
-    int meses = (int) diferencia / 30;
-    System.out.println(meses);
+    //int meses = (int) diferencia / 30;
+    //System.out.println(meses);
    
-    String vigencia = meses+"";
+    //String vigencia = meses+"";
     boolean[] actividades = new boolean[6];
 
     if (request.getParameter(

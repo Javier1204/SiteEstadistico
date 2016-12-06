@@ -4,6 +4,8 @@
     Author     : JAVIER
 --%>
 
+<%@page import="Internacionalizacion.Modelo.DTO.Docente"%>
+<%@page import="gestionUsuarios.ICuenta"%>
 <%@page import="Internacionalizacion.Modelo.DTO.Entidad"%>
 <%@page import="Internacionalizacion.Facade.Facade"%>
 <%@page import="Internacionalizacion.Modelo.DTO.Convenio"%>
@@ -11,6 +13,31 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
+    ICuenta cuenta = (ICuenta) session.getAttribute("usuario");
+    if (cuenta == null) {
+
+        response.sendRedirect("../Integrador/login.jsp");
+
+    }
+    if (cuenta != null) {
+        Docente d = null;
+        
+            String codigo = cuenta.getUser();
+            Facade fachada = new Facade();
+            d = fachada.consultarDocente(codigo);
+            if (!d.isHabilitado()) {
+
+%>
+<script type="text/javascript">
+    alert("NO ESTÁ HABILITADO POR EL COORDINADOR!");
+</script>
+<%                response.sendRedirect("index.jsp");
+            }
+        
+    } else {
+        response.sendRedirect("../Integrador/login.jsp");
+    }
+
     Facade fachada = new Facade();
     //Convenio con = new Convenio();
     if (request.getSession().getAttribute("respuesta_actividad") != null) {
@@ -23,7 +50,7 @@
 
 <script type="text/javascript">
     alert("<%=request.getSession().getAttribute("respuesta_actividad")%>");
-</script>-->
+</script>
 <%}
     request.getSession().setAttribute("respuesta_actividad", null);
 %>
@@ -92,12 +119,13 @@
                     <input name="descripcion" type="text" class="ufps-input-line" id="representante" >
                 </div></div>
 
-            <!--<div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">    
+            <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">    
                 <div class="form-group" >
 
                     <label for="vigencia">Vigencia</label>
-                    <input name="vigencia" type="text" class="ufps-input-line" id="representante" >
-                </div></div>-->
+                    <input name="vigencia" type="text" class="ufps-input-line" id="vigencia" >
+                </div></div>
+            
             <div class="ufps-col-tablet-6 ufps-col-tablet-offset-2">
                 <div class="form-group">
                     <br><label for="tipo_convenio">Seleccione Tipo de Convenio</label> <br><br>
@@ -115,7 +143,7 @@
                     <br><label >Por favor cargue el acta o documento del convenio</label> <br><br>
                     <div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">
                         <input type="file" name="archivo" id="archivo" accept=".pdf" required>
-                         <!--<button type="file"  name="archivo" id="archivo" class="ufps-btn" required>Cargar acta</button> -->
+                        <!--<button type="file"  name="archivo" id="archivo" class="ufps-btn" required>Cargar acta</button> -->
                         <br> <br></div>
                 </div> </div>
             <div class="ufps-col-tablet-10 ufps-col-tablet">
@@ -163,12 +191,12 @@
                     <input type="date" class="ufps-input" id="fechainicio" name="fechainicio" onchange="fijarfechainicio_terminacion(this.value)">
                 </div>
 
-
+<!--
                 <div class="form-group col-md-4 pull-right">
                     <br><label for="fechaterminacion" title="Fecha en que se termina el convenio ">Fecha terminacion <span class="glyphicon glyphicon-question-sign"></span></label>
                     <input type="date" class="ufps-input" id="fechaterminacion" name="fechaterminacion" onchange="fijarfechalimite_inicio(this.value)">
                 </div></div>
-
+-->
 
 
             <!--<div class="ufps-col-tablet-6 ufps-col-tablet-offset-3">

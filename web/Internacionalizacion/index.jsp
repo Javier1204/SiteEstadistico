@@ -4,9 +4,14 @@
     Author     : JAVIER
 --%>
 
+<%@page import="Internacionalizacion.Modelo.DTO.Docente"%>
+<%@page import="Internacionalizacion.Facade.Facade"%>
+<%@page import="gestionUsuarios.ICuenta"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Ingenieria de sistemas</title>
@@ -24,7 +29,7 @@
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="../public/css/ufps.css" rel="stylesheet" type="text/css"/>
     <link href="../public/css/ufps-estilo.css" rel="stylesheet" type="text/css"/>    
-    
+
     <link href="css/bootstrapTheme.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
 
@@ -39,12 +44,12 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <!--Algunos componentes requieren el uso de la librerÃ­a en javascript-->
-       
+
     <script src="../../public/js/ufps.js" type="text/javascript"></script>
     <script src="../../public/js/ufps.min.js" type="text/javascript"></script>
     <script src="../../public/js/ufps.min.js" type="text/javascript"></script>
-    
-    
+
+
 </head>
 <body>
     <jsp:include page="../plantilla/header.jsp"></jsp:include>
@@ -84,12 +89,18 @@
     </div>
     -->
     <!--Contenido-->
-
+    
+    
 
     <div  class="ufps-container" id="contenido">
-
+        
+        <div class="col-md-3"><a href="registrarConvenio.jsp" class="ufps-btn" style="font-size: 16px">Gestionar Convenios</a>
+    <a href="registrarActividad.jsp" class="ufps-btn" style="font-size: 16px">Gestionar Actividades</a>
+        </div>
+         
         <!--Carrousel-->
-        <div id="owl-demo">
+       
+        <div id="owl-demo" class="col-md-9">
 
             <div class="item"> 
                 <img src="img/Banner_120_2016.png" alt=""/>
@@ -109,7 +120,7 @@
             <div class="item">
                 <img src="img/Banner_165_2016.png" alt=""/>
             </div>    
-             
+
 
         </div>
 
@@ -166,21 +177,21 @@
 
 
 <script>
-    $(document).ready(function() {
-      $("#owl-demo").owlCarousel({
-        autoPlay: 3000,
-        items : 3,
-        itemsDesktop : [1199,3],
-        itemsDesktopSmall : [979,3]
-      });
+    $(document).ready(function () {
+        $("#owl-demo").owlCarousel({
+            autoPlay: 3000,
+            items: 2,
+            itemsDesktop: [1199, 3],
+            itemsDesktopSmall: [979, 3]
+        });
 
     });
-    </script>
+</script>
 
-    <script src="js/bootstrap-collapse.js"></script>
-    <script src="js/bootstrap-transition.js"></script>
-    <script src="js/bootstrap-tab.js"></script>
-    <script src="js/google-code-prettify/prettify.js"></script>   
-    <script src="js/application.js"></script>
+<script src="js/bootstrap-collapse.js"></script>
+<script src="js/bootstrap-transition.js"></script>
+<script src="js/bootstrap-tab.js"></script>
+<script src="js/google-code-prettify/prettify.js"></script>   
+<script src="js/application.js"></script>
 
 </html>

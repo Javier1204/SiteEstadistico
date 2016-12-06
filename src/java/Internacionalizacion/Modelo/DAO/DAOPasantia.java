@@ -18,7 +18,7 @@ import java.sql.SQLException;
  */
 public class DAOPasantia {
  
-    public String RegistrarActividad(Pasantia a) {
+    public String RegistrarPasantia(Pasantia a) {
         Pool pool = Conexion.getPool();
         Connection con = null;
         
@@ -40,10 +40,10 @@ public class DAOPasantia {
             stmt.close();
             if(can == 1){
                 System.out.println("Registro!");
-                return "Se registro actividad!";
+                return "Se registro pasantia!";
             }else{
                  System.out.println("No registro!");
-                return "No se registro actividad!";
+                return "No se registro pasantia!";
             }
             
         } catch (Exception ex) {
@@ -55,7 +55,7 @@ public class DAOPasantia {
                     con.close(); // se cierra la conexion. este es un paso muy importante
                 }
             } catch (SQLException ex) {
-                 System.out.println("asdasd no registrar");
+                 System.out.println("No registro");
                 System.err.println(ex);
             }
         }   

@@ -45,6 +45,7 @@
     Facade f = new Facade();
     Actividad a = new Actividad();
     
+    if(tipoactividad=="Pasantia"){
     Pasantia p = new Pasantia();
     p.setIdconvenio(convenio);
     p.setProyecto(nombrepasantia);
@@ -52,8 +53,8 @@
     p.setTutoruniversidad(tutoru);
     
     DAOPasantia dao = new DAOPasantia();
-    dao.RegistrarActividad(p);
-    
+    dao.RegistrarPasantia(p);
+    }
     a.setNombre(nombre);
     a.setDescripcion(descripcion);
     a.setDuracion(meses+"");

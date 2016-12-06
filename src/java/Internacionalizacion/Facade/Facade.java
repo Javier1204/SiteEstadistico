@@ -9,12 +9,14 @@ package Internacionalizacion.Facade;
 import Internacionalizacion.Controlador.ControladorActividad;
 import Internacionalizacion.Controlador.ControladorActividad_Estudiante;
 import Internacionalizacion.Controlador.ControladorConvenio;
+import Internacionalizacion.Controlador.ControladorDocente;
 import Internacionalizacion.Controlador.ControladorEntidad;
 import Internacionalizacion.Controlador.ControladorPais;
 import Internacionalizacion.Controlador.ControladorTipo_actividades;
 import Internacionalizacion.Modelo.DTO.Actividad;
 import Internacionalizacion.Modelo.DTO.Actividad_Estudiante;
 import Internacionalizacion.Modelo.DTO.Convenio;
+import Internacionalizacion.Modelo.DTO.Docente;
 import Internacionalizacion.Modelo.DTO.Entidad;
 import Internacionalizacion.Modelo.DTO.Pais;
 import Internacionalizacion.Modelo.DTO.Tipo_actividades;
@@ -90,8 +92,7 @@ public class Facade {
     
     public ArrayList<Pais> obtenerPaises(){
         ControladorPais c = new ControladorPais();
-        return c.obtenerPaises();
-        
+        return c.obtenerPaises();        
     }    
      
     //METODOS PARA EL MANEJO DE REGISTRO Y CONSULTAS DE LA ENTIDAD ACTIVIDAD X ESTUDIANTE
@@ -100,5 +101,17 @@ public class Facade {
         ControladorActividad_Estudiante c = new ControladorActividad_Estudiante();
         return c.RegistrarActividad_Estudiante(a);
     }
+     
+    //METODOS PARA EL MANEJO DE LOS DOCENTES
+     public ArrayList<Docente> obtenerDocentes(){
+        ControladorDocente c = new ControladorDocente();
+        return c.obtenerDocentes();
+        
+    } 
+     
+     public Docente consultarDocente(String codigo){
+         ControladorDocente c = new ControladorDocente();
+         return c.consultarDocente(codigo);
+     }
     
 }
