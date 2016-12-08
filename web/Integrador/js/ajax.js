@@ -640,3 +640,48 @@ function quitaRoles(usuario){
         }
     }
 }
+
+function modalARF(modulo){
+    ajax = nuevoAjax();    
+    parametros = "modulo=" + modulo;
+    url = "procesar/procesarModalAgregarRF.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+    document.getElementById("modal-ARF").innerHTML = "<center><img src='img/load.gif'/></center> ";
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("modal-ARF").innerHTML = rta;
+                openModal("modal-RF");
+            }
+        } 
+    }
+}
+
+function registarRoles(modulo){
+    ajax = nuevoAjax();
+    var id=document.getElementById("id");
+    var nombre=document.getElementById("nombre");
+    var url=document.getElementById("url");   
+    
+    parametros = "modulo=" + modulo + "&id=" + id.value+ "&nombre=" + nombre.value+ "&url=" + url.value;
+    url = "procesar/procesarCrearRF.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+    document.getElementById("loading").innerHTML = "<center><img src='img/load.gif' height='200' width='275'/></center> ";
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("loading").innerHTML = rta;
+                location.reload();
+            }
+        } else
+        {
+            document.getElementById("loading").innetHTML = "<img src='../img/load.gif'/ height='42' width='42'> ";
+        }
+    }
+}

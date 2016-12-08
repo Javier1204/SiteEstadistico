@@ -15,34 +15,65 @@
     List<ModuloDTO> modulos = gestor.listarModulo();
 %>   
 <jsp:include page="../plantilla/header.jsp"></jsp:include>
-    <!--Contenido-->
-    <div  class="ufps-container" id="contenido">
-    <% for (ModuloDTO mod : modulos) {%>
-    <h2 class="text-center" style="text-align: center">Requerimientos funcionales <%= mod.getNombre()%></h2>
-    <% List<RequerimientosFDTO> reqs = gestor.listarRF(mod.getNombre()); %>
-            <table class="ufps-table" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
+    <script src="js/ajax.js"></script> 
+    <link href="css/integrador.css" rel="stylesheet" type="text/css"/>
+    <div class="ufps-container ufps-fix-navbar-fixed">
+        <center> <h1>Asignar Roles</h1></center>
+        <center><label id="divError"></label></center>
+        <div name="registro" class="f-integrador ufps-container" id="registro">
+        <% for (ModuloDTO mod : modulos) {%>
+        <div class="ufps-accordion" style="text-align: center">
+            <button class="ufps-btn-accordion"><h4 class="text-center">Requerimientos funcionales <%= mod.getNombre()%></h4></button>
+            <div class="ufps-accordion-panel">
+                <% List<RequerimientosFDTO> reqs = mod.getRequerimientos();
+                    if (!reqs.isEmpty()) {
+                %>
 
+                <div id="formPE<%=mod.getNombre()%>">
+                    <table id="table" class="ufps-table ufps-table-inserted ufps-text-left">
+                        <thead>
+                        <th>SELECCÓN</th>
                         <th>ID</th>
-                        <th>Nombre</th>
-                        <th>URL</th>
-                        <th>Acción</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% for (RequerimientosFDTO dto : reqs) { %>
-                    <tr>
-                        <td><center><%= dto.getId()%></center></td>
-                <td><center><%= dto.getNombre() %></center></td>
-                <td><center><%= dto.getUrl() %></center></td>
-                <td><center><a class="ufps-btn ufps-btn-light" href="modificarRF.jsp?modulo=<%=mod.getNombre()%>&id=<%=dto.getId()%>&nombre=<%=dto.getNombre()%>&url=<%=dto.getUrl()%>">Modificar</a></center> </td>
-                <td><center><a class="ufps-btn" href="procesar/eliminarRF.jsp?modulo=<%=mod.getNombre()%>&id=<%=dto.getId()%>&nombre=<%=dto.getNombre()%>&url=<%=dto.getUrl()%>">Eliminar</a></center> </td>
-                </tr>
-        <% }%>
-        </tbody>
-    </table>
-    <% }%>
-</div>         
+                        <th>NOMBRE</th>
+                        </thead>
+                        <%
+                            //int i = 0;
+                            for (RequerimientosFDTO rfDTO : reqs) {
+                        %>
+                        <tr>
+                            <td>
+                                <input  style="width: 40px;" type="checkbox" title="<%=rfDTO.getId()%>" name="check<%=mod.getNombre()%>" id="<%=rfDTO.getId()%>" value="<%=rfDTO.getId()%>"/> 
+                            </td>
+                            <td>
+                                <%=rfDTO.getId()%>        
+                            </td>
+                            <td>
+                                <%=rfDTO.getNombre()%>
+                            </td>
+                        </tr>
+                        <%
+                            }
+                        %>
+                    </table>
+                    <div class="ufps-btn-group">
+                        <button onclick="javascript:modalARF('<%=mod.getNombre()%>')" class="ufps-btn ufps-btn-green acomodarBtn" >Agregar nuevo Requerimiento</button>  
+                        <button onclick="" class="ufps-btn acomodarBtn" >Eliminar Seleccionados</button>  
+                    </div>
+                </div> 
+
+                <% } else {%>
+
+                <label>El módulo <%= mod.getNombre()%> no tiene RFs </label>
+                <% }%>
+
+
+
+            </div>
+
+        </div>
+        <%    }%>
+
+    </div>
+    <div id="modal-ARF"></div>
+</div>
 <jsp:include page="../plantilla/footer.jsp"></jsp:include>

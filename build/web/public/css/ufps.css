@@ -2153,7 +2153,7 @@ textarea {
 
 .ufps-accordion-panel.ufps-accordion-show {
   opacity: 1;
-  max-height: 500px;
+  max-height: 1500px;
 }
 
 /* Panels */

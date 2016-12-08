@@ -17,6 +17,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Departamento de sistemas e Informática UFPS</title>
         <link href="../public/css/ufps.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../public/css/ufps.css" rel="stylesheet" type="text/css"/>
         <link href="../public/css/ufps-estilo.css" rel="stylesheet">
         <link href="../public/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="../public/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
