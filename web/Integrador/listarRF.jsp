@@ -32,9 +32,10 @@
                 <div id="formPE<%=mod.getNombre()%>">
                     <table id="table" class="ufps-table ufps-table-inserted ufps-text-left">
                         <thead>
-                        <th>SELECCÓN</th>
+                        <th>SELECCIÓN</th>
                         <th>ID</th>
                         <th>NOMBRE</th>
+                        <th>ACCIÓN</th>
                         </thead>
                         <%
                             //int i = 0;
@@ -42,13 +43,16 @@
                         %>
                         <tr>
                             <td>
-                                <input  style="width: 40px;" type="checkbox" title="<%=rfDTO.getId()%>" name="check<%=mod.getNombre()%>" id="<%=rfDTO.getId()%>" value="<%=rfDTO.getId()%>"/> 
+                                <input  style="width: 40px;" type="checkbox" title="<%=rfDTO.getId()%>" name="checkRFE<%=mod.getNombre()%>" id="<%=rfDTO.getId()%>" value="<%=rfDTO.getId()%>"/> 
                             </td>
                             <td>
                                 <%=rfDTO.getId()%>        
                             </td>
                             <td>
                                 <%=rfDTO.getNombre()%>
+                            </td>
+                            <td>
+                                <button class="ufps-btn ufps-btn-light" onclick="javascript:modalMRF('<%=mod.getNombre()%>', '<%=rfDTO.getId()%>')">modificar</button>
                             </td>
                         </tr>
                         <%
@@ -57,8 +61,9 @@
                     </table>
                     <div class="ufps-btn-group">
                         <button onclick="javascript:modalARF('<%=mod.getNombre()%>')" class="ufps-btn ufps-btn-green acomodarBtn" >Agregar nuevo Requerimiento</button>  
-                        <button onclick="" class="ufps-btn acomodarBtn" >Eliminar Seleccionados</button>  
+                        <button onclick="javascript:eliminarRF('<%=mod.getNombre()%>')" class="ufps-btn acomodarBtn" >Eliminar Seleccionados</button>  
                     </div>
+                    <div id="loading<%=mod.getNombre()%>"></div>
                 </div> 
 
                 <% } else {%>

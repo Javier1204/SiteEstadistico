@@ -72,7 +72,7 @@ public interface IGestionUsuarios {
      * @return true si existe ese usuario, false sino existe en el sistema
      */
     
-    public boolean modificarRF(String modulo, String rf, String nuevoDesString, String nuevaURL);
+    public boolean modificarRF(String modulo, String rf, String nuevoNombre, String nuevaURL);
     
     
     /**
@@ -203,4 +203,8 @@ public interface IGestionUsuarios {
     public List<RolDTO> cargarNotRolUsuario(String usuario);
     
     public UsuarioDTO obtenerUsuario(String usuario);
+    
+    public List<String> elimnarRFs(String modulo, List<String> rfs);
+    
+    public RequerimientosFDTO obtenerRF(String modulo, String rf);
 }

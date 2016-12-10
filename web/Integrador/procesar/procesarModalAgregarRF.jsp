@@ -11,7 +11,6 @@
 <%
     request.setCharacterEncoding("UTF-8");
     String modulo = request.getParameter("modulo");
-    System.out.println("llego al modal");
 
 %>
 <div id="modal-RF" class="ufps-modal">
@@ -22,23 +21,24 @@
         </div>
         <div class="ufps-modal-body">
             <div>
-                <label >Id</label><br>
+                <label class="text-left">Id</label><br>
                 <input type="text"  name="id" id="id" class="ufps-input ufps-black" placeholder="Ejemplo <RF1>"required />
             </div>
             <div>
-                <label >Nombre</label><br>
+                <label class="text-left">Nombre</label><br>
                 <input type="text"  name="id" id="nombre" class="ufps-input ufps-black" required />
             </div>
             <div>
-                <label >URL</label><br>
+                <label class="text-left">URL</label><br>
                 <input type="text" name="id" id="url" class="ufps-input ufps-black" placeholder="nombreCarpeta/vista.jsp" required />
             </div>
             <button onclick="registarRoles('<%=modulo%>')" class="ufps-btn ufps-btn-green">Registrar requerimiento funcional</button>
+            <div id="loading"></div>
         </div>
         <div class="ufps-modal-footer">
             <h3>Registrar requerimiento funcional</h3>
         </div>
-        <div id="loading"></div>
+        
     </div>
 </div>
 

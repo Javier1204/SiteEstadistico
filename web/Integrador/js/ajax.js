@@ -437,33 +437,28 @@ function modificarRol() {
     }
 }
 
-function modificarRF() {
+function modificarRF(modulo) {
     var id = document.getElementById("id");
-    var modulo = document.getElementById("selectMod");
     var nombre = document.getElementById("nombre");
+    console.log(nombre.value);
     var dir = document.getElementById("url");
+    console.log(dir.value);
     ajax = nuevoAjax();
-    parametros = "id=" + id.value + "&modulo=" + modulo.value + "&nombre=" + nombre.value + "&url=" + dir.value;
+    parametros = "id=" + id.value + "&modulo=" + modulo + "&nombre=" + nombre.value + "&url=" + dir.value;
     url = "procesar/procesarModificarRF.jsp";
     ajax.open("POST", url, true);
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     ajax.send(parametros);
-
+    document.getElementById("loading").innerHTML = "<center><img src='img/load.gif'/></center> ";
     ajax.onreadystatechange = function () {
         if (ajax.readyState == 4) {
             if (ajax.status == 200) {
                 var rta = ajax.responseText;
-                if (rta.indexOf("1") >= 0) {
-                    document.getElementById("divError").innerHTML = "Registro exitoso";
-                    document.getElementById("registro").reset;
-                } else if (rta.indexOf("2") >= 0) {
-                    document.getElementById("divError").innerHTML = "Falló registro";
-                }
+                document.getElementById("loading").innerHTML = rta
+                location.reload();
+
             }
-        } else
-        {
-            document.getElementById("divError").value = "Verificando Usuario...";
-        }
+        } 
     }
 
 }
@@ -489,19 +484,19 @@ function cargarNoRF(modulo) {
         }
     }
 }
-function asignarPrivilegios(modulo, rol){
+function asignarPrivilegios(modulo, rol) {
     ajax = nuevoAjax();
     var checkboxes = document.getElementById("formP").checkP;
-    var rfs="";
-    var cont=0;
+    var rfs = "";
+    var cont = 0;
     for (var i = 0; i < checkboxes.length; i++) {
-        if(checkboxes[i].checked){
-            rfs+=checkboxes[i].id+"-";
+        if (checkboxes[i].checked) {
+            rfs += checkboxes[i].id + "-";
             cont++;
         }
     }
-    
-    parametros = "rfs=" + rfs + "&rol=" + rol+"&modulo=" + modulo;
+
+    parametros = "rfs=" + rfs + "&rol=" + rol + "&modulo=" + modulo;
     url = "procesar/procesarAsignarPrivilegio.jsp";
     ajax.open("POST", url, true);
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -521,18 +516,18 @@ function asignarPrivilegios(modulo, rol){
         }
     }
 }
-function eliminarPrivilegios(modulo, rol){
+function eliminarPrivilegios(modulo, rol) {
     ajax = nuevoAjax();
-    
-    var checkboxes = document.getElementsByName("check"+modulo);
-    var rfs="";
+
+    var checkboxes = document.getElementsByName("check" + modulo);
+    var rfs = "";
     for (var i = 0; i < checkboxes.length; i++) {
-        if(checkboxes[i].checked){
-            rfs+=checkboxes[i].id+"-";
+        if (checkboxes[i].checked) {
+            rfs += checkboxes[i].id + "-";
             //cont++;
         }
     }
-    parametros = "rfs=" + rfs + "&rol=" + rol+"&modulo=" + modulo;
+    parametros = "rfs=" + rfs + "&rol=" + rol + "&modulo=" + modulo;
     url = "procesar/procesarEliminarPrivilegio.jsp";
     ajax.open("POST", url, true);
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -577,18 +572,18 @@ function cargarNoRolUsuario() {
     }
 }
 
-function asignarRoles(usuario){
+function asignarRoles(usuario) {
     ajax = nuevoAjax();
     var checkboxes = document.getElementsByName("checkRolA");
-    var roles="";
-    var cont=0;
+    var roles = "";
+    var cont = 0;
     for (var i = 0; i < checkboxes.length; i++) {
-        if(checkboxes[i].checked){
-            roles+=checkboxes[i].id+"-";
+        if (checkboxes[i].checked) {
+            roles += checkboxes[i].id + "-";
             cont++;
         }
     }
-    
+
     parametros = "roles=" + roles + "&usuario=" + usuario;
     url = "procesar/asignarRoles.jsp";
     ajax.open("POST", url, true);
@@ -609,18 +604,18 @@ function asignarRoles(usuario){
     }
 }
 
-function quitaRoles(usuario){
+function quitaRoles(usuario) {
     ajax = nuevoAjax();
     var checkboxes = document.getElementsByName("checkRolE");
-    var roles="";
-    var cont=0;
+    var roles = "";
+    var cont = 0;
     for (var i = 0; i < checkboxes.length; i++) {
-        if(checkboxes[i].checked){
-            roles+=checkboxes[i].id+"-";
+        if (checkboxes[i].checked) {
+            roles += checkboxes[i].id + "-";
             cont++;
         }
     }
-    
+
     parametros = "roles=" + roles + "&usuario=" + usuario;
     url = "procesar/procesarQuitarRoles.jsp";
     ajax.open("POST", url, true);
@@ -641,8 +636,8 @@ function quitaRoles(usuario){
     }
 }
 
-function modalARF(modulo){
-    ajax = nuevoAjax();    
+function modalARF(modulo) {
+    ajax = nuevoAjax();
     parametros = "modulo=" + modulo;
     url = "procesar/procesarModalAgregarRF.jsp";
     ajax.open("POST", url, true);
@@ -656,17 +651,17 @@ function modalARF(modulo){
                 document.getElementById("modal-ARF").innerHTML = rta;
                 openModal("modal-RF");
             }
-        } 
+        }
     }
 }
 
-function registarRoles(modulo){
+function registarRoles(modulo) {
     ajax = nuevoAjax();
-    var id=document.getElementById("id");
-    var nombre=document.getElementById("nombre");
-    var url=document.getElementById("url");   
-    
-    parametros = "modulo=" + modulo + "&id=" + id.value+ "&nombre=" + nombre.value+ "&url=" + url.value;
+    var id = document.getElementById("id");
+    var nombre = document.getElementById("nombre");
+    var url = document.getElementById("url");
+
+    parametros = "modulo=" + modulo + "&id=" + id.value + "&nombre=" + nombre.value + "&url=" + url.value;
     url = "procesar/procesarCrearRF.jsp";
     ajax.open("POST", url, true);
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -682,6 +677,64 @@ function registarRoles(modulo){
         } else
         {
             document.getElementById("loading").innetHTML = "<img src='../img/load.gif'/ height='42' width='42'> ";
+        }
+    }
+}
+
+function eliminarRF(modulo) {
+    ajax = nuevoAjax();
+    var checkboxes = document.getElementsByName("checkRFE" + modulo);
+    var rfs = "";
+    var cont = 0;
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+            rfs += checkboxes[i].id + "-";
+            cont++;
+        }
+    }
+    if (rfs === "") {
+        document.getElementById("loading" + modulo).innerHTML = "no ha seleccionado ningun elemento";
+        return;
+    }
+    parametros = "modulo=" + modulo + "&rfs=" + rfs;
+    url = "procesar/procesarEliminarRFs.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+    document.getElementById("loading" + modulo).innerHTML = "<center><img src='img/load.gif'/></center> ";
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                if (rta.indexOf("no se han podido eliminar los siguientes RF") > -1) {
+                    document.getElementById("loading" + modulo).innerHTML = rta;
+                    return;
+                }
+                document.getElementById("loading" + modulo).innerHTML = rta;
+                location.reload();
+            }
+        } else
+        {
+            document.getElementById("loading" + modulo).value = "<center><img src='img/load.gif'/></center>  ";
+        }
+    }
+}
+
+function modalMRF(modulo, rf) {
+    ajax = nuevoAjax();
+    parametros = "modulo=" + modulo + "&rf=" + rf;
+    url = "procesar/procesarModificarRFModal.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+    document.getElementById("loading" + modulo).innerHTML = "<center><img src='img/load.gif'/></center> ";
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("loading" + modulo).innerHTML = rta;
+                openModal("modal-RF");
+            }
         }
     }
 }
