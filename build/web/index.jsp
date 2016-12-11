@@ -5,4 +5,4 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% response.sendRedirect("Integrador/listar_publicaciones.jsp"); %>
+<% response.sendRedirect("Integrador/principal.jsp"); %>

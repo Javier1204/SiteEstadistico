@@ -17,18 +17,20 @@
 
         response.sendRedirect("../Integrador/login.jsp");
 
-    } else if (cuenta.getUser().equals("8")) {
+    } 
+    //else if (cuenta.getUser().equals("8")) {
 
         //String codigo = cuenta.getUser();
         //if(codigo=="8"){
-        System.out.println("soy el 8");
-%>
-<script type="text/javascript">
+        //System.out.println("soy el 8");
+//%>
+<!--<script type="text/javascript">
     alert("ERES COORDINADOR NO PUEDES ENTRAR AQUÍ!");
-</script>
+</script>-->
 <%
-response.sendRedirect("index.jsp");
-}
+//response.sendRedirect("index.jsp");
+//}
+
 Facade fachada = new Facade();
 Docente d = null;
 if(cuenta != null){
@@ -123,6 +125,7 @@ if (request.getSession().getAttribute("respuesta_actividad") != null) {
                             <input type="button" id="registraractividades" class="ufps-btn-accordion" value="Registrar actividad"><br><br>
                             <input type="button" id ="consultaractividades" class="ufps-btn-accordion" value="Consultar actividades"><br><br>
                             <input type="button" id="consultarconvenios" class="ufps-btn-accordion" value="Consultar convenios"><br><br>
+                            <input type="button" id="generarinforme" class="ufps-btn-accordion" value="Generar informe"><br><br>
 
                             <!--<li class="active"><a href="#"><i class="fa fa-home fa-fw"></i>Home</a></li>-->
                             <!--<li><a href="http://www.jquery2dotnet.com"><i class="fa fa-list-alt fa-fw"></i>Registrar actividad</a></li><br>

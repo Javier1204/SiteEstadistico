@@ -41,6 +41,17 @@ $(document).ready(function () {
     });
 });
 
+//Permite la generacion del formulario informe por ajax:)
+$(document).ready(function () {
+    $("#generarinforme").click(function (evento) {
+        evento.preventDefault();
+        $("#destino").load("formInforme.jsp");
+        
+        
+        //console.log("Hola");
+    });
+});
+
 
 function addInput(divName)
 {

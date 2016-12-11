@@ -19,26 +19,22 @@
         response.sendRedirect("../Integrador/login.jsp");
 
     }
-    if (cuenta != null) {
-        Docente d = null;
+    
+    Facade fachada = new Facade();
+    Docente d = null;
+    if(cuenta != null){
+    String codigo = cuenta.getUser();
+    d = fachada.consultarDocente(codigo);
+    if(!d.isHabilitado()){
         
-            String codigo = cuenta.getUser();
-            Facade fachada = new Facade();
-            d = fachada.consultarDocente(codigo);
-            if (!d.isHabilitado()) {
-
 %>
 <script type="text/javascript">
     alert("NO ESTÁ HABILITADO POR EL COORDINADOR!");
 </script>
-<%                response.sendRedirect("index.jsp");
-            }
-        
-    } else {
-        response.sendRedirect("../Integrador/login.jsp");
-    }
-
-    Facade fachada = new Facade();
+<%
+    response.sendRedirect("index.jsp");
+}
+}
     //Convenio con = new Convenio();
     if (request.getSession().getAttribute("respuesta_actividad") != null) {
 
