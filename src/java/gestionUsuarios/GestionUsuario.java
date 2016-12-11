@@ -129,8 +129,8 @@ public class GestionUsuario implements IGestionUsuarios{
     }
 
     @Override
-    public boolean modificarRF(String modulo, String rf, String nuevoDesString, String nuevaURL) {
-        return ControlGestionUsuarios.getInstance().modificarRF(modulo, rf, nuevoDesString, nuevaURL);
+    public boolean modificarRF(String modulo, String rf, String nuevoNombre, String nuevaURL) {
+        return ControlGestionUsuarios.getInstance().modificarRF(modulo, rf, nuevoNombre, nuevaURL);
     }
 
     @Override
@@ -210,6 +210,16 @@ public class GestionUsuario implements IGestionUsuarios{
     @Override
     public UsuarioDTO obtenerUsuario(String usuario) {
         return ControlGestionUsuarios.getInstance().obtenerUsuario(usuario);
+    }
+
+    @Override
+    public List<String> elimnarRFs(String modulo, List<String> rfs) {
+        return ControlGestionUsuarios.getInstance().elimnarRFs(modulo, rfs);
+    }
+
+    @Override
+    public RequerimientosFDTO obtenerRF(String modulo, String rf) {
+        return ControlGestionUsuarios.getInstance().obtenerRF(modulo, rf);
     }
     
 

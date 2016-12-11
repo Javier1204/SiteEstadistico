@@ -253,15 +253,17 @@ public class ControlGestionUsuarios {
         Connection con = ConexionGUDAOs.obtenerConexion();
         try {
             this.eliminarRF(rf, modulo, con);
-
+            
         } finally {
             ConexionGUDAOs.cerrarConexion(con);
         }
     }
 
-    private void eliminarRF(String rf, String modulo, Connection con) {
+    private boolean eliminarRF(String rf, String modulo, Connection con) {
         GeneralPrivilegioDAO privilegioDAO = new GeneralPrivilegioDAO(con);
+        GeneralRequerimientoFDAO rfDAO=new GeneralRequerimientoFDAO(con);
         privilegioDAO.eliminarRF(modulo, rf);
+        return rfDAO.eliminarRF(rf, modulo);
     }
 
     protected boolean modificarModulo(String modulo, String nuevaDescripcion, String url) {
@@ -274,11 +276,11 @@ public class ControlGestionUsuarios {
         }
     }
 
-    protected boolean modificarRF(String modulo, String rf, String nuevoDesString, String nuevaURL) {
+    protected boolean modificarRF(String modulo, String rf, String nuevoNombre, String nuevaURL) {
         Connection con = ConexionGUDAOs.obtenerConexion();
         try {
             GeneralRequerimientoFDAO rfDAO = new GeneralRequerimientoFDAO(con);
-            return rfDAO.modificarRF(modulo, rf, nuevaURL, nuevaURL);
+            return rfDAO.modificarRF(modulo, rf, nuevoNombre, nuevaURL);
         } finally {
             ConexionGUDAOs.cerrarConexion(con);
         }
@@ -452,6 +454,29 @@ public class ControlGestionUsuarios {
             UsuarioDTO userDTO= new GeneralUsuarioDAO(con).getUsuario(usuario);
             new GeneralUsuarioDAO(con).cargarNombre(userDTO);
             return userDTO;
+        } finally {
+            ConexionGUDAOs.cerrarConexion(con);
+        }
+    }
+    
+    protected List<String> elimnarRFs(String modulo, List<String> rfs) {
+        Connection con = ConexionGUDAOs.obtenerConexion();
+        try {
+            ArrayList<String> noEliminados=new ArrayList<>();
+            for (String rf : rfs) {
+                if(!this.eliminarRF(rf, modulo, con)){
+                    noEliminados.add(rf);
+                }                
+            }
+            return noEliminados;
+        } finally {
+            ConexionGUDAOs.cerrarConexion(con);
+        }
+    }
+    protected RequerimientosFDTO obtenerRF(String modulo, String rf) {
+        Connection con = ConexionGUDAOs.obtenerConexion();
+        try {
+            return new GeneralRequerimientoFDAO(con).getRF(modulo, rf);
         } finally {
             ConexionGUDAOs.cerrarConexion(con);
         }
