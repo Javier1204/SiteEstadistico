@@ -67,3 +67,6 @@ SrvInforme srv=SrvInforme.getInstance();
             <% } %>
             
         </table>
+            
+             <br>
+             <div id="green" ></div>
