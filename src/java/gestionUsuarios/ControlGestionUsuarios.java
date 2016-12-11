@@ -481,4 +481,13 @@ public class ControlGestionUsuarios {
             ConexionGUDAOs.cerrarConexion(con);
         }
     }
+    
+    protected ModuloDTO obtenerModulo(String modulo) {
+        Connection con = ConexionGUDAOs.obtenerConexion();
+        try {
+            return new GeneralModuloDAO(con).getModulo(modulo);
+        } finally {
+            ConexionGUDAOs.cerrarConexion(con);
+        }
+    }
 }

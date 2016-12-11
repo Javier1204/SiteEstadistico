@@ -207,4 +207,6 @@ public interface IGestionUsuarios {
     public List<String> elimnarRFs(String modulo, List<String> rfs);
     
     public RequerimientosFDTO obtenerRF(String modulo, String rf);
+    
+    public ModuloDTO obtenerModulo(String modulo);
 }

@@ -221,6 +221,11 @@ public class GestionUsuario implements IGestionUsuarios{
     public RequerimientosFDTO obtenerRF(String modulo, String rf) {
         return ControlGestionUsuarios.getInstance().obtenerRF(modulo, rf);
     }
+
+    @Override
+    public ModuloDTO obtenerModulo(String modulo) {
+        return ControlGestionUsuarios.getInstance().obtenerModulo(modulo);
+    }
     
 
 }

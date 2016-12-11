@@ -458,7 +458,7 @@ function modificarRF(modulo) {
                 location.reload();
 
             }
-        } 
+        }
     }
 
 }
@@ -734,6 +734,88 @@ function modalMRF(modulo, rf) {
                 var rta = ajax.responseText;
                 document.getElementById("loading" + modulo).innerHTML = rta;
                 openModal("modal-RF");
+            }
+        }
+    }
+}
+
+function modalMModulo(modulo) {
+    ajax = nuevoAjax();
+    parametros = "modulo=" + modulo;
+    url = "procesar/procesarModificarModuloModal.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+    document.getElementById("modal-modificar").innerHTML = "<center><img src='img/load.gif'/></center> ";
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("modal-modificar").innerHTML = rta;
+                openModal("modal-MModulo");
+            }
+        }
+    }
+}
+
+function modificarModulo2() {
+    var modulo = document.getElementById("nombre-modulo");
+    var descripcion = document.getElementById("descripcion-modulo");
+    var url = document.getElementById("url-modulo");
+    ajax = nuevoAjax();
+    parametros = "modulo=" + modulo.value + "&descripcion=" + descripcion.value + "&url=" + url.value;
+    url = "procesar/procesarModificarModulo.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+    document.getElementById("loading").innerHTML = "<center><img src='img/load.gif'/></center> ";
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("loading").innerHTML = rta;
+                location.reload();
+
+            }
+        }
+    }
+}
+
+function modalAModulo() {
+    ajax = nuevoAjax();
+    parametros = "nada=nada";
+    url = "procesar/procesarAgregarModuloModal.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+    document.getElementById("modal-agregar").innerHTML = "<center><img src='img/load.gif'/></center> ";
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("modal-agregar").innerHTML = rta;
+                openModal("modal-AModulo");
+            }
+        }
+    }
+}
+function registrarModulo2() {
+    var modulo = document.getElementById("nombre-modulo");
+    var descripcion = document.getElementById("descripcion-modulo");
+    var url = document.getElementById("url-modulo");
+    ajax = nuevoAjax();
+    parametros = "modulo=" + modulo.value + "&descripcion=" + descripcion.value + "&url=" + url.value;
+    url = "procesar/procesarAgregarModulo.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+    document.getElementById("loading").innerHTML = "<center><img src='img/load.gif'/></center> ";
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("loading").innerHTML = "Registro exitoso";
+                location.reload();
             }
         }
     }
