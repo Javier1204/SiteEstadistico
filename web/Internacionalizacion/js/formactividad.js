@@ -52,6 +52,10 @@ $(document).ready(function () {
     });
 });
 
+function desahabilitarboton(){
+    document.getElementById('generarinforme').disabled = true;
+}
+
 
 function addInput(divName)
 {

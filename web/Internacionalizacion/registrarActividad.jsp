@@ -30,16 +30,18 @@
 <%
 //response.sendRedirect("index.jsp");
 //}
-
+String codigo="";
 Facade fachada = new Facade();
 Docente d = null;
 if(cuenta != null){
-String codigo = cuenta.getUser();
+codigo = cuenta.getUser();
+
 d = fachada.consultarDocente(codigo);
 if(!d.isHabilitado()){
         
 %>
 <script type="text/javascript">
+    
     alert("NO ESTÁ HABILITADO POR EL COORDINADOR!");
 </script>
 <%
@@ -404,7 +406,16 @@ if (request.getSession().getAttribute("respuesta_actividad") != null) {
 
 
     </body>
-
+    <%
+    if(!codigo.equals("8")){
+    %>
+    <script>
+    //desahabilitarboton();
+   
+    </script>
+    <%
+    }
+    %>
     <!--Footer-->
 
     <div class="ufps-container ufps-footer " style="height: 70px">

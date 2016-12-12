@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Formulario de generación del informe</title>
-        
+
         <link href="img/favicon.ico" rel="shortcut icon"/>
         <!--Metaetiqueta para el uso del conjunto de caracteres adecuado-->
         <meta charset="utf-8">
@@ -42,12 +42,12 @@
         <script src="../public/js/ufps.js" type="text/javascript"></script>
         <script src="../public/js/ufps.min.js" type="text/javascript"></script>
         <script src="js/formconvenio.js" type="text/javascript"></script>
-        
+
     </head>
     <body>
-                
-    
-    <form action="procesar_informe.jsp" method="POST">
+
+
+        <form action="procesar_informe.jsp" method="POST">
             <div class="form-group col-md-12" style="margin-top: 10px;">
                 <fieldset>
                     <!-- Form Name -->
@@ -60,90 +60,125 @@
                 <label for="nombre">Nombre informe:</label>
                 <input type="text" class="ufps-input" id="nombre" name="nombre" maxlength="100" required="true">
             </div>           
-            
+
             <div class="form-group">
                 <label for="descripcion" title="Breve descripción del informe.">Descripción: <span class="glyphicon glyphicon-question-sign"></span></label>
                 <input type="text" class="ufps-input" id="descripcion" name="descripcion" maxlength="500" required="true">
             </div>
-        
-            <div class="form-group">
-                <br><label for="">Selecciona los valores estadisticos que desee incluir en el informe:</label>
-                
+
+            <div class="form-group col-md-2">
+                <label for="semestre" title="Semestre del informe.">Semestre: <span class="glyphicon glyphicon-question-sign"></span></label>
+                <input type="number" class="ufps-input" id="semestre" name="semestre" min="1" max="2" required="true">
+            </div>
+
+            <div class="form-group col-md-2">
+                <label for="año" title="Año del informe.">Año: <span class="glyphicon glyphicon-question-sign"></span></label>
+                <input type="number" class="ufps-input" id="semestre" name="año" min="2016" required="true">
+            </div>
+
+            <div class="ufps-row">
+                <div class="form-group col-md-12">
+                    <br><label for=""><h4>* A continuación selecciona los valores estadisticos que desee incluir en el informe:</h4></label>
+
+                </div>
+            </div>
+
+            <div class="ufps-row">
+                <div class="form-group col-md-4">
+                    <label>Seleccionar rango de fecha de consulta: </label>
+                </div>    
+                <div class="form-group col-md-3">
+                    <label>Desde: </label> <input type="date" id="desde"> 
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Hasta: </label> <input type="date" id="hasta"> 
+                </div>
+                <div class="form-group col-md-2">
+                    <label title="Si lo habilitas, no habrá filtrado por fechas.">Sin rango <span class="glyphicon glyphicon-question-sign"></span></label> <input type="checkbox" id="rango" onchange="habilitarrango()"> 
+                </div>
+            </div>
+
+            <div class="ufps-row">
+                <div class="form-group col-md-12">
+                    <br><label for="">Estadisticas para los convenios:</label>
+
+                </div>
+            </div>
+
+            <div class="ufps-row">
+            <div class="col-md-2">
+                <input type="checkbox" id="convenios"> Cantidad de convenios.
+            </div>
+            <div class="col-md-3">
+                <input type="checkbox" id="estados"> Convenios aprobados y terminados.    
+            </div>
+            <div class="col-md-3">
+                <input type="checkbox" id="radicados"> Convenios radicados por años.    
+            </div>
+            <div class="col-md-2">
+                <input type="checkbox" id="tipos"> Convenios por Tipo.    
+            </div>
+            <div class="col-md-2">
+                <input type="checkbox" id="activos"> Convenios activos.    
+            </div>
+            </div>
+
+            
+            <div class="ufps-row">
+                <div class="form-group col-md-12">
+                    <br><label for="">Estadisticas para las actividades:</label>
+
+                </div>
             </div>
             
-
-           
+            <div class="ufps-row">
+                
+                
+            <div class="col-md-2">
+                <input type="checkbox" id="act_tipos"> Actividades por tipo.    
+            </div>
+            <div class="col-md-4">
+                <input type="checkbox" id="act_convenios"> Cantidad de actividades por convenios.    
+            </div>
+            <div class="col-md-4">
+                <input type="checkbox" id="act_convenios"> Cantidad de actividades por semestre y año.    
+            </div>
+               
+            </div>
             
+            <div class="ufps-row">
+                <div class="form-group col-md-12">
+                    <br><label for="">Estadisticas para las entidades:</label>
 
+                </div>           
+            </div>
             
-            <div class="form-group col-md-12">
+            <div class="ufps-row">
+            <div class="col-md-3">
+                <input type="checkbox" id="ent_sectores"> Entidades por sector.    
+            </div>
+            <div class="col-md-3">
+                 <input type="checkbox" id="sectores"> Entidades por Tipo.    
+            </div>
+            </div>
+            
+            <div class="ufps-row">
+                <div class="form-group col-md-12">
+                    <br><label for="">Estadisticas para los estudiantes:</label>
+
+                </div>           
+            </div>
+            
+            <div class="ufps-row">
+            <div class="col-md-6">
+                <input type="checkbox" id="ent_sectores"> Cantidad de estudiantes que realizan actividades por semestre y año.    
+            </div>
+            </div><br>
+            
+            <div class="form-group col-md-2 col-md-push-10">
                 <button type="submit" class="ufps-btn">Generar Informe</button>
             </div>
 
         </form>
-    
-    <!--<div class="row" style="padding-left: 20px">                
-        <div class="col-md-12">
-            <h3>Selecciona los valores estadisticos que desee incluir en el informe:</h3>
-        </div>            
-    </div>
-    <br>
-    
-    <div class="row" style="padding-left: 20px">
-    <div class="col-md-4">
-        <h4>Seleccionar rango de fecha de consulta:</h4> 
-    </div>    
-    <div class="col-md-3">
-        Desde: <input type="date" id="desde">  
-    </div>
-    <div class="col-md-3">
-        Hasta: <input type="date" id="hasta">  
-    </div>
-    <div class="col-md-2">
-        Sin rango <input type="checkbox" id="rango" onchange="habilitarrango()">  
-    </div>
-    </div>
-    <br>
-    
-    <div class="row" style="padding-left: 20px">
-            
-        <div class="col-md-2">
-           <input type="checkbox" id="convenios">Cantidad de convenios.    
-        </div>
-        <div class="col-md-3">
-            <input type="checkbox" id="estados">Convenios aprobados y terminados.    
-        </div>
-        <div class="col-md-3">
-            <input type="checkbox" id="radicados">Convenios radicados por años.    
-        </div>
-        <div class="col-md-2">
-            <input type="checkbox" id="tipos">Convenios por Tipo.    
-        </div>
-         <div class="col-md-2">
-             <input type="checkbox" id="sectores">Convenios por Sector.    
-        </div>
-        
-        
-    
-    </div>
-    <div class="row" style="padding-left: 20px">
-        <div class="col-md-2">
-           <input type="checkbox" id="activos">Convenios activos.    
-        </div>
-        <div class="col-md-2">
-            <input type="checkbox" id="act_tipos">Actividades por tipo.    
-        </div>
-        <div class="col-md-2">
-            <input type="checkbox" id="act_convenios">Actividades por convenios.    
-        </div>
-        <div class="col-md-2">
-            <input type="checkbox" id="ent_sectores">Entidades por sector.    
-        </div>
-    </div>
-    
-        
-    </body>
-    <a href="registrarConvenio.jsp"><input type="button" class="ufps-btn" value="REGRESAR"> </a> 
-    -->
-    
+
 </html>
