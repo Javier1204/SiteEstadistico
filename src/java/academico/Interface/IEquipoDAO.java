@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public interface IEquipoDAO {
     
-    public int[] registrarEquipo(ArrayList<String> names, String[] equipos, int cod_grupo) throws SQLException;
-    public int[] registrarEquipoModificable(ArrayList<String> names, String[][] data, int number, int cod_grupo) throws SQLException;
+    public int[] registrarEquipo(ArrayList<String> names, String[] equipos, int cod_grupo, int ent) throws SQLException;
+    public int[] registrarEquipoModificable(ArrayList<String> names, String[][] data, int number, int cod_grupo, int ent) throws SQLException;
     public boolean asignarEstudianteAEquipo(String[][] data) throws SQLException;
 }

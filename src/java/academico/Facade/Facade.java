@@ -19,14 +19,14 @@ import java.util.ArrayList;
  */
 public class Facade {
     
-    public int[] registrarEquipos(ArrayList<String> data, String[] team_names, int cod_grupo) throws SQLException{
+    public int[] registrarEquipos(ArrayList<String> data, String[] team_names, int cod_grupo, int ent) throws SQLException{
         EquipoControler cont = new EquipoControler();
-        return cont.registrarEquipos(data, team_names, cod_grupo);
+        return cont.registrarEquipos(data, team_names, cod_grupo, ent);
     }
     
-    public int[] registrarEquipoModificable(ArrayList<String> names, String[][] data, int number, int cod_grupo) throws SQLException{
+    public int[] registrarEquipoModificable(ArrayList<String> names, String[][] data, int number, int cod_grupo, int ent) throws SQLException{
         EquipoControler cont = new EquipoControler();
-        return cont.registrarEquipoModificable(names, data, number, cod_grupo);
+        return cont.registrarEquipoModificable(names, data, number, cod_grupo, ent);
     }
     
     public ArrayList<GrupoDTO> asignaturasDoc(String codig_doc) throws SQLException{
@@ -42,16 +42,6 @@ public class Facade {
     public ArrayList<ProyectoDTO> obtenerProyectos(int cod_grp) throws SQLException{
         ProyectoControler cont = new ProyectoControler();
         return cont.obtenerProyectos(cod_grp);
-    }
-    
-    public boolean crearEntregable(int id_proyecto, int id_tipo, String titulo, String fecha) throws SQLException{
-        EntregableControler cont = new EntregableControler();
-        return cont.crearEntregable(id_proyecto, id_tipo, titulo, fecha);
-    }
-    
-    public ArrayList<ClasificacionEntregableDTO> listarClasificacion() throws SQLException{
-        EntregableControler cont = new EntregableControler();
-        return cont.listarClasificacion();
     }
     
     public ArrayList<ProyectoDTO> listarProyectos(String cod_estudiante) throws SQLException{
@@ -77,5 +67,16 @@ public class Facade {
     public boolean asignarEstudianteAEquipo(String[][] data) throws SQLException {
         EquipoControler cont = new EquipoControler();
         return cont.asignarEstudianteAEquipo(data);
+    }
+    
+        
+    public boolean crearEntregable(int id_proyecto, int id_tipo, String titulo, String fecha) throws SQLException{
+        EntregableControler cont = new EntregableControler();
+        return cont.crearEntregable(id_proyecto, id_tipo, titulo, fecha);
+    }
+    
+    public ArrayList<ClasificacionEntregableDTO> listarClasificacion() throws SQLException{
+        EntregableControler cont = new EntregableControler();
+        return cont.listarClasificacion();
     }
 }

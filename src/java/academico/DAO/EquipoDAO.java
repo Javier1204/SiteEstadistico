@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 public class EquipoDAO implements IEquipoDAO {
 
     @Override
-    public int[] registrarEquipo(ArrayList<String> names, String[] equipos, int cod_grupo) throws SQLException {
+    public int[] registrarEquipo(ArrayList<String> names, String[] equipos, int cod_grupo, int ent) throws SQLException {
         int[] rangos = new int[2];
         Pool pool = Conexion.getPool();
         Connection con = null;
@@ -51,11 +51,11 @@ public class EquipoDAO implements IEquipoDAO {
                 if (total > 0) {
                     System.out.println("it worked");
                     stmt = con.prepareStatement("INSERT INTO `academico_proyecto`(`nombre`, `keywords`, `desc`, "
-                            + "`semillero`, `modificable`) VALUES(?,?,?,?,?)");
+                            + "`total_entregables`, `modificable`) VALUES(?,?,?,?,?)");
                     stmt.setString(1, "");
                     stmt.setString(2, "");
                     stmt.setString(3, "");
-                    stmt.setInt(4, 0);
+                    stmt.setInt(4, ent);
                     stmt.setBoolean(5, false);
                     int b = stmt.executeUpdate();
                     if (b > 0) {
@@ -114,7 +114,7 @@ public class EquipoDAO implements IEquipoDAO {
     }
 
     @Override
-    public int[] registrarEquipoModificable(ArrayList<String> names, String[][] data, int number, int cod_grupo) throws SQLException {
+    public int[] registrarEquipoModificable(ArrayList<String> names, String[][] data, int number, int cod_grupo, int ent) throws SQLException {
         int[] rangos = new int[2];
         Pool pool = Conexion.getPool();
         Connection con = null;
@@ -142,11 +142,11 @@ public class EquipoDAO implements IEquipoDAO {
                 if (total > 0) {
                     System.out.println("it worked");
                     stmt = con.prepareStatement("INSERT INTO `academico_proyecto`(`nombre`, `keywords`, `desc`, "
-                            + "`semillero`, `modificable`) VALUES(?,?,?,?,?)");
+                            + "`total_entregables`, `modificable`) VALUES(?,?,?,?,?)");
                     stmt.setString(1, data[v][0]);
                     stmt.setString(2, data[v][1]);
                     stmt.setString(3, data[v][2]);
-                    stmt.setInt(4, 0);
+                    stmt.setInt(4, ent);
                     stmt.setBoolean(5, true);
                     v++;
                     int b = stmt.executeUpdate();
