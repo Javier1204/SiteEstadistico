@@ -73,7 +73,7 @@
 
             <div class="form-group col-md-2">
                 <label for="año" title="Año del informe.">Año: <span class="glyphicon glyphicon-question-sign"></span></label>
-                <input type="number" class="ufps-input" id="semestre" name="año" min="2016" required="true">
+                <input type="number" class="ufps-input" id="año" name="año" min="2016" required="true">
             </div>
 
             <div class="ufps-row">
@@ -88,13 +88,13 @@
                     <label>Seleccionar rango de fecha de consulta: </label>
                 </div>    
                 <div class="form-group col-md-3">
-                    <label>Desde: </label> <input type="date" id="desde"> 
+                    <label>Desde: </label> <input type="date" id="desde" name="desde"> 
                 </div>
                 <div class="form-group col-md-3">
-                    <label>Hasta: </label> <input type="date" id="hasta"> 
+                    <label>Hasta: </label> <input type="date" id="hasta" name="hasta"> 
                 </div>
                 <div class="form-group col-md-2">
-                    <label title="Si lo habilitas, no habrá filtrado por fechas.">Sin rango <span class="glyphicon glyphicon-question-sign"></span></label> <input type="checkbox" id="rango" onchange="habilitarrango()"> 
+                    <label title="Si lo habilitas, no habrá filtrado por fechas.">Sin rango <span class="glyphicon glyphicon-question-sign"></span></label> <input type="checkbox" id="rango" onchange="habilitarrango()" name="rango"> 
                 </div>
             </div>
 
@@ -107,19 +107,19 @@
 
             <div class="ufps-row">
             <div class="col-md-2">
-                <input type="checkbox" id="convenios"> Cantidad de convenios.
+                <input type="checkbox" id="convenios" name="convenios"> Cantidad de convenios.
             </div>
             <div class="col-md-3">
-                <input type="checkbox" id="estados"> Convenios aprobados y terminados.    
+                <input type="checkbox" id="estados" name="estados"> Convenios aprobados y terminados.    
             </div>
             <div class="col-md-3">
-                <input type="checkbox" id="radicados"> Convenios radicados por años.    
+                <input type="checkbox" id="radicados" name="radicados"> Convenios radicados por años.    
             </div>
             <div class="col-md-2">
-                <input type="checkbox" id="tipos"> Convenios por Tipo.    
+                <input type="checkbox" id="tipos" name="tipos"> Convenios por Tipo.    
             </div>
             <div class="col-md-2">
-                <input type="checkbox" id="activos"> Convenios activos.    
+                <input type="checkbox" id="activos" name="activos"> Convenios activos.    
             </div>
             </div>
 
@@ -135,13 +135,13 @@
                 
                 
             <div class="col-md-2">
-                <input type="checkbox" id="act_tipos"> Actividades por tipo.    
+                <input type="checkbox" id="act_tipos" name="act_tipos"> Actividades por tipo.    
             </div>
             <div class="col-md-4">
-                <input type="checkbox" id="act_convenios"> Cantidad de actividades por convenios.    
+                <input type="checkbox" id="act_convenios" name="act_convenios"> Cantidad de actividades por convenios.    
             </div>
             <div class="col-md-4">
-                <input type="checkbox" id="act_convenios"> Cantidad de actividades por semestre y año.    
+                <input type="checkbox" id="act_convenios" name="act_convenios"> Cantidad de actividades por semestre y año.    
             </div>
                
             </div>
@@ -155,10 +155,10 @@
             
             <div class="ufps-row">
             <div class="col-md-3">
-                <input type="checkbox" id="ent_sectores"> Entidades por sector.    
+                <input type="checkbox" id="ent_sectores" name="ent_sectores"> Entidades por sector.    
             </div>
             <div class="col-md-3">
-                 <input type="checkbox" id="sectores"> Entidades por Tipo.    
+                <input type="checkbox" id="sectores" name="ent_tipos"> Entidades por Tipo.    
             </div>
             </div>
             
@@ -171,7 +171,7 @@
             
             <div class="ufps-row">
             <div class="col-md-6">
-                <input type="checkbox" id="ent_sectores"> Cantidad de estudiantes que realizan actividades por semestre y año.    
+                <input type="checkbox" id="estudiantes" name="estudiantes"> Cantidad de estudiantes que realizan actividades por semestre y año.    
             </div>
             </div><br>
             

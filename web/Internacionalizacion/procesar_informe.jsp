@@ -4,6 +4,7 @@
     Author     : JAVIER
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Internacionalizacion.Modelo.DAO.DAOEstadistico"%>
 
@@ -34,19 +35,38 @@
         
         <center><h1>INFORME GENERAL DE LOS CONVENIOS, ACTIVIDADES Y ENTIDADES</h1></center>
         
+    <%
+        System.out.print("-----------");
+        String nombre = request.getParameter("nombre");
+        String descripcion = request.getParameter("descripcion");
+        String semestre = request.getParameter("semestre");
+        String año = request.getParameter("año");
+        String rango = request.getParameter("rango");
+        String desde = request.getParameter("desde");
+        String hasta = request.getParameter("hasta");
+        int cantidad = 0;
+        int activos = 0;
+        
+        System.out.print(desde +"-----------"+hasta);
+        DAOEstadistico e = new DAOEstadistico();  
+        
+        if(rango == null){
+            //Cantidad de convenios registrados.
+        cantidad = e.consultarCantidadConvenios(desde, hasta);
+        activos = e.consultarCantidadConveniosActivos(desde, hasta);
+        //ArrayList<String> estados = e.consultarConveniosporEstado(desde, hasta);
+        //ArrayList<String> tipos = e.consultarConveniosporTipo(desde, hasta);
+        }
+        
+        
+    
+    %>    
+        
     <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         
-    <%
-        DAOEstadistico e = new DAOEstadistico();  
-        
-        //Cantidad de convenios registrados.
-        int cantidad = e.consultarCantidadConvenios();
-        
-        //
     
-    %>
                 
     </script>
         
@@ -247,6 +267,7 @@
     <div class="row">
         <div id="chart_div" class="col-md-5">
             <br><br><br><h4 class="text-center">Cantidad de convenios registrados en el sistema: <%=cantidad%></h4>
+            <br><br><br><h4 class="text-center">Cantidad de convenios activos: <%=activos%></h4>
         </div>
         
         <div id="chart_div1" class="col-md-5">
