@@ -5,6 +5,7 @@
  */
 package asesorias.DAO;
 
+import asesorias.DTO.Asesoria;
 import general.conexion.Conexion;
 import general.conexion.Pool;
 import java.sql.Connection;
@@ -54,7 +55,7 @@ public class generalDAO {
 
             stm = con.prepareStatement("SELECT cod_asignatura, grupo, g.nombre\n"
                     + "  FROM carga_grupo, general_asignatura g\n"
-                    + "  WHERE id_carga = (SELECT id FROM carga_carga_academica WHERE codig_doc = ?)\n"
+                    + "  WHERE id_carga IN (SELECT id FROM carga_carga_academica WHERE codig_doc = ?)\n"
                     + "    AND cod_asignatura = g.codigo;");//genero el sql. 
             stm.setString(1, codigoDocente);
 
@@ -77,13 +78,7 @@ public class generalDAO {
             stm.close();//cierro el preparedstatement
             rs.close(); //cierro el resultset
         } catch (SQLException ex) {
-            try {
-                System.err.println(ex);
-                //en el caso de que se encunetren en una consulta real se recomienta usar
-                con.rollback();
-            } catch (SQLException ex1) {
-                Logger.getLogger(generalDAO.class.getName()).log(Level.SEVERE, null, ex1);
-            }
+            System.err.println(ex);
         } finally {
             try {
                 if (con != null) {
@@ -175,7 +170,8 @@ public class generalDAO {
             stm = con.prepareStatement("SELECT c.dia, c.hora_ini, c.hora_fin, g.nombres, g.apellidos "
                     + "FROM carga_asesoria c, general_docente g, carga_carga_academica ca "
                     + "WHERE c.cod_doc IN (SELECT codigo FROM general_docente WHERE nombres LIKE ? OR apellidos LIKE ?)"
-                    + " AND g.codigo = c.cod_doc;");
+                    + " AND g.codigo = c.cod_doc "
+                    + "GROUP BY g.nombres, g.apellidos, c.dia, c.hora_ini, c.hora_fin;");
             stm.setString(1, "%" + docente + "%");
             stm.setString(2, "%" + docente + "%");
 
@@ -947,6 +943,63 @@ public class generalDAO {
                     resul += rs.getString("a.fecha");
                     resul += ";";
                     resul += rs.getString("a.hora");
+                    resul += "#";
+                }
+            } else {
+                resul = "vacio";
+            }
+
+            stm.close();//cierro el preparedstatement
+            rs.close(); //cierro el resultset
+        } catch (SQLException ex) {
+            try {
+                System.err.println(ex);
+                //en el caso de que se encunetren en una consulta real se recomienta usar
+                con.rollback();
+            } catch (SQLException ex1) {
+                Logger.getLogger(generalDAO.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        } finally {
+            try {
+                if (con != null) {
+                    con.close(); // se cierra la conexion. este es un paso muy importante
+                }
+            } catch (SQLException ex) {
+                System.err.println(ex);
+            }
+        }
+        return resul;
+    }
+
+    public String consultarHorarioAsesoria(String codDoc) {
+        //ejemplo para usar el pool de conexiones. 
+        Pool pool = Conexion.getPool(); //llamo al objeto pool 
+        Connection con = null;
+        PreparedStatement stm = null;
+        String resul = "";
+        try {
+            /**
+             * 28/10/2016 actualmente se utilizan el usuario ufps_76 pero a
+             * futuro cuando se cambien los permisos esto se modificara
+             */
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
+            con = pool.getDataSource().getConnection();  //genero la conexion
+
+            stm = con.prepareStatement("SELECT dia, hora_ini, hora_fin, id FROM carga_asesoria WHERE cod_doc = ?");
+            stm.setString(1, codDoc);
+
+            ResultSet rs = stm.executeQuery();
+            if (rs != null) {
+                while (rs.next()) {
+                    resul += rs.getString("dia");
+                    resul += ";";
+                    resul += rs.getString("hora_ini");
+                    resul += ";";
+                    resul += rs.getString("hora_fin");
+                    resul += ";";
+                    resul += rs.getString("id");
                     resul += "#";
                 }
             } else {

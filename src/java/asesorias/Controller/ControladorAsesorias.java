@@ -50,64 +50,89 @@ public class ControladorAsesorias {
 
         return gd.consultarMateriaNombre(materia, grupo, p[0], p[1]);
     }
-    
-    public String consultarDocenteCodigo(String docente){
+
+    public String consultarDocenteCodigo(String docente) {
         generalDAO gd = new generalDAO();
         return gd.consultarDocenteCodigo(docente);
     }
-    
-    public String consultarMateriaCodigo(String materia, String grupo){
+
+    public String consultarMateriaCodigo(String materia, String grupo) {
         generalDAO gd = new generalDAO();
         //periodo, fechacierre
         String periodo = gd.consultarPeriodo();
         String p[] = periodo.split(";");
-        
+
         return gd.consultarMateriaCodigo(materia, grupo, p[0], p[1]);
     }
-    
-    public String consultarAsesoriasAnteriores(String codDoc){
+
+    public String consultarAsesoriasAnteriores(String codDoc) {
         generalDAO gd = new generalDAO();
-        
+
         return gd.consultarAsesoriasAnteriores(codDoc);
     }
-    
-    public String consultarNombreEst(String codEst){
+
+    public String consultarNombreEst(String codEst) {
         generalDAO gd = new generalDAO();
         return gd.consultarNombreEst(codEst);
     }
-    
-    public String consultarNombreMat(String codMat){
+
+    public String consultarNombreMat(String codMat) {
         generalDAO gd = new generalDAO();
         return gd.consultarNombreMat(codMat);
     }
-    
-    public String consultarCantAsesoriasDocente(String codDoc, String periodo, String año){
+
+    public String consultarCantAsesoriasDocente(String codDoc, String periodo, String año) {
         generalDAO gd = new generalDAO();
         return gd.consultarCantAsesoriasDocente(codDoc, periodo, año);
     }
-    
-    public String consultarAsesoriasMaterias(String periodo, String año){
+
+    public String consultarAsesoriasMaterias(String periodo, String año) {
         generalDAO gd = new generalDAO();
         return gd.consultarAsesoriasMaterias(periodo, año);
     }
-    
-    public String consultarEstudiantesMateria(String periodo, String año){
+
+    public String consultarEstudiantesMateria(String periodo, String año) {
         generalDAO gd = new generalDAO();
         return gd.consultarEstudiantesMateria(periodo, año);
     }
-    
-    public String consultarHorasAsesoriasDocente(){
+
+    public String consultarHorasAsesoriasDocente() {
         generalDAO gd = new generalDAO();
         return gd.consultarHorasAsesoriasDocente();
     }
-    
-    public String consultarNombreDocente(String codDoc){
+
+    public String consultarNombreDocente(String codDoc) {
         generalDAO gd = new generalDAO();
         return gd.consultarNombreDocente(codDoc);
     }
-    
-    public String consultarAsesoriasDoc(String codDoc){
+
+    public String consultarAsesoriasDoc(String codDoc) {
         generalDAO gd = new generalDAO();
         return gd.consultarAsesoriasDoc(codDoc);
+    }
+
+    public String consultarHorarioAsesoria(String codDoc) {
+        generalDAO gd = new generalDAO();
+        return gd.consultarHorarioAsesoria(codDoc);
+    }
+
+    public String registrarAsesoriaExterna(Asesoria asesoria) {
+        asesoriaDao ad = new asesoriaDao();
+        return ad.registrarAsesoriaExterna(asesoria);
+    }
+
+    public String eliminarHorario(String id) {
+        asesoriaDao ad = new asesoriaDao();
+        return ad.eliminarHorario(id);
+    }
+
+    public String registrarHorario(String dia, String horaInicio, String horaFin, String codDoc) {
+        asesoriaDao ad = new asesoriaDao();
+        return ad.registrarHorario(dia, horaInicio, horaFin, codDoc);
+    }
+
+    public String consultarHorasAsesorias(String codDoc) {
+        asesoriaDao ad = new asesoriaDao();
+        return ad.consultarHorasAsesorias(codDoc);
     }
 }

@@ -4,6 +4,7 @@
     Author     : DiegoLeal
 --%>
 
+<%@page import="gestionUsuarios.ICuenta"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="facade" class="asesorias.Controller.ControladorAsesorias" scope="session"></jsp:useBean>
 <%
@@ -12,7 +13,8 @@
     
     //Consultar cantidad de asesorias por docente
     //cantidad Asesorias, nombre, apellido, codigo docente, tipo vinculacion
-    String codDoc = "6";
+    ICuenta cuenta = (ICuenta) session.getAttribute("usuario");
+    String codDoc = cuenta.getNombre();
     String cantAsesoriasDocente = facade.consultarCantAsesoriasDocente(codDoc, periodo, ano);
     System.out.println("cantidad de asesorias por docente: " + cantAsesoriasDocente);
     System.out.println("periodo: " + periodo + " año: " + ano);

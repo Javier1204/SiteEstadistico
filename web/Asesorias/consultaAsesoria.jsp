@@ -42,6 +42,11 @@
                     Administrador
                 </a>
             </div>
+            <div class="ref">
+                <a href="registrarHorario.jsp">
+                    Mi horario
+                </a>
+            </div>
         </div>
 
         <div class="ufps-container">

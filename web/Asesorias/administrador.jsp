@@ -8,12 +8,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
+
     ICuenta cuenta = (ICuenta) session.getAttribute("usuario");
     if (cuenta == null) {
         response.sendRedirect("../index.jsp");
     } else {
         if (cuenta.containRol("Coordinador Asesorías")) {
-            
+
         } else {
             response.sendRedirect("../index.jsp");
         }
@@ -55,6 +56,11 @@
                         Administrador
                     </a>
                 </div>
+                <div class="ref">
+                    <a href="registrarHorario.jsp">
+                        Mi horario
+                    </a>
+                </div>
             </div>
 
             <div class="ufps-container">
@@ -78,6 +84,15 @@
                                 año = 2000 + i;
                             }
                         %>
+                    </select>
+                </div>
+                <div class="ufps-col-desktop-2 ufps-col-netbook-2 ufps-col-tablet-2 ufps-col-mobile-4">
+                    <label>Filtro</label>
+                    <select>
+                        <option>Seleccione un filtro</option>
+                        <option>Horas por docente</option>
+                        <option>Cantidad de asesorias por docente</option>
+                        <option></option>
                     </select>
                 </div>
                 <div class="ufps-col-desktop-2 ufps-col-netbook-2 ufps-col-tablet-2 ufps-col-mobile-4" style="margin-top: 15px;">

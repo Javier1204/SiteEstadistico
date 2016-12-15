@@ -11,16 +11,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-    ICuenta cuenta = (ICuenta) session.getAttribute("usuario");
-    if (cuenta == null) {
-        response.sendRedirect("../index.jsp");
-    } else {
-        if (cuenta.containRol("Docente")) {
+    
+     ICuenta cuenta = (ICuenta) session.getAttribute("usuario");
+     if (cuenta == null) {
+     response.sendRedirect("../index.jsp");
+     } else {
+     if (cuenta.containRol("Docente")) {
             
-        } else {
-            response.sendRedirect("../index.jsp");
-        }
-    }
+     } else {
+     response.sendRedirect("../index.jsp");
+     }
+     }
 %>
 <html>
     <head>
@@ -61,6 +62,11 @@
                         Administrador
                     </a>
                 </div>
+                <div class="ref">
+                    <a href="registrarHorario.jsp">
+                        Mi horario
+                    </a>
+                </div>
             </div>
             <div class="ufps-container">
 
@@ -68,8 +74,11 @@
                     <div class="ufps-col-desktop-5 ufps-col-netbook-5 ufps-col-tablet-6 ufps-col-mobile-12">
                     <jsp:useBean id="controlador" class="asesorias.Controller.ControladorAsesorias" scope="session"></jsp:useBean>
                     <%
+                        
+                        String codDoc = cuenta.getUser();
                         //Capturar el codigo del docente
-                        String rta = controlador.consultarMateriasDocentes("6");
+                        //String codDoc = "22";
+                        String rta = controlador.consultarMateriasDocentes(codDoc);
                         System.out.println("CONSULTA:: " + rta + "::");
 
                         //codigoAsinatura, grupo, nombre
@@ -129,9 +138,19 @@
                         c1.add(Calendar.DATE, -8);
                         System.out.println("Fecha Formateada: " + sdf.format(c1.getTime()));
                         String f1 = sdf.format(c1.getTime());
+                        int hora = c1.get(Calendar.HOUR_OF_DAY);
+                        int minuto = c1.get(Calendar.MINUTE);
+                        String horaAseso = "";
+                        if (hora < 10) {
+                            horaAseso = "0" + hora + ":" + minuto + ":00";
+                        } else {
+                            horaAseso = hora + ":" + minuto + ":00";
+                        }
 
+                        System.out.println("hora actual: " + horaAseso);
                     %>
-                    <input type="date" class="form-control" id="fechaAsesoria" min="<%=f1%>" max="<%=f2%>" step="1"/>
+                    <input type="date" class="form-control" id="fechaAsesoria" min="<%=f1%>" max="<%=f2%>"/>
+                    <input type="time" class="form-control" id="horaAsesoria" value="<%=horaAseso%>" max="22:00:00" min="06:00:00" step="1"/>
                 </div>
             </div>
             <div class="ufps-col-desktop-12 ufps-col-netbook-12 ufps-col-tablet-12 ufps-col-mobile-12">
@@ -164,7 +183,7 @@
                 <tbody id="asesoriasRegistradas">
                     <%//Consultar las asesorias de la semana
                         //enviar el codiggo del docente
-                        String codDoc = "6";
+
                         String asesorias = controlador.consultarAsesoriasAnteriores(codDoc);
                         System.out.println("rrta::: " + asesorias);
                         if (!asesorias.isEmpty()) {
@@ -197,13 +216,68 @@
                     %>
                 </tbody>
             </table>
+
+
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header" style="text-align: center;">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Registrar asesorias externa a la carga académica</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="ufps-col-desktop-4">
+                                    <label>Cod. estudiante</label>
+                                    <input type="number" class="form-control" id="codEstExterno" placeholder="Código Estudiante"/>
+                                </div>
+                                <div class="ufps-col-desktop-8">
+                                    <label>Nombre del estudiante</label>
+                                    <input type="text" class="form-control" id="nombreEstExterno" placeholder="Nombre del estudiante"/>
+                                </div>
+
+                                <div class="ufps-col-desktop-4">
+                                    <label>Fecha asesoria</label>
+                                    <input type="date" class="form-control" id="fechaAsesoriaExterna" value="<%=f2%>" min="<%=f1%>" max="<%=f2%>"/>
+                                </div>
+                                <div class="ufps-col-desktop-4">
+                                    <label>Hora asesoria</label>
+                                    <input type="time" class="form-control" id="horaAsesoriaExterna" value="<%= horaAseso%>" step="1"/>
+                                </div>
+                                <div class="ufps-col-desktop-4">
+                                    <label>Código de la materia</label>
+                                    <input type="number" class="form-control" id="codigoAsesoriaExterna" placeholder="Código de la materia">
+                                </div>
+                                <div class="ufps-col-desktop-12">
+                                    <label>Nombre de la materia</label>
+                                    <input type="text" class="form-control" id="nombreAsesoriaExterna" placeholder="Nombre de la materia">
+                                </div>
+                                <div class="ufps-col-desktop-12">
+                                    <label>Tema tratado</label>
+                                    <input type="text" class="form-control" id="temaAsesoriaExterna" placeholder="Tema tratado">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="ufps-btn" onclick="registrarAsesoriaExterna()">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <br>
-        <br>
-        <div class="ufps-col-desktop-4 ufps-col-desktop-push-6">
-            <button class="btn">REGISTRAR ASESORIAS EXTERNA A LA CARGA ACADEMICA</button>
+        <div class="row">
+            <div class="col-lg-3 col-lg-offset-1">
+                <button type="button" class="ufps-btn btn-primary" onclick="asesoriasDocentes()">Mis asesorias</button>
+            </div>
+            <div class="col-lg-4 col-lg-push-4">
+                <button type="submit" class="ufps-btn" data-toggle="modal" data-target="#myModal">ASESORIAS EXTERNA</button>
+            </div>
         </div>
+
+
         <!--<footer>
             <div class="ufps-container ufps-footer">
                 <h3>Universidad Francisco de Paula Santander</h3>

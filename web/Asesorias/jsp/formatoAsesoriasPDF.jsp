@@ -4,6 +4,7 @@
     Author     : DiegoLeal
 --%>
 
+<%@page import="gestionUsuarios.ICuenta"%>
 <%@page import="com.itextpdf.text.BaseColor"%>
 <%@page import="com.itextpdf.text.pdf.PdfPCell"%>
 <%@page import="com.itextpdf.text.FontFactory"%>
@@ -20,17 +21,19 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="facade" class="asesorias.Controller.ControladorAsesorias" scope="session"></jsp:useBean>
 <%
-    String codDoc = "6";
+    ICuenta cuenta = (ICuenta) session.getAttribute("usuario");
+    String codDoc = cuenta.getNombre();
 
     //String periodo = request.getParameter("periodo").toString();
     //String año = request.getParameter("ano").toString();
+    String rutaPrueba = getServletContext().getRealPath("/Asesorias/jsp/informe/").replace("./", "/");
     String rutaAlter = System.getProperty("user.dir");
-    System.out.println("Esta es la ruta:" + rutaAlter);
+    System.out.println("Esta es la ruta:" + rutaPrueba);
 
     String nombreDocente = facade.consultarNombreDocente(codDoc);
 
-    FileOutputStream archivo = new FileOutputStream(rutaAlter + "/Asesorias Docente " + nombreDocente + ".pdf");
-    System.out.println("user... " + rutaAlter + "/Asesorias Docente " + nombreDocente + ".pdf");
+    FileOutputStream archivo = new FileOutputStream(rutaPrueba + "/Asesorias Docente " + nombreDocente + ".pdf");
+    System.out.println("user... " + rutaPrueba + "/Asesorias Docente " + nombreDocente + ".pdf");
     Document documento = new Document(PageSize.A4.rotate(), 0, 0, 0, 0);
 
     //String rutaImagen = getServletContext().getRealPath("/Asesorias/diseno/img/logo.png");
@@ -208,5 +211,6 @@
 
     documento.close();
 
+    out.print(nombreDocente);
 
 %>

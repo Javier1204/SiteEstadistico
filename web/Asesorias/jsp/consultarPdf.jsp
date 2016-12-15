@@ -13,7 +13,8 @@
 <%@page import="com.itextpdf.text.*" %>
 <jsp:useBean id="facade" class="asesorias.Controller.ControladorAsesorias" scope="session"></jsp:useBean>
 <%
-    String codDoc = "6";
+    ICuenta cuenta = (ICuenta) session.getAttribute("usuario");
+    String codDoc = cuenta.getNombre();
     String periodo = request.getParameter("periodo").toString();
     String año = request.getParameter("ano").toString();
     //Consultar cantidad de asesorias por docente
@@ -21,12 +22,15 @@
     String cantAsesoriasDocente = facade.consultarCantAsesoriasDocente(codDoc, periodo, año);
     System.out.println("cantidad de asesorias por docente: " + cantAsesoriasDocente);
 
+    
+    String rutaPrueba = getServletContext().getRealPath("/Asesorias/jsp/informe/").replace("./", "/");
+    System.out.println("ruta de prueba:: " + rutaPrueba );
     //System.out.println("ruta 1:: " + System.getProperty("user.dir"));
     String rutaAlter = System.getProperty("user.dir");
     System.out.println("Esta es la ruta:" + rutaAlter);
 
-    FileOutputStream archivo = new FileOutputStream(rutaAlter + "/informe.pdf");
-    System.out.println("user... " + rutaAlter + "/informe.pdf");
+    FileOutputStream archivo = new FileOutputStream(rutaPrueba + "/informe.pdf");
+    System.out.println("user... " + rutaPrueba + "/informe.pdf");
     Document documento = new Document(PageSize.LETTER, 5, 5, 5, 5);
 
     //String rutaImagen = getServletContext().getRealPath("/Asesorias/diseno/img/logo.png");
@@ -217,7 +221,7 @@
     infoMateriaEst.setBorderColor(BaseColor.BLACK);
     tablaCantAsesoEstMat.addCell(infoMateriaEst);
 
-    PdfPCell cantAsesoriasMatEst = new PdfPCell(new Paragraph("Cantidad de asesorias", FontFactory.getFont("arial", 12, Font.BOLD)));
+    PdfPCell cantAsesoriasMatEst = new PdfPCell(new Paragraph("Cantidad de estudiantes", FontFactory.getFont("arial", 12, Font.BOLD)));
     cantAsesoriasMatEst.setColspan(1);
     cantAsesoriasMatEst.setHorizontalAlignment(Element.ALIGN_CENTER);
     cantAsesoriasMatEst.setBorderColor(BaseColor.BLACK);
@@ -250,6 +254,6 @@
     //String horasAsesoriasDocente = facade.consultarHorasAsesoriasDocente();
     documento.close();
     
-    out.print(rutaAlter + "/informe.pdf");
+    out.print(rutaPrueba + "/informe.pdf");
 
 %>
