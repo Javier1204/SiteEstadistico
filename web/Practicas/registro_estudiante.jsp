@@ -44,7 +44,7 @@
          //no trae la drieccion? si ya vi que en no le agrego lo otro probemos con ese y si funciona yo completo lo ortr
       %>
      
-      <div class="ufps-panel ufps-col-tablet-10" id="componentes">    
+      <div class="ufps-col-tablet-10" id="componentes">    
       
           <form method="POST" action="cargar_datos_estudiante.jsp">  
           <div>    

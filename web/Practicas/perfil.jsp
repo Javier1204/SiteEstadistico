@@ -46,7 +46,7 @@ request.getSession().setAttribute("respuesta_perfil", null);
     
     <div class= "ufps-col-mobile-12 ufps-col-tablet-2">
         <br><br>
-        <li><a href="index.jsp" >INICIO</a></li>
+        <li><a href="index_1.jsp" >INICIO</a></li>
         <br>
         <li><a href="perfil.jsp">PERFILES DE PRACTICA</a></li>
         <br>
