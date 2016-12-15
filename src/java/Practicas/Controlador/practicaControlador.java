@@ -29,7 +29,7 @@ public class practicaControlador {
     }
     
    
-    public ArrayList<practicaDTO> obtenerPracticas_anio(String semestre,String anio){
+    public ArrayList<practicaDTO> obtenerPracticas_anio(int semestre,int anio){
         practicaDAO dao = new practicaDAO();
         return dao.consultarPracticas_anio(semestre,anio);
     }

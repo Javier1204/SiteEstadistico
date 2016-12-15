@@ -151,7 +151,8 @@ public class practicaDAO {
         }   
         return practicas;
     }
-    public ArrayList<practicaDTO> consultarPracticas_anio(String semestre,String anio) {
+
+    public ArrayList<practicaDTO> consultarPracticas_anio(int semestre,int anio) {
      //ejemplo para usar el pool de conexiones. 
         Pool pool = Conexion.getPool(); //llamo al objeto pool 
         Connection con = null;

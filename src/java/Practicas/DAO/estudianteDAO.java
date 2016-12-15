@@ -23,20 +23,20 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author Administrador
  */
-public class estudianteDAO implements EstudianteInterface{
+public class estudianteDAO{
 
-    @Override
+  
     public String registrarEstudiante() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
+  
     public String actualizarEstudiante(estudianteDAO e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public estudianteDTO buscarEstudiante(int codigo) {
+ 
+    public estudianteDTO buscarEstudiante(String codigo) {
         estudianteDTO x= new estudianteDTO();
         
         Connection conn;
@@ -154,7 +154,7 @@ public class estudianteDAO implements EstudianteInterface{
     
 }          
 
-    @Override
+ 
     public List<estudianteDTO> listarEstudiante() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -180,4 +180,198 @@ public class estudianteDAO implements EstudianteInterface{
         
         return request.getRealPath("../documentos/Estudiantes");
     }
+    
+    public boolean guardarDocumentos(String nombre, String ruta){
+        boolean rta=false;
+        
+        String[] tipo= nombre.split("_");
+        String[] cod=tipo[1].split("\\.");
+        /**String[] partes = ruta.split("\\\\.");
+        String ruta2="";
+        byte i=0;
+        while(i<partes.length){
+            ruta2= ruta2+partes[i]+"@";
+            i++;
+        }*/
+        
+            if(tipo[0].equalsIgnoreCase("cedula")){
+                rta=this.guardarDoc("url_cedula", "cedula",cod[0], ruta);       
+            }else if(tipo[0].equalsIgnoreCase("hv")){
+                rta=this.guardarDoc("url_hojadeVida", "hojade_vida",cod[0], ruta);
+            }else if(tipo[0].equalsIgnoreCase("horario")){
+                rta=this.guardarDoc("url_horario", "horario",cod[0], ruta);
+            }else if(tipo[0].equalsIgnoreCase("afiliacion")){
+                rta=this.guardarDoc("url_eps", "eps",cod[0], ruta);
+            }
+            
+        
+        return rta;
+    }
+
+    private boolean guardarDoc(String campo1, String campo2, String codigo, String ruta) {
+    
+        Pool pool = Conexion.getPool(); //llamo al objeto pool 
+        Connection con = null;
+        PreparedStatement pst = null;
+        boolean rta=false;
+        try {
+
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
+            con = pool.getDataSource().getConnection();
+             
+            String sql= "UPDATE practicas_documentos_estudiantes SET "+campo1+"='"+ruta+"',"+campo2+"= true WHERE (codigo_estudiante= '"+codigo+"');";//genero el sql. 
+           
+            pst= con.prepareStatement(sql);
+            int a= pst.executeUpdate();
+            con.close();
+            
+            if(a == 1){
+                rta= true;
+                System.out.println(" registrar");    
+            }
+
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(perfilDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return rta;
+    }
+    
+    public ArrayList<estudianteDTO> listar_Estudiante(int semestre, int año) {
+     Pool pool = Conexion.getPool(); //llamo al objeto pool 
+        Connection con = null;
+        PreparedStatement stm = null;
+        ArrayList<estudianteDTO> estudiantes = new ArrayList<>();
+        
+        try {
+            /**
+             * 02/11/2016 actualmente se utilizan el usuario ufps_76 pero a
+             * futuro cuando se cambien los permisos esto se modificara
+             *
+             */
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
+            con = pool.getDataSource().getConnection();  //genero la conexion
+            stm = con.prepareStatement("SELECT * FROM practicas_practica INNER JOIN general_estudiante ON general_estudiante.codigo = practicas_practica.id_estudiante where año_practica='"+año+"' and semestre_practica='"+semestre+"'");//genero el sql. 
+            
+            ResultSet resultado = stm.executeQuery();//ejecuto la consulta
+            System.out.println("resultado"+resultado+"");
+            estudianteDTO e;
+            while(resultado.next()){
+                e = new estudianteDTO();
+                String codigo = resultado.getString(14);
+                String documento_id = resultado.getString(15);
+                String nombres = resultado.getString(16);
+                String apellidos = resultado.getString(17);
+                int semestres = resultado.getInt(18);
+                String direccion=resultado.getString(24);
+                String telefono=resultado.getString(25);
+                String correo=resultado.getString(23);
+                               
+                e.setCodigoEstudiante(codigo);
+                e.setCedula(documento_id);
+                e.setNombresEstudiante(nombres);
+                e.setApellidosEstudiante(apellidos);
+                e.setSemestre(semestres);
+                e.setTelefono(telefono);
+                e.setDireccion(direccion);
+                e.setEmail(correo);
+                
+                
+                
+                
+                estudiantes.add(e);
+            }
+            
+            
+            
+            stm.close();//cierro el preparedstatement
+            
+            
+        } catch (SQLException ex) {
+            System.err.println(ex);
+             System.out.println("no  registrar");
+            //en el caso de que se encunetren en una consulta real se recomienta usar
+            //    con.rollback();
+        } finally {
+            try {
+                if (con != null) {
+                    con.close(); // se cierra la conexion. este es un paso muy importante
+                }
+            } catch (SQLException ex) {
+                 System.out.println("asdasd no registrar");
+                System.err.println(ex);
+            }
+        }   
+        return estudiantes;
+    
+}          
+
+    public ArrayList<estudianteDTO> listar_Estudiante_asignados() {
+     Pool pool = Conexion.getPool(); //llamo al objeto pool 
+        Connection con = null;
+        PreparedStatement stm = null;
+        ArrayList<estudianteDTO> estudiantes = new ArrayList<>();
+        
+        try {
+            /**
+             * 02/11/2016 actualmente se utilizan el usuario ufps_76 pero a
+             * futuro cuando se cambien los permisos esto se modificara
+             *
+             */
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
+            con = pool.getDataSource().getConnection();  //genero la conexion
+            stm = con.prepareStatement("Select * from general_estudiante where asignado_practica = true");//genero el sql. 
+            
+            ResultSet resultado = stm.executeQuery();//ejecuto la consulta
+            estudianteDTO e;
+            while(resultado.next()){
+                e = new estudianteDTO();
+                String codigo = resultado.getString(1);
+                String documento_id = resultado.getString(2);
+                String nombres = resultado.getString(3);
+                String apellidos = resultado.getString(4);
+                int semestre = resultado.getInt(5);
+                               
+                e.setCodigoEstudiante(codigo);
+                e.setCedula(documento_id);
+                e.setNombresEstudiante(nombres);
+                e.setApellidosEstudiante(apellidos);
+                e.setSemestre(semestre);
+                
+                
+                
+                
+                estudiantes.add(e);
+            }
+            
+            
+            
+            stm.close();//cierro el preparedstatement
+            
+            
+        } catch (SQLException ex) {
+            System.err.println(ex);
+             System.out.println("no  registrar");
+            //en el caso de que se encunetren en una consulta real se recomienta usar
+            //    con.rollback();
+        } finally {
+            try {
+                if (con != null) {
+                    con.close(); // se cierra la conexion. este es un paso muy importante
+                }
+            } catch (SQLException ex) {
+                 System.out.println("asdasd no registrar");
+                System.err.println(ex);
+            }
+        }   
+        return estudiantes;
+    
+}          
+    
 }

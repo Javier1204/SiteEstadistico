@@ -25,7 +25,7 @@ import java.util.logging.Logger;
 public class perfil_estudianteDAO {
     
 
- public String agregarPerfilEstudiante(int perfil, int valor, int codEstudiante) {
+ public String agregarPerfilesEstudiante(perfil_estudianteDTO[] perfiles) {
         String rta= "No conecto";
         Pool pool = Conexion.getPool(); //llamo al objeto pool 
         Connection con = null;
@@ -37,7 +37,8 @@ public class perfil_estudianteDAO {
             pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection(); 
-            perfil_estudianteDTO p= new perfil_estudianteDTO(codEstudiante, perfil, valor,  false);
+            
+            for(perfil_estudianteDTO p: perfiles){
             //int codigoestudiante, int idperfil, int valor, Date fecha, boolean estado
             String sql="insert into practicas_perfilxestudiante (id_perfil, codigo, valor, estado) values ("+p.getIdperfil()+","+p.getCodigoestudiante()+","+p.getValor()+","+p.getEstado()+")";
             
@@ -46,12 +47,6 @@ public class perfil_estudianteDAO {
             int a= pst.executeUpdate();
             con.close();
             
-            if(a == 1){
-                System.out.println("registrar");
-                rta= "Registro";
-            }else{
-                 System.out.println("no registrar");
-                rta = "No registro";
             }
          
         } catch (SQLException ex) {

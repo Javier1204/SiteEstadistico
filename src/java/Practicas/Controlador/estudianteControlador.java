@@ -23,18 +23,25 @@ public class estudianteControlador {
         return dao.listar_Estudiante();
     }
     
+    public ArrayList<estudianteDTO> obtener_Estudiantes(int semestre, int año){
+        estudianteDAO dao = new estudianteDAO();
+        return dao.listar_Estudiante(semestre,año);
+    }
     
+    public ArrayList<estudianteDTO> obtener_Estudiantes_asignados(){
+        estudianteDAO dao = new estudianteDAO();
+        return dao.listar_Estudiante_asignados();
+    }
     
-    
-    public estudianteDTO buscarEstudiante(int cod){
+    public estudianteDTO buscarEstudiante(String cod){
         estudianteDAO dao= new estudianteDAO();
         return dao.buscarEstudiante(cod);
 
     }
 
-    public String agregarPerfilEstudiante(int perfil, int valor, int codEstudiante) {
+    public String agregarPerfilesEstudiante(perfil_estudianteDTO[] perfiles) {
         perfil_estudianteDAO dao= new perfil_estudianteDAO();
-        return dao.agregarPerfilEstudiante(perfil, valor, codEstudiante);
+        return dao.agregarPerfilesEstudiante(perfiles);
     }
 
     public List<perfil_estudianteDTO> listarPerfilesEstudiante(int cod) {
@@ -42,6 +49,9 @@ public class estudianteControlador {
         return dao.listarPerfilesEstudiante(cod);
     }
     
-    
+    public boolean guardarDocumentos(String nombre, String ruta){
+        estudianteDAO dao= new estudianteDAO();
+        return dao.guardarDocumentos(nombre, ruta);
+    }
     
 }

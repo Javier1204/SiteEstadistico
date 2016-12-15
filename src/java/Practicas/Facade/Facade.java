@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class Facade {
     
-     public String RegistrarPerfil(perfilDTO p){
+    public String RegistrarPerfil(perfilDTO p){
         perfilControlador c = new perfilControlador();
         return c.RegistrarPerfil(p);
     }
@@ -51,17 +51,23 @@ public class Facade {
          System.out.println("FACADE: ALGUNa vaina: " + e.toString());//corralo
          return s.editarPractica(e);               
     }
+    //aqui
     
-    public ArrayList<estudianteDTO> obtenerEstudiantes(){
+     public ArrayList<estudianteDTO> obtenerEstudiantes(int semestre, int año){
         estudianteControlador c = new estudianteControlador();
-        return c.obtener_Estudiantes();
+        return c.obtener_Estudiantes(semestre, año);
     }
+     public ArrayList<estudianteDTO> obtenerEstudiantes_asignados(){
+        estudianteControlador c = new estudianteControlador();
+        return c.obtener_Estudiantes_asignados();
+    }
+     
     public List<perfilDTO> listarPerfil(){
         perfilControlador c= new perfilControlador();
         return c.listarPerfiles();
     }
     
-    public estudianteDTO buscarEstudiante(int codigo){
+    public estudianteDTO buscarEstudiante(String codigo){
         estudianteControlador c= new estudianteControlador();
         return c.buscarEstudiante(codigo);
     }
@@ -100,9 +106,9 @@ public class Facade {
     
    
    
-    public ArrayList<practicaDTO> obtenerPracticas_anio(String semestre,String anio){
+    public ArrayList<practicaDTO> obtenerPracticas_anio(int semestre,int año){
         practicaControlador c = new practicaControlador();
-        return c.obtenerPracticas_anio(semestre,anio);
+        return c.obtenerPracticas_anio(semestre,año);
     }
     
     public convenioDTO consultarConvenio(String nombreconvenio){
@@ -120,9 +126,9 @@ public class Facade {
         return c.consultarTutores();
     }
     
-    public String agregarPerfilEstudiante(int perfil, int valor, int codEstudiante){
+    public String agregarPerfilEstudiante(perfil_estudianteDTO[] perfiles){
         estudianteControlador c= new estudianteControlador();
-        return c.agregarPerfilEstudiante(perfil, valor, codEstudiante);
+        return c.agregarPerfilesEstudiante(perfiles);
     }
    
     public List<perfil_estudianteDTO> listarPerfilesEstudiante(int cod){
@@ -198,5 +204,9 @@ public class Facade {
             return p.generarInformes(añop, semestrep);
         }
         
+        public boolean guardarDocumentos(String nombre, String ruta){
+            estudianteControlador a= new estudianteControlador();
+            return a.guardarDocumentos(nombre, ruta);
+        } 
         
 }
