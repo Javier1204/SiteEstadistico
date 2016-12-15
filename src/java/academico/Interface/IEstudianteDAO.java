@@ -17,5 +17,5 @@ public interface IEstudianteDAO {
     
     public ArrayList<ProyectoDTO> listarProyectos(String cod_estudiante) throws SQLException;
     public int obtenerCodigoEquipo(String cod_estudiante, int proyecto) throws SQLException;
-    public boolean subirEntregable(int cod_equipo, int cod_entregable, String url) throws SQLException;
+    public boolean subirEntregable(int cod_Proyecto, String url) throws SQLException;
 }

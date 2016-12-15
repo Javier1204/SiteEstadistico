@@ -18,4 +18,5 @@ public interface IUtilDAO {
     
     public ArrayList<GrupoDTO> asignaturasDoc(String codig_doc) throws SQLException;
     public ArrayList<EstudianteDTO> obtenerEstudiantes (int cod_grp) throws SQLException;
+    public String obtenerNombreMateria(int cod_grupo) throws SQLException;
 }

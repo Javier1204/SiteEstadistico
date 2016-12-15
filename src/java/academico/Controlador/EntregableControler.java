@@ -7,6 +7,7 @@ package academico.Controlador;
 
 import academico.DAO.EntregableDAO;
 import academico.DTO.ClasificacionEntregableDTO;
+import academico.DTO.EntregableDTO;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -24,5 +25,10 @@ public class EntregableControler {
     public ArrayList<ClasificacionEntregableDTO> listarClasificacion() throws SQLException{
         EntregableDAO dao = new EntregableDAO();
         return dao.listarClasificacion();
+    }
+    
+    public ArrayList<EntregableDTO> listarEntregables(int id_proyecto) throws SQLException{
+        EntregableDAO dao = new EntregableDAO();
+        return dao.listarEntregables(id_proyecto);
     }
 }

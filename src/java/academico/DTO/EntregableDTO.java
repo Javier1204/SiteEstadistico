@@ -12,7 +12,7 @@ package academico.DTO;
 public class EntregableDTO {
     
     private int entregable_id, proyecto_id, tipo_id;
-    private String entregable_titulo, fecha_entrega;
+    private String tipo_archivo, fecha_entrega,url;
 
     public EntregableDTO() {
     }
@@ -41,12 +41,12 @@ public class EntregableDTO {
         this.tipo_id = tipo_id;
     }
 
-    public String getEntregable_titulo() {
-        return entregable_titulo;
+    public String getTipo_archivo() {
+        return tipo_archivo;
     }
 
-    public void setEntregable_titulo(String entregable_titulo) {
-        this.entregable_titulo = entregable_titulo;
+    public void setTipo_archivo(String tipo_archivo) {
+        this.tipo_archivo = tipo_archivo;
     }
 
     public String getFecha_entrega() {
@@ -55,6 +55,14 @@ public class EntregableDTO {
 
     public void setFecha_entrega(String fecha_entrega) {
         this.fecha_entrega = fecha_entrega;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
     
     

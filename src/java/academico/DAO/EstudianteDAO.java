@@ -33,8 +33,8 @@ public class EstudianteDAO implements IEstudianteDAO {
             pool.setContrasena("ufps_29");
             pool.inicializarDataSource();
             con = pool.getDataSource().getConnection();
-            PreparedStatement stmt = con.prepareStatement("SELECT p.id, p.nombre, p.keywords, p.desc, p.semillero, p.modificable, e.nombre_equipo "
-                    + "FROM academico_proyecto p, academico_equipo e, academico_proyectoxequipo pe, academico_estudiantexequipo ee, general_estudiante e "
+            PreparedStatement stmt = con.prepareStatement("SELECT p.id, p.nombre, p.keywords, p.desc, p.modificable, e.nombre_equipo "
+                    + "FROM academico_proyecto p, academico_equipo e, academico_proyectoxequipo pe, academico_estudiantexequipo ee "
                     + "WHERE p.id = pe.proyecto_id AND pe.equipo_id = ee.equipo AND pe.equipo_id = e.codigo AND ee.estudiante = ?");
             stmt.setString(1, cod_estudiante);
             ResultSet rs = stmt.executeQuery();
@@ -44,9 +44,8 @@ public class EstudianteDAO implements IEstudianteDAO {
                 dto.setProyecto_name(rs.getString(2));
                 dto.setKeywords(rs.getString(3));
                 dto.setDesc(rs.getString(4));
-                dto.setSemillero(rs.getInt(5));
-                dto.setModificable(rs.getBoolean(6));
-                dto.setEquipo_encargado(rs.getString(7));
+                dto.setModificable(rs.getBoolean(5));
+                dto.setEquipo_encargado(rs.getString(6));
                 list.add(dto);
             }
             rs.close();
@@ -88,7 +87,7 @@ public class EstudianteDAO implements IEstudianteDAO {
     }
 
     @Override
-    public boolean subirEntregable(int cod_equipo, int cod_entregable, String url) throws SQLException {
+    public boolean subirEntregable(int cod_proyecto, String url) throws SQLException {
         boolean exito = false;
         Pool pool = Conexion.getPool();
         Connection con = null;
@@ -98,10 +97,9 @@ public class EstudianteDAO implements IEstudianteDAO {
             pool.inicializarDataSource();
             con = pool.getDataSource().getConnection();
             PreparedStatement stmt = con.prepareStatement("INSERT INTO `academico_entregable_equipo`"
-                    + "(`equipo_id`, `entregable_id`, `url_deposito`) VALUES(?,?,?)");
-            stmt.setInt(1, cod_equipo);
-            stmt.setInt(2, cod_entregable);
-            stmt.setString(3, url);
+                    + "(`proyecto_id`, `fecha_entrega`, `url_desposito`) VALUES(?,now(),?)");
+            stmt.setInt(1, cod_proyecto);
+            stmt.setString(2, url);
             
             int value = stmt.executeUpdate();
             if(value > 0){

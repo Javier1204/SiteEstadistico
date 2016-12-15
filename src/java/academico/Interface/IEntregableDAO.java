@@ -6,6 +6,7 @@
 package academico.Interface;
 
 import academico.DTO.ClasificacionEntregableDTO;
+import academico.DTO.EntregableDTO;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -17,5 +18,5 @@ public interface IEntregableDAO {
     
     public boolean crearEntregable(int id_proyecto, int id_tipo, String titulo, String fecha) throws SQLException;
     public ArrayList<ClasificacionEntregableDTO> listarClasificacion() throws SQLException;
-    
+    public ArrayList<EntregableDTO> listarEntregables(int id_proyecto) throws SQLException;
 }

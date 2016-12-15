@@ -10,12 +10,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     String url_imagen = null;
-    
+
     FileItemFactory factory = new DiskFileItemFactory();
     ServletFileUpload upload = new ServletFileUpload(factory);
-
+    String id_pro = "";
     String rutaServer = getServletContext().getRealPath("/");
-    rutaServer += "../temp/";
+    rutaServer += "proyectos de clase/temp/";
     // req es la HttpServletRequest que recibimos del formulario.
     // Los items obtenidos serán cada uno de los campos del formulario,
     // tanto campos normales como ficheros subidos.
@@ -27,7 +27,7 @@
         // subido donde nos interese
         if (!uploaded.isFormField()) {
             // No es campo de formulario, guardamos el fichero en algún sitio
-            url_imagen = "../temp/" + uploaded.getName();
+            url_imagen = "proyectos de clase/temp/" + uploaded.getName();
             File fichero = new File(rutaServer, uploaded.getName());
             uploaded.write(fichero);
         } else {
@@ -36,12 +36,14 @@
             out.println(key);
             String valor = uploaded.getString();
             out.println(valor);
-
+            if (key.equalsIgnoreCase("id_pro")) {
+                id_pro = valor;
+            }
         }
     }
     Facade fachada = new Facade();
 
-    boolean exito = fachada.subirEntregable(1,1, url_imagen);
+    boolean exito = fachada.subirEntregable(Integer.parseInt(id_pro), url_imagen);
 
     String resp = "";
     if (exito) {
@@ -49,5 +51,6 @@
         response.sendRedirect("../consultarProyectosEst.jsp");
     } else {
         resp = "N";
+        response.sendRedirect("../subirEntregables.jsp?proyecto="+id_pro);
     }
 %>

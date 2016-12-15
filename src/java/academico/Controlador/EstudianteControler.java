@@ -26,8 +26,8 @@ public class EstudianteControler {
         return dao.obtenerCodigoEquipo(cod_estudiante, proyecto);
     }
     
-    public boolean subirEntregable(int cod_equipo, int cod_entregable, String url) throws SQLException {
+    public boolean subirEntregable(int cod_equipo, String url) throws SQLException {
         EstudianteDAO dao = new EstudianteDAO();
-        return dao.subirEntregable(cod_equipo, cod_entregable, url);
+        return dao.subirEntregable(cod_equipo, url);
     }
 }

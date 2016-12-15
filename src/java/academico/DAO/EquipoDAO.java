@@ -13,8 +13,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -23,7 +21,7 @@ import java.util.logging.Logger;
 public class EquipoDAO implements IEquipoDAO {
 
     @Override
-    public int[] registrarEquipo(ArrayList<String> names, String[] equipos, int cod_grupo, int ent) throws SQLException {
+    public int[] registrarEquipo(ArrayList<String> names, String[] equipos, int cod_grupo, String arc, String fecha) throws SQLException {
         int[] rangos = new int[2];
         Pool pool = Conexion.getPool();
         Connection con = null;
@@ -51,11 +49,11 @@ public class EquipoDAO implements IEquipoDAO {
                 if (total > 0) {
                     System.out.println("it worked");
                     stmt = con.prepareStatement("INSERT INTO `academico_proyecto`(`nombre`, `keywords`, `desc`, "
-                            + "`total_entregables`, `modificable`) VALUES(?,?,?,?,?)");
+                            + "`formato_archivo`, `modificable`) VALUES(?,?,?,?,?)");
                     stmt.setString(1, "");
                     stmt.setString(2, "");
                     stmt.setString(3, "");
-                    stmt.setInt(4, ent);
+                    stmt.setString(4, arc);
                     stmt.setBoolean(5, false);
                     int b = stmt.executeUpdate();
                     if (b > 0) {
@@ -70,6 +68,9 @@ public class EquipoDAO implements IEquipoDAO {
                     while (rs.next()) {
                         maxProyecto = rs.getInt(1);
                     }
+                    stmt = con.prepareStatement("INSERT INTO `academico_entregable`(`id_proyecto`, `fecha_entrega`) VALUES (?,?)");
+                    stmt.setInt(1, maxProyecto);
+                    stmt.setString(2, fecha);
 
                     stmt = con.prepareStatement("SELECT MAX(codigo) FROM academico_equipo");
                     rs = stmt.executeQuery();
@@ -114,7 +115,7 @@ public class EquipoDAO implements IEquipoDAO {
     }
 
     @Override
-    public int[] registrarEquipoModificable(ArrayList<String> names, String[][] data, int number, int cod_grupo, int ent) throws SQLException {
+    public int[] registrarEquipoModificable(ArrayList<String> names, String[][] data, int number, int cod_grupo, String arc, String fecha) throws SQLException {
         int[] rangos = new int[2];
         Pool pool = Conexion.getPool();
         Connection con = null;
@@ -142,11 +143,11 @@ public class EquipoDAO implements IEquipoDAO {
                 if (total > 0) {
                     System.out.println("it worked");
                     stmt = con.prepareStatement("INSERT INTO `academico_proyecto`(`nombre`, `keywords`, `desc`, "
-                            + "`total_entregables`, `modificable`) VALUES(?,?,?,?,?)");
+                            + "`formato_archivo`, `modificable`) VALUES(?,?,?,?,?)");
                     stmt.setString(1, data[v][0]);
                     stmt.setString(2, data[v][1]);
                     stmt.setString(3, data[v][2]);
-                    stmt.setInt(4, ent);
+                    stmt.setString(4, arc);
                     stmt.setBoolean(5, true);
                     v++;
                     int b = stmt.executeUpdate();
@@ -162,6 +163,13 @@ public class EquipoDAO implements IEquipoDAO {
                     while (rs.next()) {
                         maxProyecto = rs.getInt(1);
                     }
+
+                    stmt = con.prepareStatement("INSERT INTO `academico_entregable`(`id_proyecto`, `fecha_entrega`) VALUES (?,?)");
+                    stmt.setInt(1, maxProyecto);
+                    stmt.setString(2, fecha);
+                    int a = stmt.executeUpdate();
+                    System.out.println("HOLASAJSGAHDhASD"+fecha);
+                    
 
                     stmt = con.prepareStatement("SELECT MAX(codigo) FROM academico_equipo");
                     rs = stmt.executeQuery();
@@ -223,11 +231,11 @@ public class EquipoDAO implements IEquipoDAO {
                 stmt.setString(1, data[iterador][0]);
                 stmt.setInt(2, Integer.parseInt(data[iterador][1]));
                 int value = stmt.executeUpdate();
-                if(value > 0){
+                if (value > 0) {
                     iterador++;
                 }
             }
-            if(iterador == data.length){
+            if (iterador == data.length) {
                 exito = true;
                 stmt.close();
             }

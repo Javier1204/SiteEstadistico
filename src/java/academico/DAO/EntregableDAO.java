@@ -6,6 +6,7 @@
 package academico.DAO;
 
 import academico.DTO.ClasificacionEntregableDTO;
+import academico.DTO.EntregableDTO;
 import academico.Interface.IEntregableDAO;
 import general.conexion.Conexion;
 import general.conexion.Pool;
@@ -24,7 +25,7 @@ import java.util.logging.Logger;
 public class EntregableDAO implements IEntregableDAO {
 
     @Override
-    public boolean crearEntregable(int id_proyecto, int id_tipo, String titulo, String fecha) throws SQLException {
+    public boolean crearEntregable(int id_proyecto, int id_tipo, String archivo, String fecha) throws SQLException {
         Pool pool = Conexion.getPool();
         Connection con = null;
         boolean exito = false;
@@ -33,11 +34,11 @@ public class EntregableDAO implements IEntregableDAO {
             pool.setContrasena("ufps_29");
             pool.inicializarDataSource();
             con = pool.getDataSource().getConnection();
-            PreparedStatement stmt = con.prepareStatement("INSERT INTO `academico_entregable`(`id_proyecto`, `id_tipo`, `titulo`, `fecha_entrega`)"
+            PreparedStatement stmt = con.prepareStatement("INSERT INTO `academico_entregable`(`id_proyecto`, `id_tipo`, `formato_archivo`, `fecha_entrega`)"
                     + "VALUES(?,?,?,?");
             stmt.setInt(1, id_proyecto);
             stmt.setInt(2, id_tipo);
-            stmt.setString(3, titulo);
+            stmt.setString(3, archivo);
             stmt.setString(4, fecha);
             
             int result = stmt.executeUpdate();
@@ -80,6 +81,42 @@ public class EntregableDAO implements IEntregableDAO {
             System.err.println(ex);
         }finally{
             if(con != null)
+                con.close();
+        }
+        return list;
+    }
+
+    @Override
+    public ArrayList<EntregableDTO> listarEntregables(int id_proyecto) throws SQLException {
+        Pool pool = Conexion.getPool();
+        Connection con = null;
+        ArrayList<EntregableDTO> list = new ArrayList();
+        try{
+            pool.setUsuario("ufps_76");
+            pool.setContrasena("ufps_29");
+            pool.inicializarDataSource();
+            con = pool.getDataSource().getConnection();
+            PreparedStatement stmt = con.prepareStatement("SELECT ae.id, ae.id_proyecto, ae.id_tipo, ae.formato_archivo, ae.fecha_entrega, aee.url_deposito FROM academico_entregable ae, academico_entregable_equipo aee "
+                    + "WHERE ae.id_proyecto = ? "
+                    + "AND ae.id_proyecto = aee.proyecto_id");
+            stmt.setInt(1, id_proyecto);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                EntregableDTO dto = new EntregableDTO();
+                dto.setEntregable_id(rs.getInt(1));
+                dto.setProyecto_id(rs.getInt(2));
+                dto.setTipo_id(rs.getInt(3));
+                dto.setTipo_archivo(rs.getString(4));
+                dto.setFecha_entrega(rs.getString(5));
+                dto.setUrl(rs.getString(6));
+                list.add(dto);
+            }
+            rs.close();
+            stmt.close();
+        }catch(SQLException ex){
+            System.err.println(ex);
+        }finally{
+            if(con!= null)
                 con.close();
         }
         return list;

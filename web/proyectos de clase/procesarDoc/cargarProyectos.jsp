@@ -10,12 +10,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <% int cod_grp = Integer.parseInt(request.getParameter("cod_grupo"));
-System.out.println("godkc "+cod_grp);
+    String key = request.getParameter("key");
     Facade fachada = new Facade();
-    ArrayList<ProyectoDTO> lista = fachada.obtenerProyectos(cod_grp);
+    ArrayList<ProyectoDTO> lista;
+    if(key.equals("")){
+     lista= fachada.obtenerProyectos(cod_grp);
+    }else{
+        lista = fachada.listarPKeywords(cod_grp, key);
+    }
 
 %>
-<table class="ufps-table">
+<table class="ufps-table" align="center">
     <thead>
         <tr>
             <th data-field="codigo">Codigo</th>
@@ -26,7 +31,7 @@ System.out.println("godkc "+cod_grp);
         </tr>
     </thead>
     <% for(ProyectoDTO dto:lista){
-            System.out.println("godkc ");
+            
     %>
     <tr>
         <td  data-field="codigo"><%=dto.getProyecto_id()%></td>

@@ -13,19 +13,19 @@
 <jsp:include page="../plantilla/header.jsp"/>
 <script type="text/javascript" src="jsDoc/cambioForm.js"></script>
 <body>
-<% ICuenta cuenta = null;
-    if (session.getAttribute("usuario") != null) {
-        cuenta = (ICuenta) session.getAttribute("usuario");
-        if (cuenta.containRol("Estudiante")) {
-            response.sendRedirect("inicioEst.jsp");
-        } else if (!cuenta.containRol("Docente")) {
+    <% ICuenta cuenta = null;
+        if (session.getAttribute("usuario") != null) {
+            cuenta = (ICuenta) session.getAttribute("usuario");
+            if (cuenta.containRol("Estudiante")) {
+                response.sendRedirect("inicioEst.jsp");
+            } else if (!cuenta.containRol("Docente")) {
+                response.sendRedirect("../index.jsp");
+            }
+        } else {
             response.sendRedirect("../index.jsp");
         }
-    }else{
-       response.sendRedirect("../index.jsp");
-    }
 
-%>
+    %>
 
     <%Facade fachada = new Facade();
     %>
@@ -37,7 +37,7 @@
 
                 <h1 align="center">Iniciar proyectos</h1>
 
-                <% ArrayList<GrupoDTO> lista = fachada.asignaturasDoc(cuenta.getUser());   
+                <% ArrayList<GrupoDTO> lista = fachada.asignaturasDoc(cuenta.getUser());
                     System.out.println(lista.size());
                 %>
                 <div class="ufps-col-mobile-12 ufps-col-tablet-12 ufps-col-netbook-3">
@@ -62,25 +62,26 @@
                 </div>
                 <div class="ufps-col-mobile-12 ufps-col-tablet-12 ufps-col-netbook-3">
                     <div class="form-group">
-                        <label for="num_equipos">Fecha maxima subir entregables</label>
-                        <input type="date" class="ufps-input" id="num_equipos" >
+                        <label for="fecha">Fecha maxima subir entregables</label>
+                        <input type="date" class="ufps-input" id="fecha" >
                     </div>
                 </div>
                 <div class="ufps-col-mobile-12 ufps-col-tablet-12 ufps-col-netbook-3"id="mod">
                     <div class="form-group">
                         <fieldset>
-                            <input type="checkbox" id="check" name="check" value="1" /> ¿Desea modificar informacion preyectos? <br />
+                            <input type="checkbox" id="check" name="check" value="1" /> ¿Desea que el estudiante modifique la información del proyecto? <br></br>
                         </fieldset>
                     </div>
                 </div>
-                        <div class="ufps-col-mobile-12 ufps-col-tablet-12 ufps-col-netbook-3" id="cant" hidden="true">
+                        
+                <div class="ufps-col-mobile-12 ufps-col-tablet-12 ufps-col-netbook-3" id="cant" hidden="true">
                     <div class="form-group">
                         <label for="num_equipos3">Numero de Equipos de trabajo</label>
                         <input type="number" min="1"class="ufps-input" id="num_equipos3" onchange="javascript:cambio3()">
                     </div>
 
                 </div>
-                        <input hidden="true" type="number" class="ufps-input" id="num_equipos4"name="num_equipos4">
+                <input hidden="true" type="number" class="ufps-input" id="num_equipos4"name="num_equipos4">
                 <br></br>
                 <div class="form-group">
                     <button type="submit" class="ufps-btn">Crear</button>
@@ -90,7 +91,8 @@
                   id="formInicioProyectos2" action="registrarEquipos.jsp" method="post">
                 <input hidden="true" type="number" class="ufps-input" id="num_equipos2"name="num_equipos2">
                 <input hidden="true" type="number" class="ufps-input" id="cod_grupo"name="cod_grupo">
-                <div id="equipos"class="ufps-col-mobile-12 ufps-col-tablet-12 ufps-col-netbook-12" >
+                <input hidden="true" type="text" class="ufps-input" id="fecha_max"name="fecha_max">
+                <div id="equipos" >
 
                 </div>
                 <div id="div">

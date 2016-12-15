@@ -16,49 +16,64 @@
 <script type="text/javascript" src="jsDoc/cambioForm.js"></script>
 <body>
     <% ICuenta cuenta = null;
-    if (session.getAttribute("usuario") != null) {
-        cuenta = (ICuenta) session.getAttribute("usuario");
-        if (cuenta.containRol("Estudiante")) {
-            response.sendRedirect("inicioEst.jsp");
-        } else if (!cuenta.containRol("Docente")) {
+        if (session.getAttribute("usuario") != null) {
+            cuenta = (ICuenta) session.getAttribute("usuario");
+            if (cuenta.containRol("Estudiante")) {
+                response.sendRedirect("inicioEst.jsp");
+            } else if (!cuenta.containRol("Docente")) {
+                response.sendRedirect("../index.jsp");
+            }
+        } else {
             response.sendRedirect("../index.jsp");
         }
-    }else{
-       response.sendRedirect("../index.jsp");
-    }
 
-%>
+    %>
     <% Facade fachada = new Facade();
 
         int cod_grp = Integer.parseInt(request.getParameter("cod_grupo"));
-
+        
         ArrayList<EstudianteDTO> lista = fachada.obtenerEstudiantes(cod_grp);
         int numero = Integer.parseInt(request.getParameter("num_equipos2"));
         String modif = request.getParameter("modif");
+        String entregables = request.getParameter("entregables");
+         String fecha = request.getParameter("fecha_max");
+        int numero_pro = Integer.parseInt(request.getParameter("num_proyecto"));
 
         String[] equipos = new String[numero];
         ArrayList<String> equi = new ArrayList<String>();
         String[][] especi = new String[numero][3];
         String[] nom = new String[numero];
-        System.out.println("hola" + numero);
+        System.out.println("hola" + numero_pro);
         for (int x = 0; x < numero; x++) {
-            equipos[x] = request.getParameter("num_equipo" + x);
-            equi.add("num_equipo" + x);
-
-            if (modif.equals("1")) {
-                especi[x][0] = request.getParameter("nom_equipo" + x);
+            if (numero_pro == 1) {
+                equipos[x] = request.getParameter("nom_equipo" + x);
+                System.out.println("hola" + equipos[x]);
+                equi.add(equipos[x]);
+            } else {
+                equipos[x] = request.getParameter("nom_equipo" + x);
+                equi.add(equipos[x]);
+            }
+            if (numero_pro == 1) {
+                especi[x][0] = request.getParameter("nombre_pro");
+                especi[x][1] = request.getParameter("keywords_pro");
+                especi[x][2] = request.getParameter("descripcion_pro");
+            } else if (modif.equals("1")) {
+                especi[x][0] = request.getParameter("num_equipo" + x);
                 especi[x][1] = request.getParameter("keyword_" + x);
                 especi[x][2] = request.getParameter("descripcion_" + x);
             } else {
-                nom[x] = request.getParameter("nom_equipo" + x);
+                nom[x] = request.getParameter("num_equipo" + x);
             }
         }
         System.out.println("hola" + numero);
         int y[];
-        if (modif.equals("0")) {
-            y = fachada.registrarEquipos(equi, nom,cod_grp);
+        if(numero_pro==1){
+            y = fachada.registrarEquipoModificable(equi, especi, numero, cod_grp,entregables,fecha);
+        }else if (modif.equals("0")) {
+            y = fachada.registrarEquipos(equi, nom, cod_grp,entregables,fecha);
         } else {
-            y = fachada.registrarEquipoModificable(equi, especi, numero,cod_grp);
+            y = fachada.registrarEquipoModificable(equi, especi, numero, cod_grp, entregables,fecha);
+            
         }
         int inicio = y[0] + 1;
 

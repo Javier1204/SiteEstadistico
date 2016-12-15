@@ -25,4 +25,9 @@ public class UtilControler {
         UtilDAO dao = new UtilDAO();
         return dao.obtenerEstudiantes(cod_grp);
     }
+    
+    public String obtenerNombreMateria(int cod_grupo) throws SQLException{
+        UtilDAO dao = new UtilDAO();
+        return dao.obtenerNombreMateria(cod_grupo);
+    }
 }

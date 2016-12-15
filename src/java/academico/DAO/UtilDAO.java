@@ -97,4 +97,34 @@ public class UtilDAO implements IUtilDAO {
         return data;
     }
 
+    @Override
+    public String obtenerNombreMateria(int cod_grupo) throws SQLException {
+        Pool pool = Conexion.getPool();
+        Connection con = null;
+        String nombre = "";
+        try {
+            pool.setUsuario("ufps_76");
+            pool.setContrasena("ufps_29");
+            pool.inicializarDataSource();
+            con = pool.getDataSource().getConnection();
+            PreparedStatement stmt = con.prepareStatement("SELECT general_asignatura.nombre FROM general_asignatura, carga_grupo"
+                    + " WHERE carga_grupo.id_grupo = ?"
+                    + " AND carga_grupo.cod_asignatura = general_asignatura.codigo");
+            stmt.setInt(1, cod_grupo);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                nombre = rs.getString(1);
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+        return nombre;
+    }
+
 }

@@ -20,9 +20,17 @@ public class ProyectoControler {
         ProyectoDAO dao = new ProyectoDAO();
         return dao.obtenerProyectos(id_grp);
     }
-    
+    public String obtenerTipoEntregable(int proyecto_id) throws SQLException{
+        ProyectoDAO dao = new ProyectoDAO();
+        return dao.obtenerTipoEntregable(proyecto_id);
+    }
     public boolean modificarProyecto(int proyecto_id, ProyectoDTO new_dto) throws SQLException {
         ProyectoDAO dao = new ProyectoDAO();
         return dao.modificarProyecto(proyecto_id, new_dto);
+    }
+    
+    public ArrayList<ProyectoDTO> obtenerPKeywords(int cod_grupo, String keywords) throws SQLException{
+        ProyectoDAO dao = new ProyectoDAO();
+        return dao.obtenerPKeywords(cod_grupo, keywords);
     }
 }

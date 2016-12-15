@@ -10,8 +10,8 @@ package academico.DTO;
  * @author Mauricio
  */
 public class ProyectoDTO {
-    
-    private int proyecto_id, max_integrantes, semillero;
+
+    private int proyecto_id, max_integrantes, estado;
     private String proyecto_name, keywords, desc, equipo_encargado;
     private boolean modificable;
 
@@ -34,15 +34,15 @@ public class ProyectoDTO {
         this.max_integrantes = max_integrantes;
     }
 
-    public int getSemillero() {
-        return semillero;
+    public int getEstado() {
+        return estado;
     }
 
-    public void setSemillero(int semillero) {
-        this.semillero = semillero;
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
 
-    public String getProyecto_name() {
+        public String getProyecto_name() {
         return proyecto_name;
     }
 
@@ -81,5 +81,5 @@ public class ProyectoDTO {
     public void setEquipo_encargado(String equipo_encargado) {
         this.equipo_encargado = equipo_encargado;
     }
-    
+
 }
