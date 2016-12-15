@@ -2,7 +2,29 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
-        <group/>
+        <group>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/src/java/gestionUsuarios/ControlGestionUsuarios.java</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/src/java/gestionUsuarios/DAOs/GeneralUsuarioDAO.java</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/procesar/procesarSesion.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/listar_publicaciones.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/src/java/gestionUsuarios/DAOs/GeneralUsuarioRolDAO.java</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/procesar/filtrarUsuarios.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/js/ajax.js</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/asignarRF.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/listarUsuario.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/procesar/procesarModUsuario.jsp</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/src/java/gestionUsuarios/ControlGestionUsuarios.java</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/src/java/gestionUsuarios/DAOs/GeneralUsuarioDAO.java</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/procesar/procesarSesion.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/listar_publicaciones.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/src/java/gestionUsuarios/DAOs/GeneralUsuarioRolDAO.java</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/procesar/filtrarUsuarios.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/js/ajax.js</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/asignarRF.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/listarUsuario.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/SiteEstadistico/web/Integrador/procesar/procesarModUsuario.jsp</file>
+        </group>
     </open-files>
 </project-private>

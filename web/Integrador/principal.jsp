@@ -4,8 +4,8 @@
     Author     : carlos
 --%>
 
-<%@page import="Integrador.DTO.InformeDTO"%>
-<%@page import="Integrador.Servicio.SrvInforme"%>
+<%@page import="integrador.DTO.InformeDTO"%>
+<%@page import="integrador.Servicio.SrvInforme"%>
 <%@page import="gestionUsuarios.DTOs.ModuloDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="gestionUsuarios.GestionUsuario"%>

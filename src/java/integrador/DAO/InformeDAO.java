@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Integrador.DAO;
+package integrador.DAO;
 
-import Integrador.DTO.InformeDTO;
+import integrador.DTO.InformeDTO;
 import general.conexion.Conexion;
 import general.conexion.Pool;
 import java.sql.Connection;

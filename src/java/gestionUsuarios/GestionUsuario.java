@@ -226,6 +226,11 @@ public class GestionUsuario implements IGestionUsuarios{
     public ModuloDTO obtenerModulo(String modulo) {
         return ControlGestionUsuarios.getInstance().obtenerModulo(modulo);
     }
+
+    @Override
+    public List<UsuarioDTO> filtrar(String clave) {
+        return ControlGestionUsuarios.getInstance().filtrarUsuario(clave);
+    }
     
 
 }

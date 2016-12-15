@@ -4,11 +4,24 @@
     Author     : Diego Leal
 --%>
 
+<%@page import="gestionUsuarios.ICuenta"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.GregorianCalendar"%>
 <%@page import="java.util.Calendar"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    ICuenta cuenta = (ICuenta) session.getAttribute("usuario");
+    if (cuenta == null) {
+        response.sendRedirect("../index.jsp");
+    } else {
+        if (cuenta.containRol("Docente")) {
+            
+        } else {
+            response.sendRedirect("../index.jsp");
+        }
+    }
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -39,12 +52,12 @@
                     </a>
                 </div>
                 <div class="ref">
-                    <a href="#">
+                    <a href="consultaAsesoria.jsp">
                         Consultar horario
                     </a>
                 </div>
                 <div class="ref">
-                    <a href="#">
+                    <a href="administrador.jsp">
                         Administrador
                     </a>
                 </div>
@@ -55,7 +68,6 @@
                     <div class="ufps-col-desktop-5 ufps-col-netbook-5 ufps-col-tablet-6 ufps-col-mobile-12">
                     <jsp:useBean id="controlador" class="asesorias.Controller.ControladorAsesorias" scope="session"></jsp:useBean>
                     <%
-
                         //Capturar el codigo del docente
                         String rta = controlador.consultarMateriasDocentes("6");
                         System.out.println("CONSULTA:: " + rta + "::");
@@ -92,7 +104,7 @@
                     <label>Código Estudiante</label>
                     <select class="form-control" style="width: auto;" id="estudiantesMateria">
                         <option>Seleccione el estudiante</option>
-                        <option>115111 - Diego leal</option>
+                        <!--<option>1150683 - Edinson Caicedo Silva</option>-->
                     </select>
                 </div>
                 <div class="ufps-col-desktop-2 ufps-col-netbook-2">
@@ -157,13 +169,17 @@
                         System.out.println("rrta::: " + asesorias);
                         if (!asesorias.isEmpty()) {
                             System.out.println("Es vacia las asesorias");
-                            String v1[] = asesorias.split("$");
+                            String v1[] = asesorias.split("#");
+                            System.out.println("este es el split:: " + v1[0]);
                             if (v1.length > 0) {
                                 for (int i = 0; i < v1.length; i++) {
+                                    System.out.println("Ingreso:: " + i + " con:: " + v1[i] + " tamaño v1= " + v1.length);
                                     //fecha, cod_est, doc_docente, cod_materia, grupo, tema, hora
                                     String v2[] = v1[i].split(";");
                                     String nombreEstudiante = controlador.consultarNombreEst(v2[1]);
+                                    System.out.println("Este es el estudiante:::: " + nombreEstudiante);
                                     String nombreAsignatura = controlador.consultarNombreMat(v2[3]);
+                                    System.out.println("Este es el nombre de la asignatura  ::: " + nombreAsignatura);
                     %>
                     <tr>
                         <td align="center"><%=v2[3]%></td>
@@ -181,6 +197,12 @@
                     %>
                 </tbody>
             </table>
+        </div>
+
+        <br>
+        <br>
+        <div class="ufps-col-desktop-4 ufps-col-desktop-push-6">
+            <button class="btn">REGISTRAR ASESORIAS EXTERNA A LA CARGA ACADEMICA</button>
         </div>
         <!--<footer>
             <div class="ufps-container ufps-footer">

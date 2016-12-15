@@ -8,6 +8,7 @@ package gestionUsuarios.DAOs;
 import general.conexion.Conexion;
 import general.conexion.Pool;
 import gestionUsuarios.DTOs.RolDTO;
+import gestionUsuarios.DTOs.UsuarioDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -151,9 +152,30 @@ public class GeneralUsuarioRolDAO {
             Logger.getLogger(GeneralUsuarioRolDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+     public List<UsuarioDTO> filtrarUsuarios(String pclave){
+        ArrayList<UsuarioDTO> usuarios = new ArrayList<>();
+        try{
+            PreparedStatement ps=conn.prepareStatement("SELECT user FROM general_usuario_rol WHERE rol='"+pclave+"'");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                UsuarioDTO usu=new UsuarioDTO();
+                usu.setUssername(rs.getString(1));
+                usuarios.add(usu);
+            }
+            return usuarios;
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralUsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
     public static void main(String[] args) {
-        GeneralUsuarioRolDAO gur=new GeneralUsuarioRolDAO(ConexionGUDAOs.obtenerConexion());
-        gur.crearUsuariosAutomaticos();
+        GeneralUsuarioRolDAO us=new GeneralUsuarioRolDAO(ConexionGUDAOs.obtenerConexion());
+        List<UsuarioDTO> u = us.filtrarUsuarios("Administrador");
+        for(UsuarioDTO u1 : u) {
+            System.out.println(u1.getUssername());
+        }
     }
     
 }

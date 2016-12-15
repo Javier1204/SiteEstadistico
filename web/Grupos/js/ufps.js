@@ -25,7 +25,7 @@
  */
 
 function openModal(id) {
-  let modal = document.getElementById(id);
+  var modal = document.getElementById(id);
   modal.style.display = "block";
   var close = document.getElementsByClassName("ufps-modal-close");
   for (i = 0; i < close.length; i++) {

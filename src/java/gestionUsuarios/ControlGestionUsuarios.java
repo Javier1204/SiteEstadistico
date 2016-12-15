@@ -149,6 +149,16 @@ public class ControlGestionUsuarios {
         }
     }
 
+    protected List<UsuarioDTO> filtrarUsuario(String clave){
+        Connection con = ConexionGUDAOs.obtenerConexion();
+        try {
+            GeneralUsuarioRolDAO uDAO = new GeneralUsuarioRolDAO(con);
+            return uDAO.filtrarUsuarios(clave);
+        } finally {
+            ConexionGUDAOs.cerrarConexion(con);
+        }
+    }
+    
     protected boolean registrarModulo(String nombreModulo, String descripcion, String url) {
         Connection con = ConexionGUDAOs.obtenerConexion();
         try {

@@ -4,9 +4,9 @@
     Author     : carlos
 --%>
 
-<%@page import="Integrador.DTO.InformeDTO"%>
+<%@page import="integrador.DTO.InformeDTO"%>
 <%@page import="java.util.List"%>
-<%@page import="Integrador.Servicio.SrvInforme"%>
+<%@page import="integrador.Servicio.SrvInforme"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     

@@ -15,9 +15,7 @@
 <!DOCTYPE html>
 
 
-<script type="text/javascript">
-history.forward();
-</script>
+
 <jsp:include page="../plantilla/header.jsp"></jsp:include>
 <%
   IGestionUsuarios gestor = GestionUsuario.getInstance();

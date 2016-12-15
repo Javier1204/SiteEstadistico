@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Integrador.Servicio;
+package integrador.Servicio;
 
-import Integrador.DAO.InformeDAO;
-import Integrador.DTO.InformeDTO;
+import integrador.DAO.InformeDAO;
+import integrador.DTO.InformeDTO;
 import java.util.List;
 
 /**

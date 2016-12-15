@@ -5,8 +5,8 @@
 --%>
 
 
-<%@page import="Integrador.DTO.InformeDTO"%>
-<%@page import="Integrador.Servicio.SrvInforme"%>
+<%@page import="integrador.DTO.InformeDTO"%>
+<%@page import="integrador.Servicio.SrvInforme"%>
 <%@page import="gestionUsuarios.DTOs.ModuloDTO"%>
 <%@page import="gestionUsuarios.GestionUsuario"%>
 <%@page import="gestionUsuarios.IGestionUsuarios"%>
@@ -53,7 +53,7 @@
     </script>
 
        
-    <center> <div  class="panel-heading" id="titulo2"> <h4>BIENVENIDO</h4></div> </center>
+    <center> <div  class="panel-heading" id="titulo2"> <h4>BIENVENIDO</h4></div> </center><br>
          <div  id="contenidopublicacion">
              <div id="contenidoPrincipal">
                
@@ -116,8 +116,6 @@
     </div>
  </div>    
 <jsp:include page="../plantilla/footer.jsp"></jsp:include>
-</body>
-</html>
 
 
 

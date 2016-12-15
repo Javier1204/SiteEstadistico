@@ -820,3 +820,25 @@ function registrarModulo2() {
         }
     }
 }
+
+function filtrar(){
+    alert("2");
+    var rol = document.getElementById("selectMod");
+    ajax = nuevoAjax();
+    parametros = "rol=" + rol.value;
+    url = "procesar/filtrarUsuarios.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("info").innerHTML = rta;
+            }
+        } else
+        {
+            document.getElementById("info").value = "Verificando Usuario...";
+        }
+    }
+}

@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -153,9 +154,11 @@ public class GeneralUsuarioDAO {
         }
         return false;
     }
+    
+   
+    
     public static void main(String[] args) {
         GeneralUsuarioDAO us=new GeneralUsuarioDAO(ConexionGUDAOs.obtenerConexion());
-        System.out.println(us.listarUsuarios());
-        System.out.println("");
+        
     }
 }

@@ -209,4 +209,6 @@ public interface IGestionUsuarios {
     public RequerimientosFDTO obtenerRF(String modulo, String rf);
     
     public ModuloDTO obtenerModulo(String modulo);
+    
+    public List<UsuarioDTO> filtrar(String clave);
 }
