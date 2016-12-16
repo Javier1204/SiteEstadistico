@@ -41,7 +41,9 @@ public class DAOConvenio {
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
             stm = con.prepareStatement("insert into general_convenio (id, nombre, descripcion, fecharadicacion, fechacreacion, fechaterminacion, vigencia, estado, tipo_convenio, id_entidad, urlimagen) values('"+c.getId()+"','"
-                    +c.getNombre()+"','"+c.getDescripcion()+"','"+c.getFecharadicacion()+"','"+c.getFechainicio()+"','"+c.getFechaterminacion()+"','"+c.getVigencia()+"','"+c.getEstado()+"','"+c.getTipoconvenio()+"','"+c.getEntidad()+"',null)");//genero el sql. 
+                    +c.getNombre()+"','"+c.getDescripcion()+"','"+c.getFecharadicacion()+"','"+c.getFechainicio()+"','"+c.getFechaterminacion()+"','"+c.getVigencia()+"','"+c.getEstado()+"','"+c.getTipoconvenio()+"','"+c.getEntidad()+"','"+c.getUrlimagen()+"')");//genero el sql.
+           
+            System.out.println(c.getUrlimagen());
             System.out.println(c.getNombre());
             int can = stm.executeUpdate();//ejecuto la consulta
             stm.close();//cierro el preparedstatement
@@ -107,7 +109,7 @@ public class DAOConvenio {
                 String tipo_convenio = resultado.getString(9);
                 int entidad = resultado.getInt(10);
                 String urlimagen = resultado.getString(11);
-                c = new Convenio(id,nombre,descripcion,creacion,terminacion,fecharadicacion,vigencia,estado,tipo_convenio,entidad);
+                c = new Convenio(id,nombre,descripcion,creacion,terminacion,fecharadicacion,vigencia,estado,tipo_convenio,entidad,urlimagen);
                 c.setId(id);
                 
                 convenios.add(c);

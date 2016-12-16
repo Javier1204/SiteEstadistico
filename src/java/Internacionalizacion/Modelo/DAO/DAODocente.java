@@ -101,7 +101,7 @@ public class DAODocente {
             
         } catch (SQLException ex) {
             System.err.println(ex);
-             System.out.println("no  registrar");
+             System.out.println("no  consulto docente en base de dats");
             //en el caso de que se encunetren en una consulta real se recomienta usar
             //    con.rollback();
         } finally {
@@ -115,6 +115,41 @@ public class DAODocente {
             }
         }   
         return d;
-    }           
+    }
+    public String habilitarDocente(String codigo, int a) {
+        Pool pool = Conexion.getPool();
+        Connection con = null;
+        String arg="";
+        Docente d = null;
+        try {
+            pool.setUsuario("ufps_76");
+            pool.setContrasena("ufps_29");
+            pool.inicializarDataSource();
+            con = pool.getDataSource().getConnection();
+            PreparedStatement stmt = con.prepareStatement("UPDATE general_docente set oficina_habilitado="+a+"  where codigo= "+codigo);
+              
+            int can = stmt.executeUpdate();//ejecuto la consulta
+            arg=can+"";
+
+            stmt.close();
+            
+            
+        } catch (Exception ex) {
+            System.err.println(ex.getMessage());
+             System.out.println("No habilitoo docente");
+            
+        } finally {
+            try {
+                if (con != null) {
+                    con.close(); // se cierra la conexion. este es un paso muy importante
+                }
+            } catch (SQLException ex) {
+                System.out.println("No consulto");
+                System.err.println(ex);
+            }
+        }      
+        System.out.println("habilitoo docente");
+        return arg;
+    }
     
 }
