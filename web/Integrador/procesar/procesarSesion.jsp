@@ -19,6 +19,9 @@
     if (cuenta!=null) {
         System.out.println("Entro");
         session.setAttribute("usuario", cuenta);
+        session.setAttribute("acacodigo", cuenta.getUser());
+        session.setAttribute("acarol", cuenta.containRol("Estudiante"));
+        session.setAttribute("acarol2", cuenta.containRol("Estudiante"));
         session.setMaxInactiveInterval(1 * 60 * 60);
         mensaje = "1";
     } else {

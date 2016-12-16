@@ -91,3 +91,4 @@
 
             </div>
         </div>
+    <script src="../EstudiantesdeprimerSemestre/js/funciones.js"></script>

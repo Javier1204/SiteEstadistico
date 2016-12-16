@@ -28,7 +28,7 @@ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Apr 2016 18:57:38 GMT -->
     <link href="../EstudiantesdeprimerSemestre/css/animate.css" rel="stylesheet">
     <link href="../EstudiantesdeprimerSemestre/css/style.css" rel="stylesheet">
  
-    
+     <script src="../EstudiantesdeprimerSemestre/js/funciones.js"></script>
    
  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"/>
 
@@ -72,7 +72,7 @@ max-width: 276px;">
 
                 <br> 
                 <p class="text-center" style="margin-top: 8px;"><small style="color: black;">¿No tienes cuenta?</small></p>
-                <a class="" style="color: #ed5565;" href="#" onclick="RegistrarUser();">Registrate!</a>
+                <a class="" style="color: #ed5565;" href="./formRegistroUser.jsp" >Registrate!</a>
                  
                 
             </form>
@@ -94,11 +94,30 @@ max-width: 276px;">
     </div>
 
     <!-- Mainly scripts -->
+           <script src="../EstudiantesdeprimerSemestre/js/funciones.js"></script>
     <script src="../EstudiantesdeprimerSemestre/js/jquery-2.1.1.js"></script>
     <script src="../EstudiantesdeprimerSemestre/js/bootstrap.min.js"></script>
     <script src="../EstudiantesdeprimerSemestre/js/funciones.js"></script>
 <script>
-
+    
+    function ajax(url, datos, rta) {
+    var ajax = $.post(url, datos, function(respuesta) {
+        $(rta).html(respuesta);
+    });
+    return ajax;
+}
+function RegistrarUser() {
+  
+ var url = "../EstudiantesdeprimerSemestre/formRegistroUser.jsp";
+    var datos = {};
+    var rta = "#mostrarcontenido";
+    ajax(url, datos, rta);
+    
+//    window.locationf="../EstudiantesdeprimerSemestre/index.jsp";
+    
+    
+    
+}
 
 
 </script>

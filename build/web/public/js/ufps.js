@@ -232,6 +232,18 @@ function ModuloPrimerSemestre() {
     
     
 }
+function RegistrarUser() {
+  
+ var url = "../EstudiantesdeprimerSemestre/formRegistroUser.jsp";
+    var datos = {};
+    var rta = "#mostrarcontenido";
+    ajax(url, datos, rta);
+    
+//    window.locationf="../EstudiantesdeprimerSemestre/index.jsp";
+    
+    
+    
+}
 /**
  * Métodos que se ejecutan al inicializarse el documento html.
  */

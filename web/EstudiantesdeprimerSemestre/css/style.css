@@ -3964,7 +3964,8 @@ table.table-mail tr td {
 }
 /* COLORS */
 .text-navy {
-  color: #1ab394;
+  /*color: #1ab394;*/
+  color:rgba(179, 26, 26, 0.76);
 }
 .text-primary {
   color: inherit;
