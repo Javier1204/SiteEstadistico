@@ -297,6 +297,10 @@ function buscarPrivilegios() {
 function buscarRoles() {
     //alert("hola");
     var nombre_usuario = document.getElementById("nombre_usuario");
+    if(nombre_usuario.value===""){
+        document.getElementById("campo").innerHTML = "<center><h3>debe ingresar el código del usuario</h3></center>";
+        return;
+    }
     ajax = nuevoAjax();
     parametros = "nombre_usuario=" + nombre_usuario.value;
     url = "procesar/cargarRoles.jsp";

@@ -22,15 +22,17 @@
 
     <div name="registro" class="f-integrador ufps-container" id="registro">
         <div>
-            <label >Nombre usuario</label><br>
-            <input type="text" required name="nombre_usuario" id="nombre_usuario" placeholder="Nombre de usuario" class="ufps-input ufps-black" />
-            <input type="button" name="btnBuscar" onclick="javascript:buscarRoles()" id="btnBuscar" class="ufps-btn ufps-btn-light" value="Buscar"/>
+            <center>
+                <label >Código</label>
+                <input type="text" style="max-width: 200px" required name="nombre_usuario" id="nombre_usuario" placeholder="Nombre de usuario" class="ufps-input ufps-black" />
+                <input type="button" name="btnBuscar" onclick="javascript:buscarRoles()" id="btnBuscar" class="ufps-btn ufps-btn-light" value="Buscar"/>
+            </center>
         </div>
         <div id="campo">
 
         </div>
-        
-        
+
+
 
     </div>
     <div id="modal"></div>
