@@ -117,4 +117,6 @@ public interface ICuenta {
      * @return 
      */
     public String getNombre();
+    
+    public boolean probarAcceso(String url);
 }

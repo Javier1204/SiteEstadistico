@@ -42,7 +42,13 @@
             cuenta = (ICuenta) session.getAttribute("usuario");
             modulos = cuenta.listarModulos();
         }
-
+        if(cuenta!=null){
+            if(cuenta.probarAcceso(request.getRequestURI())){
+                System.out.print("puede entrar");
+            }else{
+                System.out.print("No puede entrar");
+            }
+        }
     %>
     <body>
         <header>
@@ -66,7 +72,6 @@
                             <%for (ModuloDTO mod : modulos) {
                             %>
                             <a href="<%=mod.getUrl()%>"> <%= mod.getNombre()%></a>
-                             <a href="#" onclick="ModuloPrimerSemestre();"> Primer Semestre </a>
                             <%
                                 }
                             %>

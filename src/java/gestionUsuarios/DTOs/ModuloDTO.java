@@ -71,5 +71,10 @@ public class ModuloDTO {
         }
         return null;
     }
-    
+    public boolean containRFURL(String url){
+        for (RequerimientosFDTO requerimiento : requerimientos) {
+            if(requerimiento.getUrl().equalsIgnoreCase(url))return true;
+        }
+        return false;
+    }
 }

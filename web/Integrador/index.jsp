@@ -16,7 +16,6 @@
                     <div class="panel-body text-justify">
                         <center><img alt="Logo usuario" height="200" src="../public/img/user.png"></center>
                         <ul style="list-style: none; padding-left: 0px;">
-                            <li><a href="registrar_usuario.jsp" class="ufps-input ufps-btn ufps-btn-light"> Registrar Usuario</a></li>
                             <li><a href="listarUsuario.jsp" class="ufps-input ufps-btn ufps-btn-light"> Listar usuarios</a></li>
                         </ul>
                     </div>
@@ -28,7 +27,6 @@
                     <div class="panel-body text-justify">
                         <center><img alt="Logo modulos" style="padding-bottom: 15px;" height="200" src="../public/img/mod.jpg"></center>
                         <ul style="list-style: none; padding-left: 0px;">
-                            <li><a href="registrarModulo.jsp" class="ufps-input ufps-btn ufps-btn-light"> Registrar módulos</a></li>
                             <li><a href="listar_actModulos.jsp" class="ufps-input ufps-btn ufps-btn-light"> Listar módulos</a></li>
                         </ul>
                     </div>
@@ -40,8 +38,8 @@
                     <center><img alt="Logo privilegios" height="200" src="../public/img/ojo.jpg"></center>
                     <div class="panel-body text-justify">
                         <ul style="list-style: none; padding-left: 0px;">
-                            <li><a href="asignarRF.jsp" class="ufps-input ufps-btn ufps-btn-light"> Actualizar privilegios</a></li>
-                            <li><a href="asginar_rol.jsp" class="ufps-input ufps-btn ufps-btn-light"> Actualizar roles</a></li>
+                            <li><a href="asignarRF.jsp" class="ufps-input ufps-btn ufps-btn-light"> Asignar Privilegios</a></li>                            
+                            <li><a href="listarRF.jsp.jsp" class="ufps-input ufps-btn ufps-btn-light"> Listar requerimientos</a></li>
                         </ul>
                     </div>
                 </div>
@@ -52,7 +50,7 @@
                     <div class="panel-body text-justify">
                         <center><img alt="Logo roles" height="200" src="../public/img/rol.jpg"></center>
                         <ul style="list-style: none; padding-left: 0px;">
-                            <li><a href="registrarRol.jsp" class="ufps-input ufps-btn ufps-btn-light"> Registrar roles</a></li>
+                            <li><a href="asginar_rol.jsp" class="ufps-input ufps-btn ufps-btn-light"> Asignar Roles</a></li>
                             <li><a href="listarRoles.jsp" class="ufps-input ufps-btn ufps-btn-light"> Listar roles</a></li>
                         </ul>
                     </div>

@@ -70,5 +70,11 @@ public class PrivilegioDTO {
         }
         return null;
     }
+    public boolean containRF(String url){
+        for (ModuloDTO modulo : modulos) {
+            if(modulo.containRFURL(url))return true;
+        }
+        return false;
+    }
     
 }

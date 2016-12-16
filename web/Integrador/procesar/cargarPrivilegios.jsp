@@ -99,8 +99,8 @@
 <p class="text-center">El rol <%=rol%> no tiene asignado ningun requerimiento funcional</p>
 <% }%>
 <center>
-    <div class="ufps-dropdown" id="dropdown4">
-        <button onclick="openDropdown('dropdown4')" class="ufps-dropdown-btn ufps-dropdown-light">Asignar Requerimiento de otro módulo</button>
+    <div class="ufps-dropdown" id="dropdown21">
+        <button onclick="openDropdown('dropdown21')" class="ufps-dropdown-btn ufps-dropdown-light">Asignar Requerimiento de otro módulo</button>
         <div class="ufps-dropdown-content">
             <%
                 for (ModuloDTO nMod : notModulos) {
