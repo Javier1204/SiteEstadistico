@@ -49,4 +49,7 @@ public class RolDTO {
     public RequerimientosFDTO getRequerimiento(String modulo, String rf) {
         return privilegio.getRequerimiento(modulo, rf);
     }
+    public boolean containRF(String rf){
+        return privilegio.containRF(rf);
+    }
 }

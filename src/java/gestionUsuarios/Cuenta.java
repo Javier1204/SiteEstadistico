@@ -162,4 +162,15 @@ public class Cuenta implements ICuenta{
     public String getNombre(){
         return this.usser.getNombre();
     }
+
+    @Override
+    public boolean probarAcceso(String url) {
+        String urlCarpeta=url.substring(url.indexOf("SiteEstadistico")+15);
+        urlCarpeta.replace((char)92, '/');
+        System.out.println("mostrar      :"+urlCarpeta);
+        for (RolDTO role : roles) {
+            if(role.containRF(urlCarpeta))return true;
+        }
+        return false;
+    }
 }
