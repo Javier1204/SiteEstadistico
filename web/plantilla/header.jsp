@@ -62,7 +62,7 @@
                         <div class="ufps-btn-menu-bar"></div>
                         <div class="ufps-btn-menu-bar"></div>
                     </div>
-                    <a href="../Integrador/listar_modulos.jsp">Site Estadístico</a>
+                    <a href="../Integrador/principal.jsp">Site Estadístico</a>
                 </div>
                 <div class="ufps-navbar-left">
                     <% if (modulos != null) { %>
@@ -80,6 +80,9 @@
                     <%
                         }
                     %>
+                    <div class="ufps-navbar-corporate">
+                        <a href="index.jsp" class="ufps-navbar-btn">Menú</a>
+                    </div>
                 </div>
                 <div class="ufps-navbar-right">
                     <div class="ufps-navbar-corporate">
