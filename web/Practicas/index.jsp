@@ -20,13 +20,17 @@
         codigo=cuenta.getUser();
         boolean coordinador=cuenta.containRol("Coordinador practicas");
         boolean estudiante= cuenta.containRol("Estudiante");
+        boolean administrador = cuenta.containRol("Administrador");
         boolean m=cuenta.containModulo("Practicas");
         
-        if(coordinador){
+        if(coordinador || administrador){
              response.sendRedirect("index_1.jsp");
-        }
-        if(estudiante){
+        }else if(estudiante){
              response.sendRedirect("index_estudiante.jsp");
+        }else {
+            %>
+                Error: para ingresar a este modulo debe ser Administrador o Coordinador de practicas o Estudiante
+            <%
         }
         
     }

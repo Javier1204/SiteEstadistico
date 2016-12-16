@@ -74,8 +74,7 @@ if(request.getSession().getAttribute("respuesta_convenio")!=null){
              
                                                     
               </div>
- <%
-               
+ <%            
                 Date date = new java.sql.Date(System.currentTimeMillis());
                 SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
                 String currentDate = ft.format(date);

@@ -26,11 +26,7 @@
 
 <jsp:include page="../plantilla/header.jsp"/>         
            
-       <div class="ufps-col-mobile-12 ufps-col-tablet-2">
-           <li><a href="registro_estudiante.jsp" class="  ufps-navbar-btn  " >Registro </a></li> 
-       </div>
- 
-        
+            
         <div  class="ufps-container" id="contenido">
         <fieldset>
             <center>
@@ -45,7 +41,7 @@
                 <div class="ufps-img-thumbnail">
                     <img src="img/editar.png" alt="imagen de evento" >
                     <div class="caption">
-                        <p><a href="editar_perfil_estudiante.jsp" class="btn ufps-btn" role="button">Editar perfil</a></p>
+                        <p><a href="registro_estudiante.jsp" class="btn ufps-btn" role="button">Registro estudiante</a></p>
                     </div>
                 </div>
              </div>

@@ -220,7 +220,7 @@ request.getSession().setAttribute("respuesta_editar_practica", null);
                                     <select id="id_estudiante" name="id_estudiante" class="ufps-input-line " value="<%=ed.getId_estudiante() %>" >
                                         
                                         <%
-                                            ArrayList<estudianteDTO> estudiantes = fachada.obtenerEstudiantes();
+                                            ArrayList<estudianteDTO> estudiantes = fachada.obtenerEstudiantes_asignados();
                                             for(estudianteDTO e: estudiantes){
                                         %>
                                         <option value="<%=e.getCodigoEstudiante()%>"><%=e.getNombresEstudiante()%></option>

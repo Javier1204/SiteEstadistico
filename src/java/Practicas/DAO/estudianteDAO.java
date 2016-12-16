@@ -5,7 +5,6 @@
  */
 package Practicas.DAO;
 
-import Practicas.Interface.EstudianteInterface;
 import general.conexion.Conexion;
 import general.conexion.Pool;
 import java.sql.Connection;
@@ -17,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import Practicas.DTO.estudianteDTO;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -26,13 +26,44 @@ import javax.servlet.http.HttpServletRequest;
 public class estudianteDAO{
 
   
-    public String registrarEstudiante() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void registrarEstudiante(String codigo, String direccion, String email, String telefono) {
+        estudianteDTO e= new estudianteDTO();
+        e.setCorreo(email);
+        e.setDireccion(direccion);
+        e.setTelefono(telefono);
+        actualizarEstudiante(e);
+        crearDocumentos(codigo);
+        
     }
 
   
-    public String actualizarEstudiante(estudianteDAO e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void actualizarEstudiante(estudianteDTO e) {
+         Pool pool = Conexion.getPool(); //llamo al objeto pool 
+        Connection con = null;
+        PreparedStatement pst = null;
+        boolean rta=false;
+        try {
+
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
+            con = pool.getDataSource().getConnection();
+             
+            String sql= "UPDATE general_estudiante SET correo='"+e.getCorreo()+"', direccion = '"+e.getDireccion()+"' , telefono='"+e.getTelefono()+"'  , asignado_practica=true WHERE (codigo= '"+e.getCodigoEstudiante()+"');";//genero el sql. 
+           
+            pst= con.prepareStatement(sql);
+            int a= pst.executeUpdate();
+            con.close();
+            
+            if(a == 1){
+                rta= true;
+                System.out.println(" registrar");    
+            }
+
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(perfilDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
  
@@ -373,5 +404,43 @@ public class estudianteDAO{
         return estudiantes;
     
 }          
+
+    private void crearDocumentos(String codigo) {
+        Pool pool = Conexion.getPool(); //llamo al objeto pool 
+        Connection con = null;
+        PreparedStatement pst = null;
+        
+        try {
+            /**
+             * 02/11/2016 actualmente se utilizan el usuario ufps_76 pero a
+             * futuro cuando se cambien los permisos esto se modificara
+             *
+             */
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
+            con = pool.getDataSource().getConnection();
+             
+            String sql= "insert into practicas_documentos_estudiantes (codigo_estudiante, url_cedula) values('"+codigo+"', 'nn')";//genero el sql. 
+       
+            pst= con.prepareStatement(sql);
+            
+            int a= pst.executeUpdate();
+            con.close();
+            
+            if(a == 1){
+                
+                System.out.println(" registrar");
+                
+            }else{
+                 System.out.println("No es posible registrarlo");
+                
+            }
+         
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(perfilDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }

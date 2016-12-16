@@ -66,13 +66,13 @@
               <br>
               <div class="ufps-col-tablet-5 ufps-col-tablet-offset-0">
                   <BR>  
-                  <label for="nombreEst"><b>Direccion:</b></label>
-                     <input type="text" class="ufps-input" id="dirEst">                                  
+                  <label for="direccion"><b>Direccion:</b></label>
+                     <input type="text" class="ufps-input" id="dirEst" name="dirEst">                                  
               </div>
               <div class="ufps-col-tablet-5 ufps-col-tablet-offset-0"> 
                   <BR> 
-                  <label for="apellidosEst"><b>Telefono:</b></label>
-                  <input type="text" class="ufps-input" id="telEst">            
+                  <label for="telefono"><b>Telefono:</b></label>
+                  <input type="text" class="ufps-input" id="telEst" name="telEst">            
               </div
                <br>
               <br>
@@ -80,15 +80,10 @@
               <div class="ufps-col-tablet-5 ufps-col-tablet-offset-0">
                   <BR> 
                   <label for="emailEst"><b>Email:</b></label>
-                     <input type="text" class="ufps-input" id="emailEst">                                  
+                     <input type="text" class="ufps-input" id="emailEst" name="emailEst">                                  
               </div>
-               <div class="ufps-col-tablet-5 ufps-col-tablet-offset-0">
-                  <BR>                   
-                    <label for="fecha_nac">Fecha de Nacimiento</label>
-                    <input type="date" class="ufps-input" id="fechaNac" name="fecha_nac"  required="" onchange="fijarfechainicio_inicio(this.value)" >                                         
-              </div>
-              
-              
+                            
+               <input type="hidden" class="ufps-input" id="codigoEst" value="<%=codigo %>" name="codigoEst"> 
               
               <center><div class="ufps-col-tablet-12 ">  
                 <div class="form-group">

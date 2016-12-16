@@ -12,6 +12,7 @@ import Internacionalizacion.Controlador.ControladorTipo_actividades;
 import Internacionalizacion.Modelo.DTO.Tipo_actividades;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -208,5 +209,10 @@ public class Facade {
             estudianteControlador a= new estudianteControlador();
             return a.guardarDocumentos(nombre, ruta);
         } 
+        
+        public void registrarEstudiante(String codigo, String direccion,String email, String telefono){
+            estudianteControlador e= new estudianteControlador();
+            e.registrarEstudiante(codigo, direccion, email, telefono);
+        }
         
 }

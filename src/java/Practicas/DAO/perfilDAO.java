@@ -6,7 +6,6 @@
 package Practicas.DAO;
 
 import Practicas.DTO.perfilDTO;
-import Practicas.Interface.PerfilInterface;
 
 import general.conexion.Conexion;
 import general.conexion.Pool;
@@ -24,7 +23,7 @@ import java.util.logging.Logger;
  *
  * @author Administrador
  */
-public class perfilDAO implements PerfilInterface{
+public class perfilDAO{
     
    
     public String registrarPerfil(perfilDTO p) {
@@ -170,7 +169,6 @@ public class perfilDAO implements PerfilInterface{
     }
 
     
-    @Override
     public int id_maximo_perfil() {
         int mx=0;
         try {
@@ -198,7 +196,6 @@ public class perfilDAO implements PerfilInterface{
         return mx;
     }
 
-    @Override
     public boolean eliminarPerfil(Object o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

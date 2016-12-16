@@ -10,6 +10,7 @@ import Practicas.DAO.perfil_estudianteDAO;
 import Practicas.DTO.estudianteDTO;
 import Practicas.DTO.perfil_estudianteDTO;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -52,6 +53,11 @@ public class estudianteControlador {
     public boolean guardarDocumentos(String nombre, String ruta){
         estudianteDAO dao= new estudianteDAO();
         return dao.guardarDocumentos(nombre, ruta);
+    }
+
+    public void registrarEstudiante(String codigo, String direccion, String email, String telefono) {
+        estudianteDAO dao= new estudianteDAO();
+        dao.registrarEstudiante(codigo, direccion, email, telefono);
     }
     
 }
