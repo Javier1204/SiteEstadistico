@@ -6,6 +6,7 @@
 package Internacionalizacion.Controlador;
 
 import Internacionalizacion.Modelo.DAO.DAODocente;
+import Internacionalizacion.Modelo.DTO.Actividad;
 import Internacionalizacion.Modelo.DTO.Docente;
 import java.util.ArrayList;
 
@@ -25,5 +26,11 @@ public class ControladorDocente {
         DAODocente d = new DAODocente();
         return d.consultarDocente(codigo);
     }
+    public String habilitarDocente(String responsable, int a) {
+        DAODocente d = new DAODocente();
+        return d.habilitarDocente(responsable, a);
+    }
+
+    
     
 }

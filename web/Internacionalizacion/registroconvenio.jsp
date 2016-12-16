@@ -43,7 +43,7 @@ if(!d.isHabilitado()){
 %>
 <script type="text/javascript">
     
-    alert("NO ESTÁ HABILITADO POR EL COORDINADOR!");
+   // alert("NO ESTÁ HABILITADO POR EL COORDINADOR!");
 </script>
 <%
     response.sendRedirect("index.jsp");

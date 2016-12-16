@@ -126,7 +126,7 @@
             
                     <div class="ufps-col-tablet-10">  
                         <div class="form-group">
-                            <button type="submit" class="ufps-btn">Registrar Convenio</button>
+                            <button type="submit" class="ufps-btn">Subir Archivo</button>
                         </div> </div>
 
                     </form>

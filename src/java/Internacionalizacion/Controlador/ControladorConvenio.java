@@ -18,9 +18,9 @@ public class ControladorConvenio {
 
 
     
-    public String registrarConvenio(String radicado, String nombre, String descripcion, String fecharadicacion, String fechainicio, String fechaterminacion, String vigencia, String estado, String tipo, int entidad) {
+    public String registrarConvenio(String radicado, String nombre, String descripcion, String fecharadicacion, String fechainicio, String fechaterminacion, String vigencia, String estado, String tipo, int entidad, String urlimagen) {
         DAOConvenio convenio= new DAOConvenio();
-        Convenio c= new Convenio(radicado, nombre, descripcion ,fecharadicacion, fechainicio, fechaterminacion, vigencia, estado, tipo, entidad);
+        Convenio c= new Convenio(radicado, nombre, descripcion ,fecharadicacion, fechainicio, fechaterminacion, vigencia, estado, tipo, entidad, urlimagen);
         //consultar convenio por nombre para obtener su id
         //Convenio resultado =convenio.consultarConvenio(nombre);
         //System.out.println("El convenio creado es:"+c.getNombre());
@@ -35,7 +35,7 @@ public class ControladorConvenio {
        */
         //ControladorTipo_actividades t = new ControladorTipo_actividades();
         //t.registrarTipo_actividades(a);
-        
+        System.out.println(urlimagen);
         return convenio.registrarConvenio(c);
     }
     

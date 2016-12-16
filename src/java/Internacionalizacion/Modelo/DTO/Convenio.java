@@ -29,7 +29,7 @@ public class Convenio {
     public Convenio() {
     }
 
-    public Convenio(String radicado, String nombre, String descripcion, String fecharadicacion, String fechainicio, String fechaterminacion, String vigencia, String estado, String tipo, int entidad) {
+    public Convenio(String radicado, String nombre, String descripcion, String fecharadicacion, String fechainicio, String fechaterminacion, String vigencia, String estado, String tipo, int entidad, String urlimagen) {
         //this.id = id;
         this.id = radicado;
         this.nombre = nombre;
@@ -41,7 +41,7 @@ public class Convenio {
         this.vigencia = vigencia;
         this.tipoconvenio = tipo;
         this.entidad = entidad;
-        //this.urlimagen = urlimagen;
+        this.urlimagen = urlimagen;
     }
 
     public String getId() {

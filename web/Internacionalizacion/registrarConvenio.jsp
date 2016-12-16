@@ -103,7 +103,8 @@
                             <input type="button" id="habilitarDocente" class="ufps-btn-accordion" value="Habilitar Docente"><br><br>
                             <input type="button" id="generarinforme" class="ufps-btn-accordion" value="Generar informe"><br><br>
                             <input type="button" id="subirinforme" class="ufps-btn-accordion" value="Subir Informe"><br><br>
-                            <input type="button" id="generarexcel" class="ufps-btn-accordion" value="Generar Excel"><br><br>
+                            <a href="generarexcel.jsp" type="button" class="ufps-btn-accordion" value="Generar Excel">Generar Excel</a>
+                          
                             <input type="button" class="ufps-btn" value="Cerrar Sesión">
                             
                         </ul>
