@@ -26,6 +26,6 @@ Facade f = new Facade();
 String r = f.registrarEntidad(nombre,representante,sector,ambito,tipo,telefono,direccion,pais,nit);
 request.getSession().setAttribute("respuesta_entidad", r);
 
-response.sendRedirect("registrarEntidad.jsp");
+response.sendRedirect("registrarConvenio.jsp");
 
 %>

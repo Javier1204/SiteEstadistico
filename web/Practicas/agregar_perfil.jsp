@@ -15,26 +15,31 @@
     byte cantidad= Byte.parseByte(request.getParameter("cantidad"));
     perfil_estudianteDTO[] perfiles = new perfil_estudianteDTO[cantidad];
     byte ciclo=1;
-    int codigo = Integer.parseInt(request.getParameter("codigoEst"));
-    
+    //int codigo = Integer.parseInt(request.getParameter("codigoEst"));
+    System.out.println(request.getParameter("prueba1")); 
     while(ciclo<=cantidad){
-        System.out.println(request.getParameter("valor"+ciclo+"")); 
-        if(request.getParameter("valor"+ciclo+"")!=null){
-            int idp=Integer.parseInt(request.getParameter("idperfil"+ciclo));
-            int valor=Integer.parseInt(request.getParameter("valor"+ciclo));
-            System.out.println("Id perfil: "+idp);
-            perfil_estudianteDTO p= new perfil_estudianteDTO();
-            p.setCodigoestudiante(codigo);
-            p.setIdperfil(idp);
-            p.setValor(valor);
-            perfiles[ciclo]=p;
-        }else{
-            System.out.println("No ha llenado los datos");
-        }
+        String parametro2="valor"+ciclo;
+        System.out.println(parametro2); 
+        //if(parametro2!=null){
+            
+            String parametro1="idperfil"+ciclo;
+            System.out.println(request.getParameter(parametro1));
+            System.out.println(request.getParameter("nombrep"));
+          //  int idp=Integer.parseInt(request.getParameter(parametro1));
+            //int valor=Integer.parseInt(request.getParameter(parametro2));
+           // System.out.println("Id perfil: "+idp);
+           // perfil_estudianteDTO p= new perfil_estudianteDTO();
+           // p.setCodigoestudiante(codigo);
+           // p.setIdperfil(idp);
+           // p.setValor(valor);
+           // perfiles[ciclo]=p;
+        //}else{
+          //  System.out.println("No ha llenado los datos");
+        //}
         ciclo++;
     }
     
-    f.agregarPerfilesEstudiante(perfiles);
+    f.agregarPerfilEstudiante(perfiles);
     
                
     %>

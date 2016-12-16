@@ -11,7 +11,7 @@
 <%
 
     ICuenta cuenta=null;
-    String codigo=null;
+    String codigo=1150712+"";
     
     if(session.getAttribute("usuario")!=null){
         cuenta=(ICuenta)session.getAttribute("usuario");
@@ -44,7 +44,7 @@
          //no trae la drieccion? si ya vi que en no le agrego lo otro probemos con ese y si funciona yo completo lo ortr
       %>
      
-      <div class="ufps-panel ufps-col-tablet-10" id="componentes">    
+      <div class="ufps-col-tablet-10" id="componentes">    
       
           <form method="POST" action="cargar_datos_estudiante.jsp">  
           <div>    
@@ -114,19 +114,37 @@
                En cada perfil debe asignarle un valor del 1 al 5 (siendo 1: No me interesa y 5:Me interesa mucho)
                <br><br>
                 <div class="ufps-col-desktop-10 ufps-col-netbook-10 ufps-col-tablet-10 ufps-col-mobile-10">
-                    
+                    <% String nombre1="prueba1"; %>
+                    <input type="text" class="ufps-input" name="<%=nombre1 %>" value="prueba">
                     <div class="ufps-col-tablet-11">
-                     
+                            <input type="text" class="ufps-col-desktop-2"  value="ID PERFIL" DISABLED>   
+                            <input type="text" class="ufps-col-desktop-4"  value="NOMBRE" DISABLED>   
+                            <input type="text" class="ufps-col-desktop-2" value="VALOR" DISABLED>
+                            <br><br>
                                                         
                            
                         <%  byte n=0;
-                            for(perfilDTO p: lista){  
-                                n++;%>   
-                                <input type="text" class="ufps-col-desktop-2" id="nombreEst" value="<%= p.getIdperfil()%>">   
-                                <input type="text" class="ufps-col-desktop-4" id="nombreEst" value="<%= p.getNombre() %>">   
-                                <input type="text" class="ufps-col-desktop-2" id="valor<%=n%>">
+                            String perfil="";
+                            String valor="";
+                            perfil_estudianteDTO[] perf=  new perfil_estudianteDTO[lista.size()];
+                            byte pos=0;
+                            
+                            for(perfilDTO p: lista){    
+                                n++;
+                                perfil="idperfil"+n;
+                                valor="valor"+n;
+                            %> 
+                                <input type="text" class="ufps-col-desktop-2" name="idperfil" value="<%= p.getIdperfil()%>" DISABLED>  
+                                
+                                <input type="text" class="ufps-col-desktop-4" name="nombrep" value="<%= p.getNombre() %>" DISABLED>   
+                                <input   type="text" class="ufps-col-desktop-2" name="valor" required="" onkeypress="cargarVector()">
                                 <br><br>
+                                 
                         <% } %>
+                        
+                        <script type="text/javascript">
+                                                       
+                        </script>
                                                    
                     </div> 
                 </div><br><br>       

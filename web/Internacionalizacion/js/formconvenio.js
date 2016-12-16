@@ -36,8 +36,9 @@ var newdiv;
     //Permite la carga del formulario de registro de actividades por ajax :)
     $(document).ready(function () {
     $("#registrarconvenio").click(function (evento) {
+       
         evento.preventDefault();
-        $("#destino").load("registrarConvenio.jsp");
+        $("#destino").load("registroconvenio.jsp");
         
         
         //console.log("Hola");
@@ -54,6 +55,7 @@ $(document).ready(function () {
         //console.log("Hola");
     });
 });
+//permite registrar las Entidades
 $(document).ready(function () {
     $("#registrarentidad").click(function (evento) {
         evento.preventDefault();
@@ -63,7 +65,43 @@ $(document).ready(function () {
         //console.log("Hola");
     });
 });
+$(document).ready(function () {
+    $("#habilitarDocente").click(function (evento) {
+        evento.preventDefault();
+        $("#destino").load("habilitarDocente.jsp");
+        
+        
+        //console.log("Hola");
+    });
+});
+$(document).ready(function () {
+    $("#subirinforme").click(function (evento) {
+        evento.preventDefault();
+        $("#destino").load("subirInforme.jsp");
+        
+        
+        //console.log("Hola");
+    });
+});
 
+$(document).ready(function () {
+    $("#generarinforme").click(function (evento) {
+        evento.preventDefault();
+        $("#destino").load("formInforme.jsp");
+        
+        
+        //console.log("Hola");
+    });
+});
+$(document).ready(function () {
+    $("#generarexcel").click(function (evento) {
+        evento.preventDefault();
+        $("#destino").load("generarexcel.jsp");
+        
+        
+        //console.log("Hola");
+    });
+});
 
 function addInput(divName)
 {

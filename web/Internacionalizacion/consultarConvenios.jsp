@@ -116,7 +116,7 @@
                                         <td><%=c.getEstado()%></td>
                                         <td><%=c.getTipoconvenio()%></td>                                       
                                         <td><%=c.getEntidad()%></td>                                       
-                                        <td><input class="ufps-btn" type="button" value="Ver acta"></td>                                  
+                                        <td><a href="<%=c.getUrlimagen()%>" class="ufps-btn" type="button">Acta</a></td>                                  
                                         
                                     </tr>
                                     <% }

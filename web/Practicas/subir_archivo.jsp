@@ -80,10 +80,10 @@
             else 
                 fileName = optionalFileName; 
             
-            String dirName = request.getRealPath("../documentos/Estudiantes/");
-            String dir=dirName+fileName;
+            String dirName = request.getServletContext().getRealPath("/") + ("Practicas/documentos/"+fileName);
+            String dir="documentos/"+fileName;
             
-            File saveTo = new File(dir); 
+            File saveTo = new File(dirName); 
             System.out.println("direccion: "+dir);
             System.out.println("GUARDADO EN: "+saveTo+"\n"); 
         try { 

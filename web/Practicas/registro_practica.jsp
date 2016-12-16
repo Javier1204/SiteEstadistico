@@ -71,7 +71,7 @@ request.getSession().setAttribute("respuesta_registro_practica", null);
     
      <center><h2>REGISTRAR PRACTICAS</h2></center>
         
-        <div class="ufps-panel ufps-col-mobile-12 ufps-col-tablet-9" id="contenido">
+        <div class="ufps-col-mobile-12 ufps-col-tablet-9" id="contenido">
             
             <form action="registro_practica_p.jsp" method="POST"> 
            <fieldset>

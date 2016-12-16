@@ -106,8 +106,8 @@
             </div>
 
             <div class="ufps-row">
-            <div class="col-md-2">
-                <input type="checkbox" id="convenios" name="convenios"> Cantidad de convenios.
+            <div class="col-md-4">
+                <input type="checkbox" id="convenios" name="activos_registrados"> Cantidad de convenios activos y registrados.
             </div>
             <div class="col-md-3">
                 <input type="checkbox" id="estados" name="estados"> Convenios aprobados y terminados.    
@@ -118,9 +118,7 @@
             <div class="col-md-2">
                 <input type="checkbox" id="tipos" name="tipos"> Convenios por Tipo.    
             </div>
-            <div class="col-md-2">
-                <input type="checkbox" id="activos" name="activos"> Convenios activos.    
-            </div>
+            
             </div>
 
             
@@ -141,7 +139,7 @@
                 <input type="checkbox" id="act_convenios" name="act_convenios"> Cantidad de actividades por convenios.    
             </div>
             <div class="col-md-4">
-                <input type="checkbox" id="act_convenios" name="act_convenios"> Cantidad de actividades por semestre y año.    
+                <input type="checkbox" id="act_semestre_años" name="act_semestre_años"> Cantidad de actividades por semestre y año.    
             </div>
                
             </div>
@@ -158,7 +156,7 @@
                 <input type="checkbox" id="ent_sectores" name="ent_sectores"> Entidades por sector.    
             </div>
             <div class="col-md-3">
-                <input type="checkbox" id="sectores" name="ent_tipos"> Entidades por Tipo.    
+                <input type="checkbox" id="ent_sectores" name="ent_tipos"> Entidades por Tipo.    
             </div>
             </div>
             

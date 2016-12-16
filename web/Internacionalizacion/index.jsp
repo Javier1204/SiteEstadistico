@@ -90,7 +90,7 @@
     -->
     <!--Contenido-->
     
-    
+    <!--<a href="testxls.xls"><input type="button" class="ufps-btn" value="descargar"></a>-->
 
     <div  class="ufps-container" id="contenido">
         
@@ -142,8 +142,8 @@
             </div>
             <div class="col-xs-12 col-md-4"> 
                 <div class="panel" id="panel3">
-                    <div class="panel-heading" style="text-align: center"><strong>OFICINA INTERNACIONAL SISTEMAS</strong></div>
-                    <div class="panel-body text-justify"><h5>La oficina de Relaciones Internacionales de la Universidad Francisco de Paula Santander, ha optado por realizar acciones y establecer contactos pertinentes que favorezcan el desarrollo y cristalicen la Política de Internacionalización, mediante la búsqueda, suscripción y mantenimiento de vínculos de cooperación con instituciones del exterior, que permitan instaurar programas de interés común para estudiantes, docentes e investigadores.</h5></div>
+                    <div class="panel-heading" style="text-align: center"><strong>INTERNACIONALIZACIÓN</strong></div>
+                    <div class="panel-body text-justify"><h5>Modulo que permite el registro, consulta de los convenios y actividades generadas de esos convenios, asi como del registro de las entidades asociadas a los convenios.</h5></div>
                 </div>
             </div>
         </div>
