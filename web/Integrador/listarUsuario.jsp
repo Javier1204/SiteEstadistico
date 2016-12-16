@@ -18,40 +18,56 @@
     List<RolDTO> roles = gestor.listarRoles();
 %>   
 <jsp:include page="../plantilla/header.jsp"></jsp:include>
+    <link href="css/integrador.css" rel="stylesheet" type="text/css"/>
     <!--Contenido-->
     <script src="js/ajax.js"></script>
     <div  class="ufps-container" id="contenido">
         <h1 class="text-center" style="text-align: center">Listado de usuarios</h1>
-        <div>                    
-            <select id="selectMod" name="selectMod" class="ufps-input" onchange="javascript:filtrar()">
-                <option value=""> Seleccione opción</option>
-            <% for (RolDTO dto : roles) {%>
-            <option value="<%=dto.getRol()%>"><%=dto.getRol()%></option>
-            <% } %>
-        </select>
-    </div>
-    <div id="info">
-        <table class="ufps-table" cellspacing="0" width="100%">
-            <thead>
-                <tr>
+        <div class="ufps-row" >
 
-                    <th>Nombre usuario</th>
-                    <th>Constraseña</th>
-                    <th>Acción</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% for (UsuarioDTO dto : usuarios) {%>
-                <tr>
-                    <td><center><%= dto.getUssername()%></center></td>
-            <td><center><%= dto.getPassword()%></center></td>
-            <td><center><a href="modificarUsuario.jsp?user=<%=dto.getUssername()%>&password=<%=dto.getPassword()%>">Modificar</a></center> </td>
-            <td><center><a href="procesar/eliminarUsuario.jsp?user=<%=dto.getUssername()%>&password=<%=dto.getPassword()%>">Eliminar</a></center> </td>
-            </tr>
-            <% }%>
-            </tbody>
-        </table>
+            <div class="f-integrador" id="registro">
+                <div id="estado"></div>
+                <div><center>            
+                        <label>Filtrar por:</label><select style="max-width: 200px" id="selectMod" name="selectMod" class="ufps-input" onchange="javascript:filtrar()">
+                            <option value=""> Seleccione opción</option>
+                        <% for (RolDTO dto : roles) {%>
+                        <option value="<%=dto.getRol()%>"><%=dto.getRol()%></option>
+                        <% } %>
+                    </select>
+                    <button onclick="modalAUsuario()" class="ufps-btn ufps-btn-green">
+                        Agregar nuevo usuario
+                    </button>
+                    <button onclick="javascript:sincronizarUsuarios()" class="ufps-btn ufps-btn-light ufps-tooltip">
+                        Sincronizar Docentes y Estudiantes
+                        <span class="ufps-tooltip-content-bottom">Los nuevos usuarios tendrán como contraseña "12345"</span>
+                    </button>
+                </center>
+            </div>
+            <div id="info">
+                <table class="ufps-table ufps-table-inserted" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>CÓDIGO</th>
+                            <th>NOMBRE</th>
+                            <th>MODIFICAR</th>
+                            <th>ELIMINAR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (UsuarioDTO dto : usuarios) {%>
+                        <tr>
+                            <td><%= dto.getUssername()%></td>
+                            <td><%= dto.getNombre()%></td>
+
+                            <td><button onclick="javascript:modalMUsuario('<%=dto.getUssername()%>', '<%=dto.getNombre()%>')" class="ufps-btn ufps-btn-light" >Modificar</button> </td>
+                            <td><button onclick="javascript:eliminarUsuario('<%=dto.getUssername()%>')" class="ufps-btn" href="procesar/eliminarUsuario.jsp?user=<%=dto.getUssername()%>&password=<%=dto.getPassword()%>">Eliminar</button></td>
+                        </tr>
+                        <% }%>
+                    </tbody>
+                </table>
+            </div>
+            <div id="modalMU"></div>
+        </div> 
     </div>
-</div>         
+</div>
 <jsp:include page="../plantilla/footer.jsp"></jsp:include>

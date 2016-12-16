@@ -15,29 +15,40 @@
     List<RolDTO> roles = gestor.listarRoles();
 %>   
 <jsp:include page="../plantilla/header.jsp"></jsp:include>
-        <!--Contenido-->
-        <div  class="ufps-container" id="contenido">
-            <h1 class="text-center" style="text-align: center">Listado de roles</h1>
-            <table class="ufps-table" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
+    <link href="css/integrador.css" rel="stylesheet" type="text/css"/>
+    <script src="js/ajax.js"></script>
+    <!--Contenido-->
+    <div  class="ufps-container" id="contenido">
+        <h1 class="text-center" style="text-align: center">Listado de roles</h1>
+        <div class="ufps-row" >
 
-                        <th>Rol</th>
-                        <th>DESCRIPCION</th>
-                        <th>Acción</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <div class="f-integrador" id="registro">
+                <table class="ufps-table ufps-table-inserted" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+
+                            <th>ROL</th>
+                            <th>DESCRIPCÓN</th>
+                            <th>MODIFICAR</th>
+                            <th>ELIMINAR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     <% for (RolDTO dto : roles) {%>
                     <tr>
-                        <td><center><%= dto.getRol()%></center></td>
-                        <td><center><%= dto.getDescripcion()%></center></td>
-                        <td><a class="ufps-btn ufps-btn-light" href="modificarRol.jsp?rol=<%=dto.getRol() %>&descripcion=<%=dto.getDescripcion()%>">Modificar</a> </td>
-                        <td><a class="ufps-btn" href="procesar/eliminarRol.jsp?rol=<%=dto.getRol() %>&descripcion=<%=dto.getDescripcion()%>">Eliminar</a> </td>
+                        <td><%= dto.getRol()%></td>
+                        <td><%= dto.getDescripcion()%></td>
+                        <td><a class="ufps-btn ufps-btn-light" onclick="javascript:modalMUsuario('<%=dto.getRol()%>')" >Modificar</a> </td>
+                        <td><a class="ufps-btn" href="procesar/eliminarRol.jsp?rol=<%=dto.getRol()%>&descripcion=<%=dto.getDescripcion()%>">Eliminar</a> </td>
                     </tr>
-                <% }%>
+                    <% }%>
                 </tbody>
             </table>
-        </div>         
+            <center>
+                <button class="ufps-btn ufps-btn-green" onclick="javascript:modalAUsuario()">Agregar Nuevo Rol</button>
+            </center>
+            <div id="modalMR"></div>
+        </div> 
+    </div>
+</div>
 <jsp:include page="../plantilla/footer.jsp"></jsp:include>

@@ -822,7 +822,6 @@ function registrarModulo2() {
 }
 
 function filtrar(){
-    alert("2");
     var rol = document.getElementById("selectMod");
     ajax = nuevoAjax();
     parametros = "rol=" + rol.value;
@@ -830,6 +829,7 @@ function filtrar(){
     ajax.open("POST", url, true);
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     ajax.send(parametros);
+    document.getElementById("info").innerHTML = "<center><img src='img/load.gif'/></center> ";
     ajax.onreadystatechange = function () {
         if (ajax.readyState == 4) {
             if (ajax.status == 200) {
@@ -838,7 +838,211 @@ function filtrar(){
             }
         } else
         {
-            document.getElementById("info").value = "Verificando Usuario...";
+            document.getElementById("info").innerHTML = "<center><img src='img/load.gif'/></center> ";
         }
     }
 }
+
+function modalMUsuario(user, nombre) {
+    ajax = nuevoAjax();
+    parametros = "user="+user+"&nombre="+nombre;
+    url = "procesar/procesarModalCambiarPass.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+    document.getElementById("modalMU").innerHTML = "<center><img src='img/load.gif'/></center> ";
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("modalMU").innerHTML = rta;
+                openModal("modal-MU");
+            }
+        }
+    }
+}
+function modificarPass() {
+    ajax = nuevoAjax();
+    var user=document.getElementById("codigoM");
+    var pass=document.getElementById("passM");
+    var conf=document.getElementById("confirmacion");
+    if(pass.value !== conf.value){
+        document.getElementById("loading").innerHTML="<h3>las contraseñas son diferentes</h3>";
+        return;
+    }
+    parametros = "user="+user.value+"&pass="+pass.value;
+    url = "procesar/procesarCambiarPass.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+    document.getElementById("loading").innerHTML = "<center><img src='img/load.gif'/></center> ";
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("loading").innerHTML = rta;
+            }
+        }
+    }
+}
+
+function eliminarUsuario(user) {
+    ajax = nuevoAjax();
+    parametros = "user="+user;
+    url = "procesar/eliminarUsuario.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+    document.getElementById("estado").innerHTML = "<center><img src='img/load.gif'/></center> ";
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("estado").innerHTML = rta;
+                location.reload();
+            }
+        }
+    }
+}
+
+function sincronizarUsuarios() {
+    ajax = nuevoAjax();
+    parametros = "nada=nada";
+    url = "procesar/procesarSincronizarUsuarios.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+    document.getElementById("estado").innerHTML = "<center><img src='img/load.gif'/></center> ";
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("estado").innerHTML = rta;
+                location.reload();
+            }
+        }
+    }
+}
+function modalAUsuario() {
+    ajax = nuevoAjax();
+    parametros = "nada=nada";
+    url = "procesar/procesarModalAgregarUsuario.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+    document.getElementById("modalMU").innerHTML = "<center><img src='img/load.gif'/></center> ";
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("modalMU").innerHTML = rta;
+                openModal("modal-AU");
+            }
+        }
+    }
+}
+
+function agregarUsuario() {
+    ajax = nuevoAjax();
+    var codigo=document.getElementById("codigoA");
+    var pass=document.getElementById("passA");
+    var confirmacion=document.getElementById("confirmacion");
+    if(pass.value!==confirmacion.value){
+        document.getElementById("loading").innerHTML="<h3>las contraseñas son diferentes</h3>";
+        return;
+    }
+    parametros = "user="+codigo.value+"&pass="+pass.value;
+    url = "procesar/procesarAgregarUsuario.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+    document.getElementById("loading").innerHTML = "<center><img src='img/load.gif'/></center> ";
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("loading").innerHTML = rta;
+                location.reload()
+            }
+        }
+    }
+}
+
+function modalMUsuario(rol) {
+    ajax = nuevoAjax();
+    parametros = "rol="+rol;
+    url = "procesar/procesarModalModificarRol.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+    document.getElementById("modalMR").innerHTML = "<center><img src='img/load.gif'/></center> ";
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("modalMR").innerHTML = rta;
+                openModal("modal-MR");
+            }
+        }
+    }
+}
+function modificarRol2() {
+    ajax = nuevoAjax();
+    var rol=document.getElementById("rolR");
+    var descripcion=document.getElementById("descripcionR");
+    parametros = "rol="+rol.value+"&descripcion="+descripcion.value;
+    url = "procesar/procesarModificarRol.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+    document.getElementById("loading").innerHTML = "<center><img src='img/load.gif'/></center> ";
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("loading").innerHTML = rta;
+                location.reload();
+            }
+        }
+    }
+}
+
+function modalAUsuario() {
+    ajax = nuevoAjax();
+    parametros = "nada=nada";
+    url = "procesar/procesarModalAgregarRol.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+    document.getElementById("modalMR").innerHTML = "<center><img src='img/load.gif'/></center> ";
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("modalMR").innerHTML = rta;
+                openModal("modal-ARol");
+            }
+        }
+    }
+}
+function agregarRol() {
+    ajax = nuevoAjax();
+    var rol=document.getElementById("rolR");
+    var descripcion=document.getElementById("descripcionR");
+    parametros = "rol="+rol.value+"&descripcion="+descripcion.value;
+    url = "procesar/procesarAgregarRol.jsp";
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send(parametros);
+    document.getElementById("loading").innerHTML = "<center><img src='img/load.gif'/></center> ";
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                var rta = ajax.responseText;
+                document.getElementById("loading").innerHTML = rta;
+                location.reload()
+            }
+        }
+    }
+}
+

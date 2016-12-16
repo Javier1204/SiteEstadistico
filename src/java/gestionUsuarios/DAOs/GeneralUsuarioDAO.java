@@ -77,6 +77,15 @@ public class GeneralUsuarioDAO {
                 usu.setNombre(nombre+" "+apellido);
                 return;
             }
+            ps=conn.prepareStatement("SELECT nombres, apellidos FROM general_estudiante WHERE codigo=?");
+            ps.setString(1, usu.getUssername());
+            rs=ps.executeQuery();
+            if(rs.absolute(1)){
+                String nombre=rs.getString(1);
+                String apellido=rs.getString(2);
+                usu.setNombre(nombre+" "+apellido);
+                return;
+            }
             System.out.println("Usuario :"+usu.getUssername()+" No existe");
             
         } catch (SQLException ex) {
@@ -122,6 +131,7 @@ public class GeneralUsuarioDAO {
                 UsuarioDTO usu=new UsuarioDTO();
                 usu.setUssername(rs.getString(1));
                 usu.setPassword(rs.getString(2));
+                this.cargarNombre(usu);
                 lista.add(usu);
             }
             return lista;

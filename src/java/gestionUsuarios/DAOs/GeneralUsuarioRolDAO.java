@@ -24,18 +24,22 @@ import java.util.logging.Logger;
  * @author Lenovo
  */
 public class GeneralUsuarioRolDAO {
+
     protected Connection conn;
-    public GeneralUsuarioRolDAO(Connection con){conn=con;}
-    
-    public boolean existe(String rol, String user) {      
-        
+
+    public GeneralUsuarioRolDAO(Connection con) {
+        conn = con;
+    }
+
+    public boolean existe(String rol, String user) {
+
         try {
             //obtenerConexion();
-            PreparedStatement ps=conn.prepareStatement("SELECT * FROM general_usuario_rol WHERE user=? AND rol=? ");
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM general_usuario_rol WHERE user=? AND rol=? ");
             ps.setString(1, user);
             ps.setString(2, rol);
-            ResultSet rs=ps.executeQuery();
-            if(rs.absolute(1)){
+            ResultSet rs = ps.executeQuery();
+            if (rs.absolute(1)) {
                 return true;
             }
             return false;
@@ -45,23 +49,23 @@ public class GeneralUsuarioRolDAO {
         } finally {
             //this.cerrarConexion();
         }
-        
+
     }
-    
-    public List<RolDTO> obtenerRoles(String user){
-        try{
+
+    public List<RolDTO> obtenerRoles(String user) {
+        try {
             //obtenerConexion();
-            ArrayList<RolDTO> lista =new ArrayList<RolDTO>();
+            ArrayList<RolDTO> lista = new ArrayList<RolDTO>();
             System.out.println(user);
-            PreparedStatement ps=conn.prepareStatement("SELECT rol FROM general_usuario_rol WHERE user=?");
+            PreparedStatement ps = conn.prepareStatement("SELECT rol FROM general_usuario_rol WHERE user=?");
             ps.setString(1, user);
-            ResultSet rs=ps.executeQuery();
-            while(rs.next()){
-                RolDTO rol=null;
-                GeneralRolDAO rDAO=new GeneralRolDAO(conn);
-                rol=rDAO.getRol(rs.getString(1));
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                RolDTO rol = null;
+                GeneralRolDAO rDAO = new GeneralRolDAO(conn);
+                rol = rDAO.getRol(rs.getString(1));
                 lista.add(rol);
-                System.out.println("ROL: "+rs.getString(1));
+                System.out.println("ROL: " + rs.getString(1));
             }
             return lista;
         } catch (SQLException ex) {
@@ -69,97 +73,114 @@ public class GeneralUsuarioRolDAO {
             return null;
         }
     }
-    
-    
-    public boolean insertar(String user, String rol){
-        try{
+
+    public boolean insertar(String user, String rol) {
+        try {
             //obtenerConexion();
-            System.out.println("llega: "+user+" "+rol);
-            PreparedStatement ps=conn.prepareStatement("INSERT INTO general_usuario_rol (user, rol) VALUES (?, ?)");
+            System.out.println("llega: " + user + " " + rol);
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO general_usuario_rol (user, rol) VALUES (?, ?)");
             ps.setString(1, user);
             ps.setString(2, rol);
-            int row=ps.executeUpdate();
-            if(row>0){
+            int row = ps.executeUpdate();
+            if (row > 0) {
                 return true;
             }
-            
+
             return false;
         } catch (SQLException ex) {
             Logger.getLogger(GeneralUsuarioRolDAO.class.getName()).log(Level.SEVERE, null, ex);
-            
+
         }
         return false;
     }
-    
-    public void eliminarPorRol(String rol){
-        try{
+
+    public void eliminarPorRol(String rol) {
+        try {
             //obtenerConexion();
-            
-            PreparedStatement ps=conn.prepareStatement("DELETE FROM `general_usuario_rol` WHERE rol=?");
+
+            PreparedStatement ps = conn.prepareStatement("DELETE FROM `general_usuario_rol` WHERE rol=?");
             ps.setString(1, rol);
-            int row=ps.executeUpdate();
+            int row = ps.executeUpdate();
             System.out.println(row);
         } catch (SQLException ex) {
             Logger.getLogger(GeneralUsuarioRolDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void eliminar(String usuario, String rol){
-        try{
+
+    public void eliminar(String usuario, String rol) {
+        try {
             //obtenerConexion();
-            
-            PreparedStatement ps=conn.prepareStatement("DELETE FROM `general_usuario_rol` WHERE rol=? AND user=?");
+
+            PreparedStatement ps = conn.prepareStatement("DELETE FROM `general_usuario_rol` WHERE rol=? AND user=?");
             ps.setString(1, rol);
             ps.setString(2, usuario);
-            int row=ps.executeUpdate();
-            if(row==1){
-                System.out.println("se ha elminado el rol: "+rol+" del usuario"+usuario);
-            }else{
-                System.out.println("NO se ha elminado el rol: "+rol+" del usuario"+usuario);
+            int row = ps.executeUpdate();
+            if (row == 1) {
+                System.out.println("se ha elminado el rol: " + rol + " del usuario" + usuario);
+            } else {
+                System.out.println("NO se ha elminado el rol: " + rol + " del usuario" + usuario);
             }
         } catch (SQLException ex) {
             Logger.getLogger(GeneralUsuarioRolDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
-    public void eliminarPorUsuario(String usuario){
-        try{
+
+    public void eliminarPorUsuario(String usuario) {
+        try {
             //obtenerConexion();
-            
-            PreparedStatement ps=conn.prepareStatement("DELETE FROM `general_usuario_rol` WHERE user=?");
+
+            PreparedStatement ps = conn.prepareStatement("DELETE FROM `general_usuario_rol` WHERE user=?");
             ps.setString(1, usuario);
-            int row=ps.executeUpdate();
+            int row = ps.executeUpdate();
             System.out.println(row);
         } catch (SQLException ex) {
             Logger.getLogger(GeneralUsuarioRolDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void crearUsuariosAutomaticos(){
-        try{
-            ArrayList<String> codigosDocentes=new ArrayList<String>();
-            PreparedStatement ps=conn.prepareStatement("SELECT codigo FROM `general_docente` WHERE 1");
-            ResultSet rs=ps.executeQuery();
-            while(rs.next()){
+
+    public void crearUsuariosAutomaticos() {
+        try {
+            //CARGA PROFESPRES
+            GeneralUsuarioDAO gudao = new GeneralUsuarioDAO(conn);
+            ArrayList<String> codigosDocentes = new ArrayList<String>();
+            PreparedStatement ps = conn.prepareStatement("SELECT codigo FROM `general_docente` WHERE 1");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
                 codigosDocentes.add(rs.getString(1));
             }
             for (String codigosDocente : codigosDocentes) {
-                GeneralUsuarioDAO gudao=new GeneralUsuarioDAO(conn);
-                gudao.insertar(codigosDocente, "12345");
-                this.insertar(codigosDocente, "Docente");
+                if (!gudao.existeUser(codigosDocente)) {
+                    gudao.insertar(codigosDocente, "12345");
+                    this.insertar(codigosDocente, "Docente");
+                }
+            }
+
+            //CARGA ESTUDIANTES
+            ArrayList<String> codigosEstudiantes = new ArrayList<String>();
+            ps = conn.prepareStatement("SELECT codigo FROM general_estudiante WHERE 1");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                codigosEstudiantes.add(rs.getString(1));
+            }
+            for (String codigosEstudiante : codigosEstudiantes) {
+                if (!gudao.existeUser(codigosEstudiante)) {
+                    gudao.insertar(codigosEstudiante, "12345");
+                    this.insertar(codigosEstudiante, "Estudiante");
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(GeneralUsuarioRolDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-     public List<UsuarioDTO> filtrarUsuarios(String pclave){
+
+    public List<UsuarioDTO> filtrarUsuarios(String pclave) {
         ArrayList<UsuarioDTO> usuarios = new ArrayList<>();
-        try{
-            PreparedStatement ps=conn.prepareStatement("SELECT user FROM general_usuario_rol WHERE rol='"+pclave+"'");
-            ResultSet rs=ps.executeQuery();
-            while(rs.next()){
-                UsuarioDTO usu=new UsuarioDTO();
+        try {
+            PreparedStatement ps = conn.prepareStatement("SELECT user FROM general_usuario_rol WHERE rol=?");
+            ps.setString(1, pclave);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                UsuarioDTO usu = new UsuarioDTO();
                 usu.setUssername(rs.getString(1));
                 usuarios.add(usu);
             }
@@ -169,13 +190,10 @@ public class GeneralUsuarioRolDAO {
         }
         return null;
     }
-    
+
     public static void main(String[] args) {
-        GeneralUsuarioRolDAO us=new GeneralUsuarioRolDAO(ConexionGUDAOs.obtenerConexion());
-        List<UsuarioDTO> u = us.filtrarUsuarios("Administrador");
-        for(UsuarioDTO u1 : u) {
-            System.out.println(u1.getUssername());
-        }
+        GeneralUsuarioRolDAO us = new GeneralUsuarioRolDAO(ConexionGUDAOs.obtenerConexion());
+        us.crearUsuariosAutomaticos();
     }
-    
+
 }

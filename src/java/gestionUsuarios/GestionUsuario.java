@@ -231,6 +231,16 @@ public class GestionUsuario implements IGestionUsuarios{
     public List<UsuarioDTO> filtrar(String clave) {
         return ControlGestionUsuarios.getInstance().filtrarUsuario(clave);
     }
+
+    @Override
+    public void sincronizarUsuarios() {
+         ControlGestionUsuarios.getInstance().sincronizarUsuarios();
+    }
+
+    @Override
+    public RolDTO obtenerRol(String rol) {
+        return ControlGestionUsuarios.getInstance().obtenerRol(rol);
+    }
     
 
 }

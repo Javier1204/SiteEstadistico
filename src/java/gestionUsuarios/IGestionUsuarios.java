@@ -211,4 +211,9 @@ public interface IGestionUsuarios {
     public ModuloDTO obtenerModulo(String modulo);
     
     public List<UsuarioDTO> filtrar(String clave);
+    
+    public void sincronizarUsuarios();
+    
+    
+    public RolDTO obtenerRol(String rol);
 }

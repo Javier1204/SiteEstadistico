@@ -18,7 +18,7 @@
     <script src="js/ajax.js"></script> 
     <link href="css/integrador.css" rel="stylesheet" type="text/css"/>
     <div class="ufps-container ufps-fix-navbar-fixed">
-        <center> <h1>Asignar Roles</h1></center>
+        <center> <h1>Requerimientos Funcionales</h1></center>
         <center><label id="divError"></label></center>
         <div name="registro" class="f-integrador ufps-container" id="registro">
         <% for (ModuloDTO mod : modulos) {%>
@@ -68,7 +68,8 @@
 
                 <% } else {%>
 
-                <label>El módulo <%= mod.getNombre()%> no tiene RFs </label>
+                <label>El módulo <%= mod.getNombre()%> no tiene RFs </label><br>
+                <button onclick="javascript:modalARF('<%=mod.getNombre()%>')" class="ufps-btn ufps-btn-green acomodarBtn" >Agregar nuevo Requerimiento</button>  
                 <% }%>
 
 

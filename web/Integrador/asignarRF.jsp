@@ -19,23 +19,23 @@
 <link href="css/integrador.css" rel="stylesheet" type="text/css"/>
 <script src="js/ajax.js"></script>   
 <div class="ufps-container ">
-    <h1>Asignar privilegios</h1>
-    <div class=" ufps-container" >
-
-        
+   
+    <div class=" ufps-container" >  
+        <h1 class="ufps-text-center">Asignar Requerimientos funcionales a un Rol</h1>
         <div class="ufps-row" >
 
             <div class="f-integrador" id="registro"><!-- method="POST" action="javascrip:actualzarPrivilegio()"--> 
-                <div>
+                <div><center>
                     <div class="ufps-tooltip">
-                        <label >Rol</label><br>
+                        <label >Seleccione un rol</label>
                     </div>
-                    <select id="selectMod" name="selectMod" class="ufps-input" onchange="javascript:buscarPrivilegios()">
+                    <select id="selectMod" style="max-width: 200px" name="selectMod" class="ufps-input" onchange="javascript:buscarPrivilegios()">
                         <option value=""> Seleccione opción</option>
                         <% for (RolDTO dto : roles) {%>
                         <option value="<%=dto.getRol()%>"><%=dto.getRol()%></option>
                         <% } %>
                     </select>
+                    </center>
                 </div>
                     <!--<center><img src='img/load.gif' > </center>-->
                 <div id="campo">

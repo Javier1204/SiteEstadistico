@@ -8,12 +8,15 @@
 <%@page import="gestionUsuarios.IGestionUsuarios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-  String user= request.getParameter("nombre_usuario");
-  String pass = request.getParameter("password");
-  boolean exito=false;
-  String mensaje="";
-  IGestionUsuarios gestor = GestionUsuario.getInstance();
-  boolean first = gestor.eliminarUsuario(user);
-  System.out.println(first);
-  response.sendRedirect("../listarUsuario.jsp");
+    String user = request.getParameter("user");
+    IGestionUsuarios gestor = GestionUsuario.getInstance();
+    if (gestor.eliminarUsuario(user)) {
+%>
+<h3>Se ha eliminado el usuario</h3>
+<%
+    }else{
+%>
+<h3>No se ha podido eliminar el usuario</h3>
+<%
+    }
 %>
