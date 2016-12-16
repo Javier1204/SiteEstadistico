@@ -22,7 +22,7 @@
         session.setAttribute("acacodigo", cuenta.getUser());
         session.setAttribute("acarol", cuenta.containRol("Estudiante"));
         session.setAttribute("acarol2", cuenta.containRol("Estudiante"));
-        session.setMaxInactiveInterval(1 * 60 * 60);
+        //session.setMaxInactiveInterval(1 * 60 * 60);
         mensaje = "1";
     } else {
 

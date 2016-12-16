@@ -39,7 +39,7 @@
                     <div class="panel-body text-justify">
                         <ul style="list-style: none; padding-left: 0px;">
                             <li><a href="asignarRF.jsp" class="ufps-input ufps-btn ufps-btn-light"> Asignar Privilegios</a></li>                            
-                            <li><a href="listarRF.jsp.jsp" class="ufps-input ufps-btn ufps-btn-light"> Listar requerimientos</a></li>
+                            <li><a href="listarRF.jsp" class="ufps-input ufps-btn ufps-btn-light"> Listar requerimientos</a></li>
                         </ul>
                     </div>
                 </div>
