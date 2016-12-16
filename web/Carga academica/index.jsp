@@ -10,7 +10,8 @@
     if (cuenta == null) {
         response.sendRedirect("../index.jsp");
     }
-   else if(cuenta.containRol("Docente") || cuenta.containRol("Director del Programa") ){
+    //|| cuenta.containRol("Director del Programa")
+   else if(cuenta.containRol("Docente")  || cuenta.containRol("Coordinador Carga Académica") ){
        
        System.out.println("CODIGO ES: "+cuenta.getUser());
     %>
@@ -52,7 +53,7 @@
            
         </div>
         
-        <div class="ufps-col-mobile-6 ufps-col-tablet-6 ufps-col-netbook-2">
+     <!--   <div class="ufps-col-mobile-6 ufps-col-tablet-6 ufps-col-netbook-2">
           
                 <img src="../public/img/carga/extension.png" alt="logo4">
                 <div class="ufps-card-caption">
@@ -60,7 +61,7 @@
                 <p>Actividades Extensión</p>
                 </div>
            
-        </div>
+        </div> -->
         
         <div class="ufps-col-mobile-6 ufps-col-tablet-6 ufps-col-netbook-2">
             
@@ -90,7 +91,7 @@
 %>     
     <br>
      <!--TODO ESTO DEL DIRECTOR-->
-     <%   if(cuenta.containRol("Director del Programa")){ %> 
+     <%   if(cuenta.containRol("Coordinador Carga Académica")){ %> 
      
       <div class="ufps-row">
          <!--consultas director-->

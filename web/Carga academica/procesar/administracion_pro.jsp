@@ -14,6 +14,7 @@
     int hora_semana=Integer.parseInt(request.getParameter("horaSemanal"));
     String otra_act=request.getParameter("actividad");
     int hora_semana2=Integer.parseInt(request.getParameter("horaSemanal2"));
+    String codigoDoc=request.getParameter("codigodoc");
     
     Fachada f=new Fachada();
     carga_ActAdministrativasDTO dto=new carga_ActAdministrativasDTO();
@@ -22,7 +23,7 @@
     dto.setActividad(otra_act);
     dto.setHoras_act(hora_semana2);
     
-    String r=f.registrarActAdministrativas(dto);
+    String r=f.registrarActAdministrativas(dto,codigoDoc);
     request.getSession().setAttribute("respuesta_entidad", r);
 
 response.sendRedirect("../administracion.jsp");

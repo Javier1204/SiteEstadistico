@@ -18,7 +18,9 @@
     int horas_teoPra=Integer.parseInt(request.getParameter("teoricoPractico"));
     int horas_prac=Integer.parseInt(request.getParameter("practico"));
     int num_estudiantes=Integer.parseInt(request.getParameter("estudiantes"));
+    String codigoDoc=request.getParameter("codigodoc");
     
+    System.out.println(codigoDoc);
     Fachada f=new Fachada();
     carga_grupoDTO dto=new carga_grupoDTO();
     
@@ -29,7 +31,7 @@
     dto.setHoras_teoprac(horas_teoPra);
     dto.setNum_estu(num_estudiantes);
     
-    String r=f.registrarDocencia(dto);
+    String r=f.registrarDocencia(dto,codigoDoc);
     
    response.sendRedirect("../docencia.jsp");
 %>

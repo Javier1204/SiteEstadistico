@@ -5,10 +5,8 @@
  */
 package CargaAcademica.DAO;
 
-import CargaAcademica.DTO.carga_extensionDTO;
-import CargaAcademica.DTO.carga_grupoDTO;
+import CargaAcademica.DTO.carga_otraDTO;
 import CargaAcademica.DTO.general_asignaturaDTO;
-import CargaAcademica.DTO.observacionesDTO;
 import general.conexion.Conexion;
 import general.conexion.Pool;
 import java.sql.Connection;
@@ -21,19 +19,18 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author estudiante
+ * @author Edna helen
  */
-public class docenciaDAO {
+public class carga_otraDAO {
 
-    
-    public String registrarDocencia(carga_grupoDTO dto, String codigoDoc){
-    
+    public String registrarOtrasActividades(carga_otraDTO dto, String codigoDoc) {
+        
      String rta = "No conecto";
         Pool pool = Conexion.getPool(); //llamo al objeto pool
         Connection con = null;
         PreparedStatement pst = null;
         try {
-            System.out.println("entro sql de docencia");
+          
             pool.setUsuario("ufps_76"); //ingreso el usuario
             pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario
@@ -43,9 +40,8 @@ public class docenciaDAO {
             
           
             
-            String sql="INSERT INTO carga_grupo (id_carga,cod_asignatura,grupo,num_estu,horas_teo,horas_teoprac,horas_prac) "
-                    + "values('"+id+"','"+dto.getCod_asignatura()+"','"+dto.getGrupo()+"','"+dto.getNum_estu()+"','"+dto.getHoras_teo()+"'"
-                    + ",'"+dto.getHoras_teoprac()+"','"+dto.getHoras_prac()+"') ";
+            String sql="INSERT INTO carga_otras_actividades (id_carga,nombre,horas_semana) "
+                    + "values('"+id+"','"+dto.getNombre()+"','"+dto.getHoras()+"') ";
                    
             pst=con.prepareStatement(sql);
             int a=pst.executeUpdate();
@@ -63,29 +59,31 @@ public class docenciaDAO {
         }
       return rta;
     
+    
     }
     
-    
-    public ArrayList<general_asignaturaDTO> obtenerAsignaturas() {
+    public ArrayList<carga_otraDTO> obtenerOtrasActividades(String codigoDoc) {
         
             Pool pool = Conexion.getPool(); //llamo al objeto pool
             Connection con = null;
             PreparedStatement pst = null;
-            ArrayList<general_asignaturaDTO> lista=new ArrayList<>();
+            ArrayList<carga_otraDTO> lista=new ArrayList<>();
         try {    
             pool.setUsuario("ufps_76"); //ingreso el usuario
             pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
-            pst = con.prepareStatement("SELECT * FROM general_asignatura");//genero el sql.
+            
+            int id=this.obtenerIdCarga(codigoDoc);
+            
+            pst = con.prepareStatement("SELECT * FROM carga_otras_actividades where id_carga='"+id+"'");//genero el sql.
             ResultSet resultado=pst.executeQuery();
-            general_asignaturaDTO e;
+            carga_otraDTO e;
             
             while (resultado.next()) {
-                e=new general_asignaturaDTO();
-                e.setNombre(resultado.getString(2));
-                e.setCodigo(resultado.getString(1));
-                e.setCreditos(resultado.getInt(4));
+                e=new carga_otraDTO();
+                e.setNombre(resultado.getString(3));
+                e.setHoras(resultado.getInt(4));
                 lista.add(e);
             }
             pst.close();
@@ -98,43 +96,8 @@ public class docenciaDAO {
         return lista;
     }
 
-    public String registrarObservacion(observacionesDTO dto) {
-        String rta = "No conecto";
-        Pool pool = Conexion.getPool(); //llamo al objeto pool
-        Connection con = null;
-        PreparedStatement pst = null;
-        try {
-            System.out.println("entro sql de observacion");
-            pool.setUsuario("ufps_76"); //ingreso el usuario
-            pool.setContrasena("ufps_29");//ingreso la contraseña
-            pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario
-            con = pool.getDataSource().getConnection();
-          
-            
-            String sql="INSERT INTO carga_observacion (cod_docente,actividad,aprobado,comentario) "
-                + "values('"+1+"','"+dto.getActividad()+"','"+dto.getAprobado()+"','"+dto.getComentario()+"')";
-            
-            System.out.println(sql);
-        
-            pst=con.prepareStatement(sql);
-            int a=pst.executeUpdate();
-            con.close();
-            pst.close();
-            if(a==1){
-                rta="Registró";
-            }
-            else{
-                rta="No registro";
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(carga_extensionDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-      return rta;
-    }
     
-  
-   
+    
     public int obtenerIdCarga(String codigoDoc){
             Pool pool = Conexion.getPool(); //llamo al objeto pool
             Connection con = null;
@@ -154,10 +117,6 @@ public class docenciaDAO {
              while(resultado.next()){
                 id=resultado.getInt(1);
             }
-            
-            
-          
-          
             pst.close();
             con.close();
             
@@ -167,6 +126,7 @@ public class docenciaDAO {
         }
          return id;   
     }
+    
     
     
 }

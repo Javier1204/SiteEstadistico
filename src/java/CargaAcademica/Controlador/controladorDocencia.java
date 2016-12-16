@@ -18,9 +18,9 @@ import java.util.ArrayList;
  */
 public class controladorDocencia {
 
-    public String regitrarDocencia(carga_grupoDTO dto) {
+    public String regitrarDocencia(carga_grupoDTO dto,String codigoDoc) {
         docenciaDAO dao=new docenciaDAO();
-        return dao.registrarDocencia(dto);
+        return dao.registrarDocencia(dto,codigoDoc);
     }
 
     public ArrayList<general_asignaturaDTO> obtenerAsignaturas() {

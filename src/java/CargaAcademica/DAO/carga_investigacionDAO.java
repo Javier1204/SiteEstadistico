@@ -22,7 +22,7 @@ import java.util.logging.*;
  */
 public class carga_investigacionDAO {
 
-    public String regsitrarInvestigacion(carga_investigacionDTO dto) {
+    public String regsitrarInvestigacion(carga_investigacionDTO dto, String codigoDoc) {
         String rta = "No conecto";
         Pool pool = Conexion.getPool(); //llamo al objeto pool
         Connection con = null;
@@ -33,13 +33,16 @@ public class carga_investigacionDAO {
             pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario
             con = pool.getDataSource().getConnection();
-            //3 es el ID de la carga academica 
+           
+            int id=this.obtenerIdCarga(codigoDoc);
            
             String sql="INSERT INTO carga_investigacion (id_carga,cod_acta,nombre,responsabilidad,unidad_investigacion,institucion,"
                     + "horas_semana) values"
-                    + " ('"+3+"','"+dto.getCod_acta()+"','"+dto.getNombre()+"','"+dto.getResponsabilidad()+"','"+dto.getUnidad_investigativa()+"'"
+                    + " ('"+id+"','"+dto.getCod_acta()+"','"+dto.getNombre()+"','"+dto.getResponsabilidad()+"','"+dto.getUnidad_investigativa()+"'"
                     + ",'"+dto.getInstitucion()+"','"+dto.getHoras_semana()+"')";
-             System.out.println(sql);      
+            
+            System.out.println(sql);   
+             
             pst=con.prepareStatement(sql);
             int a=pst.executeUpdate();
             con.close();
@@ -57,7 +60,7 @@ public class carga_investigacionDAO {
       return rta;
     }
 
-    public ArrayList<carga_investigacionDTO> obtenerInvestigaciones() {
+    public ArrayList<carga_investigacionDTO> obtenerInvestigaciones(String codigoDoc) {
       
             Pool pool = Conexion.getPool(); //llamo al objeto pool
             Connection con = null;
@@ -68,7 +71,9 @@ public class carga_investigacionDAO {
             pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
-            pst = con.prepareStatement("SELECT * FROM carga_investigacion");//genero el sql.
+            int id=this.obtenerIdCarga(codigoDoc);
+            
+            pst = con.prepareStatement("SELECT * FROM carga_investigacion where id_carga='"+id+"'");//genero el sql.
             ResultSet resultado=pst.executeQuery();
             carga_investigacionDTO e;
             
@@ -91,6 +96,42 @@ public class carga_investigacionDAO {
         }
         return lista;
     }
+    
+       public int obtenerIdCarga(String codigoDoc){
+            Pool pool = Conexion.getPool(); //llamo al objeto pool
+            Connection con = null;
+            PreparedStatement pst = null;
+            int  id=0;
+           
+            try {    
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
+            con = pool.getDataSource().getConnection();  //genero la conexion
+            pst = con.prepareStatement("SELECT id FROM carga_carga_academica where codig_doc='"+codigoDoc+"' ");//genero el sql.
+            
+             System.out.println("SELECT id FROM carga_carga_academica where codig_doc='"+codigoDoc+"' "); 
+            ResultSet resultado=pst.executeQuery();
+           
+             while(resultado.next()){
+                id=resultado.getInt(1);
+            }
+            
+            
+            System.out.println("el id es: "+id);
+          
+            pst.close();
+            con.close();
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(carga_extensionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         return id;   
+    }
+    
+    
+    
 }
     
     

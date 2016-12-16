@@ -15,6 +15,8 @@
     String unidadInvestigativa=request.getParameter("unidadInvestigativa");
     String institucional=request.getParameter("institucional");
     int    horaSemanal=Integer.parseInt(request.getParameter("horaSemanal"));
+    String codigoDoc=request.getParameter("codigodoc");
+    
     
     Fachada f=new Fachada();
     carga_investigacionDTO dto=new carga_investigacionDTO();
@@ -25,7 +27,7 @@
     dto.setInstitucion(institucional);
     dto.setHoras_semana(horaSemanal);
     
-    String r=f.registrarInvestigacion(dto);
+    String r=f.registrarInvestigacion(dto,codigoDoc);
      request.getSession().setAttribute("respuesta_investigacion",r);
 
 response.sendRedirect("../investigacion.jsp");

@@ -16,6 +16,8 @@ if(request.getParameter("nfin")==null){
     Fachada f=new Fachada();
     String msj=f.habilitarSistema(codigo, ano, periodo, fin);
     request.getSession().setAttribute("respuesta_habilito",msj);
+    
+    request.getSession().setAttribute("periodo",periodo);
 }    
 else{
    String codigo2=request.getParameter("code2");

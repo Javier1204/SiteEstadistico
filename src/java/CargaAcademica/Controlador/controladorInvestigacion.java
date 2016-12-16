@@ -16,13 +16,13 @@ import java.util.ArrayList;
 public class controladorInvestigacion {
     
     
-    public String registrarInvestigacion(carga_investigacionDTO dto){
+    public String registrarInvestigacion(carga_investigacionDTO dto,String codigoDoc){
         carga_investigacionDAO dao=new carga_investigacionDAO();
-        return dao.regsitrarInvestigacion(dto);
+        return dao.regsitrarInvestigacion(dto,codigoDoc);
     }
 
-    public ArrayList<carga_investigacionDTO> obtenerInvestigaciones() {
+    public ArrayList<carga_investigacionDTO> obtenerInvestigaciones(String codigoDoc) {
          carga_investigacionDAO dao=new carga_investigacionDAO();
-         return dao.obtenerInvestigaciones();
+         return dao.obtenerInvestigaciones(codigoDoc);
     }
 }

@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/*
+
  $(document).ready (function(){
        $("#error").hide();
            
 });
-*/
 
-/*
+
+
 $('#codigo').change(function(){
          $('#form')[0].reset();
 })
 
-*/
+
 
 
 /**
@@ -24,7 +24,7 @@ $('#codigo').change(function(){
  * @param {type} param1
  * @param {type} param2
  */
-/*
+
 $(".horasD").bind('keyup mouseup', function () {
      // initialize the sum (total price) to zero
       $("#registrar").prop('disabled', false);
@@ -47,9 +47,9 @@ $(".horasD").bind('keyup mouseup', function () {
     $('#semestral').val(sum*16);
              
 });
-  */ 
+  
  
- /*
+ 
 $(".horasE").bind('keyup mouseup', function () {   
      // initialize the sum (total price) to zero
     var sum = 0;
@@ -59,11 +59,10 @@ $(".horasE").bind('keyup mouseup', function () {
     $('#horaSemestre').val(sum);
      
 });
-*/
-/*
+
+
 function obtenerCredito() {
    var d = document.getElementById("codigo").value;
    var cre= d.split("") ;
    return cre[cre.length-1];
 }
-*/

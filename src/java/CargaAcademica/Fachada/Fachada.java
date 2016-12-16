@@ -8,10 +8,12 @@ import CargaAcademica.Controlador.controladorActAdministrativas;
 import CargaAcademica.Controlador.controladorDocencia;
 import CargaAcademica.Controlador.controladorExtension;
 import CargaAcademica.Controlador.controladorInvestigacion;
+import CargaAcademica.DAO.carga_otraDAO;
 import CargaAcademica.DTO.carga_ActAdministrativasDTO;
 import CargaAcademica.DTO.carga_extensionDTO;
 import CargaAcademica.DTO.carga_grupoDTO;
 import CargaAcademica.DTO.carga_investigacionDTO;
+import CargaAcademica.DTO.carga_otraDTO;
 import CargaAcademica.DTO.general_asignaturaDTO;
 import CargaAcademica.DTO.observacionesDTO;
 import java.lang.reflect.Array;
@@ -59,34 +61,34 @@ public class Fachada {
      * @param dto
      * @return 
      */
-    public String registrarActAdministrativas(carga_ActAdministrativasDTO dto) {
+    public String registrarActAdministrativas(carga_ActAdministrativasDTO dto,String codigoDoc) {
         controladorActAdministrativas c=new controladorActAdministrativas();
-        return c.registrarActAdministrativa(dto);
+        return c.registrarActAdministrativa(dto,codigoDoc);
     
     }
     /**
      * 
      * @return 
      */
-    public ArrayList<carga_ActAdministrativasDTO> obtenerActAdmi(){
+    public ArrayList<carga_ActAdministrativasDTO> obtenerActAdmi(String codigoDoc){
          controladorActAdministrativas c=new controladorActAdministrativas();
-         return c.listarActAdmi();
+         return c.listarActAdmi(codigoDoc);
     }
     
     
-    public String registrarInvestigacion(carga_investigacionDTO dto){
+    public String registrarInvestigacion(carga_investigacionDTO dto,String codigoDoc){
         controladorInvestigacion c=new controladorInvestigacion();
-        return c.registrarInvestigacion(dto);
+        return c.registrarInvestigacion(dto,codigoDoc);
     }
     
-    public ArrayList<carga_investigacionDTO> obtenerInvestigaciones(){
+    public ArrayList<carga_investigacionDTO> obtenerInvestigaciones(String codigoDoc){
         controladorInvestigacion c=new controladorInvestigacion();
-        return c.obtenerInvestigaciones();
+        return c.obtenerInvestigaciones(codigoDoc);
     }
     
-    public String registrarDocencia(carga_grupoDTO dto){
+    public String registrarDocencia(carga_grupoDTO dto,String codigoDoc){
         controladorDocencia c=new controladorDocencia();
-        return c.regitrarDocencia(dto);
+        return c.regitrarDocencia(dto,codigoDoc);
     }
     
     public ArrayList<general_asignaturaDTO> obtenerAsignaturas(){
@@ -100,4 +102,15 @@ public class Fachada {
         return c.registrarObservacion(dto);
     
     }
+    
+    public String registrarOtrasActividades(carga_otraDTO dto,String codigoDoc){
+        carga_otraDAO dao=new carga_otraDAO();
+        return dao.registrarOtrasActividades(dto,codigoDoc);
+    }
+    
+    public ArrayList<carga_otraDTO> obtenerOtrasActividades(String codigoDoc){
+        carga_otraDAO dao=new carga_otraDAO();
+        return dao.obtenerOtrasActividades(codigoDoc);
+    }
+    
 }

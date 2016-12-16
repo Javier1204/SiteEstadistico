@@ -28,7 +28,7 @@ public class carga_ActAdministrativasDAO {
      * @param dto
      * @return 
      */
-    public String registrarActAdministrativa(carga_ActAdministrativasDTO dto){
+    public String registrarActAdministrativa(carga_ActAdministrativasDTO dto,String codigoDoc){
         String rta = "No conecto";
         Pool pool = Conexion.getPool(); //llamo al objeto pool
         Connection con = null;
@@ -39,10 +39,11 @@ public class carga_ActAdministrativasDAO {
             pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario
             con = pool.getDataSource().getConnection();
-            //3 es el ID de la carga academica 
+           
+            int id=this.obtenerIdCarga(codigoDoc);
             System.out.println(dto.getActividad());
             String sql="INSERT INTO carga_act_administrativas (id_carga,cargo,horas_semana,otra_actividad,hora_semana) values"
-                    + " ('"+3+"','"+dto.getCargo()+"','"+dto.getHoras_cargo()+"','"+dto.getActividad()+"','"+dto.getHoras_act()+"')";
+                    + " ('"+id+"','"+dto.getCargo()+"','"+dto.getHoras_cargo()+"','"+dto.getActividad()+"','"+dto.getHoras_act()+"')";
                    
             pst=con.prepareStatement(sql);
             int a=pst.executeUpdate();
@@ -61,7 +62,7 @@ public class carga_ActAdministrativasDAO {
       return rta;
     }
     
-    public ArrayList<carga_ActAdministrativasDTO> listarActAdmi(){
+    public ArrayList<carga_ActAdministrativasDTO> listarActAdmi(String codigoDoc){
           Pool pool = Conexion.getPool(); //llamo al objeto pool
             Connection con = null;
             PreparedStatement pst = null;
@@ -71,7 +72,10 @@ public class carga_ActAdministrativasDAO {
             pool.setContrasena("ufps_29");//ingreso la contraseña
             pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
             con = pool.getDataSource().getConnection();  //genero la conexion
-            pst = con.prepareStatement("SELECT * FROM carga_act_administrativas");//genero el sql.
+            
+            int id=this.obtenerIdCarga(codigoDoc);
+            
+            pst = con.prepareStatement("SELECT * FROM carga_act_administrativas where id_carga='"+id+"'");//genero el sql.
             ResultSet resultado=pst.executeQuery();
             carga_ActAdministrativasDTO e;
             
@@ -92,5 +96,38 @@ public class carga_ActAdministrativasDAO {
             Logger.getLogger(carga_extensionDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return lista;
+    }
+    
+    public int obtenerIdCarga(String codigoDoc){
+            Pool pool = Conexion.getPool(); //llamo al objeto pool
+            Connection con = null;
+            PreparedStatement pst = null;
+            int  id=0;
+           
+            try {    
+            pool.setUsuario("ufps_76"); //ingreso el usuario
+            pool.setContrasena("ufps_29");//ingreso la contraseña
+            pool.inicializarDataSource(); // inicializo el datasource con los datos de usuario 
+            con = pool.getDataSource().getConnection();  //genero la conexion
+            pst = con.prepareStatement("SELECT id FROM carga_carga_academica where codig_doc='"+codigoDoc+"' ");//genero el sql.
+            
+             System.out.println("SELECT id FROM carga_carga_academica where codig_doc='"+codigoDoc+"' "); 
+            ResultSet resultado=pst.executeQuery();
+           
+             while(resultado.next()){
+                id=resultado.getInt(1);
+            }
+            
+            
+            System.out.println("el id es: "+id);
+          
+            pst.close();
+            con.close();
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(carga_extensionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         return id;   
     }
 }

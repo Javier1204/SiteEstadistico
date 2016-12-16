@@ -1,8 +1,18 @@
-<%--/**@author Seminario Integrador 3: Ing Pilar Rojas, Estud: Victor Urbina 1150962 & Jesus Rojas 1150833 20/11/2016*/--%>
+<%--/**@author Seminario 4Integrador 3: Ing Pilar Rojas, Estud: Victor Urbina 1150962 & Jesus Rojas 1150833 20/11/2016*/--%>
+<%@page import="gestionUsuarios.ICuenta"%>
+<%@page import="CargaAcademica.Fachada.Fachada"%>
 <%@page import="CargaAcademica.DAO.DAOCargaAcademica"%>
 <!--Aqui coloco el header, OJO con include-->
 <jsp:include page="diseno.jsp"/>
 <jsp:include page="../plantilla/header.jsp"/>
+<%
+    Fachada f = new Fachada();
+  
+    
+    ICuenta cuenta=(ICuenta) session.getAttribute("usuario");
+    String valor=(String)request.getSession().getAttribute("codigo");
+  
+%>
 
 <!--Contenido-->
 <!--Aqui empieza el area de trabajo, que cambiara dependiendo de las funcionalidades
@@ -22,7 +32,8 @@ dentro de un div-->
 
             <h3>Profesor:</h3>
             <!--aqui cargo en combo los registrados en bd y selecciona-->
-            <select class="ufps-input ufps-red" id="docente" name="docente" align="center">
+            <form action="procesar/cargarDatos_pro.jsp" method="post">
+            <select onchange="CargarDatos(value)" class="ufps-input ufps-red" id="docente" name="docente" align="center">
 
                 <%DAOCargaAcademica c = new DAOCargaAcademica();
                     String profes[] = c.consultarDocentes().split(",");
@@ -37,8 +48,11 @@ dentro de un div-->
 
                 <%}%>
             </select>
+            <input  type="submit" id="opcion" name="opcion" value="Consultar" class="ufps-btn-green ">
+            <input type="" value="" name="codigoSel" id="codigoSel">
+            </form> 
             <br>
-            <%String profeq[] = c.consultarDocenciaDeDocente("6").split(",");%>
+            <%String profeq[] = c.consultarDocenciaDeDocente(valor).split(",");%>
             <!--FORMULARIO--->
             <form action="procesar/observaciones_pro.jsp" >
                 <div id="docenciam" class="ufps-col-mobile-6 ufps-col-tablet-6 ufps-col-netbook-12" align="center">     
@@ -76,7 +90,7 @@ dentro de un div-->
 
             </form> 
 
-            <%String profew[] = c.consultarInvestigacionDeDocente("23").split(",");%>
+            <%String profew[] = c.consultarInvestigacionDeDocente(valor).split(",");%>
             <form action="procesar/observaciones_pro.jsp">
 
                 <div id="investigacionm" class="ufps-col-mobile-6 ufps-col-tablet-6 ufps-col-netbook-12" align="center">     
@@ -112,7 +126,7 @@ dentro de un div-->
                 </div>
             </form>  
 
-            <%String profey[] = c.consultarExtensionDeDocente("22").split(",");%>
+            <%String profey[] = c.consultarExtensionDeDocente(valor).split(",");%>
             <form action="procesar/observaciones_pro.jsp">
                 <div id="investigacionm" class="ufps-col-mobile-6 ufps-col-tablet-6 ufps-col-netbook-12" align="center">     
                     <table class="ufps-table ufps-card">
@@ -149,7 +163,7 @@ dentro de un div-->
                 </div>
             </form> 
 
-            <%String profez[] = c.consultarAdministracionDeDocente("1").split(",");%>
+            <%String profez[] = c.consultarAdministracionDeDocente(valor).split(",");%>
             <form action="procesar/observaciones_pro.jsp">
                 <div id="investigacionm" class="ufps-col-mobile-6 ufps-col-tablet-6 ufps-col-netbook-12" align="center">     
                     <table class="ufps-table ufps-card">
@@ -183,7 +197,7 @@ dentro de un div-->
                 </div>
             </form>
 
-            <%String profezz[] = c.consultarOtrasDeDocente("1").split(",");%>
+            <%String profezz[] = c.consultarOtrasDeDocente(valor).split(",");%>
             <form action="procesar/observaciones_pro.jsp">
                 <div id="investigacionm" class="ufps-col-mobile-6 ufps-col-tablet-6 ufps-col-netbook-12" align="center">     
                     <table class="ufps-table ufps-card">
@@ -224,6 +238,14 @@ dentro de un div-->
 
 <!--Aqui empieza el footer, el pie de pagina de la aplicacion, nombre de la
 universidad, programa, materia y desarrolladores-->
-
+<script>
+   document.getElementById("codigoSel").value = document.getElementById("docente").value;
+    
+    function CargarDatos($cod){
+       document.getElementById("codigoSel").value = $cod;
+       
+    }
+    
+</script>
 <!--Aqui coloco el footer, OJO con include-->
 <jsp:include page="../plantilla/footer.jsp"/>                                                                                                                                                                                                                                                                                                                

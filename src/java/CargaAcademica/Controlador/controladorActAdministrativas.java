@@ -20,17 +20,17 @@ public class controladorActAdministrativas {
      * @param dto
      * @return 
      */
-    public String registrarActAdministrativa(carga_ActAdministrativasDTO dto) {
+    public String registrarActAdministrativa(carga_ActAdministrativasDTO dto,String codigoDoc) {
         carga_ActAdministrativasDAO dao=new carga_ActAdministrativasDAO();
-      return  dao.registrarActAdministrativa(dto);
+      return  dao.registrarActAdministrativa(dto,codigoDoc);
     }
     
     /**
      * 
      * @return 
      */
-    public ArrayList<carga_ActAdministrativasDTO> listarActAdmi(){
+    public ArrayList<carga_ActAdministrativasDTO> listarActAdmi(String codigoDoc){
         carga_ActAdministrativasDAO dao=new carga_ActAdministrativasDAO();
-        return dao.listarActAdmi();
+        return dao.listarActAdmi(codigoDoc);
     }
 }

@@ -58,7 +58,9 @@
    
     // Se salva el libro.
     try {
-        FileOutputStream archivo = new FileOutputStream("C:/xampp/htdocs/SiteEstadistico/web/Carga academica/informes/todosDocentes.xls");
+        String rutaPrueba = getServletContext().getRealPath("/Carga academica/informes/").replace("./", "/");
+        FileOutputStream archivo = new FileOutputStream(rutaPrueba + "/todosDocentes.xls");
+    
         libro.write(archivo);
         archivo.close();
     } catch (Exception e) {

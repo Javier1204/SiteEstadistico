@@ -16,14 +16,16 @@
 
 <a href=></a>
 <%
-    FileOutputStream archivo = new FileOutputStream("C:/xampp/htdocs/SiteEstadistico/web/Carga academica/informes/docentesExtension.pdf");
+    String rutaPrueba = getServletContext().getRealPath("/Carga academica/informes/").replace("./", "/");
+    FileOutputStream archivo = new FileOutputStream(rutaPrueba + "/docentesExtension.pdf");
     Document documento = new Document(PageSize.LETTER, 5, 5, 5, 5);
 
     PdfWriter.getInstance(documento, archivo);
     documento.open();
     Paragraph salto = new Paragraph(new Phrase(Chunk.NEWLINE));
     
-    Image img = Image.getInstance("C:/xampp/htdocs/SiteEstadistico/web/public/img/Banner-superior.png");
+    String xx=getServletContext().getRealPath("/public/img/").replace("./", "/");
+    Image img = Image.getInstance(xx+"/Banner-superior.png");
     float scaler = ((documento.getPageSize().getWidth() - documento.leftMargin()- documento.rightMargin() - 0) / img.getWidth()) * 100;
     img.scalePercent(scaler);
     documento.add(img);
