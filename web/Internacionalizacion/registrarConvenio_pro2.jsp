@@ -5,6 +5,13 @@
 --%>
 
 
+<%@page import="org.apache.commons.fileupload.FileItemFactory"%>
+<%@page import="org.apache.commons.fileupload.FileUploadException"%>
+<%@page import="org.apache.commons.fileupload.FileItem"%>
+<%@page import="java.util.List"%>
+<%@page import="org.apache.commons.fileupload.servlet.ServletFileUpload"%>
+<%@page import="org.apache.commons.fileupload.disk.DiskFileItemFactory"%>
+<%@page import="java.io.File"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.Date"%>
 <%@page import="java.util.Calendar"%>
@@ -14,53 +21,114 @@
 
 <%@page import="Internacionalizacion.Facade.Facade"%>
 <%
-   /*response.setContentType("text/html;charset=UTF-8");
-    request.setCharacterEncoding("UTF-8");
-    
-    String ruta = "";
-    String msg = "";
- 
-  
-    String ubicacion = getServletContext().getRealPath("/") + "files/"; // Ubicacion donde se guarda el archivo
-    DiskFileItemFactory factory = new DiskFileItemFactory();
-    factory.setSizeThreshold(1024);
-    factory.setRepository(new File(ubicacion));
-    ServletFileUpload upload = new ServletFileUpload(factory);
-    upload.setHeaderEncoding("UTF-8");
-   
-    try {
-        List<FileItem> partes = upload.parseRequest(request);
-        for (FileItem item : partes) {
-           
-            if (item.getName() != null) {   
-                ruta = item.getName();
-                File file = new File(ubicacion, item.getName()); 
-                item.write(file);           
-            } else {
-                msg+= new String(item.getString().getBytes("ISO-8859-1"),"UTF-8") + ";";  // Se capturan los datos del par
+    /*FileItemFactory es una interfaz para crear FileItem*/
+    FileItemFactory file_factory = new DiskFileItemFactory();
+
+    /*ServletFileUpload esta clase convierte los input file a FileItem*/
+    ServletFileUpload servlet_up = new ServletFileUpload(file_factory);
+    /*sacando los FileItem del ServletFileUpload en una lista */
+    List items = servlet_up.parseRequest(request);
+    boolean[] actividades = new boolean[6];
+    String ruta="",nombre = "", radicado = "", descripcion = "", tipo_convenio = "", fecharadicacion = "", fechainicio = "",vigencia ="";
+    int entidad = 0 ;
+    Tipo_actividades act = new Tipo_actividades();
+     Facade f = new Facade();
+    for (int i = 0; i < items.size(); i++) {
+        /*FileItem representa un archivo en memoria que puede ser pasado al disco duro*/
+        FileItem item = (FileItem) items.get(i);
+        /*item.isFormField() false=input file; true=text field*/
+        if (item.getName() != null) {
+            if (!item.isFormField()) {
+                ruta = f.nameRandom()+".pdf";
+                /*cual sera la ruta al archivo en el servidor*/
+                File archivo_server = new File(getServletContext().getRealPath("/") + "Internacionalizacion/actas/" + ruta );
+                /*y lo escribimos en el servido*/
+                item.write(archivo_server);
+                System.out.println("Nombre --> " + item.getName());
+                out.print("<br> Tipo --> " + item.getContentType());
+                out.print("<br> tamaño --> " + (item.getSize() / 1024) + "KB");
+                out.print("<br>");
             }
+        } else {
+
+            if (item.getFieldName().toString().equalsIgnoreCase("nombre")) {
+                nombre = item.getString();
+            }
+            if (item.getFieldName().toString().equalsIgnoreCase("radicado")) {
+                radicado = item.getString();
+            }
+            if (item.getFieldName().toString().equalsIgnoreCase("descripcion")) {
+                descripcion = item.getString();
+            }
+            if (item.getFieldName().toString().equalsIgnoreCase("tipo_convenio")) {
+                tipo_convenio = item.getString();
+            }
+            if (item.getFieldName().toString().equalsIgnoreCase("movilidad")) {
+                act.setMovilidad(true);
+            }
+            if (item.getFieldName().toString().equalsIgnoreCase("pasantia")) {
+                act.setPasantia(true);
+            }
+            if (item.getFieldName().toString().equalsIgnoreCase("extension")) {
+                act.setExtension(true);
+            }
+            if (item.getFieldName().toString().equalsIgnoreCase("investigacion")) {
+                act.setInvestigacion(true);
+            }
+            if (item.getFieldName().toString().equalsIgnoreCase("social")) {
+                act.setSocial(true);
+            }
+            if (item.getFieldName().toString().equalsIgnoreCase("practica")) {
+                act.setPractica(true);
+            }
+            if (item.getFieldName().toString().equalsIgnoreCase("fecharadicacion")) {
+                fecharadicacion = item.getString();
+            }
+            if (item.getFieldName().toString().equalsIgnoreCase("fechainicio")) {
+                fechainicio = item.getString();
+            }
+            if (item.getFieldName().toString().equalsIgnoreCase("vigencia")) {
+                vigencia = ""+Integer.parseInt(item.getString());
+            }
+            if (item.getFieldName().toString().equalsIgnoreCase("entidad")) {
+                entidad = Integer.parseInt(item.getString());
+            }
+
+            System.out.println("descrip: " + item.getFieldName() + item.getString());
+            System.out.println("<br>");
         }
-    } catch (FileUploadException ex) {
-        out.write("Error al subir archivo " + ex.getMessage());
     }
+
+    String[] fecha1 = fechainicio.split("-");
+
+    
+    Calendar calendar1 = new GregorianCalendar(Integer.parseInt(fecha1[0]), Integer.parseInt(fecha1[1]), Integer.parseInt(fecha1[2]));
+    Date f1 = new Date(calendar1.getTimeInMillis());
+    
+    calendar1.add(Calendar.MONTH, Integer.parseInt(vigencia));//para pasarle por meses
    
-    String url = "files/"+ruta; // Url del archivo
-    String v[] = msg.split(";");
+    String fechaterminacion = calendar1.get(Calendar.YEAR)+"-"+calendar1.get(Calendar.MONTH)+"-"+calendar1.get(Calendar.DATE); 
     
 
-    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-    Date fecha = formato.parse(v[0]);
-    java.sql.Date fechaRegistro = new java.sql.Date(fecha.getTime());
+    System.out.println(fecharadicacion);
+
     
-    if(Integer.parseInt(v[1]) == 0)
-    {
-	    if(obj.addAnteproyecto(v[2], v[3],  v[4],  Integer.parseInt(v[6]),  Boolean.parseBoolean(v[7]),  v[8], url,  Integer.parseInt(v[5]),  fechaRegistro, "Anteproyecto", "grupoInv", "lineaInv")){	    	
-     %>
-            <script>
-	    	alert("El registro del Anteproyecto fue exitoso");  
-	    	location.href="Registro.jsp"; 
-	    	</script>
-	    	<% 
-	    }
-*/
-    }
+
+    
+    String estado = "Aprobado";
+System.out.println(ruta);
+   
+    String url = "actas/"+ruta;
+    System.out.println(url);
+    String r = f.registrarConvenio(radicado, nombre, descripcion, fecharadicacion, fechainicio, fechaterminacion, vigencia, estado, tipo_convenio, entidad,url);
+    String id = f.consultarConvenio(radicado).getId();
+    System.out.println(r + " va la otra mrd");
+    System.out.println(
+            "El id del convenio es------------------" + id);
+    act.setIdconvenio(id);
+    f.RegistrarTipo_Actividades(act);
+    System.out.println(r + " termino de registrar  la otra mrd");
+    System.out.println(url);
+    response.sendRedirect("registrarConvenio.jsp");
+
+%>
