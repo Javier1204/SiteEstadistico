@@ -411,11 +411,8 @@ function BsquedaAvnzada() {
         });
     
 }
-
-
-
-function RegistrarUsuario42() {
-    var btn = $('#zvdsgsdgsg');
+function RegistrarUsuario() {
+    var btn = $('#botonreuser');
     var correo_electronico = $('#correo_electronico').val();
     var contrasena = $('#contrasena').val();
     var nombre = $('#nombre').val();
@@ -426,11 +423,12 @@ function RegistrarUsuario42() {
         var datos = {correo_electronico: correo_electronico, nombre: nombre, codigo: codigo, contrasena: contrasena, tipo: tipo};
         var rta = "#resultdataaeser";
         var url = "../EstudiantesdeprimerSemestre/RegistrarUsuario.jsp";
-//        btn.button('loading');
+        btn.button('loading');
         var objetoAjax = ajax(url, datos, rta);
         objetoAjax.always(function () {
-//            btn.button('reset');
-           
+            btn.button('reset');
+            ListadoUsuario();
+            borrardatos(campos);
         });
     }
 
@@ -461,18 +459,6 @@ function IniciarSesion() {
 
 }
 
-function RegistrarUser() {
-  
- var url = "../EstudiantesdeprimerSemestre/formRegistroUser.jsp";
-    var datos = {};
-    var rta = "#mostrarcontenido";
-    ajax(url, datos, rta);
-    
-//    window.locationf="../EstudiantesdeprimerSemestre/index.jsp";
-    
-    
-    
-}
 
 
 function  iniciarsesion() {
