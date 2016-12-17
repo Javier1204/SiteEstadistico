@@ -58,8 +58,15 @@ public class DatosAcademicos_DAO {
                    per.setNombre(rs.getString(1));
                    per.setApellido(rs.getString(2));
                    per.setGenero(rs.getInt(3));
-                   per.setEdad(rs.getInt(4));
-                   per.setEstado_civil(rs.getInt(5));
+                   per.setDocumento(rs.getDouble(4));
+                   per.setFecha_nacimiento(rs.getString(5));
+                   per.setEdad(rs.getInt(6));
+                   per.setEstado_civil(rs.getInt(7));
+                   per.setColegio_grado(rs.getString(8));
+                   per.setLectura(rs.getInt(9));
+                   per.setNaturales(rs.getInt(10));
+                   per.setSociales(rs.getInt(11));
+                   per.setIngles(rs.getInt(12));
                    perso.add(per);
             }
         } catch (SQLException e) {
@@ -70,7 +77,30 @@ public class DatosAcademicos_DAO {
         }  
         return  perso;
     }
-    
+    public static List<DatosAcademicos_DTO> avanzada2(String consulta) {
+        BaseDeDatos.conectar();
+       
+        
+        ResultSet rs = BaseDeDatos.ejecutarSQL(consulta);
+        List<DatosAcademicos_DTO>perso = new ArrayList<>();       
+        try {
+            while (rs.next()) {
+                   DatosAcademicos_DTO per= new DatosAcademicos_DTO();                  
+                   per.setColegio_grado(rs.getString(8));
+                   per.setLectura(rs.getInt(9));
+                   per.setNaturales(rs.getInt(10));
+                   per.setSociales(rs.getInt(11));
+                   per.setIngles(rs.getInt(12));
+                   perso.add(per);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+       finally {
+        BaseDeDatos.desconectar();
+        }  
+        return  perso;
+    }
     
       public static DatosAcademicos_DTO buscarUsuario(UsuarioDTO Usuario) {
         BaseDeDatos.conectar();
@@ -84,7 +114,7 @@ public class DatosAcademicos_DAO {
             while (rs.next()) {
                               
                      usu= new DatosAcademicos_DTO();
-                 usu.setId_estudiante(rs.getInt(1));
+                 usu.setId_estudiante(rs.getString(1));
                  usu.setColegio_grado(rs.getString(2));
                  usu.setEspecialidad(rs.getString(3));
                  usu.setAno_grado(rs.getInt(4));

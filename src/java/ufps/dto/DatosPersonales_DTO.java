@@ -10,7 +10,7 @@ package ufps.dto;
  * @author 
  */
 public class DatosPersonales_DTO {
-    private int id_estudiante;
+    private String id_estudiante;
     private int codigo_integrante;
     private String nombre;
     private String apellido;
@@ -23,17 +23,64 @@ public class DatosPersonales_DTO {
     private int genero;
     private int edad;
     private int estado_civil;
+    private String colegio_grado;
+    private float lectura;
+    private float naturales;
+    private float sociales;
+    private float ingles; 
 
+    public String getColegio_grado() {
+        return colegio_grado;
+    }
+
+    public void setColegio_grado(String colegio_grado) {
+        this.colegio_grado = colegio_grado;
+    }
+
+    public float getLectura() {
+        return lectura;
+    }
+
+    public void setLectura(float lectura) {
+        this.lectura = lectura;
+    }
+
+    public float getNaturales() {
+        return naturales;
+    }
+
+    public void setNaturales(float naturales) {
+        this.naturales = naturales;
+    }
+
+    public float getSociales() {
+        return sociales;
+    }
+
+    public void setSociales(float sociales) {
+        this.sociales = sociales;
+    }
+
+    public float getIngles() {
+        return ingles;
+    }
+
+    public void setIngles(float ingles) {
+        this.ingles = ingles;
+    }
+     
+     
+     
     public DatosPersonales_DTO() {
     }
 
     
 
-    public int getId_estudiante() {
+    public String getId_estudiante() {
         return id_estudiante;
     }
 
-    public void setId_estudiante(int id_estudiante) {
+    public void setId_estudiante(String id_estudiante) {
         this.id_estudiante = id_estudiante;
     }
 

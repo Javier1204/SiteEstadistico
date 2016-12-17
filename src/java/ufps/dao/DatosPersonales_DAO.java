@@ -53,7 +53,7 @@ public class DatosPersonales_DAO {
             while (rs.next()) {
                               
                      usu= new DatosPersonales_DTO();
-                 usu.setId_estudiante(rs.getInt(1));
+                 usu.setId_estudiante(rs.getString(1));
                  usu.setNombre(rs.getString(2));
                  usu.setApellido(rs.getString(3));
                  usu.setTipo_documento(rs.getInt(4));

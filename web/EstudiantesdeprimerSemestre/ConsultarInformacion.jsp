@@ -76,7 +76,7 @@
                                         <input type="checkbox" id="porlec" > 
                                     </div>
 
-                         <div class="col-sm-3"><input type="number" class="form-control" name="lectura" id="lectura" placeholder="" required></div>
+                        <div class="col-sm-4"><input type="number" min="1" max="500" class="form-control" name="lectura" id="lectura" placeholder="PUNTAJE 1 A 500" required></div>
                          <div class="col-sm-2"></div>
                     </div>
                       
@@ -92,7 +92,7 @@
                                         <input type="checkbox" id="porcienc" > 
                                     </div>
 
-                         <div class="col-sm-3"><input type="number" class="form-control" name="naturales" id="naturales" placeholder="" required></div>
+                         <div class="col-sm-4"><input type="number" min="1" max="500" class="form-control" name="naturales" id="naturales" placeholder="PUNTAJE 1 A 500" required></div>
                          <div class="col-sm-2"></div>
                     </div>
                    
@@ -107,7 +107,7 @@
                                     <div class="col-sm-1">
                                         <input type="checkbox" id="porsoci" > 
                                     </div>
-                         <div class="col-sm-3"><input type="number" class="form-control" name="sociales" id="sociales" placeholder="" required></div>
+                         <div class="col-sm-4"><input type="number" min="1" max="500" class="form-control" name="sociales" id="sociales" placeholder="PUNTAJE 1 A 500" required></div>
                          <div class="col-sm-2"></div>
                     </div>
                    <div class="hr-line-dashed"></div> 
@@ -122,7 +122,7 @@
                                         <input type="checkbox" id="poring" > 
                                     </div>
 
-                         <div class="col-sm-3"><input type="number" class="form-control" name="ingles" id="ingles" placeholder="" required></div>
+                         <div class="col-sm-4"><input type="number" min="1" max="500" class="form-control" name="ingles" id="ingles" placeholder="PUNTAJE 1 A 500" required></div>
                          <div class="col-sm-2"></div>
                     </div>
                    <div class="hr-line-dashed"></div> 

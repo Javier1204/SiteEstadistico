@@ -41,10 +41,9 @@
                 </div>
                 <div class="ufps-navbar-left">               
                     <div class="ufps-dropdown" id="dropdown4">
-                        <button onclick="openDropdown('dropdown4')" class="ufps-dropdown-btn">Componentes</button>
-                        <div class="ufps-dropdown-content">
                         
-                            <a href="#" onclick="ModuloPrimerSemestre();"> Primer Semestre </a>
+                        <a href="../Integrador/listar_modulos.jsp" class="ufps-dropdown-btn"> HOME </a>
+                      
                         </div>
                     </div>            
                 </div>

@@ -87,7 +87,7 @@ public class ModuloEstudianteNego {
 //And aca.lectura=lectura AND aca.naturales=naturales AND aca.sociales=sociales AND aca.ingles=ingles
 
 
-        String consulta=" SELECT per.`nombre`, per.`apellido`, per.`genero`, per.`edad`, per.`estado_civil`  ";
+        String consulta=" SELECT per.`nombre`, per.`apellido`, per.`genero`,per.`documento`,per.`fecha_nacimiento`, per.`edad`, per.`estado_civil`  ";
         boolean per=false;
         if( (poredad ==1) || porgene==1 || porcivi==1 ){
             per=true;
@@ -100,11 +100,11 @@ public class ModuloEstudianteNego {
         
         
         if ( aca==true || ( per ==true && aca == true) ){
-         consulta+=" FROM `datospersonales`  as per left join `datosacademicos` as  aca on (`aca`.`id_estudiante`= per.`id_estudiante`) WHERE true";
+         consulta="SELECT per.`nombre`, per.`apellido`, per.`genero`,per.`documento`,per.`fecha_nacimiento`, per.`edad`, per.`estado_civil` ,aca.`colegio_grado`,aca.`lectura`,aca.`naturales`,aca.`sociales`,aca.`ingles`  FROM `datospersonales`  as per left join `datosacademicos` as  aca on (`aca`.`id_estudiante`= per.`id_estudiante`) WHERE true ";
         }
         else {
 
-             consulta+=" FROM `datospersonales`  as per WHERE true";
+             consulta="SELECT per.`nombre`, per.`apellido`, per.`genero`,per.`documento`,per.`fecha_nacimiento`, per.`edad`, per.`estado_civil` ,aca.`colegio_grado`,aca.`lectura`,aca.`naturales`,aca.`sociales`,aca.`ingles`  FROM `datospersonales`  as per left join `datosacademicos` as  aca on (`aca`.`id_estudiante`= per.`id_estudiante`) WHERE true ";
         
         }
         
@@ -145,10 +145,21 @@ public class ModuloEstudianteNego {
                 + "  <div class=\"panel-heading text-center \" ><h3>Listado Estudiante </h3></div>";
         String tabla = panel + "<table  id=\"listadotabla\" class=\"table table-bordered \">\n"
                 + "         <thead>   <tr class=\"active\">\n"
-                + "                <th> Nomre </th>\n"
+                + "                <th>Nombre</th>\n"
                 + "                <th>Apellido </th>\n"
-                + "                <th>Promedio </th>\n"
-                + "<th>Edad </th>\n"
+                + "                <th>Genero </th>\n"
+                + "                <th>Documento </th>\n"
+                + "                <th>Fecha nacimiento </th>\n"
+                + "                <th>Edad </th>\n"
+                + "                <th>Estado Civil  </th>\n"
+                + "                <th>Colegio </th>\n"
+                + "                <th>Lectura </th>\n"
+                + "                <th>Naturales </th>\n"
+                + "                <th>Sociales </th>\n"
+                + "                <th>Ingles </th>\n"
+       
+           
+           
                 + ""
                 + "            </tr> </thead>";
        
@@ -157,23 +168,64 @@ public class ModuloEstudianteNego {
         
         
         List<DatosPersonales_DTO> datos = DatosAcademicos_DAO.avanzada(consulta);
+//        List<DatosAcademicos_DTO> datos2 = DatosAcademicos_DAO.avanzada2(consulta);
+        
         int i = 0;
         
         int cant=UsuarioDAO.cantUsers();
        
         tabla += "<tbody>";
         for (DatosPersonales_DTO dat : datos) {
+            
+            
+           String gene="";
+           String civil="";
+           
+           switch(dat.getGenero()){
+               case 0: gene="F"; break;
+               case 1: gene="M"; break;         
+           }
+           
+           switch(dat.getEstado_civil()){
+               case 0: civil="soltero"; break;
+               case 1: civil="casado"; break;         
+               case 2: civil="union libre"; break;                
+           }
+           
+           
+           
+            
             tabla += " <tr>\n"
                     + "                <td>"+dat.getNombre() + "</td>\n"
                     + "                <td  >" + dat.getApellido() + "</td>\n"
+                    + "                <td  >" + gene + "</td>\n"                              
+                    + "                <td  >" + dat.getDocumento() + "</td>\n"                              
+                    + "                <td  >" + dat.getFecha_nacimiento() + "</td>\n"                              
                     + "                <td  >" + dat.getEdad() + "</td>\n"                              
+                    + "                <td  >" + civil + "</td>\n"                              
+                    + "                <td  >" + dat.getColegio_grado() + "</td>\n"                              
+                    + "                <td  >" + dat.getLectura() + "</td>\n"                              
+                    + "                <td  >" + dat.getNaturales() + "</td>\n"                              
+                    + "                <td  >" + dat.getSociales() + "</td>\n"                              
+                    + "                <td  >" + dat.getIngles() + "</td>\n"                              
+                                          
                     + "            </tr> ";
             i++;
           
         }
           float por=(i*100)/cant;
         tabla += " <tr>\n"
-                + "                <td></td>\n"
+               
+                    + "                <td  ></td>\n"
+                    + "                <td  ></td>\n"
+                    + "                <td  ></td>\n"
+                    + "                <td  ></td>\n"
+                    + "                <td  ></td>\n"
+                    + "                <td  ></td>\n"
+                    + "                <td  ></td>\n"
+                    + "                <td  ></td>\n"
+                    + "                <td  ></td>\n"
+                    + "                <td  ></td>\n"
                     + "                <td  >Porcentaje Total</td>\n"
                     + "                <td  >" + por + "%</td>\n"                              
                     + "            </tr> ";
@@ -186,7 +238,7 @@ public class ModuloEstudianteNego {
                 + " $('#listadotabla').DataTable( {" +
 "        dom: 'Bfrtip'," +
 "        buttons: [" +
-"            'excel', 'pdf'" +
+"            'excel'" +
 "        ]" +
 "    } );"
                 + "</script>";

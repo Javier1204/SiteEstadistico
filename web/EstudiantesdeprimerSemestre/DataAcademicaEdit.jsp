@@ -2,16 +2,24 @@
 <jsp:useBean id="usuario" scope="page" class="ufps.dto.UsuarioDTO" />
 <jsp:setProperty name="usuario" property="codigo"  />
 <%String[] capi =modestu.buscarAcademica(usuario).split(","); %>
+<%@page import="gestionUsuarios.ICuenta"%>
+<%
 
+
+    ICuenta cuenta=(ICuenta) session.getAttribute("usuario");
+    String cod=cuenta.getUser();
+
+
+%>
 
 <link href="../EstudiantesdeprimerSemestre/css/plugins/iCheck/custom.css" rel="stylesheet">
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-sm-2"></div>
     <div class="col-sm-4">
-        <h2 class="text-center text-navy"><a href="#" onclick="MDEeditarFormulario(<%=session.getAttribute("codigo") %>);">Datos Personales</a></h2>
+        <h2 class="text-center text-navy"><a href="#" onclick="MDEeditarFormulario(<%=cod %>);">Datos Personales</a></h2>
     </div>
     <div class="col-sm-4">
-        <h2 class="text-center "><a href="#" onclick="MDEeditarFormulario2(<%=session.getAttribute("codigo") %>);">Datos Academicos</a></h2>
+        <h2 class="text-center "><a href="#" onclick="MDEeditarFormulario2(<%=cod %>);">Datos Academicos</a></h2>
     </div>
     <div class="col-sm-2"></div>
 </div>
@@ -24,7 +32,7 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
                 <form role="form" class="form-horizontal" enctype="multipart/form-data"   method="post"  id="FromEditDataAcademica"> 
-                                         <input type="hidden" class="form-control" name="id_estudiante" id="id_estudiante" value="<%=session.getAttribute("codigo") %>" placeholder="id_estudiante" >
+                                         <input type="hidden" class="form-control" name="id_estudiante" id="id_estudiante" value="<%=cod %>" placeholder="id_estudiante" >
 
                      <div class="form-group"><label class="col-sm-9 control-label">Departamento del colegio donde se graduo de bachiller</label>
 

@@ -11,7 +11,7 @@ package ufps.dto;
  */
 public class DatosAcademicos_DTO {
     
-    private int id_estudiante;
+    private String id_estudiante;
     private String colegio_grado;
     private String especialidad;
     private int ano_grado;  
@@ -28,11 +28,11 @@ public class DatosAcademicos_DTO {
     public DatosAcademicos_DTO() {
     }
 
-    public int getId_estudiante() {
+    public String getId_estudiante() {
         return id_estudiante;
     }
 
-    public void setId_estudiante(int id_estudiante) {
+    public void setId_estudiante(String id_estudiante) {
         this.id_estudiante = id_estudiante;
     }
 

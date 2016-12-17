@@ -39,7 +39,13 @@
                     </div>
                     Site Estadístico
                 </div>
-                
+                 <div class="ufps-navbar-left">               
+                    <div class="ufps-dropdown" id="dropdown4">
+                        
+                        <a href="../Integrador/listar_modulos.jsp" class="ufps-dropdown-btn"> HOME </a>
+                      
+                        </div>
+                    </div> 
                 
                 <div class="ufps-navbar-right">
                     <div class="ufps-navbar-corporate">
@@ -54,7 +60,15 @@
             
 
     
+<%@page import="gestionUsuarios.ICuenta"%>
+<%
 
+
+    ICuenta cuenta=(ICuenta) session.getAttribute("usuario");
+    String cod=cuenta.getUser();
+
+
+%>
 
 
 
@@ -148,7 +162,7 @@ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Apr 2016 18:57:38 GMT -->
                  <div class="row">
                      <div class="col-lg-4">
                          <div class="contact-box">
-                             <a href="#" onclick="MDEregistrarFormulario();">
+                             <a href="#" onclick="MDEregistrarFormulario(<%=cod %>);">
                                  <h2 class="text-center text-navy"> Registrar Formulario</h2>
                                 
                              </a>
@@ -157,7 +171,7 @@ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Apr 2016 18:57:38 GMT -->
                     
                      <div class="col-lg-4">
                         <div class="contact-box">
-                             <a href="#" onclick="MDEeditarFormulario(<%=session.getAttribute("codigo") %>);">
+                             <a href="#" onclick="MDEeditarFormulario(<%=cod %>);">
                                  <h2 class="text-center text-navy">Editar Formulario</h2>
                                 
                              </a>

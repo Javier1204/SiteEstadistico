@@ -1,10 +1,20 @@
+<%@page import="gestionUsuarios.ICuenta"%>
+<%
+
+
+    ICuenta cuenta=(ICuenta) session.getAttribute("usuario");
+    String cod=cuenta.getUser();
+
+
+%>
+
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-sm-2"></div>
     <div class="col-sm-4">
-        <h2 class="text-center text-navy"><a href="#" onclick="MDEregistrarFormulario(<%=session.getAttribute("codigo") %>);">Datos Personales</a></h2>
+        <h2 class="text-center text-navy"><a href="#" onclick="MDEregistrarFormulario(<%=cod %>);">Datos Personales</a></h2>
     </div>
     <div class="col-sm-4">
-        <h2 class="text-center text-navy"><a href="#" onclick="MDEregistrarFormulario2(<%=session.getAttribute("codigo") %>);">Datos Academicos</a></h2>
+        <h2 class="text-center text-navy"><a href="#" onclick="MDEregistrarFormulario2(<%=cod %>);">Datos Academicos</a></h2>
     </div>
     <div class="col-sm-2"></div>
 </div>
@@ -21,7 +31,7 @@
                   
                 
 
-                     <input type="hidden" class="form-control" name="id_estudiante" id="id_estudiante" value="<%=session.getAttribute("codigo") %>" placeholder="id_estudiante" >
+                     <input type="hidden" class="form-control" name="id_estudiante" id="id_estudiante" value="<%=cod %>" placeholder="id_estudiante" >
              
                     <div class="form-group"><label class="col-sm-3 control-label">Nombre</label>
 

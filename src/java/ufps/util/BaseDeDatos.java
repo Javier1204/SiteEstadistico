@@ -12,11 +12,11 @@ import java.sql.SQLException;
  * @author madarme
  */
 public class BaseDeDatos {
-    private static final String bd = "ufps_25";
-    private static final String login = "root";
-    private static final String password = "";
+    private static final String bd = "ufps_76";
+    private static final String login = "ufps_76";
+    private static final String password = "ufps_29";
 //   private static final String url = "jdbc:mysql://sandbox2.ufps.edu.co/"+bd;
-    private static final String url = "jdbc:mysql://localhost:3306/"+bd;
+    private static final String url = "jdbc:mysql://sandbox2.ufps.edu.co/ufps_76";
    private static final String controlador = "com.mysql.jdbc.Driver";
     private static JDBCMiddler jdbc;
     
